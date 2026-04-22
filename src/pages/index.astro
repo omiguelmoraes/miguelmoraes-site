@@ -46,9 +46,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <span class="row-sub">Porto Alegre, Brazil</span>
               <p class="row-desc">I design interfaces for Power BI dashboards and reports, create institutional graphic materials, and apply strategic design to marketing and data visualization.</p>
               <div class="row-images">
-                <div class="row-image"><img src="/work/opservices-1.webp" alt="" /></div>
-                <div class="row-image"><img src="/work/opservices-2.webp" alt="" /></div>
-                <div class="row-image"><img src="/work/opservices-3.webp" alt="" /></div>
+                <div class="row-image"><img src="/work/opservices-1.webp" alt="" class="lightbox-trigger" /></div>
+                <div class="row-image"><img src="/work/opservices-2.webp" alt="" class="lightbox-trigger" /></div>
+                <div class="row-image"><img src="/work/opservices-3.webp" alt="" class="lightbox-trigger" /></div>
               </div>
             </div>
           </div>
@@ -81,9 +81,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <span class="row-sub">São Leopoldo, Brazil</span>
               <p class="row-desc">Visual materials, logos, and websites with strong interfaces to boost online presence through Visual Design and Branding.</p>
               <div class="row-images">
-                <div class="row-image"><img src="/work/gama-1.webp" alt="" /></div>
-                <div class="row-image"><img src="/work/gama-2.webp" alt="" /></div>
-                <div class="row-image"><img src="/work/gama-3.webp" alt="" /></div>
+                <div class="row-image"><img src="/work/gama-1.webp" alt="" class="lightbox-trigger" /></div>
+                <div class="row-image"><img src="/work/gama-2.webp" alt="" class="lightbox-trigger" /></div>
+                <div class="row-image"><img src="/work/gama-3.webp" alt="" class="lightbox-trigger" /></div>
               </div>
             </div>
           </div>
@@ -328,6 +328,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </main>
   </div>
 </BaseLayout>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox')!;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+
+  document.querySelectorAll('.lightbox-trigger').forEach((img) => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = (img as HTMLImageElement).src;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || (e.target as HTMLElement).classList.contains('lightbox-close')) {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
 
 <style>
   .page {
@@ -574,9 +607,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .row-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    cursor: zoom-in;
   }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 6px;
+    object-fit: contain;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+  .lightbox-close:hover { color: #fff; }
 
   @media (max-width: 480px) {
     .rows--divided {
