@@ -34,7 +34,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Work -->
       <section class="section">
         <h2 class="section-title">Work</h2>
-        <div class="rows">
+        <div class="rows rows--divided">
 
           <div class="row">
             <span class="date">2025 — Now</span>
@@ -152,7 +152,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Speaking -->
       <section class="section">
         <h2 class="section-title">Speaking</h2>
-        <div class="rows">
+        <div class="rows rows--divided">
           <div class="row">
             <span class="date">2025</span>
             <div class="row-content">
@@ -202,7 +202,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Education -->
       <section class="section">
         <h2 class="section-title">Education</h2>
-        <div class="rows">
+        <div class="rows rows--divided">
           <div class="row">
             <span class="date">2024 — Now</span>
             <div class="row-content">
@@ -552,24 +552,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   @media (max-width: 480px) {
-    .rows {
+    .rows--divided {
       gap: 0;
     }
 
-    .row {
+    .rows--divided .row {
       flex-direction: column;
       gap: 2px;
       padding: 20px 0;
       border-bottom: 1px solid var(--color-border);
     }
 
-    .row:first-child {
+    .rows--divided .row:first-child {
       padding-top: 0;
     }
 
-    .row:last-child {
+    .rows--divided .row:last-child {
       border-bottom: none;
       padding-bottom: 0;
+    }
+
+    .row {
+      flex-direction: column;
+      gap: 2px;
     }
 
     .date {
