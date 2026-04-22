@@ -8,7 +8,7 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const project = allProjects[slug as keyof typeof allProjects];
-const otherProjects = Object.entries(allProjects).filter(([s]) => s !== slug);
+const otherProjects = Object.entries(allProjects).filter(([s]) => s !== slug).slice(0, 2);
 ---
 
 <BaseLayout title={`${project.title} — Miguel Moraes`}>
@@ -84,7 +84,10 @@ const otherProjects = Object.entries(allProjects).filter(([s]) => s !== slug);
           ))}
         </div>
       </div>
-      <a href="/" class="home-link">← Back to home</a>
+      <div class="footer-links">
+        <a href="/" class="home-link">← Back to home</a>
+        <a href="/projects" class="home-link">See all projects →</a>
+      </div>
     </footer>
 
   </div>
@@ -320,6 +323,12 @@ const otherProjects = Object.entries(allProjects).filter(([s]) => s !== slug);
     font-size: var(--font-size-body);
     color: var(--color-title);
     line-height: var(--line-height-body);
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .home-link {
