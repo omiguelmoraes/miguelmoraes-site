@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const links = [
+  {
+    label: 'Portfolio',
+    sub: 'miguelmoraes.pro',
+    href: 'https://miguelmoraes.pro',
+    icon: 'ph-globe',
+  },
+  {
+    label: 'Instagram',
+    sub: '@omiguelmoraes',
+    href: 'https://instagram.com/omiguelmoraes',
+    icon: 'ph-instagram-logo',
+  },
+  {
+    label: 'LinkedIn',
+    sub: '/miguelmoraes',
+    href: 'https://linkedin.com/in/miguelmoraes',
+    icon: 'ph-linkedin-logo',
+  },
+  {
+    label: 'WhatsApp',
+    sub: 'Fale comigo',
+    href: 'https://api.whatsapp.com/send?phone=5551998734305',
+    icon: 'ph-whatsapp-logo',
+  },
+];
+
+const products = [
+  {
+    label: 'PackPro',
+    sub: 'Templates para freelancers',
+    href: '#',
+    icon: 'ph-package',
+  },
+];
+---
+
+<BaseLayout title="Miguel Moraes — Links" description="Designer & Strategist. Visual design, sites e front-end.">
+  <div class="page">
+
+    <div class="profile">
+      <div class="avatar">
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" />
+      </div>
+      <h1 class="name">Miguel Moraes</h1>
+      <p class="sub">Designer & Strategist · Porto Alegre, BR</p>
+    </div>
+
+    <nav class="list">
+      {links.map(link => (
+        <a href={link.href} target="_blank" rel="noopener" class="item">
+          <i class={`ph ${link.icon} item-icon`}></i>
+          <div class="item-text">
+            <span class="item-label">{link.label}</span>
+            <span class="item-sub">{link.sub}</span>
+          </div>
+          <i class="ph ph-arrow-right item-arrow"></i>
+        </a>
+      ))}
+    </nav>
+
+    {products.length > 0 && (
+      <section class="section">
+        <span class="section-label">Produtos</span>
+        <div class="list">
+          {products.map(p => (
+            <a href={p.href} target="_blank" rel="noopener" class="item">
+              <i class={`ph ${p.icon} item-icon`}></i>
+              <div class="item-text">
+                <span class="item-label">{p.label}</span>
+                <span class="item-sub">{p.sub}</span>
+              </div>
+              <i class="ph ph-arrow-right item-arrow"></i>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--color-wash);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .name {
+    font-size: var(--font-size-title);
+    font-weight: 400;
+    color: var(--color-title);
+    line-height: var(--line-height-title);
+  }
+
+  .sub {
+    font-size: var(--font-size-body);
+    color: var(--color-muted);
+    line-height: var(--line-height-body);
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-pill-bg);
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .item:hover {
+    background: var(--color-wash);
+    border-color: #ccc;
+    text-decoration: none;
+  }
+
+  [data-theme="dark"] .item:hover {
+    border-color: #444;
+  }
+
+  .item-icon {
+    font-size: 18px;
+    color: var(--color-muted);
+    flex-shrink: 0;
+  }
+
+  .item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .item-label {
+    font-size: var(--font-size-body);
+    color: var(--color-title);
+    line-height: 1.4;
+  }
+
+  .item-sub {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    line-height: 1.4;
+  }
+
+  .item-arrow {
+    font-size: 14px;
+    color: var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+</style>
