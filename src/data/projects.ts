@@ -7,7 +7,7 @@ export const allProjects = {
     cover: '/projects/flouds/01.webp',
     thumbnail: '/projects/flouds/01.webp',
     url: 'https://flouds.com.br',
-    tags: ['Web Design', 'UI', 'Front-end'],
+    tags: ['Web Design', 'UI/UX', 'Marketing'],
     challenge: {
       heading: 'Turning a data-driven brand into a high-performance digital presence',
       body: "After building Flouds' visual identity, the next step was to transform their positioning into a digital presence that went beyond a simple showcase. The site needed to communicate authority, explain the value proposition clearly, and work as a strategic acquisition channel — converting visitors into qualified leads directly and effectively.",
@@ -27,7 +27,7 @@ export const allProjects = {
     cover: '/projects/yoursbank/01.webp',
     thumbnail: '/projects/yoursbank/01.webp',
     figmaUrl: 'https://figma.com',
-    tags: ['Web Design', 'UI/UX'],
+    tags: ['Web Design', 'UI/UX', 'Fintech'],
     challenge: {
       heading: "Translating Yours Bank's innovative proposition into a platform that builds trust and drives action",
       body: "The previous site didn't reflect the fintech's value proposition or meet the expectations of users who needed to understand and trust the product. More than a visual redesign, the goal was to communicate security in a sector full of distrust — with a lightweight, conversion-focused structure.",
@@ -46,7 +46,7 @@ export const allProjects = {
     location: 'São Leopoldo, Brazil',
     cover: '/projects/msk/01.webp',
     thumbnail: '/projects/msk/01.webp',
-    tags: ['Web Design', 'UI/UX'],
+    tags: ['Web Design', 'UI/UX', 'Industry'],
     challenge: {
       heading: "Converting 26 years of expertise into a modern digital presence built to generate business",
       body: "MSK is a reference in its sector, but their digital positioning didn't match that strength. The goal was to create a site that not only modernized their image, but functioned as a sales tool — making their vast product catalog easy to navigate and optimizing qualified lead capture.",
