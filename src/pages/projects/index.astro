@@ -146,7 +146,11 @@ const allTags = [...new Set(Object.values(allProjects).flatMap(p => p.tags))];
   }
 
   .card:hover {
-    border-color: var(--color-muted);
+    border-color: #bbb;
+  }
+
+  [data-theme="dark"] .card:hover {
+    border-color: #444;
   }
 
   .card-image {
