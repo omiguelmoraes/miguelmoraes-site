@@ -141,11 +141,12 @@ const allTags = [...new Set(Object.values(allProjects).flatMap(p => p.tags))];
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
-    transition: opacity 0.15s;
+    border: 1px solid var(--color-border);
+    transition: border-color 0.15s;
   }
 
   .card:hover {
-    opacity: 0.85;
+    border-color: var(--color-muted);
   }
 
   .card-image {

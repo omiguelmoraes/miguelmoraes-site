@@ -24,7 +24,7 @@ export const allProjects = {
     year: '2025',
     category: 'Web Design',
     location: 'Porto Alegre, Brazil',
-    cover: '/projects/yoursbank/06.webp',
+    cover: '/projects/yoursbank/01.webp',
     thumbnail: '/projects/yoursbank/01.webp',
     figmaUrl: 'https://figma.com',
     tags: ['Web Design', 'UI/UX'],
