@@ -25,9 +25,12 @@ import { allProjects } from '../../data/projects';
             <div class="card-meta">
               <span class="card-year">{project.year}</span>
               <span class="card-sep">·</span>
-              <span class="card-category">{project.category}</span>
+              <span class="card-category">{project.location}</span>
             </div>
             <span class="card-title">{project.title}</span>
+            <div class="card-tags">
+              {project.tags.map(tag => <span class="tag">{tag}</span>)}
+            </div>
           </div>
         </a>
       ))}
@@ -141,6 +144,22 @@ import { allProjects } from '../../data/projects';
     font-size: var(--font-size-body);
     color: var(--color-title);
     line-height: var(--line-height-body);
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .tag {
+    background: var(--color-pill-bg);
+    color: var(--color-muted);
+    font-size: var(--font-size-small);
+    padding: 3px 10px;
+    border-radius: 12px;
+    line-height: 1.6;
   }
 
   @media (max-width: 480px) {
