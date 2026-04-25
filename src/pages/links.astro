@@ -13,6 +13,7 @@ const links = [
     sub: 'miguelmoraes.pro',
     href: 'https://miguelmoraes.pro',
     icon: 'ph-globe',
+    sameTab: true,
   },
   {
     label: 'Instagram',
@@ -59,7 +60,7 @@ const featured = {
 
     <nav class="list">
       {links.map(link => (
-        <a href={link.href} target="_blank" rel="noopener" class="item">
+        <a href={link.href} target={link.sameTab ? '_self' : '_blank'} rel="noopener" class="item">
           <i class={`ph ${link.icon} item-icon`}></i>
           <div class="item-text">
             <span class="item-label">{link.label}</span>
