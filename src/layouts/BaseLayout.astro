@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { Analytics } from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -39,6 +40,7 @@ const {
       <i id="icon-moon" class="ph ph-moon" style="font-size:16px;display:none"></i>
     </button>
     <slot />
+    <Analytics />
   </body>
 </html>
 
