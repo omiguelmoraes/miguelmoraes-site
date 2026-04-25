@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { allProjects } from '../../data/projects';
+
+const allTags = [...new Set(Object.values(allProjects).flatMap(p => p.tags))];
 ---
 
 <BaseLayout title="Projects — Miguel Moraes" description="Selected work in web design, UI/UX and front-end.">
@@ -15,9 +17,16 @@ import { allProjects } from '../../data/projects';
       <p class="sub">Selected work in web design, UI/UX and front-end.</p>
     </header>
 
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      {allTags.map(tag => (
+        <button class="filter-btn" data-filter={tag}>{tag}</button>
+      ))}
+    </div>
+
     <div class="grid">
       {Object.entries(allProjects).map(([slug, project]) => (
-        <a href={`/projects/${slug}`} class="card">
+        <a href={`/projects/${slug}`} class="card" data-tags={project.tags.join(',')}>
           <div class="card-image">
             <img src={project.cover} alt={project.title} />
           </div>
@@ -36,6 +45,24 @@ import { allProjects } from '../../data/projects';
   </div>
 </BaseLayout>
 
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.card');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter!;
+      cards.forEach(card => {
+        const tags = card.dataset.tags!.split(',');
+        card.style.display = (filter === 'all' || tags.includes(filter)) ? 'flex' : 'none';
+      });
+    });
+  });
+</script>
+
 <style>
   .page {
     max-width: var(--layout-max-width);
@@ -43,7 +70,7 @@ import { allProjects } from '../../data/projects';
     padding: 48px var(--layout-padding-x) var(--layout-padding-y);
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
   }
 
   .back {
@@ -72,36 +99,59 @@ import { allProjects } from '../../data/projects';
     line-height: var(--line-height-body);
   }
 
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: var(--color-pill-bg);
+    color: var(--color-muted);
+    border: none;
+    font-size: var(--font-size-small);
+    font-family: inherit;
+    padding: 5px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    line-height: 1.6;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .filter-btn:hover {
+    color: var(--color-title);
+  }
+
+  .filter-btn.active {
+    background: var(--color-title);
+    color: var(--color-bg);
+  }
+
   .grid {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 24px;
   }
 
   .card {
     display: flex;
     align-items: stretch;
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
-    transition: border-color 0.15s;
+    background: var(--color-wash);
+    transition: opacity 0.15s;
   }
 
   .card:hover {
-    border-color: #bbb;
-  }
-
-  [data-theme="dark"] .card:hover {
-    border-color: #444;
+    opacity: 0.85;
   }
 
   .card-image {
-    width: 220px;
+    width: 260px;
     flex-shrink: 0;
     overflow: hidden;
-    border-right: 1px solid var(--color-border);
-    background: var(--color-wash);
+    background: var(--color-border);
   }
 
   .card-image img {
@@ -112,7 +162,7 @@ import { allProjects } from '../../data/projects';
   }
 
   .card-content {
-    padding: 20px 24px;
+    padding: 24px 28px;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -165,9 +215,7 @@ import { allProjects } from '../../data/projects';
     }
     .card-image {
       width: 100%;
-      height: 180px;
-      border-right: none;
-      border-bottom: 1px solid var(--color-border);
+      height: 200px;
     }
   }
 </style>
