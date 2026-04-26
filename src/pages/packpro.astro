@@ -1,5 +1,4 @@
 ---
-// Standalone dark LP — no BaseLayout, no theme toggle
 const kiwify = 'https://pay.kiwify.com.br/FNeJdk9';
 const instagram = 'https://instagram.com/omiguelmoraes';
 ---
@@ -9,6 +8,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
   <title>PackPro — Templates para Freelancers</title>
   <meta name="description" content="Contrato, proposta e orçamento prontos para personalizar e usar em minutos. Para de perder tempo criando do zero." />
   <link rel="canonical" href="https://miguelmoraes.pro/packpro" />
@@ -19,64 +19,41 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
 <!-- TICKER -->
-<div class="ticker">
+<div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    {Array(8).fill(null).map(() => (
-      <><span>Oferta Limitada</span><span class="dot">·</span><span>R$37 Hoje!</span><span class="dot">·</span></>
+    {Array(10).fill(null).map(() => (
+      <><span translate="no">PackPro</span><span class="dot">·</span><span>Oferta por R$37</span><span class="dot">·</span><span>3 templates no Figma</span><span class="dot">·</span><span>Acesso imediato</span><span class="dot">·</span></>
     ))}
   </div>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-logo">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      PackPro
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <span class="eyebrow">
+        <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
+        Templates
+      </span>
+      <h1 class="hero-title">
+        Documentos prontos.<br />
+        Projetos fechados<br />
+        mais rápido.
+      </h1>
+      <p class="hero-sub">Contrato, proposta e orçamento no Figma. Personalize e envie em minutos, não horas.</p>
+      <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="touch-action: manipulation;">
+        Quero o <span translate="no">PackPro</span> — R$37 →
+      </a>
     </div>
-    <h1 class="hero-title">
-      Templates profissionais<br />
-      para freelancers<br />
-      <span class="muted">que fecham projetos<br />sem perder tempo.</span>
-    </h1>
-    <p class="hero-sub">Contrato, proposta e orçamento prontos para personalizar e usar.</p>
-    <a href={kiwify} target="_blank" rel="noopener" class="btn-primary">Quero o PackPro — R$37 →</a>
-  </div>
 
-  <!-- CSS Document Mockups -->
-  <div class="mockups-wrapper">
-    <div class="mockups">
-      <div class="doc-wrap">
-        <div class="doc">
-          <div class="doc-header">
-            <span>SEU NOME / MARCA</span>
-            <span>XX/XX/2025</span>
-          </div>
-          <div class="doc-title">ORÇAMENTO</div>
-          <div class="doc-divider"></div>
-          <div class="doc-lines">
-            <div class="doc-line" style="width:80%"></div>
-            <div class="doc-line" style="width:60%"></div>
-            <div class="doc-line" style="width:90%"></div>
-            <div class="doc-line" style="width:50%"></div>
-            <div class="doc-line" style="width:70%"></div>
-            <div class="doc-line" style="width:40%"></div>
-            <div class="doc-line" style="width:85%"></div>
-          </div>
-        </div>
-        <span class="doc-label">Orçamento</span>
-      </div>
-
-      <div class="doc-wrap">
-        <div class="doc">
+    <div class="hero-right" aria-hidden="true">
+      <div class="doc-stack">
+        <div class="doc doc-back">
           <div class="doc-header">
             <span>SEU NOME / MARCA</span>
             <span>XX/XX/2025</span>
@@ -84,20 +61,15 @@ const instagram = 'https://instagram.com/omiguelmoraes';
           <div class="doc-title">PROPOSTA<br />COMERCIAL</div>
           <div class="doc-divider"></div>
           <div class="doc-lines">
-            <div class="doc-line" style="width:90%"></div>
-            <div class="doc-line" style="width:70%"></div>
             <div class="doc-line" style="width:85%"></div>
-            <div class="doc-line" style="width:55%"></div>
-            <div class="doc-line" style="width:80%"></div>
             <div class="doc-line" style="width:65%"></div>
+            <div class="doc-line" style="width:90%"></div>
+            <div class="doc-line" style="width:55%"></div>
             <div class="doc-line" style="width:75%"></div>
+            <div class="doc-line" style="width:40%"></div>
           </div>
         </div>
-        <span class="doc-label">Proposta Comercial</span>
-      </div>
-
-      <div class="doc-wrap">
-        <div class="doc">
+        <div class="doc doc-front">
           <div class="doc-header">
             <span>SEU NOME / MARCA</span>
             <span>XX/XX/2025</span>
@@ -106,80 +78,97 @@ const instagram = 'https://instagram.com/omiguelmoraes';
           <div class="doc-divider"></div>
           <div class="doc-lines">
             <div class="doc-line" style="width:95%"></div>
-            <div class="doc-line" style="width:80%"></div>
-            <div class="doc-line" style="width:70%"></div>
-            <div class="doc-line" style="width:90%"></div>
-            <div class="doc-line" style="width:60%"></div>
-            <div class="doc-line" style="width:85%"></div>
             <div class="doc-line" style="width:75%"></div>
+            <div class="doc-line" style="width:88%"></div>
+            <div class="doc-line" style="width:60%"></div>
+            <div class="doc-line" style="width:82%"></div>
+            <div class="doc-line" style="width:50%"></div>
           </div>
         </div>
-        <span class="doc-label">Contrato de Serviços</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BENEFITS -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Benefícios do PackPro</h2>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-stat">5min</div>
-        <h3>Economia de Tempo</h3>
-        <p>Menos burocracia, mais tempo para criar.</p>
-      </div>
-      <div class="card">
-        <div class="card-stat">3 docs</div>
-        <h3>Organização</h3>
-        <p>Processos claros e alinhados com seu cliente.</p>
-      </div>
-      <div class="card">
-        <div class="card-stat">100%</div>
-        <h3>Profissionalismo</h3>
-        <p>Feche projetos com mais confiança.</p>
-      </div>
-      <div class="card">
-        <div class="card-stat">Imediato</div>
-        <h3>Pronto para Usar</h3>
-        <p>Personalize e envie em minutos.</p>
-      </div>
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="container stats-grid">
+    <div class="stat">
+      <span class="stat-num">5min</span>
+      <span class="stat-label">para personalizar</span>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat-num">3</span>
+      <span class="stat-label">templates essenciais</span>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">editável no Figma</span>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat-num">R$37</span>
+      <span class="stat-label">pagamento único</span>
     </div>
   </div>
-</section>
+</div>
 
 <!-- FEATURES -->
 <section class="section">
   <div class="container">
-    <h2 class="section-title">O que você encontra no PackPro</h2>
-    <div class="features-grid">
-      <div class="card feature-main">
-        <span class="feature-label">Principal</span>
-        <h3>Templates Totalmente Editáveis</h3>
-        <p>Ajuste cada detalhe no Figma. Troque cor, logo, texto — sem depender de ninguém.</p>
+    <span class="section-eyebrow">
+      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
+      O que vem no pack
+    </span>
+    <h2 class="section-title">Tudo que você precisa<br />para fechar projetos.</h2>
+    <div class="features-list">
+      <div class="feature-row">
+        <div class="feature-num">01</div>
+        <div class="feature-content">
+          <h3>Template de Contrato</h3>
+          <p>Linguagem clara, cláusulas essenciais. Personalize com seu nome, cliente e escopo em minutos.</p>
+        </div>
         <div class="feature-tags">
-          <span class="tag">Figma</span>
-          <span class="tag">100% Editável</span>
           <span class="tag">Dark + Light</span>
+          <span class="tag">Figma</span>
         </div>
       </div>
-      <div class="card feature-small">
-        <h3>Templates Essenciais</h3>
-        <p>Contratos, propostas e orçamentos. Tudo que você precisa para fechar projetos.</p>
+      <div class="feature-row">
+        <div class="feature-num">02</div>
+        <div class="feature-content">
+          <h3>Template de Proposta Comercial</h3>
+          <p>Apresentação profissional para convencer clientes antes mesmo de começar.</p>
+        </div>
+        <div class="feature-tags">
+          <span class="tag">Dark + Light</span>
+          <span class="tag">Figma</span>
+        </div>
       </div>
-      <div class="card feature-small">
-        <h3>Modos Claro e Escuro</h3>
-        <p>Escolha o estilo que combina com a sua marca.</p>
+      <div class="feature-row">
+        <div class="feature-num">03</div>
+        <div class="feature-content">
+          <h3>Template de Orçamento</h3>
+          <p>Detalhe serviços e valores com clareza. Sem planilha, sem formato amador.</p>
+        </div>
+        <div class="feature-tags">
+          <span class="tag">Dark + Light</span>
+          <span class="tag">Figma</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- VALUE STACK -->
-<section class="section">
+<section class="section section-alt">
   <div class="container">
-    <h2 class="section-title">O que vem no PackPro?</h2>
+    <span class="section-eyebrow">
+      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
+      Precificação
+    </span>
+    <h2 class="section-title">Tudo junto, por muito menos.</h2>
     <div class="value-stack">
       <div class="stack-row">
         <span>Template de Orçamento</span>
@@ -194,29 +183,41 @@ const instagram = 'https://instagram.com/omiguelmoraes';
         <span class="price-old">R$147</span>
       </div>
       <div class="stack-row stack-total">
-        <span>Pack Pro</span>
+        <span translate="no">Pack Pro</span>
         <span class="price-final">R$37</span>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- PRICING -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Tudo isso, por um preço acessível</h2>
     <div class="pricing-card">
-      <span class="pricing-badge">Oferta Exclusiva</span>
-      <div class="pricing-price">R$37</div>
-      <p class="pricing-sub">Pague uma vez. Use em todos os seus projetos.</p>
-      <a href={kiwify} target="_blank" rel="noopener" class="btn-primary btn-full">Quero o PackPro — R$37 →</a>
-      <ul class="checklist">
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Acesso Imediato</li>
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Atualizações Gratuitas</li>
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Suporte Dedicado</li>
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>7 Dias de Garantia</li>
-        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Compatível com Figma</li>
-      </ul>
+      <div class="pricing-left">
+        <div class="pricing-price">R$37</div>
+        <p class="pricing-sub">Pague uma vez. Use em todos os seus projetos, para sempre.</p>
+        <ul class="checklist" role="list">
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Acesso imediato
+          </li>
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Atualizações gratuitas
+          </li>
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            7 dias de garantia
+          </li>
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Compatível com Figma
+          </li>
+        </ul>
+      </div>
+      <div class="pricing-right">
+        <span class="pricing-badge">Oferta Exclusiva</span>
+        <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="touch-action: manipulation;">
+          Quero o <span translate="no">PackPro</span> — R$37 →
+        </a>
+        <p class="pricing-note">Sem assinatura. Sem surpresas.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -224,93 +225,85 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <!-- FAQ -->
 <section class="section">
   <div class="container">
+    <span class="section-eyebrow">
+      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
+      FAQ
+    </span>
     <h2 class="section-title">Dúvidas frequentes</h2>
-    <div class="faq" id="faq">
-      <div class="faq-item">
-        <button class="faq-q">Por que eu preciso do PackPro se já faço tudo manualmente?<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="faq-a">Fazer manualmente funciona, mas custa tempo — e tempo de freelancer é dinheiro. Com o PackPro, você personaliza e envia em minutos, não horas.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Os templates são fáceis de personalizar?<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="faq-a">Sim. Tudo foi criado no Figma, com campos claros para substituir. Troque nome, logo, cores e dados do cliente em poucos cliques.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Como isso vai me ajudar a fechar mais projetos?<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="faq-a">Uma proposta bem apresentada transmite confiança. O cliente percebe profissionalismo — e isso pesa na decisão de fechar com você.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Funciona para qualquer área de atuação?<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="faq-a">Sim. Os templates funcionam para designers, desenvolvedores, redatores, social media e qualquer freelancer criativo.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Qual o diferencial do PackPro em relação a outros modelos?<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="faq-a">Foi feito por quem trabalha como freelancer. Cada template resolve um problema real, com linguagem clara e estrutura que funciona na prática.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Eu posso usar os templates quantas vezes quiser?<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="faq-a">Sim. Após a compra, o acesso é permanente. Use em quantos projetos precisar, para sempre.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">E se eu não gostar ou achar que não atende minhas necessidades?<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="faq-a">Você tem 7 dias de garantia. Se não ficar satisfeito, devolvemos seu dinheiro sem perguntas.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Isso realmente vai economizar meu tempo?<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="faq-a">O que levaria horas para criar do zero fica pronto em menos de 5 minutos.</div>
-      </div>
+    <div class="faq">
+      <details class="faq-item">
+        <summary class="faq-q">Por que eu preciso do <span translate="no">PackPro</span> se já faço tudo manualmente?</summary>
+        <p class="faq-a">Fazer manualmente funciona, mas custa tempo — e tempo de freelancer é dinheiro. Com o <span translate="no">PackPro</span>, você personaliza e envia em minutos, não horas.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Os templates são fáceis de personalizar?</summary>
+        <p class="faq-a">Sim. Tudo foi criado no Figma, com campos claros para substituir. Troque nome, logo, cores e dados do cliente em poucos cliques.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Como isso vai me ajudar a fechar mais projetos?</summary>
+        <p class="faq-a">Uma proposta bem apresentada transmite confiança. O cliente percebe profissionalismo — e isso pesa na decisão de fechar com você.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Funciona para qualquer área de atuação?</summary>
+        <p class="faq-a">Sim. Os templates funcionam para designers, desenvolvedores, redatores, social media e qualquer freelancer criativo.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Eu posso usar os templates quantas vezes quiser?</summary>
+        <p class="faq-a">Sim. Após a compra, o acesso é permanente. Use em quantos projetos precisar, para sempre.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">E se eu não gostar ou achar que não atende minhas necessidades?</summary>
+        <p class="faq-a">Você tem 7 dias de garantia. Se não ficar satisfeito, devolvemos seu dinheiro sem perguntas.</p>
+      </details>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="section">
-  <div class="container about-wrap">
-    <h2 class="section-title">Mas quem sou eu afinal?</h2>
-    <p class="about-body">Desde que comecei minha jornada no Design em 2021, passando por freelas e agências, notei o quanto tarefas operacionais — criar contratos, propostas, orçamentos — ocupavam meu tempo. Eram atividades essenciais, mas que me afastavam do que realmente importava: desenvolver projetos criativos e conquistar mais clientes.</p>
-    <p class="about-body">Foi daí que surgiu a ideia do PackPro. Materiais prontos, práticos e adaptáveis, pensados para acelerar seu trabalho e te ajudar a ser mais estratégico nos seus projetos.</p>
-    <div class="about-btns">
-      <a href={instagram} target="_blank" rel="noopener" class="btn-ghost">Me siga no Instagram →</a>
-      <a href={kiwify} target="_blank" rel="noopener" class="btn-primary">Comprar agora →</a>
+<section class="section section-alt">
+  <div class="container">
+    <span class="section-eyebrow">
+      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
+      Quem fez
+    </span>
+    <div class="about-grid">
+      <h2 class="about-title">Mas quem sou eu afinal?</h2>
+      <div class="about-content">
+        <p>Desde que comecei minha jornada no Design em 2021, notei o quanto tarefas operacionais — contratos, propostas, orçamentos — ocupavam meu tempo. Eram atividades essenciais, mas que me afastavam do que realmente importava.</p>
+        <p>O <span translate="no">PackPro</span> nasceu disso. Materiais prontos, práticos e adaptáveis, para você focar no que realmente gera resultado.</p>
+        <div class="about-btns">
+          <a href={instagram} target="_blank" rel="noopener" class="btn-ghost" style="touch-action: manipulation;">Me siga no Instagram →</a>
+          <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="touch-action: manipulation;">Comprar agora →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- STICKY CTA -->
-<div class="sticky-cta" id="sticky-cta">
-  <span class="sticky-cta-text">Templates prontos por R$37</span>
-  <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="padding: 10px 20px; font-size: 14px;">Comprar agora →</a>
-</div>
 
 <!-- FOOTER -->
 <footer class="footer">
   <p>Miguel Moraes © Todos os direitos reservados.</p>
 </footer>
 
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="sticky-cta" role="complementary" aria-label="Compra rápida">
+  <span class="sticky-cta-text">Templates prontos por R$37</span>
+  <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="padding: 10px 20px; font-size: 14px; touch-action: manipulation;">
+    Comprar agora →
+  </a>
+</div>
+
 </body>
 </html>
 
 <script>
-  // FAQ accordion
-  document.querySelectorAll<HTMLButtonElement>('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item')!;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
-  });
-
-  // Sticky CTA — appears after hero leaves viewport
   const stickyCta = document.getElementById('sticky-cta')!;
   const hero = document.querySelector('.hero')!;
 
   const observer = new IntersectionObserver(
-    ([entry]) => {
-      stickyCta.classList.toggle('visible', !entry.isIntersecting);
-    },
+    ([entry]) => stickyCta.classList.toggle('visible', !entry.isIntersecting),
     { threshold: 0 }
   );
-
   observer.observe(hero);
 </script>
 
@@ -318,15 +311,15 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #1a1a1a;
-    --surface: #242424;
-    --surface-2: #2e2e2e;
-    --border: rgba(255,255,255,0.08);
-    --text: #ffffff;
-    --muted: #888888;
-    --accent: #ff5500;
-    --accent-hover: #e84b00;
-    --radius: 12px;
+    --bg: #F2F1EE;
+    --bg-alt: #ECEAE6;
+    --surface: #FFFFFF;
+    --border: #DDDBD7;
+    --text: #0D0D0D;
+    --muted: #6E6D6A;
+    --accent: #FF5500;
+    --accent-hover: #E04A00;
+    --radius: 10px;
   }
 
   body {
@@ -339,30 +332,30 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
 
   .container {
-    max-width: 720px;
+    max-width: 960px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 32px;
   }
 
   /* TICKER */
   .ticker {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    background: var(--text);
+    color: rgba(255,255,255,0.5);
     overflow: hidden;
-    padding: 10px 0;
-    font-size: 13px;
-    color: var(--muted);
+    padding: 9px 0;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
   .ticker-track {
     display: flex;
-    gap: 16px;
+    gap: 20px;
     white-space: nowrap;
     width: max-content;
-    animation: ticker 24s linear infinite;
+    animation: ticker 30s linear infinite;
   }
 
-  .ticker-track .dot { color: var(--border); }
+  .ticker-track .dot { opacity: 0.3; }
 
   @keyframes ticker {
     0% { transform: translateX(0); }
@@ -371,95 +364,99 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
   /* HERO */
   .hero {
-    padding: 80px 0 0;
-    text-align: center;
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--border);
   }
 
-  .hero .container {
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-left {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
+    align-items: flex-start;
   }
 
-  .hero-logo {
+  .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 14px;
+    gap: 6px;
+    font-size: 11px;
     font-weight: 600;
-    color: var(--text);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 6px 14px;
-    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
   }
 
   .hero-title {
-    font-size: clamp(32px, 6vw, 52px);
+    font-size: clamp(32px, 4vw, 48px);
     font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--text);
   }
-
-  .hero-title .muted { color: #555; }
 
   .hero-sub {
     font-size: 16px;
     color: var(--muted);
-    max-width: 420px;
+    line-height: 1.65;
+    max-width: 380px;
   }
 
-  /* MOCKUPS */
-  .mockups-wrapper {
-    margin-top: 56px;
-    background: #ebebeb;
-    border-radius: 20px 20px 0 0;
-    padding: 48px 32px 56px;
-    width: 100%;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .mockups {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .doc-wrap {
+  /* DOC STACK */
+  .hero-right {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
     align-items: center;
+    justify-content: center;
+  }
+
+  .doc-stack {
+    position: relative;
+    width: 300px;
+    height: 380px;
   }
 
   .doc {
-    background: #ffffff;
+    position: absolute;
+    width: 280px;
+    background: var(--surface);
     border-radius: 10px;
     padding: 20px;
-    width: 100%;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    min-height: 340px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    overflow: hidden;
+    gap: 10px;
+    border: 1px solid var(--border);
+  }
+
+  .doc-back {
+    top: 0;
+    right: 0;
+    transform: rotate(3.5deg);
+    z-index: 1;
+  }
+
+  .doc-front {
+    top: 40px;
+    left: 0;
+    z-index: 2;
   }
 
   .doc-header {
     display: flex;
     justify-content: space-between;
     font-size: 7px;
-    color: #999;
+    color: #aaa;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     padding-bottom: 8px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f0f0f0;
   }
 
   .doc-title {
@@ -467,140 +464,137 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     font-weight: 700;
     color: #111;
     letter-spacing: 0.04em;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
-  .doc-divider {
-    height: 1px;
-    background: #eee;
+  .doc-divider { height: 1px; background: #f0f0f0; }
+
+  .doc-lines { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+
+  .doc-line { height: 5px; background: #EBEBEB; border-radius: 2px; }
+
+  /* STATS BAR */
+  .stats-bar {
+    border-bottom: 1px solid var(--border);
+    padding: 28px 0;
+    background: var(--surface);
   }
 
-  .doc-lines {
+  .stats-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stat {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
     flex: 1;
+    text-align: center;
   }
 
-  .doc-line {
-    height: 5px;
-    background: #e8e8e8;
-    border-radius: 2px;
+  .stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1;
   }
 
-  .doc-label {
+  .stat-label {
     font-size: 12px;
-    color: #555;
-    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+    flex-shrink: 0;
   }
 
   /* SECTIONS */
-  .section {
-    padding: 72px 0;
+  .section { padding: 80px 0; }
+
+  .section-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
   }
 
   .section-title {
-    font-size: 24px;
+    font-size: clamp(24px, 3vw, 36px);
     font-weight: 700;
-    margin-bottom: 28px;
-    letter-spacing: -0.01em;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
   }
 
-  /* CARDS */
-  .card {
-    background: var(--surface);
+  /* FEATURES LIST */
+  .features-list {
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 24px;
+    overflow: hidden;
+    background: var(--surface);
   }
 
-  .card h3 {
-    font-size: 16px;
+  .feature-row {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .feature-row:last-child { border-bottom: none; }
+
+  .feature-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+
+  .feature-content h3 {
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: 6px;
     color: var(--text);
+    margin-bottom: 4px;
   }
 
-  .card p {
-    font-size: 14px;
+  .feature-content p {
+    font-size: 13px;
     color: var(--muted);
     line-height: 1.6;
-  }
-
-  .card-icon {
-    width: 36px;
-    height: 36px;
-    background: var(--surface-2);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted);
-    margin-bottom: 14px;
-  }
-
-  .card-stat {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-bottom: 10px;
-  }
-
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  /* FEATURES */
-  .features-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 12px;
-  }
-
-  .feature-main {
-    grid-column: 1 / -1;
-    border-left: 3px solid var(--accent);
-    padding-left: 28px;
-  }
-
-  .feature-main h3 {
-    font-size: 20px;
-  }
-
-  .feature-label {
-    font-family: ui-monospace, monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-    display: block;
-  }
-
-  .feature-small {
-    min-height: 140px;
   }
 
   .feature-tags {
     display: flex;
     gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 14px;
+    flex-shrink: 0;
   }
 
   .tag {
-    background: var(--surface-2);
+    font-size: 11px;
     color: var(--muted);
-    font-size: 12px;
-    padding: 3px 10px;
-    border-radius: 20px;
+    background: var(--bg);
     border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
   }
 
   /* VALUE STACK */
@@ -608,15 +602,17 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
+    background: var(--surface);
+    margin-bottom: 24px;
   }
 
   .stack-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 20px;
+    padding: 16px 24px;
     border-bottom: 1px solid var(--border);
-    font-size: 15px;
+    font-size: 14px;
     color: var(--muted);
   }
 
@@ -624,19 +620,17 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
   .price-old {
     text-decoration: line-through;
-    font-size: 14px;
-    color: #555;
+    font-size: 13px;
+    color: #bbb;
   }
 
-  .stack-total {
-    color: var(--text);
-    font-weight: 600;
-  }
+  .stack-total { color: var(--text); font-weight: 600; }
 
   .price-final {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
     color: var(--text);
+    letter-spacing: -0.02em;
   }
 
   /* PRICING CARD */
@@ -645,64 +639,74 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 480px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .pricing-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 11px;
-    color: var(--muted);
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    padding: 3px 10px;
-    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
   }
 
   .pricing-price {
-    font-size: 52px;
+    font-size: 56px;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     line-height: 1;
+    margin-bottom: 8px;
   }
 
   .pricing-sub {
     font-size: 14px;
     color: var(--muted);
+    margin-bottom: 20px;
+    max-width: 280px;
   }
 
   .checklist {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 4px;
+    gap: 8px;
   }
 
   .checklist li {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 14px;
+    gap: 8px;
+    font-size: 13px;
     color: var(--muted);
   }
 
   .checklist li svg { color: var(--accent); flex-shrink: 0; }
 
-  /* FAQ */
-  .faq {
+  .pricing-right {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .pricing-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(255,85,0,0.08);
+    border: 1px solid rgba(255,85,0,0.2);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .pricing-note {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* FAQ */
+  .faq {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
+    background: var(--surface);
   }
 
   .faq-item {
@@ -716,44 +720,60 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    padding: 18px 20px;
-    background: none;
-    border: none;
-    color: var(--text);
+    padding: 18px 24px;
     font-size: 14px;
-    font-family: inherit;
-    text-align: left;
+    font-weight: 500;
+    color: var(--text);
     cursor: pointer;
+    list-style: none;
     transition: background 0.15s;
+    touch-action: manipulation;
   }
 
-  .faq-q:hover { background: var(--surface); }
+  .faq-q::-webkit-details-marker { display: none; }
 
-  .faq-q svg {
-    flex-shrink: 0;
+  .faq-q::after {
+    content: '+';
+    font-size: 18px;
+    font-weight: 300;
     color: var(--muted);
+    flex-shrink: 0;
+    margin-left: 16px;
     transition: transform 0.2s;
   }
 
-  .faq-item.open .faq-q svg { transform: rotate(180deg); }
+  details[open] .faq-q::after { transform: rotate(45deg); }
+
+  .faq-q:hover { background: var(--bg); }
+
+  .faq-q:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
 
   .faq-a {
-    display: none;
-    padding: 0 20px 18px;
+    padding: 0 24px 18px;
     font-size: 14px;
     color: var(--muted);
     line-height: 1.7;
   }
 
-  .faq-item.open .faq-a { display: block; }
-
   /* ABOUT */
-  .about-wrap {
-    max-width: 600px;
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
   }
 
-  .about-body {
+  .about-title {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .about-content p {
     font-size: 15px;
     color: var(--muted);
     line-height: 1.75;
@@ -783,11 +803,15 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     border: none;
     cursor: pointer;
     transition: background 0.15s;
+    white-space: nowrap;
   }
 
   .btn-primary:hover { background: var(--accent-hover); }
 
-  .btn-primary.btn-full { width: 100%; }
+  .btn-primary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 
   .btn-ghost {
     display: inline-flex;
@@ -802,33 +826,14 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     text-decoration: none;
     cursor: pointer;
     transition: border-color 0.15s;
+    white-space: nowrap;
   }
 
-  .btn-ghost:hover { border-color: var(--muted); }
-
-  /* FOCUS STATES */
-  .btn-primary:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
+  .btn-ghost:hover { border-color: var(--text); }
 
   .btn-ghost:focus-visible {
-    outline: 2px solid var(--muted);
+    outline: 2px solid var(--text);
     outline-offset: 3px;
-  }
-
-  .faq-q:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-  }
-
-  /* CARD HOVER */
-  .card {
-    transition: border-color 0.2s;
-  }
-
-  .card:hover {
-    border-color: rgba(255,255,255,0.16);
   }
 
   /* STICKY CTA */
@@ -837,14 +842,13 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%) translateY(80px);
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--text);
     border-radius: 40px;
     padding: 10px 10px 10px 20px;
     display: flex;
     align-items: center;
     gap: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     opacity: 0;
     transition: opacity 0.3s, transform 0.3s;
     z-index: 100;
@@ -858,41 +862,49 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
   .sticky-cta-text {
     font-size: 14px;
-    color: var(--muted);
+    color: rgba(255,255,255,0.6);
   }
 
   /* FOOTER */
   .footer {
     border-top: 1px solid var(--border);
-    padding: 32px 24px;
+    padding: 32px;
     text-align: center;
     font-size: 13px;
-    color: #444;
+    color: var(--muted);
   }
 
   /* REDUCED MOTION */
   @media (prefers-reduced-motion: reduce) {
     .ticker-track { animation: none; }
     .sticky-cta { transition: none; }
-    .card { transition: none; }
+    .btn-primary, .btn-ghost, .faq-q { transition: none; }
+    .faq-q::after { transition: none; }
   }
 
   /* MOBILE */
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
+    .container { padding: 0 20px; }
+
+    .hero { padding: 56px 0 48px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
     .hero-title { font-size: 32px; }
+    .hero-sub { max-width: 100%; }
+    .hero-right { display: none; }
 
-    .mockups-wrapper { border-radius: 12px 12px 0 0; padding: 24px 16px 32px; }
+    .stats-grid { flex-wrap: wrap; gap: 24px; justify-content: center; }
+    .stat-divider { display: none; }
+    .stat { min-width: 120px; }
 
-    .mockups { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .feature-row { grid-template-columns: 32px 1fr; gap: 16px; }
+    .feature-tags { display: none; }
 
-    .grid-2 { grid-template-columns: 1fr; }
+    .pricing-card { grid-template-columns: 1fr; gap: 24px; }
+    .pricing-right { align-items: flex-start; }
 
-    .features-grid { grid-template-columns: 1fr; }
-
-    .feature-main { grid-column: 1; }
+    .about-grid { grid-template-columns: 1fr; gap: 24px; }
 
     .about-btns { flex-direction: column; }
-
-    .btn-ghost, .btn-primary { width: 100%; justify-content: center; }
+    .btn-ghost, .btn-primary { justify-content: center; }
   }
 </style>
