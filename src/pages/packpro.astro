@@ -126,30 +126,22 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     <h2 class="section-title">Benefícios do PackPro</h2>
     <div class="grid-2">
       <div class="card">
-        <div class="card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
+        <div class="card-stat">5min</div>
         <h3>Economia de Tempo</h3>
         <p>Menos burocracia, mais tempo para criar.</p>
       </div>
       <div class="card">
-        <div class="card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="card-stat">3 docs</div>
         <h3>Organização</h3>
         <p>Processos claros e alinhados com seu cliente.</p>
       </div>
       <div class="card">
-        <div class="card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" stroke="currentColor" stroke-width="1.5"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z" stroke="currentColor" stroke-width="1.5"/></svg>
-        </div>
+        <div class="card-stat">100%</div>
         <h3>Profissionalismo</h3>
         <p>Feche projetos com mais confiança.</p>
       </div>
       <div class="card">
-        <div class="card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="card-stat">Imediato</div>
         <h3>Pronto para Usar</h3>
         <p>Personalize e envie em minutos.</p>
       </div>
@@ -163,6 +155,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     <h2 class="section-title">O que você encontra no PackPro</h2>
     <div class="features-grid">
       <div class="card feature-main">
+        <span class="feature-label">Principal</span>
         <h3>Templates Totalmente Editáveis</h3>
         <p>Ajuste cada detalhe no Figma. Troque cor, logo, texto — sem depender de ninguém.</p>
         <div class="feature-tags">
@@ -420,10 +413,11 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   /* MOCKUPS */
   .mockups-wrapper {
     margin-top: 56px;
-    background: #f0f0f0;
-    border-radius: 16px 16px 0 0;
-    padding: 40px 24px 48px;
-    max-width: 860px;
+    background: #ebebeb;
+    border-radius: 20px 20px 0 0;
+    padding: 48px 32px 56px;
+    width: 100%;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -431,28 +425,28 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .mockups {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    max-width: 780px;
+    gap: 20px;
+    max-width: 900px;
     margin: 0 auto;
   }
 
   .doc-wrap {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
   }
 
   .doc {
     background: #ffffff;
-    border-radius: 8px;
-    padding: 16px;
+    border-radius: 10px;
+    padding: 20px;
     width: 100%;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-    aspect-ratio: 3/4;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    min-height: 340px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     overflow: hidden;
   }
 
@@ -545,6 +539,15 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     margin-bottom: 14px;
   }
 
+  .card-stat {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
   .grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -561,6 +564,27 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
   .feature-main {
     grid-column: 1 / -1;
+    border-left: 3px solid var(--accent);
+    padding-left: 28px;
+  }
+
+  .feature-main h3 {
+    font-size: 20px;
+  }
+
+  .feature-label {
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .feature-small {
+    min-height: 140px;
   }
 
   .feature-tags {
