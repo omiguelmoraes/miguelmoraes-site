@@ -8,7 +8,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="color-scheme" content="light" />
+  <meta name="color-scheme" content="dark" />
   <title>PackPro — Templates para Freelancers</title>
   <meta name="description" content="Contrato, proposta e orçamento prontos para personalizar e usar em minutos. Para de perder tempo criando do zero." />
   <link rel="canonical" href="https://miguelmoraes.pro/packpro" />
@@ -19,7 +19,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -27,95 +27,136 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     {Array(10).fill(null).map(() => (
-      <><span translate="no">PackPro</span><span class="dot">·</span><span>Oferta por R$37</span><span class="dot">·</span><span>3 templates no Figma</span><span class="dot">·</span><span>Acesso imediato</span><span class="dot">·</span></>
+      <><span translate="no">PackPro</span><span class="dot">·</span><span>R$37 uma vez</span><span class="dot">·</span><span>3 templates no Figma</span><span class="dot">·</span><span>Acesso imediato</span><span class="dot">·</span></>
     ))}
   </div>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-left">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
       <span class="eyebrow">
         <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
-        Templates
+        Templates para Freelancers
       </span>
-      <h1 class="hero-title">
-        Documentos prontos.<br />
-        Projetos fechados<br />
-        mais rápido.
-      </h1>
+      <h1 class="hero-title">Documentos prontos.<br />Projetos fechados.</h1>
       <p class="hero-sub">Contrato, proposta e orçamento no Figma. Personalize e envie em minutos, não horas.</p>
       <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="touch-action: manipulation;">
-        Quero o <span translate="no">PackPro</span> — R$37 →
+        Garantir por R$37 →
       </a>
     </div>
+  </div>
 
-    <div class="hero-right" aria-hidden="true">
-      <div class="doc-stack">
-        <div class="doc doc-back">
-          <div class="doc-header">
-            <span>SEU NOME / MARCA</span>
-            <span>XX/XX/2025</span>
-          </div>
-          <div class="doc-title">PROPOSTA<br />COMERCIAL</div>
-          <div class="doc-divider"></div>
-          <div class="doc-lines">
-            <div class="doc-line" style="width:85%"></div>
-            <div class="doc-line" style="width:65%"></div>
-            <div class="doc-line" style="width:90%"></div>
-            <div class="doc-line" style="width:55%"></div>
-            <div class="doc-line" style="width:75%"></div>
-            <div class="doc-line" style="width:40%"></div>
-          </div>
-        </div>
-        <div class="doc doc-front">
+  <div class="hero-visual" aria-hidden="true">
+    <div class="container">
+      <div class="doc-row">
+
+        <div class="doc">
           <div class="doc-header">
             <span>SEU NOME / MARCA</span>
             <span>XX/XX/2025</span>
           </div>
           <div class="doc-title">CONTRATO DE<br />PRESTAÇÃO<br />DE SERVIÇOS</div>
           <div class="doc-divider"></div>
-          <div class="doc-lines">
-            <div class="doc-line" style="width:95%"></div>
-            <div class="doc-line" style="width:75%"></div>
-            <div class="doc-line" style="width:88%"></div>
-            <div class="doc-line" style="width:60%"></div>
-            <div class="doc-line" style="width:82%"></div>
-            <div class="doc-line" style="width:50%"></div>
+          <div class="doc-section">
+            <span class="doc-section-label">PARTES</span>
+            <div class="doc-lines">
+              <div class="doc-line" style="width:90%"></div>
+              <div class="doc-line" style="width:72%"></div>
+            </div>
+          </div>
+          <div class="doc-section">
+            <span class="doc-section-label">ESCOPO</span>
+            <div class="doc-lines">
+              <div class="doc-line" style="width:95%"></div>
+              <div class="doc-line" style="width:80%"></div>
+              <div class="doc-line" style="width:60%"></div>
+            </div>
+          </div>
+          <div class="doc-section">
+            <span class="doc-section-label">ASSINATURA</span>
+            <div class="doc-sig">
+              <div class="doc-sig-line"></div>
+              <div class="doc-sig-line"></div>
+            </div>
           </div>
         </div>
+
+        <div class="doc doc--featured">
+          <div class="doc-header">
+            <span>SEU NOME / MARCA</span>
+            <span>XX/XX/2025</span>
+          </div>
+          <div class="doc-title">PROPOSTA<br />COMERCIAL</div>
+          <div class="doc-divider"></div>
+          <div class="doc-section">
+            <span class="doc-section-label">SOBRE</span>
+            <div class="doc-lines">
+              <div class="doc-line" style="width:85%"></div>
+              <div class="doc-line" style="width:65%"></div>
+            </div>
+          </div>
+          <div class="doc-section">
+            <span class="doc-section-label">ESCOPO</span>
+            <div class="doc-bullets">
+              <div class="doc-bullet"><span class="bullet-dot"></span><div class="doc-line" style="width:75%"></div></div>
+              <div class="doc-bullet"><span class="bullet-dot"></span><div class="doc-line" style="width:60%"></div></div>
+              <div class="doc-bullet"><span class="bullet-dot"></span><div class="doc-line" style="width:50%"></div></div>
+            </div>
+          </div>
+          <div class="doc-section">
+            <span class="doc-section-label">INVESTIMENTO</span>
+            <div class="doc-price-row">
+              <div class="doc-line" style="width:50%"></div>
+              <div class="doc-price-tag">R$</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc">
+          <div class="doc-header">
+            <span>SEU NOME / MARCA</span>
+            <span>XX/XX/2025</span>
+          </div>
+          <div class="doc-title">ORÇAMENTO<br />DETALHADO</div>
+          <div class="doc-divider"></div>
+          <div class="doc-table">
+            <div class="doc-table-row doc-table-head">
+              <div class="doc-line" style="width:55%; height:4px;"></div>
+              <div class="doc-line" style="width:20%; height:4px;"></div>
+            </div>
+            <div class="doc-table-row">
+              <div class="doc-line" style="width:60%"></div>
+              <div class="doc-line" style="width:22%"></div>
+            </div>
+            <div class="doc-table-row">
+              <div class="doc-line" style="width:50%"></div>
+              <div class="doc-line" style="width:22%"></div>
+            </div>
+            <div class="doc-table-row">
+              <div class="doc-line" style="width:65%"></div>
+              <div class="doc-line" style="width:22%"></div>
+            </div>
+            <div class="doc-table-row">
+              <div class="doc-line" style="width:45%"></div>
+              <div class="doc-line" style="width:22%"></div>
+            </div>
+          </div>
+          <div class="doc-divider" style="margin-top:8px"></div>
+          <div class="doc-total">
+            <span class="doc-total-label">TOTAL</span>
+            <div class="doc-price-tag doc-price-tag--accent">R$</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="container stats-grid">
-    <div class="stat">
-      <span class="stat-num">5min</span>
-      <span class="stat-label">para personalizar</span>
-    </div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat">
-      <span class="stat-num">3</span>
-      <span class="stat-label">templates essenciais</span>
-    </div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat">
-      <span class="stat-num">100%</span>
-      <span class="stat-label">editável no Figma</span>
-    </div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat">
-      <span class="stat-num">R$37</span>
-      <span class="stat-label">pagamento único</span>
-    </div>
-  </div>
-</div>
-
-<!-- FEATURES -->
+<!-- FEATURES BENTO -->
 <section class="section">
   <div class="container">
     <span class="section-eyebrow">
@@ -123,37 +164,34 @@ const instagram = 'https://instagram.com/omiguelmoraes';
       O que vem no pack
     </span>
     <h2 class="section-title">Tudo que você precisa<br />para fechar projetos.</h2>
-    <div class="features-list">
-      <div class="feature-row">
-        <div class="feature-num">01</div>
-        <div class="feature-content">
-          <h3>Template de Contrato</h3>
-          <p>Linguagem clara, cláusulas essenciais. Personalize com seu nome, cliente e escopo em minutos.</p>
-        </div>
-        <div class="feature-tags">
-          <span class="tag">Dark + Light</span>
+    <div class="bento">
+      <div class="bento-card">
+        <div class="bento-num">01</div>
+        <h3 class="bento-name">Contrato de Prestação de Serviços</h3>
+        <p class="bento-desc">Linguagem clara, cláusulas essenciais. Personalize com nome, cliente e escopo em minutos.</p>
+        <div class="bento-tags">
+          <span class="tag">Dark</span>
+          <span class="tag">Light</span>
           <span class="tag">Figma</span>
         </div>
       </div>
-      <div class="feature-row">
-        <div class="feature-num">02</div>
-        <div class="feature-content">
-          <h3>Template de Proposta Comercial</h3>
-          <p>Apresentação profissional para convencer clientes antes mesmo de começar.</p>
-        </div>
-        <div class="feature-tags">
-          <span class="tag">Dark + Light</span>
+      <div class="bento-card bento-card--featured">
+        <div class="bento-num">02</div>
+        <h3 class="bento-name">Proposta Comercial</h3>
+        <p class="bento-desc">Apresentação profissional para convencer clientes antes mesmo de começar o projeto.</p>
+        <div class="bento-tags">
+          <span class="tag">Dark</span>
+          <span class="tag">Light</span>
           <span class="tag">Figma</span>
         </div>
       </div>
-      <div class="feature-row">
-        <div class="feature-num">03</div>
-        <div class="feature-content">
-          <h3>Template de Orçamento</h3>
-          <p>Detalhe serviços e valores com clareza. Sem planilha, sem formato amador.</p>
-        </div>
-        <div class="feature-tags">
-          <span class="tag">Dark + Light</span>
+      <div class="bento-card">
+        <div class="bento-num">03</div>
+        <h3 class="bento-name">Orçamento Detalhado</h3>
+        <p class="bento-desc">Detalhe serviços e valores com clareza. Sem planilha, sem formato amador.</p>
+        <div class="bento-tags">
+          <span class="tag">Dark</span>
+          <span class="tag">Light</span>
           <span class="tag">Figma</span>
         </div>
       </div>
@@ -161,63 +199,36 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
-<!-- VALUE STACK -->
+<!-- PRICING -->
 <section class="section section-alt">
   <div class="container">
-    <span class="section-eyebrow">
-      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
-      Precificação
-    </span>
-    <h2 class="section-title">Tudo junto, por muito menos.</h2>
-    <div class="value-stack">
-      <div class="stack-row">
-        <span>Template de Orçamento</span>
-        <span class="price-old">R$97</span>
-      </div>
-      <div class="stack-row">
-        <span>Template de Proposta Comercial</span>
-        <span class="price-old">R$147</span>
-      </div>
-      <div class="stack-row">
-        <span>Template de Contrato</span>
-        <span class="price-old">R$147</span>
-      </div>
-      <div class="stack-row stack-total">
-        <span translate="no">Pack Pro</span>
-        <span class="price-final">R$37</span>
-      </div>
-    </div>
-
     <div class="pricing-card">
-      <div class="pricing-left">
-        <div class="pricing-price">R$37</div>
-        <p class="pricing-sub">Pague uma vez. Use em todos os seus projetos, para sempre.</p>
-        <ul class="checklist" role="list">
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Acesso imediato
-          </li>
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Atualizações gratuitas
-          </li>
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            7 dias de garantia
-          </li>
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Compatível com Figma
-          </li>
-        </ul>
-      </div>
-      <div class="pricing-right">
-        <span class="pricing-badge">Oferta Exclusiva</span>
-        <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="touch-action: manipulation;">
-          Quero o <span translate="no">PackPro</span> — R$37 →
-        </a>
-        <p class="pricing-note">Sem assinatura. Sem surpresas.</p>
-      </div>
+      <div class="pricing-glow" aria-hidden="true"></div>
+      <span class="pricing-badge">Oferta Exclusiva</span>
+      <div class="pricing-price">R$37</div>
+      <p class="pricing-sub">Pague uma vez. Use em todos os seus projetos, para sempre.</p>
+      <ul class="checklist" role="list">
+        <li>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Acesso imediato
+        </li>
+        <li>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Atualizações gratuitas
+        </li>
+        <li>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          7 dias de garantia
+        </li>
+        <li>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Compatível com Figma
+        </li>
+      </ul>
+      <a href={kiwify} target="_blank" rel="noopener" class="btn-primary btn-full" style="touch-action: manipulation;">
+        Garantir por R$37 →
+      </a>
+      <p class="pricing-note">Sem assinatura. Sem surpresas.</p>
     </div>
   </div>
 </section>
@@ -248,7 +259,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
         <p class="faq-a">Sim. Os templates funcionam para designers, desenvolvedores, redatores, social media e qualquer freelancer criativo.</p>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Eu posso usar os templates quantas vezes quiser?</summary>
+        <summary class="faq-q">Posso usar os templates quantas vezes quiser?</summary>
         <p class="faq-a">Sim. Após a compra, o acesso é permanente. Use em quantos projetos precisar, para sempre.</p>
       </details>
       <details class="faq-item">
@@ -262,15 +273,11 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <!-- ABOUT -->
 <section class="section section-alt">
   <div class="container">
-    <span class="section-eyebrow">
-      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
-      Quem fez
-    </span>
     <div class="about-grid">
-      <h2 class="about-title">Mas quem sou eu afinal?</h2>
+      <h2 class="about-title">Feito por quem<br />viveu o problema.</h2>
       <div class="about-content">
-        <p>Desde que comecei minha jornada no Design em 2021, notei o quanto tarefas operacionais — contratos, propostas, orçamentos — ocupavam meu tempo. Eram atividades essenciais, mas que me afastavam do que realmente importava.</p>
-        <p>O <span translate="no">PackPro</span> nasceu disso. Materiais prontos, práticos e adaptáveis, para você focar no que realmente gera resultado.</p>
+        <p>Desde que comecei na área de Design em 2021, percebi o quanto tarefas operacionais — contratos, propostas, orçamentos — ocupavam meu tempo. Eram essenciais, mas me afastavam do que realmente importava.</p>
+        <p>O <span translate="no">PackPro</span> nasceu disso. Materiais prontos, práticos e adaptáveis, para você focar no que gera resultado.</p>
         <div class="about-btns">
           <a href={instagram} target="_blank" rel="noopener" class="btn-ghost" style="touch-action: manipulation;">Me siga no Instagram →</a>
           <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="touch-action: manipulation;">Comprar agora →</a>
@@ -311,15 +318,16 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #F2F1EE;
-    --bg-alt: #ECEAE6;
-    --surface: #FFFFFF;
-    --border: #DDDBD7;
-    --text: #0D0D0D;
-    --muted: #6E6D6A;
+    --bg: #0E0D0C;
+    --bg-alt: #131110;
+    --surface: #1C1A16;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+    --text: #F0EDE8;
+    --muted: #7A756F;
     --accent: #FF5500;
-    --accent-hover: #E04A00;
-    --radius: 10px;
+    --accent-hover: #FF6B1E;
+    --radius: 12px;
   }
 
   body {
@@ -331,6 +339,8 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     -webkit-font-smoothing: antialiased;
   }
 
+  h1, h2, .about-title, .eyebrow, .section-eyebrow, .pricing-badge, .bento-num { font-family: 'Space Grotesk', sans-serif; }
+
   .container {
     max-width: 960px;
     margin: 0 auto;
@@ -339,12 +349,13 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
   /* TICKER */
   .ticker {
-    background: var(--text);
-    color: rgba(255,255,255,0.5);
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
     overflow: hidden;
-    padding: 9px 0;
+    padding: 10px 0;
     font-size: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-weight: 500;
+    color: rgba(240,237,232,0.6);
   }
 
   .ticker-track {
@@ -355,7 +366,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     animation: ticker 30s linear infinite;
   }
 
-  .ticker-track .dot { opacity: 0.3; }
+  .ticker-track .dot { color: var(--accent); opacity: 0.5; }
 
   @keyframes ticker {
     0% { transform: translateX(0); }
@@ -364,22 +375,33 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
   /* HERO */
   .hero {
-    padding: 80px 0 64px;
+    padding-top: 96px;
     border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
   }
 
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
+  .hero-glow {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse at center top, rgba(255,85,0,0.10) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
   }
 
-  .hero-left {
+  .hero-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 56px;
   }
 
   .eyebrow {
@@ -394,130 +416,167 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
 
   .hero-title {
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.025em;
+    font-size: clamp(44px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     color: var(--text);
+    max-width: 760px;
   }
 
   .hero-sub {
     font-size: 16px;
     color: var(--muted);
     line-height: 1.65;
-    max-width: 380px;
+    max-width: 400px;
   }
 
-  /* DOC STACK */
-  .hero-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .doc-stack {
+  /* HERO VISUAL */
+  .hero-visual {
     position: relative;
-    width: 300px;
-    height: 380px;
+    z-index: 1;
+    padding-bottom: 0;
   }
 
+  .doc-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    align-items: end;
+  }
+
+  /* DOC CARDS */
   .doc {
-    position: absolute;
-    width: 280px;
     background: var(--surface);
-    border-radius: 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px 10px 0 0;
     padding: 20px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    border: 1px solid var(--border);
+    gap: 12px;
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.3);
   }
 
-  .doc-back {
-    top: 0;
-    right: 0;
-    transform: rotate(3.5deg);
-    z-index: 1;
+  .doc--featured {
+    border-color: rgba(255,85,0,0.25);
+    padding-top: 24px;
+    margin-bottom: -12px;
+    box-shadow: 0 -12px 50px rgba(255,85,0,0.08), 0 -8px 40px rgba(0,0,0,0.4);
   }
 
-  .doc-front {
-    top: 40px;
-    left: 0;
-    z-index: 2;
+  .doc--featured::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,85,0,0.7), transparent);
+    margin: -24px -20px 12px;
   }
 
   .doc-header {
     display: flex;
     justify-content: space-between;
     font-size: 7px;
-    color: #aaa;
+    color: rgba(255,130,60,0.45);
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #f0f0f0;
   }
 
   .doc-title {
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
-    color: #111;
+    color: var(--text);
     letter-spacing: 0.04em;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
-  .doc-divider { height: 1px; background: #f0f0f0; }
+  .doc-divider { height: 1px; background: rgba(255,255,255,0.06); }
 
-  .doc-lines { display: flex; flex-direction: column; gap: 5px; flex: 1; }
-
-  .doc-line { height: 5px; background: #EBEBEB; border-radius: 2px; }
-
-  /* STATS BAR */
-  .stats-bar {
-    border-bottom: 1px solid var(--border);
-    padding: 28px 0;
-    background: var(--surface);
+  .doc-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 
-  .stats-grid {
+  .doc-section-label {
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(255,85,0,0.4);
+    text-transform: uppercase;
+  }
+
+  .doc-lines { display: flex; flex-direction: column; gap: 5px; }
+  .doc-line { height: 5px; background: rgba(255,255,255,0.07); border-radius: 2px; }
+
+  .doc-bullets { display: flex; flex-direction: column; gap: 5px; }
+  .doc-bullet { display: flex; align-items: center; gap: 5px; }
+  .bullet-dot {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: var(--accent); opacity: 0.4; flex-shrink: 0;
+  }
+
+  .doc-price-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
   }
 
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    flex: 1;
-    text-align: center;
-  }
-
-  .stat-num {
-    font-size: 28px;
+  .doc-price-tag {
+    font-size: 8px;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    line-height: 1;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.02em;
   }
 
-  .stat-label {
-    font-size: 12px;
-    color: var(--muted);
+  .doc-price-tag--accent { color: rgba(255,85,0,0.5); }
+
+  .doc-table { display: flex; flex-direction: column; gap: 6px; }
+
+  .doc-table-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
   }
 
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--border);
-    flex-shrink: 0;
+  .doc-table-head .doc-line { background: rgba(255,255,255,0.12); }
+
+  .doc-sig {
+    display: flex;
+    gap: 16px;
+  }
+
+  .doc-sig-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin-top: 12px;
+  }
+
+  .doc-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .doc-total-label {
+    font-size: 7px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   /* SECTIONS */
-  .section { padding: 80px 0; }
+  .section { padding: 96px 0; }
 
-  .section-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .section-alt {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
 
   .section-eyebrow {
     display: inline-flex;
@@ -532,156 +591,113 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
 
   .section-title {
-    font-size: clamp(24px, 3vw, 36px);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 40px;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 48px;
   }
 
-  /* FEATURES LIST */
-  .features-list {
-    display: flex;
-    flex-direction: column;
+  /* BENTO */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .bento-card {
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
     overflow: hidden;
-    background: var(--surface);
   }
 
-  .feature-row {
-    display: grid;
-    grid-template-columns: 48px 1fr auto;
-    gap: 24px;
-    align-items: center;
-    padding: 24px 28px;
-    border-bottom: 1px solid var(--border);
+  .bento-card--featured {
+    border-color: rgba(255,85,0,0.2);
   }
 
-  .feature-row:last-child { border-bottom: none; }
+  .bento-card--featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,85,0,0.6), transparent);
+  }
 
-  .feature-num {
+  .bento-num {
     font-size: 11px;
     font-weight: 700;
     color: var(--accent);
-    font-variant-numeric: tabular-nums;
     letter-spacing: 0.05em;
   }
 
-  .feature-content h3 {
+  .bento-name {
     font-size: 15px;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 4px;
+    line-height: 1.4;
+    flex: 1;
   }
 
-  .feature-content p {
+  .bento-desc {
     font-size: 13px;
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
-  .feature-tags {
+  .bento-tags {
     display: flex;
     gap: 6px;
-    flex-shrink: 0;
+    flex-wrap: wrap;
+    margin-top: 4px;
   }
 
   .tag {
     font-size: 11px;
     color: var(--muted);
-    background: var(--bg);
+    background: rgba(255,255,255,0.04);
     border: 1px solid var(--border);
     padding: 3px 8px;
     border-radius: 20px;
     white-space: nowrap;
   }
 
-  /* VALUE STACK */
-  .value-stack {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: var(--surface);
-    margin-bottom: 24px;
-  }
-
-  .stack-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
-    font-size: 14px;
-    color: var(--muted);
-  }
-
-  .stack-row:last-child { border-bottom: none; }
-
-  .price-old {
-    text-decoration: line-through;
-    font-size: 13px;
-    color: #bbb;
-  }
-
-  .stack-total { color: var(--text); font-weight: 600; }
-
-  .price-final {
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
-
-  /* PRICING CARD */
+  /* PRICING */
   .pricing-card {
+    max-width: 440px;
+    margin: 0 auto;
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 48px;
-    align-items: center;
-  }
-
-  .pricing-price {
-    font-size: 56px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .pricing-sub {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 20px;
-    max-width: 280px;
-  }
-
-  .checklist {
-    list-style: none;
+    border: 1px solid rgba(255,85,0,0.2);
+    border-radius: 16px;
+    padding: 48px 40px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-  }
-
-  .checklist li {
-    display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--muted);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
   }
 
-  .checklist li svg { color: var(--accent); flex-shrink: 0; }
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,85,0,0.6), transparent);
+  }
 
-  .pricing-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
+  .pricing-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,85,0,0.06) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .pricing-badge {
@@ -690,15 +706,63 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--accent);
-    background: rgba(255,85,0,0.08);
+    background: rgba(255,85,0,0.10);
     border: 1px solid rgba(255,85,0,0.2);
     padding: 4px 10px;
     border-radius: 20px;
+    position: relative;
+    margin-bottom: 24px;
   }
+
+  .pricing-price {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text);
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  .pricing-sub {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 260px;
+    line-height: 1.6;
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    margin-bottom: 32px;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .checklist li svg { color: var(--accent); flex-shrink: 0; }
+
+  .btn-full { width: 100%; justify-content: center; position: relative; }
 
   .pricing-note {
     font-size: 12px;
     color: var(--muted);
+    margin-top: 12px;
+    position: relative;
   }
 
   /* FAQ */
@@ -709,10 +773,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     background: var(--surface);
   }
 
-  .faq-item {
-    border-bottom: 1px solid var(--border);
-  }
-
+  .faq-item { border-bottom: 1px solid var(--border); }
   .faq-item:last-child { border-bottom: none; }
 
   .faq-q {
@@ -743,8 +804,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
 
   details[open] .faq-q::after { transform: rotate(45deg); }
-
-  .faq-q:hover { background: var(--bg); }
+  .faq-q:hover { background: rgba(255,255,255,0.03); }
 
   .faq-q:focus-visible {
     outline: 2px solid var(--accent);
@@ -767,10 +827,10 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
 
   .about-title {
-    font-size: clamp(24px, 3vw, 36px);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
   }
 
   .about-content p {
@@ -807,11 +867,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
 
   .btn-primary:hover { background: var(--accent-hover); }
-
-  .btn-primary:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
+  .btn-primary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   .btn-ghost {
     display: inline-flex;
@@ -822,19 +878,15 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     font-family: inherit;
     padding: 14px 28px;
     border-radius: 40px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-strong);
     text-decoration: none;
     cursor: pointer;
     transition: border-color 0.15s;
     white-space: nowrap;
   }
 
-  .btn-ghost:hover { border-color: var(--text); }
-
-  .btn-ghost:focus-visible {
-    outline: 2px solid var(--text);
-    outline-offset: 3px;
-  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.35); }
+  .btn-ghost:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
   /* STICKY CTA */
   .sticky-cta {
@@ -842,28 +894,24 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%) translateY(80px);
-    background: var(--text);
+    background: rgba(28,26,22,0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-strong);
     border-radius: 40px;
     padding: 10px 10px 10px 20px;
     display: flex;
     align-items: center;
     gap: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
     opacity: 0;
     transition: opacity 0.3s, transform 0.3s;
     z-index: 100;
     white-space: nowrap;
   }
 
-  .sticky-cta.visible {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  .sticky-cta-text {
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
-  }
+  .sticky-cta.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .sticky-cta-text { font-size: 14px; color: var(--muted); }
 
   /* FOOTER */
   .footer {
@@ -878,32 +926,26 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   @media (prefers-reduced-motion: reduce) {
     .ticker-track { animation: none; }
     .sticky-cta { transition: none; }
-    .btn-primary, .btn-ghost, .faq-q { transition: none; }
-    .faq-q::after { transition: none; }
+    .btn-primary, .btn-ghost, .faq-q, .faq-q::after { transition: none; }
   }
 
   /* MOBILE */
   @media (max-width: 720px) {
     .container { padding: 0 20px; }
 
-    .hero { padding: 56px 0 48px; }
-    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-    .hero-title { font-size: 32px; }
+    .hero { padding-top: 64px; }
+    .hero-title { font-size: 38px; }
     .hero-sub { max-width: 100%; }
-    .hero-right { display: none; }
+    .hero-visual { display: none; }
 
-    .stats-grid { flex-wrap: wrap; gap: 24px; justify-content: center; }
-    .stat-divider { display: none; }
-    .stat { min-width: 120px; }
+    .section { padding: 72px 0; }
 
-    .feature-row { grid-template-columns: 32px 1fr; gap: 16px; }
-    .feature-tags { display: none; }
+    .bento { grid-template-columns: 1fr; }
 
-    .pricing-card { grid-template-columns: 1fr; gap: 24px; }
-    .pricing-right { align-items: flex-start; }
+    .pricing-card { padding: 36px 24px; }
+    .pricing-price { font-size: 56px; }
 
     .about-grid { grid-template-columns: 1fr; gap: 24px; }
-
     .about-btns { flex-direction: column; }
     .btn-ghost, .btn-primary { justify-content: center; }
   }
