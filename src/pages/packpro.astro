@@ -282,6 +282,12 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <span class="sticky-cta-text">Templates prontos por R$37</span>
+  <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="padding: 10px 20px; font-size: 14px;">Comprar agora →</a>
+</div>
+
 <!-- FOOTER -->
 <footer class="footer">
   <p>Miguel Moraes © Todos os direitos reservados.</p>
@@ -291,6 +297,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 </html>
 
 <script>
+  // FAQ accordion
   document.querySelectorAll<HTMLButtonElement>('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item')!;
@@ -299,6 +306,19 @@ const instagram = 'https://instagram.com/omiguelmoraes';
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // Sticky CTA — appears after hero leaves viewport
+  const stickyCta = document.getElementById('sticky-cta')!;
+  const hero = document.querySelector('.hero')!;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      stickyCta.classList.toggle('visible', !entry.isIntersecting);
+    },
+    { threshold: 0 }
+  );
+
+  observer.observe(hero);
 </script>
 
 <style>
@@ -762,6 +782,61 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
   .btn-ghost:hover { border-color: var(--muted); }
 
+  /* FOCUS STATES */
+  .btn-primary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .btn-ghost:focus-visible {
+    outline: 2px solid var(--muted);
+    outline-offset: 3px;
+  }
+
+  .faq-q:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  /* CARD HOVER */
+  .card {
+    transition: border-color 0.2s;
+  }
+
+  .card:hover {
+    border-color: rgba(255,255,255,0.16);
+  }
+
+  /* STICKY CTA */
+  .sticky-cta {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    padding: 10px 10px 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 100;
+    white-space: nowrap;
+  }
+
+  .sticky-cta.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .sticky-cta-text {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
   /* FOOTER */
   .footer {
     border-top: 1px solid var(--border);
@@ -769,6 +844,13 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     text-align: center;
     font-size: 13px;
     color: #444;
+  }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+    .sticky-cta { transition: none; }
+    .card { transition: none; }
   }
 
   /* MOBILE */
