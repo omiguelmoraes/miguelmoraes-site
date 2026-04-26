@@ -28,7 +28,7 @@ const allTags = [...new Set(Object.values(allProjects).flatMap(p => p.tags))];
       {Object.entries(allProjects).map(([slug, project]) => (
         <a href={`/projects/${slug}`} class="card" data-tags={project.tags.join(',')}>
           <div class="card-image">
-            <img src={project.cover} alt={project.title} />
+            <img src={project.cover} alt={project.title} style={project.coverPosition ? `object-position: ${project.coverPosition}` : undefined} />
           </div>
           <div class="card-content">
             <span class="card-meta">{project.year} · {project.location.split(', ').at(-1)}</span>
