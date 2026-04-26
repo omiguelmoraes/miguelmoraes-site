@@ -8,7 +8,11 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const project = allProjects[slug as keyof typeof allProjects];
-const otherProjects = Object.entries(allProjects).filter(([s]) => s !== slug).slice(0, 2);
+const projectEntries = Object.entries(allProjects);
+const currentIndex = projectEntries.findIndex(([s]) => s === slug);
+const prevProject = projectEntries[(currentIndex - 1 + projectEntries.length) % projectEntries.length];
+const nextProject = projectEntries[(currentIndex + 1) % projectEntries.length];
+const otherProjects = [prevProject, nextProject];
 ---
 
 <BaseLayout title={`${project.title} — Miguel Moraes`}>
@@ -23,6 +27,12 @@ const otherProjects = Object.entries(allProjects).filter(([s]) => s !== slug).sl
         <span class="meta-item">{project.year}</span>
         <span class="meta-sep">·</span>
         <span class="meta-item">{project.location}</span>
+        {project.industry && (
+          <>
+            <span class="meta-sep">·</span>
+            <span class="meta-item">{project.industry}</span>
+          </>
+        )}
       </div>
       <h1 class="title">{project.title}</h1>
       <div class="tags">
