@@ -28,9 +28,9 @@ const links = [
     icon: 'ph-linkedin-logo',
   },
   {
-    label: 'Uses',
+    label: 'Toolkit',
     sub: 'Gear, software and books',
-    href: '/uses',
+    href: '/toolkit',
     icon: 'ph-stack',
     sameTab: true,
   },
@@ -43,9 +43,12 @@ const products = [
     href: 'https://pay.kiwify.com.br/FNeJdk9',
     icon: 'ph-package',
   },
+];
+
+const free = [
   {
     label: 'Portfolio Template',
-    sub: 'Free Notion template for designers',
+    sub: 'Notion template for designers',
     href: 'https://miguelmoraes.notion.site/portfolio-template',
     icon: 'ph-file-text',
   },
@@ -104,6 +107,24 @@ const featured = {
         <span class="section-label">Products</span>
         <div class="list">
           {products.map(p => (
+            <a href={p.href} target="_blank" rel="noopener" class="item">
+              <i class={`ph ${p.icon} item-icon`}></i>
+              <div class="item-text">
+                <span class="item-label">{p.label}</span>
+                <span class="item-sub">{p.sub}</span>
+              </div>
+              <i class="ph ph-arrow-right item-arrow"></i>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {free.length > 0 && (
+      <section class="section">
+        <span class="section-label">Free</span>
+        <div class="list">
+          {free.map(p => (
             <a href={p.href} target="_blank" rel="noopener" class="item">
               <i class={`ph ${p.icon} item-icon`}></i>
               <div class="item-text">
