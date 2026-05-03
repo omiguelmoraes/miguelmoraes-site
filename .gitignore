@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Claude Code internals
+.claude/
+.agents/
+skills-lock.json
+
+# source image assets (only WebP in public/ goes to repo)
+fotos site/
