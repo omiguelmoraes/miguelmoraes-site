@@ -99,7 +99,21 @@ const ogImage = new URL(image, Astro.site);
     });
   }
 
+  function setupReveal() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+  }
+
   document.addEventListener('astro:page-load', setupTheme);
+  document.addEventListener('astro:page-load', setupReveal);
 </script>
 
 <style>

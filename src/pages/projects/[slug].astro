@@ -40,26 +40,26 @@ const otherProjects = [prevProject, nextProject];
       </div>
     </header>
 
-    <div class="cover">
+    <div class="cover" data-reveal>
       <img src={project.cover} alt={project.title} class="lightbox-trigger" />
     </div>
 
     <main class="body">
 
-      <section class="section">
+      <section class="section" data-reveal>
         <span class="section-label">Challenge</span>
         <h2 class="section-heading">{project.challenge.heading}</h2>
         <p class="section-body">{project.challenge.body}</p>
         <div class="image-grid">
           {project.challenge.images.map((src, i) => (
-            <div class="image-frame">
+            <div class="image-frame" data-reveal data-delay={i > 0 ? String(i * 100) : undefined}>
               <img src={src} alt={`${project.title} — ${project.challenge.heading}, image ${i + 1}`} class="lightbox-trigger" />
             </div>
           ))}
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" data-reveal>
         <span class="section-label">Result</span>
         <h2 class="section-heading">{project.result.heading}</h2>
         <p class="section-body">{project.result.body}</p>
@@ -71,7 +71,7 @@ const otherProjects = [prevProject, nextProject];
         )}
         <div class="image-grid">
           {project.result.images.map((src, i) => (
-            <div class="image-frame">
+            <div class="image-frame" data-reveal data-delay={i > 0 ? String(i * 100) : undefined}>
               <img src={src} alt={`${project.title} — ${project.result.heading}, image ${i + 1}`} class="lightbox-trigger" />
             </div>
           ))}

@@ -67,17 +67,23 @@ body {
   min-height: 100vh;
 }
 
-@keyframes mm-fade-up {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.page {
-  animation: mm-fade-up 0.4s ease both;
+[data-reveal].visible {
+  opacity: 1;
+  transform: translateY(0);
 }
+
+[data-reveal][data-delay="100"] { transition-delay: 0.1s; }
+[data-reveal][data-delay="200"] { transition-delay: 0.2s; }
+[data-reveal][data-delay="300"] { transition-delay: 0.3s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .page { animation: none; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 
 a {
