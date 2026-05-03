@@ -107,6 +107,27 @@ export const allProjects = {
       images: ['/projects/sant/04.webp', '/projects/sant/05.webp', '/projects/sant/06.webp'],
     },
   },
+  'rmaq': {
+    title: 'RMAQ Assessoria',
+    description: 'Visual identity for RMAQ Assessoria — a business consultancy built on tradition, strategy, and professional clarity.',
+    year: '2024',
+    category: 'Branding',
+    location: 'Brazil',
+    industry: 'Consulting',
+    cover: '/projects/rmaq/cover.webp',
+    thumbnail: '/projects/rmaq/cover.webp',
+    tags: ['Branding'],
+    challenge: {
+      heading: 'Capturing the essence of a consultancy that blends tradition and strategic growth',
+      body: 'RMAQ needed a visual identity that reflected its mission: helping businesses overcome challenges and optimize processes. The goal was to translate that authority into a cohesive brand — one that resonated with its audience while standing out in a competitive consulting market. Market research guided the direction, ensuring every decision was rooted in what the target audience actually values.',
+      images: ['/projects/rmaq/01.webp', '/projects/rmaq/02.webp', '/projects/rmaq/03.webp', '/projects/rmaq/04.webp', '/projects/rmaq/08.webp'],
+    },
+    result: {
+      heading: 'A confident, professional identity built for consistency across every platform',
+      body: 'The final identity pairs modern typography with a symbol representing growth and strategy — balancing authenticity with innovation. The color palette conveys trust and professionalism, while the typographic system ensures clarity at every touchpoint. All brand applications were designed for adaptability, maintaining visual consistency whether on digital or print platforms.',
+      images: ['/projects/rmaq/05.webp', '/projects/rmaq/06.webp'],
+    },
+  },
 };
 
 export type ProjectSlug = keyof typeof allProjects;

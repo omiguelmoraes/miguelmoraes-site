@@ -22,9 +22,9 @@ const jsonLd = {
 
     <!-- Header -->
     <header class="header">
-      <div class="avatar">
+      <a href="/links" class="avatar">
         <img src="/webp/avatar.webp" alt="Miguel Moraes" />
-      </div>
+      </a>
       <div class="header-info">
         <h1 class="name">Miguel Moraes</h1>
         <p class="subtitle"><span class="subtitle-role">Designer & Strategist · </span>Based in Brazil 🇧🇷</p>
@@ -394,12 +394,19 @@ const jsonLd = {
     overflow: hidden;
     flex-shrink: 0;
     background: var(--color-wash);
+    display: block;
+    cursor: pointer;
   }
 
   .avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: opacity 0.15s;
+  }
+
+  .avatar:hover img {
+    opacity: 0.85;
   }
 
   .header-info {
