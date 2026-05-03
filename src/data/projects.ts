@@ -120,7 +120,7 @@ export const allProjects = {
     challenge: {
       heading: 'Capturing the essence of a consultancy that blends tradition and strategic growth',
       body: 'RMAQ needed a visual identity that reflected its mission: helping businesses overcome challenges and optimize processes. The goal was to translate that authority into a cohesive brand — one that resonated with its audience while standing out in a competitive consulting market. Market research guided the direction, ensuring every decision was rooted in what the target audience actually values.',
-      images: ['/projects/rmaq/01.webp', '/projects/rmaq/02.webp', '/projects/rmaq/03.webp', '/projects/rmaq/04.webp', '/projects/rmaq/08.webp'],
+      images: ['/projects/rmaq/01.webp', '/projects/rmaq/02.webp', '/projects/rmaq/08.webp'],
     },
     result: {
       heading: 'A confident, professional identity built for consistency across every platform',
