@@ -71,35 +71,35 @@ const ogImage = new URL(image, Astro.site);
 </html>
 
 <script>
-  const btn = document.getElementById('theme-toggle')!;
-  const html = document.documentElement;
+  function setupTheme() {
+    const btn = document.getElementById('theme-toggle');
+    const sun = document.getElementById('icon-sun');
+    const moon = document.getElementById('icon-moon');
+    if (!btn || !sun || !moon) return;
 
-  function getTheme() {
-    return html.getAttribute('data-theme') ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  }
+    const html = document.documentElement;
 
-  const sun = document.getElementById('icon-sun')!;
-  const moon = document.getElementById('icon-moon')!;
-
-  function updateIcon(theme: string) {
-    if (theme === 'dark') {
-      sun.style.display = 'none';
-      moon.style.display = 'block';
-    } else {
-      sun.style.display = 'block';
-      moon.style.display = 'none';
+    function getTheme() {
+      return html.getAttribute('data-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     }
+
+    function updateIcon(theme: string) {
+      sun.style.display = theme === 'dark' ? 'none' : 'block';
+      moon.style.display = theme === 'dark' ? 'block' : 'none';
+    }
+
+    updateIcon(getTheme());
+
+    btn.addEventListener('click', () => {
+      const next = getTheme() === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon(next);
+    });
   }
 
-  updateIcon(getTheme());
-
-  btn.addEventListener('click', () => {
-    const next = getTheme() === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    updateIcon(next);
-  });
+  document.addEventListener('astro:page-load', setupTheme);
 </script>
 
 <style>
