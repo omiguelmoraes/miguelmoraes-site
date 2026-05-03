@@ -15,7 +15,7 @@ const nextProject = projectEntries[(currentIndex + 1) % projectEntries.length];
 const otherProjects = [prevProject, nextProject];
 ---
 
-<BaseLayout title={`${project.title} — Miguel Moraes`}>
+<BaseLayout title={`${project.title} — Miguel Moraes`} description={project.description}>
   <div class="page">
 
     <nav class="nav">
@@ -51,9 +51,9 @@ const otherProjects = [prevProject, nextProject];
         <h2 class="section-heading">{project.challenge.heading}</h2>
         <p class="section-body">{project.challenge.body}</p>
         <div class="image-grid">
-          {project.challenge.images.map((src) => (
+          {project.challenge.images.map((src, i) => (
             <div class="image-frame">
-              <img src={src} alt="" class="lightbox-trigger" />
+              <img src={src} alt={`${project.title} — ${project.challenge.heading}, image ${i + 1}`} class="lightbox-trigger" />
             </div>
           ))}
         </div>
@@ -70,9 +70,9 @@ const otherProjects = [prevProject, nextProject];
           </a>
         )}
         <div class="image-grid">
-          {project.result.images.map((src) => (
+          {project.result.images.map((src, i) => (
             <div class="image-frame">
-              <img src={src} alt="" class="lightbox-trigger" />
+              <img src={src} alt={`${project.title} — ${project.result.heading}, image ${i + 1}`} class="lightbox-trigger" />
             </div>
           ))}
         </div>

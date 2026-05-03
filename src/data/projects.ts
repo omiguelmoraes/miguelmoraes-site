@@ -1,6 +1,7 @@
 export const allProjects = {
   'flouds-branding': {
     title: 'Flouds Performance Digital',
+    description: 'Visual identity for Flouds Performance Digital — a paid media and automation agency from Porto Alegre.',
     year: '2025',
     category: 'Branding',
     location: 'Porto Alegre, Brazil',
@@ -21,6 +22,7 @@ export const allProjects = {
   },
   'yoursbank': {
     title: 'Yours Bank',
+    description: 'Website redesign for Yours Bank — a fintech focused on trust, conversion, and a more human digital experience.',
     year: '2025',
     category: 'Web Design',
     location: 'Porto Alegre, Brazil',
@@ -43,6 +45,7 @@ export const allProjects = {
   },
   'flouds': {
     title: 'Flouds Performance Digital',
+    description: 'Website for Flouds Performance Digital — a conversion-focused site that works as a strategic acquisition channel for a paid media agency.',
     year: '2025',
     category: 'Web Design',
     location: 'Porto Alegre, Brazil',
@@ -64,6 +67,7 @@ export const allProjects = {
   },
   'msk': {
     title: 'MSK Perfuradora de Metais',
+    description: 'Website for MSK Perfuradora de Metais — converting 26 years of industry expertise into a modern, lead-generating digital presence.',
     year: '2025',
     category: 'Web Design',
     location: 'São Leopoldo, Brazil',
@@ -84,6 +88,7 @@ export const allProjects = {
   },
   'sant': {
     title: 'Sant Saúde',
+    description: 'Website for Sant Saúde — a performance-focused redesign that simplified content and improved navigation for a healthcare platform.',
     year: '2025',
     category: 'Web Design',
     location: 'Brazil',
