@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Lightbox from '../components/Lightbox.astro';
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -11,7 +12,10 @@ const jsonLd = {
   "image": "https://miguelmoraes.pro/webp/avatar.webp",
   "sameAs": [
     "https://www.linkedin.com/in/omiguelmoraes",
-    "https://www.instagram.com/omiguelmoraes"
+    "https://www.instagram.com/omiguelmoraes",
+    "https://www.behance.net/omiguelmoraes",
+    "https://www.youtube.com/@omiguelmoraesx",
+    "https://x.com/omiguelmoraes"
   ]
 };
 ---
@@ -24,12 +28,12 @@ const jsonLd = {
     <!-- Header -->
     <header class="header">
       <a href="/links" class="avatar">
-        <img src="/webp/avatar.webp" alt="Miguel Moraes" />
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="72" height="72" />
       </a>
       <div class="header-info">
         <h1 class="name">Miguel Moraes</h1>
         <p class="subtitle"><span class="subtitle-role">Designer & Strategist · </span>Based in Brazil 🇧🇷</p>
-        <a href="https://api.whatsapp.com/send?phone=5551998734305" class="pill" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=5551998734305" class="pill" target="_blank" rel="noopener">
           <i class="ph ph-whatsapp-logo"></i>
           Let's talk
         </a>
@@ -59,7 +63,7 @@ const jsonLd = {
               <span class="row-sub">Porto Alegre, Brazil</span>
               <a href="/projects/flouds" class="link-block">
                 <div class="link-block-image" style="background: #1a1a2e;">
-                  <img src="/projects/flouds/01.webp" alt="Flouds Performance Digital" />
+                  <img src="/projects/flouds/01.webp" alt="Flouds Performance Digital" width="150" height="90" loading="lazy" style="view-transition-name: project-image-flouds" />
                 </div>
                 <div class="link-block-content">
                   <span class="link-block-title">Flouds Performance Digital</span>
@@ -76,7 +80,7 @@ const jsonLd = {
               <span class="row-sub">Porto Alegre, Brazil</span>
               <a href="/projects/yoursbank" class="link-block">
                 <div class="link-block-image" style="background: #f5c518;">
-                  <img src="/projects/yoursbank/01.webp" alt="Yours Bank" />
+                  <img src="/projects/yoursbank/01.webp" alt="Yours Bank" width="150" height="90" loading="lazy" style="view-transition-name: project-image-yoursbank" />
                 </div>
                 <div class="link-block-content">
                   <span class="link-block-title">Yours Bank</span>
@@ -93,7 +97,7 @@ const jsonLd = {
               <span class="row-sub">São Leopoldo, Brazil</span>
               <a href="/projects/msk" class="link-block">
                 <div class="link-block-image" style="background: #111;">
-                  <img src="/projects/msk/01.webp" alt="MSK Perfuradora" />
+                  <img src="/projects/msk/01.webp" alt="MSK Perfuradora" width="150" height="90" loading="lazy" style="view-transition-name: project-image-msk" />
                 </div>
                 <div class="link-block-content">
                   <span class="link-block-title">MSK Perfuradora</span>
@@ -119,16 +123,16 @@ const jsonLd = {
           <div class="row">
             <span class="date">2025 — Now</span>
             <div class="row-content">
-              <a href="https://opservices.com.br" target="_blank" class="row-link">
+              <a href="https://opservices.com.br" target="_blank" rel="noopener" class="row-link">
                 UX/UI & Graphic Designer at OpServices
                 <i class="ph ph-arrow-square-out"></i>
               </a>
               <span class="row-sub">Porto Alegre, Brazil</span>
               <p class="row-desc">I design interfaces for Power BI dashboards and reports, create institutional graphic materials, and apply strategic design to marketing and data visualization.</p>
               <div class="row-images">
-                <div class="row-image"><img src="/work/opservices-1.webp" alt="Design work at OpServices" class="lightbox-trigger" /></div>
-                <div class="row-image"><img src="/work/opservices-2.webp" alt="Design work at OpServices" class="lightbox-trigger" /></div>
-                <div class="row-image"><img src="/work/opservices-3.webp" alt="Design work at OpServices" class="lightbox-trigger" /></div>
+                <div class="row-image"><img src="/work/opservices-1.webp" alt="Design work at OpServices" class="lightbox-trigger" width="200" height="130" loading="lazy" /></div>
+                <div class="row-image"><img src="/work/opservices-2.webp" alt="Design work at OpServices" class="lightbox-trigger" width="200" height="130" loading="lazy" /></div>
+                <div class="row-image"><img src="/work/opservices-3.webp" alt="Design work at OpServices" class="lightbox-trigger" width="200" height="130" loading="lazy" /></div>
               </div>
             </div>
           </div>
@@ -154,16 +158,16 @@ const jsonLd = {
           <div class="row">
             <span class="date">2023 — 2024</span>
             <div class="row-content">
-              <a href="https://gama.etc.br/" target="_blank" class="row-link">
+              <a href="https://gama.etc.br/" target="_blank" rel="noopener" class="row-link">
                 Visual & Web Designer — Gama Marketing
                 <i class="ph ph-arrow-square-out"></i>
               </a>
               <span class="row-sub">São Leopoldo, Brazil</span>
               <p class="row-desc">Visual materials, logos, and websites with strong interfaces to boost online presence through Visual Design and Branding.</p>
               <div class="row-images">
-                <div class="row-image"><img src="/work/gama-1.webp" alt="Design work at Gama Marketing" class="lightbox-trigger" /></div>
-                <div class="row-image"><img src="/work/gama-2.webp" alt="Design work at Gama Marketing" class="lightbox-trigger" /></div>
-                <div class="row-image"><img src="/work/gama-3.webp" alt="Design work at Gama Marketing" class="lightbox-trigger" /></div>
+                <div class="row-image"><img src="/work/gama-1.webp" alt="Design work at Gama Marketing" class="lightbox-trigger" width="200" height="130" loading="lazy" /></div>
+                <div class="row-image"><img src="/work/gama-2.webp" alt="Design work at Gama Marketing" class="lightbox-trigger" width="200" height="130" loading="lazy" /></div>
+                <div class="row-image"><img src="/work/gama-3.webp" alt="Design work at Gama Marketing" class="lightbox-trigger" width="200" height="130" loading="lazy" /></div>
               </div>
             </div>
           </div>
@@ -187,7 +191,7 @@ const jsonLd = {
           <div class="row">
             <span class="date">2025</span>
             <div class="row-content">
-              <a href="https://www.youtube.com/watch?v=aQbXjIAik4I" target="_blank" class="row-link">
+              <a href="https://www.youtube.com/watch?v=aQbXjIAik4I" target="_blank" rel="noopener" class="row-link">
                 OpCast — Dashboard Design with AI
                 <i class="ph ph-arrow-square-out"></i>
               </a>
@@ -202,7 +206,7 @@ const jsonLd = {
               <span class="row-sub">Instituto Caldeira · Porto Alegre, Brazil · with Gama Marketing</span>
               <p class="row-desc">Talk covering what branding really means, how to apply it practically, and why investing in brand identity creates tangible business value for small companies.</p>
               <div class="row-images">
-                <div class="row-image"><img src="/speaking/IMG_4196_rotated.jpeg" alt="Miguel Moraes speaking at Instituto Caldeira — Branding for Small Businesses" class="lightbox-trigger" /></div>
+                <div class="row-image"><img src="/speaking/IMG_4196.webp" alt="Miguel Moraes speaking at Instituto Caldeira — Branding for Small Businesses" class="lightbox-trigger rotate-90" width="200" height="130" loading="lazy" /></div>
               </div>
             </div>
           </div>
@@ -216,7 +220,7 @@ const jsonLd = {
           <div class="row">
             <span class="date">2026</span>
             <div class="row-content">
-              <a href="https://instagram.com/korbistudio" target="_blank" class="row-link">
+              <a href="https://instagram.com/korbistudio" target="_blank" rel="noopener" class="row-link">
                 Korbi Studio
                 <i class="ph ph-arrow-square-out"></i>
               </a>
@@ -224,9 +228,16 @@ const jsonLd = {
             </div>
           </div>
           <div class="row">
+            <span class="date">2026</span>
+            <div class="row-content">
+              <span class="row-link">Mentorship & Consulting</span>
+              <span class="row-sub">One-on-one for visual designers & freelancers · Coming soon</span>
+            </div>
+          </div>
+          <div class="row">
             <span class="date">2024</span>
             <div class="row-content">
-              <a href="https://pay.kiwify.com.br/FNeJdk9" target="_blank" class="row-link">
+              <a href="/packpro" class="row-link">
                 PackPro
                 <i class="ph ph-arrow-square-out"></i>
               </a>
@@ -266,8 +277,8 @@ const jsonLd = {
           <div class="row">
             <span class="date">LinkedIn</span>
             <div class="row-content">
-              <a href="https://linkedin.com/in/miguelmoraes" target="_blank" class="row-link">
-                /miguelmoraes
+              <a href="https://linkedin.com/in/omiguelmoraes" target="_blank" rel="noopener" class="row-link">
+                /omiguelmoraes
                 <i class="ph ph-arrow-square-out"></i>
               </a>
             </div>
@@ -275,7 +286,7 @@ const jsonLd = {
           <div class="row">
             <span class="date">Instagram</span>
             <div class="row-content">
-              <a href="https://instagram.com/omiguelmoraes" target="_blank" class="row-link">
+              <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener" class="row-link">
                 @omiguelmoraes
                 <i class="ph ph-arrow-square-out"></i>
               </a>
@@ -284,7 +295,7 @@ const jsonLd = {
           <div class="row">
             <span class="date">Behance</span>
             <div class="row-content">
-              <a href="https://www.behance.net/omiguelmoraes" target="_blank" class="row-link">
+              <a href="https://www.behance.net/omiguelmoraes" target="_blank" rel="noopener" class="row-link">
                 /omiguelmoraes
                 <i class="ph ph-arrow-square-out"></i>
               </a>
@@ -293,7 +304,7 @@ const jsonLd = {
           <div class="row">
             <span class="date">YouTube</span>
             <div class="row-content">
-              <a href="https://www.youtube.com/@omiguelmoraesx" target="_blank" class="row-link">
+              <a href="https://www.youtube.com/@omiguelmoraesx" target="_blank" rel="noopener" class="row-link">
                 @omiguelmoraesx
                 <i class="ph ph-arrow-square-out"></i>
               </a>
@@ -302,7 +313,7 @@ const jsonLd = {
           <div class="row">
             <span class="date">X</span>
             <div class="row-content">
-              <a href="https://x.com/omiguelmoraes" target="_blank" class="row-link">
+              <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener" class="row-link">
                 @omiguelmoraes
                 <i class="ph ph-arrow-square-out"></i>
               </a>
@@ -311,7 +322,7 @@ const jsonLd = {
           <div class="row">
             <span class="date">WhatsApp</span>
             <div class="row-content">
-              <a href="https://api.whatsapp.com/send?phone=5551998734305" target="_blank" class="row-link">
+              <a href="https://api.whatsapp.com/send?phone=5551998734305" target="_blank" rel="noopener" class="row-link">
                 +55 51 99873-4305
                 <i class="ph ph-arrow-square-out"></i>
               </a>
@@ -326,7 +337,7 @@ const jsonLd = {
           <div class="row">
             <span class="date">CV</span>
             <div class="row-content">
-              <a href="https://drive.google.com/file/d/1kcuqFEGjZGsmQVu25aiDQr2FRPDM19fm/view" target="_blank" class="row-link">
+              <a href="https://drive.google.com/file/d/1kcuqFEGjZGsmQVu25aiDQr2FRPDM19fm/view" target="_blank" rel="noopener" class="row-link">
                 Download PDF
                 <i class="ph ph-download-simple"></i>
               </a>
@@ -339,38 +350,7 @@ const jsonLd = {
   </div>
 </BaseLayout>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox" aria-hidden="true">
-  <button class="lightbox-close" aria-label="Close">✕</button>
-  <img id="lightbox-img" src="" alt="" />
-</div>
-
-<script>
-  const lightbox = document.getElementById('lightbox')!;
-  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
-
-  document.querySelectorAll('.lightbox-trigger').forEach((img) => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = (img as HTMLImageElement).src;
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox || (e.target as HTMLElement).classList.contains('lightbox-close')) {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-</script>
+<Lightbox />
 
 <style>
   .page {
@@ -641,37 +621,10 @@ const jsonLd = {
     cursor: zoom-in;
   }
 
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.88);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
+  .row-image img.rotate-90 {
+    transform: rotate(90deg) scale(1.6);
+    object-fit: cover;
   }
-  .lightbox.open { display: flex; }
-
-  .lightbox img {
-    max-width: 100%;
-    max-height: 90vh;
-    border-radius: 6px;
-    object-fit: contain;
-  }
-
-  .lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.6);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 4px 8px;
-  }
-  .lightbox-close:hover { color: #fff; }
 
   @media (max-width: 480px) {
     .rows--divided {
@@ -714,4 +667,3 @@ const jsonLd = {
     }
   }
 </style>
-

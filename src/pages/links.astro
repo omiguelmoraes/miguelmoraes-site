@@ -38,12 +38,26 @@ const links = [
 
 const products = [
   {
+    label: 'Mentorship',
+    sub: 'One-on-one for designers',
+    href: '#',
+    icon: 'ph-users',
+    status: 'Coming soon',
+    disabled: true,
+  },
+  {
     label: 'PackPro',
     sub: 'Templates for freelancers',
     href: '/packpro',
     icon: 'ph-package',
     sameTab: true,
   },
+];
+
+const readingList = [
+  { title: "Don't Make Me Think", author: 'Steve Krug', cover: 'https://books.google.com/books/content?vid=ISBN:9780321965516&printsec=frontcover&img=1&zoom=1' },
+  { title: 'Rework', author: 'Jason Fried & DHH', cover: 'https://books.google.com/books/content?vid=ISBN:9780307463746&printsec=frontcover&img=1&zoom=1' },
+  { title: 'Fall in Love with the Problem', author: 'Uri Levine', cover: 'https://books.google.com/books/content?vid=ISBN:9781637741986&printsec=frontcover&img=1&zoom=1' },
 ];
 
 const free = [
@@ -64,83 +78,144 @@ const featured = {
 };
 ---
 
-<BaseLayout title="Miguel Moraes — Links" description="Designer & Strategist. Visual design, sites e front-end.">
-  <div class="page">
+<BaseLayout title='Miguel Moraes — Links' description='Designer & Strategist. Visual design, sites e front-end.'>
+  <div class='page'>
 
-    <div class="profile">
-      <div class="avatar">
-        <img src="/webp/avatar.webp" alt="Miguel Moraes" />
+    <div class='profile'>
+      <div class='avatar'>
+        <img src='/webp/avatar.webp' alt='Miguel Moraes' width='72' height='72' />
       </div>
-      <h1 class="name">Miguel Moraes</h1>
-      <p class="sub">Designer & Strategist · Based in Brazil 🇧🇷</p>
-      <span class="status"><span class="status-dot"></span>Available for projects</span>
+      <h1 class='name'>Miguel Moraes</h1>
+      <p class='sub'>Designer & Strategist · Based in Brazil 🇧🇷</p>
+      <span class='status'><span class='status-dot'></span>Available for projects</span>
     </div>
 
-    <nav class="list">
+    <nav class='list'>
       {links.map(link => (
-        <a href={link.href} target={link.sameTab ? '_self' : '_blank'} rel="noopener" class="item">
-          <i class={`ph ${link.icon} item-icon`}></i>
-          <div class="item-text">
-            <span class="item-label">{link.label}</span>
-            <span class="item-sub">{link.sub}</span>
+        <a href={link.href} target={link.sameTab ? '_self' : '_blank'} rel='noopener' class='item'>
+          <i class={'ph ' + link.icon + ' item-icon'}></i>
+          <div class='item-text'>
+            <span class='item-label'>{link.label}</span>
+            <span class='item-sub'>{link.sub}</span>
           </div>
-          <i class="ph ph-arrow-right item-arrow"></i>
+          <i class='ph ph-arrow-right item-arrow'></i>
         </a>
       ))}
     </nav>
 
-    <section class="section">
-      <span class="section-label">Featured project</span>
-      <a href={featured.href} class="featured">
-        <div class="featured-image">
-          <img src={featured.image} alt={featured.title} />
+    <section class='section'>
+      <span class='section-label'>Featured project</span>
+      <a href={featured.href} class='featured'>
+        <div class='featured-image'>
+          <img src={featured.image} alt={featured.title} width='400' height='225' loading='lazy' />
         </div>
-        <div class="featured-content">
-          <span class="featured-tag">{featured.label}</span>
-          <span class="featured-title">{featured.title}</span>
-          <span class="featured-sub">{featured.sub}</span>
+        <div class='featured-content'>
+          <span class='featured-tag'>{featured.label}</span>
+          <span class='featured-title'>{featured.title}</span>
+          <span class='featured-sub'>{featured.sub}</span>
         </div>
       </a>
     </section>
 
     {products.length > 0 && (
-      <section class="section">
-        <span class="section-label">Products</span>
-        <div class="list">
-          {products.map(p => (
-            <a href={p.href} target="_blank" rel="noopener" class="item">
-              <i class={`ph ${p.icon} item-icon`}></i>
-              <div class="item-text">
-                <span class="item-label">{p.label}</span>
-                <span class="item-sub">{p.sub}</span>
+      <section class='section'>
+        <span class='section-label'>Products</span>
+        <div class='list'>
+          {products.map(link => (
+            <a 
+              href={link.disabled ? undefined : link.href} 
+              target={link.sameTab ? '_self' : '_blank'} 
+              rel='noopener' 
+              class:list={['item', { 'item--disabled': link.disabled }]}
+            >
+              <i class={'ph ' + link.icon + ' item-icon'}></i>
+              <div class='item-text'>
+                <div class='item-header'>
+                  <span class='item-label'>{link.label}</span>
+                  {link.status && <span class='item-status'>{link.status}</span>}
+                </div>
+                <span class='item-sub'>{link.sub}</span>
               </div>
-              <i class="ph ph-arrow-right item-arrow"></i>
+              {!link.disabled && <i class='ph ph-arrow-right item-arrow'></i>}
             </a>
           ))}
         </div>
       </section>
     )}
 
+    <section class='section'>
+      <span class='section-label'>Curated Music</span>
+      <iframe 
+        style='border-radius:12px' 
+        src='https://open.spotify.com/embed/playlist/79tT9iOJCGPcXqgVgTeEsU?utm_source=generator&theme=0' 
+        width='100%' 
+        height='80' 
+        frameBorder='0' 
+        allowfullscreen='' 
+        allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture' 
+        loading='lazy'
+      ></iframe>
+    </section>
+
+    <section class='section'>
+      <span class='section-label'>Recent Reading</span>
+      <div class='reading-grid'>
+        {readingList.map(book => (
+          <div class='book-card' title={book.title + ' by ' + book.author}>
+            <img src={book.cover} alt={book.title} />
+          </div>
+        ))}
+      </div>
+    </section>
+
     {free.length > 0 && (
-      <section class="section">
-        <span class="section-label">Resources</span>
-        <div class="list">
-          {free.map(p => (
-            <a href={p.href} target="_blank" rel="noopener" class="item">
-              <i class={`ph ${p.icon} item-icon`}></i>
-              <div class="item-text">
-                <span class="item-label">{p.label}</span>
-                <span class="item-sub">{p.sub}</span>
+      <section class='section'>
+        <span class='section-label'>Resources</span>
+        <div class='list'>
+          {free.map(link => (
+            <a href={link.href} target='_blank' rel='noopener' class='item'>
+              <i class={'ph ' + link.icon + ' item-icon'}></i>
+              <div class='item-text'>
+                <span class='item-label'>{link.label}</span>
+                <span class='item-sub'>{link.sub}</span>
               </div>
-              <i class="ph ph-arrow-right item-arrow"></i>
+              <i class='ph ph-arrow-right item-arrow'></i>
             </a>
           ))}
         </div>
       </section>
     )}
+
+    <footer class='links-footer'>
+      <div class='location-text'>
+        <span id='local-time'>00:00:00 AM</span> · Porto Alegre, Brazil
+      </div>
+    </footer>
 
   </div>
 </BaseLayout>
+
+<script>
+  function updateTime() {
+    const timeEl = document.getElementById('local-time');
+    if (!timeEl) return;
+    
+    const now = new Date();
+    const options: Intl.DateTimeFormatOptions = { 
+      timeZone: 'America/Sao_Paulo', 
+      hour: '2-digit', 
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true 
+    };
+    timeEl.textContent = new Intl.DateTimeFormat('en-US', options).format(now);
+  }
+
+  setInterval(updateTime, 1000);
+  updateTime();
+  
+  document.addEventListener('astro:page-load', updateTime);
+</script>
 
 <style>
   .page {
@@ -156,7 +231,7 @@ const featured = {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-align: center;
   }
 
@@ -220,20 +295,32 @@ const featured = {
     gap: 12px;
     padding: 12px 14px;
     border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border-radius: 12px;
     background: var(--color-pill-bg);
     text-decoration: none;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s;
   }
 
   .item:hover {
     background: var(--color-wash);
     border-color: #ccc;
+    transform: translateY(-1px);
     text-decoration: none;
   }
 
-  [data-theme="dark"] .item:hover {
+  [data-theme='dark'] .item:hover {
     border-color: #444;
+  }
+
+  .item--disabled {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .item--disabled:hover {
+    background: var(--color-pill-bg);
+    border-color: var(--color-border);
   }
 
   .item-icon {
@@ -250,10 +337,27 @@ const featured = {
     min-width: 0;
   }
 
+  .item-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   .item-label {
     font-size: var(--font-size-body);
     color: var(--color-title);
     line-height: 1.4;
+  }
+
+  .item-status {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--color-wash);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--color-muted);
   }
 
   .item-sub {
@@ -271,7 +375,7 @@ const featured = {
   .section {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .section-label {
@@ -283,23 +387,83 @@ const featured = {
     color: var(--color-muted);
   }
 
+  .reading-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .book-card {
+    aspect-ratio: 2/3;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-wash) 0%, var(--color-border) 100%);
+    transition: transform 0.2s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .book-card::before {
+    content: attr(title);
+    font-size: 9px;
+    color: var(--color-muted);
+    font-weight: 500;
+    line-height: 1.2;
+    z-index: 0;
+  }
+
+  .book-card:hover {
+    transform: translateY(-4px) rotate(2deg);
+  }
+
+  .book-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--color-wash);
+  }
+
+  .links-footer {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+  }
+
+  .location-text {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--color-muted);
+    opacity: 0.6;
+    letter-spacing: 0.02em;
+  }
+
   /* Featured project card */
   .featured {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, transform 0.15s;
   }
 
   .featured:hover {
     border-color: #ccc;
+    transform: translateY(-1px);
     text-decoration: none;
   }
 
-  [data-theme="dark"] .featured:hover {
+  [data-theme='dark'] .featured:hover {
     border-color: #444;
   }
 

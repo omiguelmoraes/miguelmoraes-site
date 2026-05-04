@@ -99,3 +99,52 @@ img {
   display: block;
   max-width: 100%;
 }
+
+/* Reveal Animation Staggering */
+[data-reveal][data-delay="400"] { transition-delay: 0.4s; }
+[data-reveal][data-delay="500"] { transition-delay: 0.5s; }
+[data-reveal][data-delay="600"] { transition-delay: 0.6s; }
+
+/* Custom View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Refinements */
+.card, .link-block, .item, .featured {
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), border-color 0.2s ease, background 0.2s ease !important;
+}
+
+.card:hover, .link-block:hover, .item:hover, .featured:hover {
+  transform: translateY(-2px);
+  text-decoration: none !important;
+}
+
+.card:active, .link-block:active, .item:active, .featured:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Image Hover Zoom */
+.card-image img, .link-block-image img, .featured-image img {
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.card:hover .card-image img, 
+.link-block:hover .link-block-image img, 
+.featured:hover .featured-image img {
+  transform: scale(1.04);
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid var(--color-title);
+  outline-offset: 4px;
+  border-radius: 4px;
+}

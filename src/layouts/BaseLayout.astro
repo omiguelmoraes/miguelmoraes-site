@@ -25,6 +25,7 @@ const ogImage = new URL(image, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#09090b" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
@@ -35,6 +36,7 @@ const ogImage = new URL(image, Astro.site);
     <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Miguel Moraes" />
 
     <!-- Twitter -->
@@ -107,7 +109,17 @@ const ogImage = new URL(image, Astro.site);
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          // Add visible class
+          (entry.target as HTMLElement).classList.add('visible');
+          
+          // If it is a container, reveal children with delay
+          const children = entry.target.querySelectorAll('.row, .link-block, .image-frame');
+          children.forEach((child, index) => {
+            setTimeout(() => {
+              (child as HTMLElement).classList.add('visible');
+            }, index * 100);
+          });
+
           observer.unobserve(entry.target);
         }
       });

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Lightbox from '../../components/Lightbox.astro';
 import { allProjects } from '../../data/projects';
 
 export function getStaticPaths() {
@@ -15,7 +16,7 @@ const nextProject = projectEntries[(currentIndex + 1) % projectEntries.length];
 const otherProjects = [prevProject, nextProject];
 ---
 
-<BaseLayout title={`${project.title} — Miguel Moraes`} description={project.description}>
+<BaseLayout image={project.cover} title={project.title + " — Miguel Moraes"} description={project.description}>
   <div class="page">
 
     <nav class="nav">
@@ -41,7 +42,7 @@ const otherProjects = [prevProject, nextProject];
     </header>
 
     <div class="cover" data-reveal>
-      <img src={project.cover} alt={project.title} class="lightbox-trigger" />
+      <img src={project.cover} alt={project.title} class="lightbox-trigger" width="1200" height="675" style={"view-transition-name: project-image-" + slug} />
     </div>
 
     <main class="body">
@@ -53,7 +54,7 @@ const otherProjects = [prevProject, nextProject];
         <div class="image-grid">
           {project.challenge.images.map((src, i) => (
             <div class="image-frame" data-reveal data-delay={i > 0 ? String(i * 100) : undefined}>
-              <img src={src} alt={`${project.title} — ${project.challenge.heading}, image ${i + 1}`} class="lightbox-trigger" />
+              <img src={src} alt={project.title + " — " + project.challenge.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
             </div>
           ))}
         </div>
@@ -64,7 +65,7 @@ const otherProjects = [prevProject, nextProject];
         <h2 class="section-heading">{project.result.heading}</h2>
         <p class="section-body">{project.result.body}</p>
         {(('url' in project && project.url) || ('figmaUrl' in project && project.figmaUrl)) && (
-          <a href={('url' in project && project.url) ? project.url : (project as any).figmaUrl} target="_blank" class="visit-link">
+          <a href={('url' in project && project.url) ? project.url : (project as any).figmaUrl} target="_blank" rel="noopener" class="visit-link">
             View project
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
           </a>
@@ -72,7 +73,7 @@ const otherProjects = [prevProject, nextProject];
         <div class="image-grid">
           {project.result.images.map((src, i) => (
             <div class="image-frame" data-reveal data-delay={i > 0 ? String(i * 100) : undefined}>
-              <img src={src} alt={`${project.title} — ${project.result.heading}, image ${i + 1}`} class="lightbox-trigger" />
+              <img src={src} alt={project.title + " — " + project.result.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
             </div>
           ))}
         </div>
@@ -85,9 +86,9 @@ const otherProjects = [prevProject, nextProject];
         <span class="section-label">More projects</span>
         <div class="footer-projects">
           {otherProjects.map(([s, p]) => (
-            <a href={`/projects/${s}`} class="footer-project">
+            <a href={"/projects/" + s} class="footer-project">
               <div class="footer-project-cover">
-                <img src={p.cover} alt={p.title} />
+                <img src={p.cover} alt={p.title} loading="lazy" width="400" height="225" />
               </div>
               <span class="footer-project-title">{p.title}</span>
             </a>
@@ -103,38 +104,7 @@ const otherProjects = [prevProject, nextProject];
   </div>
 </BaseLayout>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox" aria-hidden="true">
-  <button class="lightbox-close" aria-label="Close">✕</button>
-  <img id="lightbox-img" src="" alt="" />
-</div>
-
-<script>
-  const lightbox = document.getElementById('lightbox')!;
-  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
-
-  document.querySelectorAll('.lightbox-trigger').forEach((img) => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = (img as HTMLImageElement).src;
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox || (e.target as HTMLElement).classList.contains('lightbox-close')) {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-</script>
+<Lightbox />
 
 <style>
   .page {
@@ -347,37 +317,4 @@ const otherProjects = [prevProject, nextProject];
     text-decoration: none;
   }
   .home-link:hover { color: var(--color-title); }
-
-  /* Lightbox */
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.88);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-  .lightbox.open { display: flex; }
-
-  .lightbox img {
-    max-width: 100%;
-    max-height: 90vh;
-    border-radius: 6px;
-    object-fit: contain;
-  }
-
-  .lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.6);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 4px 8px;
-  }
-  .lightbox-close:hover { color: #fff; }
 </style>
