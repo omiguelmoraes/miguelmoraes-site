@@ -50,7 +50,6 @@ const products = [
     sub: 'Templates for freelancers',
     href: '/packpro',
     icon: 'ph-package',
-    sameTab: true,
   },
 ];
 
@@ -120,6 +119,7 @@ const featured = {
               target={link.sameTab ? '_self' : '_blank'} 
               rel='noopener' 
               class:list={['item', { 'item--disabled': link.disabled }]}
+              target={link.disabled ? undefined : (link.sameTab ? '_self' : '_blank')}
             >
               <i class={'ph ' + link.icon + ' item-icon'}></i>
               <div class='item-text'>

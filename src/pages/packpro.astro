@@ -19,12 +19,32 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "PackPro — Templates para Freelancers",
+      "image": "https://miguelmoraes.pro/og-packpro.png",
+      "description": "Templates profissionais de Contrato, Proposta e Orçamento no Figma para freelancers.",
+      "brand": {
+        "@type": "Brand",
+        "name": "PackPro"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://miguelmoraes.pro/packpro",
+        "priceCurrency": "BRL",
+        "price": "37.00",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  </script>
 </head>
 <body>
 
-<!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     {Array(10).fill(null).map(() => (
@@ -33,255 +53,169 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-glow" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-content">
       <span class="eyebrow">
         <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
         Templates para Freelancers
       </span>
-      <h1 class="hero-title">Documentos prontos.<br />Projetos fechados.</h1>
+      <h1 class="hero-title"><span>Documentos prontos.</span><span>Projetos fechados.</span></h1>
       <p class="hero-sub">Contrato, proposta e orçamento no Figma. Personalize e envie em minutos, não horas.</p>
-      <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="touch-action: manipulation;">
+      <a href={kiwify} target="_blank" rel="noopener" class="btn-primary">
         Garantir por R$37 →
       </a>
     </div>
-  </div>
 
-  <div class="hero-visual" aria-hidden="true">
-    <div class="container">
+    <div class="hero-visual" aria-hidden="true">
       <div class="doc-row">
-
         <div class="doc">
-          <div class="doc-header">
-            <span>SEU NOME / MARCA</span>
-            <span>XX/XX/2025</span>
-          </div>
-          <div class="doc-title">CONTRATO DE<br />PRESTAÇÃO<br />DE SERVIÇOS</div>
+          <div class="doc-header"><span>NOME / MARCA</span><span>XX/XX</span></div>
+          <div class="doc-title">CONTRATO DE SERVIÇOS</div>
           <div class="doc-divider"></div>
-          <div class="doc-section">
-            <span class="doc-section-label">PARTES</span>
-            <div class="doc-lines">
-              <div class="doc-line" style="width:90%"></div>
-              <div class="doc-line" style="width:72%"></div>
-            </div>
-          </div>
-          <div class="doc-section">
-            <span class="doc-section-label">ESCOPO</span>
-            <div class="doc-lines">
-              <div class="doc-line" style="width:95%"></div>
-              <div class="doc-line" style="width:80%"></div>
-              <div class="doc-line" style="width:60%"></div>
-            </div>
-          </div>
-          <div class="doc-section">
-            <span class="doc-section-label">ASSINATURA</span>
-            <div class="doc-sig">
-              <div class="doc-sig-line"></div>
-              <div class="doc-sig-line"></div>
-            </div>
-          </div>
+          <div class="doc-line" style="width:100%"></div>
+          <div class="doc-line" style="width:80%"></div>
+          <div class="doc-line" style="width:60%"></div>
         </div>
-
         <div class="doc doc--featured">
-          <div class="doc-header">
-            <span>SEU NOME / MARCA</span>
-            <span>XX/XX/2025</span>
-          </div>
-          <div class="doc-title">PROPOSTA<br />COMERCIAL</div>
+          <div class="doc-header"><span>NOME / MARCA</span><span>XX/XX</span></div>
+          <div class="doc-title">PROPOSTA COMERCIAL</div>
           <div class="doc-divider"></div>
-          <div class="doc-section">
-            <span class="doc-section-label">SOBRE</span>
-            <div class="doc-lines">
-              <div class="doc-line" style="width:85%"></div>
-              <div class="doc-line" style="width:65%"></div>
-            </div>
-          </div>
-          <div class="doc-section">
-            <span class="doc-section-label">ESCOPO</span>
-            <div class="doc-bullets">
-              <div class="doc-bullet"><span class="bullet-dot"></span><div class="doc-line" style="width:75%"></div></div>
-              <div class="doc-bullet"><span class="bullet-dot"></span><div class="doc-line" style="width:60%"></div></div>
-              <div class="doc-bullet"><span class="bullet-dot"></span><div class="doc-line" style="width:50%"></div></div>
-            </div>
-          </div>
-          <div class="doc-section">
-            <span class="doc-section-label">INVESTIMENTO</span>
-            <div class="doc-price-row">
-              <div class="doc-line" style="width:50%"></div>
-              <div class="doc-price-tag">R$</div>
-            </div>
-          </div>
+          <div class="doc-line" style="width:100%"></div>
+          <div class="doc-line" style="width:90%"></div>
+          <div class="doc-line" style="width:70%"></div>
         </div>
-
         <div class="doc">
-          <div class="doc-header">
-            <span>SEU NOME / MARCA</span>
-            <span>XX/XX/2025</span>
-          </div>
-          <div class="doc-title">ORÇAMENTO<br />DETALHADO</div>
+          <div class="doc-header"><span>NOME / MARCA</span><span>XX/XX</span></div>
+          <div class="doc-title">ORÇAMENTO</div>
           <div class="doc-divider"></div>
-          <div class="doc-table">
-            <div class="doc-table-row doc-table-head">
-              <div class="doc-line" style="width:55%; height:4px;"></div>
-              <div class="doc-line" style="width:20%; height:4px;"></div>
-            </div>
-            <div class="doc-table-row">
-              <div class="doc-line" style="width:60%"></div>
-              <div class="doc-line" style="width:22%"></div>
-            </div>
-            <div class="doc-table-row">
-              <div class="doc-line" style="width:50%"></div>
-              <div class="doc-line" style="width:22%"></div>
-            </div>
-            <div class="doc-table-row">
-              <div class="doc-line" style="width:65%"></div>
-              <div class="doc-line" style="width:22%"></div>
-            </div>
-            <div class="doc-table-row">
-              <div class="doc-line" style="width:45%"></div>
-              <div class="doc-line" style="width:22%"></div>
-            </div>
-          </div>
-          <div class="doc-divider" style="margin-top:8px"></div>
-          <div class="doc-total">
-            <span class="doc-total-label">TOTAL</span>
-            <div class="doc-price-tag doc-price-tag--accent">R$</div>
-          </div>
+          <div class="doc-line" style="width:100%"></div>
+          <div class="doc-line" style="width:80%"></div>
+          <div class="doc-line" style="width:40%"></div>
         </div>
-
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES BENTO -->
-<section class="section">
+<section class="section section-alt">
   <div class="container">
     <span class="section-eyebrow">
       <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
-      O que vem no pack
+      Benefícios
     </span>
-    <h2 class="section-title">Tudo que você precisa<br />para fechar projetos.</h2>
-    <div class="bento">
+    <h2 class="section-title">Por que usar o PackPro?</h2>
+    <div class="bento bento--benefits">
       <div class="bento-card">
-        <i class="ph ph-file-text bento-icon"></i>
-        <h3 class="bento-name">Contrato de Prestação de Serviços</h3>
-        <p class="bento-desc">Linguagem clara, cláusulas essenciais. Personalize com nome, cliente e escopo em minutos.</p>
+        <i class="ph ph-timer bento-icon"></i>
+        <h3 class="bento-name">Economia de Tempo</h3>
+        <p class="bento-desc">Menos burocracia, mais tempo para criar o que importa.</p>
       </div>
       <div class="bento-card">
-        <i class="ph ph-presentation-chart bento-icon"></i>
-        <h3 class="bento-name">Proposta Comercial</h3>
-        <p class="bento-desc">Apresentação profissional para convencer clientes antes mesmo de começar o projeto.</p>
+        <i class="ph ph-stack bento-icon"></i>
+        <h3 class="bento-name">Organização</h3>
+        <p class="bento-desc">Processos claros e alinhados com o cliente.</p>
       </div>
       <div class="bento-card">
-        <i class="ph ph-calculator bento-icon"></i>
-        <h3 class="bento-name">Orçamento Detalhado</h3>
-        <p class="bento-desc">Detalhe serviços e valores com clareza. Sem planilha, sem formato amador.</p>
+        <i class="ph ph-briefcase bento-icon"></i>
+        <h3 class="bento-name">Profissionalismo</h3>
+        <p class="bento-desc">Feche projetos com mais autoridade visual.</p>
+      </div>
+      <div class="bento-card">
+        <i class="ph ph-lightning bento-icon"></i>
+        <h3 class="bento-name">Pronto para Usar</h3>
+        <p class="bento-desc">Personalize e envie em poucos minutos.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
+<section class="section">
+  <div class="container">
+    <span class="section-eyebrow"><svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>Entrega</span>
+    <h2 class="section-title">O que vem no PackPro?</h2>
+    <div class="comparison-list">
+      <div class="comparison-item"><span>Template de Orçamento</span><span class="old-price">R$97</span></div>
+      <div class="comparison-item"><span>Template de Proposta</span><span class="old-price">R$147</span></div>
+      <div class="comparison-item"><span>Template de Contrato</span><span class="old-price">R$147</span></div>
+      <div class="comparison-item comparison-item--total"><span>PackPro</span><span class="final-price">R$37</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="section section-alt">
   <div class="container">
     <div class="pricing-card">
-      <div class="pricing-glow" aria-hidden="true"></div>
       <span class="pricing-badge">Oferta Exclusiva</span>
       <div class="pricing-price">R$37</div>
-      <p class="pricing-sub">Pague uma vez. Use em todos os seus projetos, para sempre.</p>
-      <ul class="checklist" role="list">
-        <li>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Acesso imediato
-        </li>
-        <li>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Atualizações gratuitas
-        </li>
-        <li>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          7 dias de garantia
-        </li>
-        <li>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Compatível com Figma
-        </li>
+      <p class="pricing-sub">Pague uma vez. Use para sempre.</p>
+      <ul class="checklist">
+        <li><i class="ph ph-check"></i> Acesso imediato</li>
+        <li><i class="ph ph-check"></i> Atualizações gratuitas</li>
+        <li><i class="ph ph-check"></i> 7 dias de garantia</li>
+        <li><i class="ph ph-check"></i> Figma file</li>
       </ul>
-      <a href={kiwify} target="_blank" rel="noopener" class="btn-primary btn-full" style="touch-action: manipulation;">
-        Garantir por R$37 →
-      </a>
-      <p class="pricing-note">Sem assinatura. Sem surpresas.</p>
+      <a href={kiwify} target="_blank" rel="noopener" class="btn-primary">Garantir por R$37 →</a>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="section">
   <div class="container">
-    <span class="section-eyebrow">
-      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
-      FAQ
-    </span>
+    <span class="section-eyebrow">FAQ</span>
     <h2 class="section-title">Dúvidas frequentes</h2>
     <div class="faq">
       <details class="faq-item">
-        <summary class="faq-q">Por que eu preciso do PackPro se já faço tudo manualmente?</summary>
-        <p class="faq-a">Fazer manualmente funciona, mas custa tempo — e tempo de freelancer é dinheiro. Com o <span translate="no">PackPro</span>, você personaliza e envia em minutos, não horas.</p>
+        <summary class="faq-q">Por que eu preciso do PackPro se já faço tudo manualmente? <span>→</span></summary>
+        <p class="faq-a">Fazer manualmente funciona, mas custa tempo — e tempo de freelancer é dinheiro. Com o PackPro, você personaliza e envia em minutos, não horas.</p>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Os templates são fáceis de personalizar?</summary>
+        <summary class="faq-q">Os templates são fáceis de personalizar? <span>→</span></summary>
         <p class="faq-a">Sim. Tudo foi criado no Figma, com campos claros para substituir. Troque nome, logo, cores e dados do cliente em poucos cliques.</p>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Como isso vai me ajudar a fechar mais projetos?</summary>
+        <summary class="faq-q">Como isso vai me ajudar a fechar mais projetos? <span>→</span></summary>
         <p class="faq-a">Uma proposta bem apresentada transmite confiança. O cliente percebe profissionalismo — e isso pesa na decisão de fechar com você.</p>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Funciona para qualquer área de atuação?</summary>
+        <summary class="faq-q">Funciona para qualquer área de atuação? <span>→</span></summary>
         <p class="faq-a">Sim. Os templates funcionam para designers, desenvolvedores, redatores, social media e qualquer freelancer criativo.</p>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Posso usar os templates quantas vezes quiser?</summary>
+        <summary class="faq-q">Posso usar os templates quantas vezes quiser? <span>→</span></summary>
         <p class="faq-a">Sim. Após a compra, o acesso é permanente. Use em quantos projetos precisar, para sempre.</p>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">E se eu não gostar ou achar que não atende minhas necessidades?</summary>
+        <summary class="faq-q">E se eu não gostar ou achar que não atende minhas necessidades? <span>→</span></summary>
         <p class="faq-a">Você tem 7 dias de garantia. Se não ficar satisfeito, devolvemos seu dinheiro sem perguntas.</p>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section class="section section-alt">
   <div class="container">
     <div class="about-grid">
-      <h2 class="about-title">Feito por quem<br />viveu o problema.</h2>
+      <h2 class="about-title">Feito por quem viveu o problema.</h2>
       <div class="about-content">
         <p>Desde que comecei na área de Design em 2021, percebi o quanto tarefas operacionais — contratos, propostas, orçamentos — ocupavam meu tempo. Eram essenciais, mas me afastavam do que realmente importava.</p>
-        <p>O <span translate="no">PackPro</span> nasceu disso. Materiais prontos, práticos e adaptáveis, para você focar no que gera resultado.</p>
+        <p>O PackPro nasceu disso. Materiais prontos, práticos e adaptáveis, para você focar no que gera resultado.</p>
         <div class="about-btns">
-          <a href={instagram} target="_blank" rel="noopener" class="btn-ghost" style="touch-action: manipulation;">Me siga no Instagram →</a>
-          <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="touch-action: manipulation;">Comprar agora →</a>
+          <a href={instagram} target="_blank" rel="noopener" class="btn-ghost">Me siga no Instagram →</a>
+          <a href={kiwify} target="_blank" rel="noopener" class="btn-primary">Comprar agora →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
-  <p>Miguel Moraes © Todos os direitos reservados.</p>
+  <p><a href="/links" target="_blank" rel="noopener" class="footer-link">Miguel Moraes</a> © 2026 Todos os direitos reservados.</p>
 </footer>
 
-<!-- STICKY CTA -->
-<div class="sticky-cta" id="sticky-cta" role="complementary" aria-label="Compra rápida">
+<div class="sticky-cta" id="sticky-cta">
   <span class="sticky-cta-text">Templates prontos por R$37</span>
-  <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="padding: 10px 20px; font-size: 14px; touch-action: manipulation;">
+  <a href={kiwify} target="_blank" rel="noopener" class="btn-primary" style="padding: 10px 20px; font-size: 14px;">
     Comprar agora →
   </a>
 </div>
@@ -292,622 +226,187 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <script>
   const stickyCta = document.getElementById('sticky-cta')!;
   const hero = document.querySelector('.hero')!;
-
-  const observer = new IntersectionObserver(
-    ([entry]) => stickyCta.classList.toggle('visible', !entry.isIntersecting),
-    { threshold: 0 }
-  );
+  const observer = new IntersectionObserver(([e]) => stickyCta.classList.toggle('visible', !e.isIntersecting), { threshold: 0 });
   observer.observe(hero);
 </script>
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #0E0D0C;
-    --bg-alt: #131110;
-    --surface: #1C1A16;
-    --border: rgba(255,255,255,0.08);
-    --border-strong: rgba(255,255,255,0.14);
-    --text: #F0EDE8;
-    --muted: #7A756F;
-    --accent: #FF5500;
-    --accent-hover: #FF6B1E;
-    --radius: 12px;
+    --bg: #050505;
+    --bg-alt: #000000;
+    --surface: #0a0a0a;
+    --border: rgba(255,255,255,0.06);
+    --border-strong: rgba(255,255,255,0.12);
+    --text: #FFFFFF;
+    --muted: #888888;
+    --accent: #2563EB;
+    --font-mono: 'JetBrains Mono', monospace;
+    --radius: 2px;
   }
-
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
+    font-family: var(--font-mono);
+    font-size: 14px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  
+  .ticker { background: #000; border-bottom: 1px solid var(--border); padding: 12px 0; overflow: hidden; font-size: 11px; }
+  .ticker-track { display: flex; gap: 24px; width: max-content; animation: ticker 40s linear infinite; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .dot { color: var(--accent); }
 
-  h1, h2, .about-title, .eyebrow, .section-eyebrow, .pricing-badge, .bento-num { font-family: 'Space Grotesk', sans-serif; }
-
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  /* TICKER */
-  .ticker {
-    background: var(--bg-alt);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-    padding: 10px 0;
-    font-size: 12px;
-    font-weight: 500;
-    color: rgba(240,237,232,0.6);
-  }
-
-  .ticker-track {
-    display: flex;
-    gap: 20px;
-    white-space: nowrap;
-    width: max-content;
-    animation: ticker 30s linear infinite;
-  }
-
-  .ticker-track .dot { color: var(--accent); opacity: 0.5; }
-
-  @keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* HERO */
   .hero {
-    padding-top: 96px;
-    border-bottom: 1px solid var(--border);
+    padding: 120px 0 80px;
+    background: radial-gradient(circle at 50% -20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%);
     position: relative;
-    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.document.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04; pointer-events: none;
+  }
+  .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 64px; }
+  .hero-title { font-size: clamp(32px, 5vw, 64px); font-weight: 500; line-height: 1.1; letter-spacing: -0.04em; }
+  .hero-title span { display: block; }
+  .hero-sub { color: var(--muted); max-width: 460px; font-size: 15px; }
+  .eyebrow { font-size: 11px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+
+  .hero-visual { position: relative; }
+  .doc-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: end; }
+  .doc { background: var(--surface); border: 1px solid var(--border); border-radius: 4px 4px 0 0; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .doc--featured { border-color: rgba(37,99,235,0.3); padding-top: 32px; margin-bottom: -16px; box-shadow: 0 -10px 40px rgba(0,0,0,0.5); }
+  .doc-header { display: flex; justify-content: space-between; font-size: 8px; color: var(--muted); }
+  .doc-title { font-size: 11px; font-weight: 500; }
+  .doc-divider { height: 1px; background: var(--border); }
+  .doc-line { height: 4px; background: rgba(255,255,255,0.05); }
+
+  .section { padding: 120px 0; }
+  .section-alt { background: #000; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .section-eyebrow { font-size: 11px; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; }
+  .section-title { font-size: clamp(24px, 4vw, 36px); font-weight: 500; margin-bottom: 48px; text-align: center; line-height: 1.2; width: 100%; }
+
+  .bento { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .bento-card { background: var(--surface); border: 1px solid var(--border); padding: 32px; border-radius: 2px; }
+  .bento-icon { font-size: 24px; color: var(--accent); margin-bottom: 16px; display: block; }
+  .bento-name { font-size: 18px; margin-bottom: 8px; font-weight: 500; }
+  .bento-desc { color: var(--muted); font-size: 14px; }
+
+
+  .comparison-list {
+    max-width: 540px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    background: #080808;
+    padding: 40px;
+    position: relative;
+    border-radius: 2px;
   }
 
-  .hero-glow {
+  .comparison-list::before {
+    content: "";
     position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 600px;
-    background: radial-gradient(ellipse at center top, rgba(255,85,0,0.10) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 24px;
-    position: relative;
-    z-index: 1;
-    padding-bottom: 56px;
-  }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .hero-title {
-    font-size: clamp(44px, 6vw, 72px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--text);
-    max-width: 760px;
-  }
-
-  .hero-sub {
-    font-size: 16px;
-    color: var(--muted);
-    line-height: 1.65;
-    max-width: 400px;
-  }
-
-  /* HERO VISUAL */
-  .hero-visual {
-    position: relative;
-    z-index: 1;
-    padding-bottom: 0;
-  }
-
-  .doc-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    align-items: end;
-  }
-
-  /* DOC CARDS */
-  .doc {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px 10px 0 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    box-shadow: 0 -8px 40px rgba(0,0,0,0.3);
-  }
-
-  .doc--featured {
-    border-color: rgba(255,85,0,0.25);
-    padding-top: 24px;
-    margin-bottom: -12px;
-    box-shadow: 0 -12px 50px rgba(255,85,0,0.08), 0 -8px 40px rgba(0,0,0,0.4);
-  }
-
-  .doc--featured::before {
-    content: '';
-    display: block;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,85,0,0.7), transparent);
-    margin: -24px -20px 12px;
-  }
-
-  .doc-header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 7px;
-    color: rgba(255,130,60,0.45);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .doc-title {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: 0.04em;
-    line-height: 1.6;
-  }
-
-  .doc-divider { height: 1px; background: rgba(255,255,255,0.06); }
-
-  .doc-section {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .doc-section-label {
-    font-size: 7px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: rgba(255,85,0,0.4);
-    text-transform: uppercase;
-  }
-
-  .doc-lines { display: flex; flex-direction: column; gap: 5px; }
-  .doc-line { height: 5px; background: rgba(255,255,255,0.07); border-radius: 2px; }
-
-  .doc-bullets { display: flex; flex-direction: column; gap: 5px; }
-  .doc-bullet { display: flex; align-items: center; gap: 5px; }
-  .bullet-dot {
-    width: 3px; height: 3px; border-radius: 50%;
-    background: var(--accent); opacity: 0.4; flex-shrink: 0;
-  }
-
-  .doc-price-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  .doc-price-tag {
-    font-size: 8px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 0.02em;
-  }
-
-  .doc-price-tag--accent { color: rgba(255,85,0,0.5); }
-
-  .doc-table { display: flex; flex-direction: column; gap: 6px; }
-
-  .doc-table-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .doc-table-head .doc-line { background: rgba(255,255,255,0.12); }
-
-  .doc-sig {
-    display: flex;
-    gap: 16px;
-  }
-
-  .doc-sig-line {
-    flex: 1;
-    height: 1px;
-    background: rgba(255,255,255,0.12);
-    margin-top: 12px;
-  }
-
-  .doc-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .doc-total-label {
-    font-size: 7px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.3);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  /* SECTIONS */
-  .section { padding: 96px 0; }
-
-  .section-alt {
-    background: var(--bg-alt);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-size: clamp(26px, 3vw, 38px);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.025em;
-    margin-bottom: 48px;
-  }
-
-  /* BENTO */
-  .bento {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-
-  .bento-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-
-  .bento-card:hover {
-    border-color: rgba(255,85,0,0.4);
-  }
-
-  .bento-icon {
-    font-size: 24px;
-    color: var(--accent);
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: var(--accent);
     opacity: 0.8;
   }
 
-  .bento-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.3;
-    flex: 1;
-  }
-
-  .bento-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  /* PRICING */
-  .pricing-card {
-    max-width: 440px;
-    margin: 0 auto;
-    background: var(--surface);
-    border: 1px solid rgba(255,85,0,0.2);
-    border-radius: 16px;
-    padding: 48px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .pricing-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,85,0,0.6), transparent);
-  }
-
-  .pricing-glow {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(255,85,0,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .pricing-badge {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
-    background: rgba(255,85,0,0.10);
-    border: 1px solid rgba(255,85,0,0.2);
-    padding: 4px 10px;
-    border-radius: 20px;
-    position: relative;
-    margin-bottom: 24px;
-  }
-
-  .pricing-price {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 72px;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: var(--text);
-    position: relative;
-    margin-bottom: 12px;
-  }
-
-  .pricing-sub {
-    font-size: 14px;
-    color: var(--muted);
-    max-width: 260px;
-    line-height: 1.6;
-    position: relative;
-    margin-bottom: 28px;
-  }
-
-  .checklist {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-    margin-bottom: 32px;
-    align-items: flex-start;
-    width: 100%;
-    padding: 0 8px;
-  }
-
-  .checklist li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: var(--muted);
-  }
-
-  .checklist li svg { color: var(--accent); flex-shrink: 0; }
-
-  .btn-full { width: 100%; justify-content: center; position: relative; }
-
-  .pricing-note {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 12px;
-    position: relative;
-  }
-
-  /* FAQ */
-  .faq {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: var(--surface);
-  }
-
-  .faq-item { border-bottom: 1px solid var(--border); }
-  .faq-item:last-child { border-bottom: none; }
-
-  .faq-q {
-    width: 100%;
+  .comparison-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 24px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-    cursor: pointer;
-    list-style: none;
-    transition: background 0.15s;
-    touch-action: manipulation;
-  }
-
-  .faq-q::-webkit-details-marker { display: none; }
-
-  .faq-q::after {
-    content: '+';
-    font-size: 18px;
-    font-weight: 300;
-    color: var(--muted);
-    flex-shrink: 0;
-    margin-left: 16px;
-    transition: transform 0.2s;
-  }
-
-  details[open] .faq-q::after { transform: rotate(45deg); }
-  .faq-q:hover { background: rgba(255,255,255,0.03); }
-
-  .faq-q:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-  }
-
-  .faq-a {
-    padding: 0 24px 18px;
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
-  }
-
-  .about-title {
-    font-size: clamp(26px, 3vw, 38px);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.025em;
-  }
-
-  .about-content p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.75;
-    margin-bottom: 16px;
-  }
-
-  .about-btns {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 8px;
-  }
-
-  /* BUTTONS */
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent);
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: inherit;
-    padding: 14px 28px;
-    border-radius: 40px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.15s;
-    white-space: nowrap;
-  }
-
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-primary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    color: var(--text);
-    font-size: 15px;
-    font-family: inherit;
-    padding: 14px 28px;
-    border-radius: 40px;
-    border: 1px solid var(--border-strong);
-    text-decoration: none;
-    cursor: pointer;
-    transition: border-color 0.15s;
-    white-space: nowrap;
-  }
-
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.35); }
-  .btn-ghost:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
-
-  /* STICKY CTA */
-  .sticky-cta {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: rgba(28,26,22,0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-strong);
-    border-radius: 40px;
-    padding: 10px 10px 10px 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-    opacity: 0;
-    transition: opacity 0.3s, transform 0.3s;
-    z-index: 100;
-    white-space: nowrap;
-  }
-
-  .sticky-cta.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .sticky-cta-text { font-size: 14px; color: var(--muted); }
-
-  /* FOOTER */
-  .footer {
-    border-top: 1px solid var(--border);
-    padding: 32px;
-    text-align: center;
+    padding: 16px 0;
+    border-bottom: 1px dashed var(--border);
     font-size: 13px;
     color: var(--muted);
+    transition: color 0.2s;
   }
 
-  /* REDUCED MOTION */
-  @media (prefers-reduced-motion: reduce) {
-    .ticker-track { animation: none; }
-    .sticky-cta { transition: none; }
-    .btn-primary, .btn-ghost, .faq-q, .faq-q::after { transition: none; }
+  .comparison-item:hover { color: var(--text); }
+
+  .comparison-item .old-price {
+    text-decoration: line-through;
+    opacity: 0.4;
+    font-size: 12px;
   }
 
-  /* MOBILE */
+  .comparison-item--total {
+    padding-top: 32px;
+    margin-top: 16px;
+    border-bottom: none;
+    color: var(--text);
+  }
+
+  .comparison-item--total span:first-child {
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .final-price {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+  }
+
+
+  .pricing-card { max-width: 440px; margin: 0 auto; background: var(--surface); border: 1px solid rgba(37,99,235,0.2); padding: 56px; text-align: center; }
+  .pricing-price { font-size: 64px; font-weight: 500; margin-bottom: 8px; }
+  .pricing-badge { font-size: 10px; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.2); padding: 4px 12px; margin-bottom: 24px; display: inline-block; }
+  .pricing-sub { color: var(--muted); margin-bottom: 32px; }
+  .checklist { text-align: left; margin-bottom: 32px; list-style: none; }
+  .checklist li { display: flex; align-items: center; gap: 12px; padding: 4px 0; color: var(--muted); }
+  .checklist li i { color: var(--accent); }
+
+  .faq { max-width: 600px; margin: 0 auto; }
+  .faq-item { border: 1px solid var(--border); border-radius: 2px; margin-bottom: 8px; background: var(--surface); overflow: hidden; }
+  .faq-q { padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-q span { transition: transform 0.3s; opacity: 0.4; }
+  details[open] .faq-q span { transform: rotate(90deg); }
+  .faq-a { padding: 0 24px 20px; color: var(--muted); font-size: 13px; animation: fadeIn 0.3s ease; }
+
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
+  .about-title { font-size: 28px; font-weight: 500; line-height: 1.2; }
+  .about-content p { color: var(--muted); margin-bottom: 20px; }
+  .about-btns { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+
+  .btn-primary { background: var(--accent); color: #fff; padding: 12px 24px; border-radius: 2px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: opacity 0.2s; white-space: nowrap; }
+  .btn-ghost { border: 1px solid var(--border-strong); color: #fff; padding: 12px 24px; border-radius: 2px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: border-color 0.2s; white-space: nowrap; }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-ghost:hover { border-color: var(--text); }
+
+  .sticky-cta { 
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120%); 
+    background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border: 1px solid var(--border-strong); 
+    padding: 8px 8px 8px 24px; display: flex; align-items: center; gap: 24px; border-radius: 2px;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1); z-index: 100;
+  }
+  .sticky-cta.visible { transform: translateX(-50%) translateY(0); }
+  .sticky-cta-text { font-size: 13px; color: var(--muted); white-space: nowrap; }
+
+  .footer { padding: 80px 24px 120px; text-align: center; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); }
+  .footer-link { color: var(--text); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .footer-link:hover { border-color: var(--accent); }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
   @media (max-width: 720px) {
     .container { padding: 0 20px; }
-
-    .hero { padding-top: 64px; }
-    .hero-title { font-size: 38px; }
-    .hero-sub { max-width: 100%; }
+    .hero { padding-top: 80px; padding-bottom: 40px; }
     .hero-visual { display: none; }
-
-    .section { padding: 72px 0; }
-
-    .bento { grid-template-columns: 1fr; }
-
-    .pricing-card { padding: 36px 24px; }
-    .pricing-price { font-size: 56px; }
-
-    .about-grid { grid-template-columns: 1fr; gap: 24px; }
-    .about-btns { flex-direction: column; }
-    .btn-ghost, .btn-primary { justify-content: center; }
+    .hero-title { font-size: clamp(24px, 8vw, 32px); }
+    .bento, .bento--benefits { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .btn-primary, .btn-ghost { width: 100%; }
+    .sticky-cta { bottom: 0; left: 0; right: 0; width: 100%; border-radius: 0; border: none; border-top: 1px solid var(--border-strong); padding: 12px 20px; }
+    .sticky-cta-text { display: none; }
   }
 </style>
+</body>
+</html>
