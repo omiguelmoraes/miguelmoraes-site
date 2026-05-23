@@ -28,28 +28,20 @@ const jsonLd = {
     <!-- Header -->
     <header class="header">
       <a href="/links" class="avatar">
-        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="72" height="72" />
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="96" height="96" />
       </a>
-      <div class="header-info">
-        <h1 class="name">Miguel Moraes</h1>
-        <p class="subtitle"><span class="subtitle-role">Designer & Strategist · </span>Based in Brazil 🇧🇷</p>
-        <a href="https://api.whatsapp.com/send?phone=5551998734305" class="pill" target="_blank" rel="noopener">
-          <i class="ph ph-whatsapp-logo"></i>
-          Let's talk
-        </a>
-      </div>
+      <h1 class="name">I'm Miguel — designer, strategist and builder.</h1>
+      <p class="header-bio">
+        Focused on visual design, web and front-end. Currently at OpServices and building <a href="https://www.korbi.studio" target="_blank" rel="noopener">Korbi Studio</a> — strategic design for brands with ambition.
+      </p>
+      <a href="https://api.whatsapp.com/send?phone=5551998734305" class="pill" target="_blank" rel="noopener">
+        <i class="ph ph-whatsapp-logo"></i>
+        Let's talk
+      </a>
     </header>
 
     <!-- Main content -->
     <main class="content">
-
-      <!-- About -->
-      <section class="section" data-reveal>
-        <h2 class="section-title">About</h2>
-        <p class="section-body">
-          Designer & Strategist focused on visual design, web and front-end. Currently at OpServices and building <a href="https://www.korbi.studio" target="_blank" rel="noopener" style="text-decoration: underline">Korbi Studio</a> — strategic design for brands with ambition.
-        </p>
-      </section>
 
       <!-- Projects -->
       <section class="section" data-reveal>
@@ -364,13 +356,14 @@ const jsonLd = {
 
   .header {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 16px;
     align-items: flex-start;
   }
 
   .avatar {
-    width: 72px;
-    height: 72px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
@@ -390,28 +383,21 @@ const jsonLd = {
     opacity: 0.85;
   }
 
-  .header-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding-top: 4px;
-  }
-
   .name {
-    font-size: var(--font-size-title);
+    font-size: 22px;
     font-weight: 400;
-    line-height: var(--line-height-title);
+    line-height: 1.4;
     color: var(--color-title);
   }
 
-  .subtitle {
+  .header-bio {
     font-size: var(--font-size-body);
     color: var(--color-body);
     line-height: var(--line-height-body);
   }
 
-  @media (max-width: 480px) {
-    .subtitle-role { display: none; }
+  .header-bio a {
+    text-decoration: underline;
   }
 
   .pill {
