@@ -31,9 +31,6 @@ const jsonLd = {
         <img src="/webp/avatar.webp" alt="Miguel Moraes" width="96" height="96" />
       </a>
       <h1 class="name">I'm Miguel — designer, strategist and builder.</h1>
-      <p class="header-bio">
-        Focused on visual design, web and front-end. Currently at OpServices and building <a href="https://www.korbi.studio" target="_blank" rel="noopener">Korbi Studio</a> — strategic design for brands with ambition.
-      </p>
       <a href="https://api.whatsapp.com/send?phone=5551998734305" class="pill" target="_blank" rel="noopener">
         <i class="ph ph-whatsapp-logo"></i>
         Let's talk
@@ -42,6 +39,14 @@ const jsonLd = {
 
     <!-- Main content -->
     <main class="content">
+
+      <!-- About -->
+      <section class="section" data-reveal>
+        <h2 class="section-title">About</h2>
+        <p class="section-body">
+          Designer & Strategist focused on visual design, web and front-end. Currently at OpServices and building <a href="https://www.korbi.studio" target="_blank" rel="noopener" style="text-decoration: underline">Korbi Studio</a> — strategic design for brands with ambition.
+        </p>
+      </section>
 
       <!-- Projects -->
       <section class="section" data-reveal>
@@ -388,16 +393,6 @@ const jsonLd = {
     font-weight: 400;
     line-height: 1.4;
     color: var(--color-title);
-  }
-
-  .header-bio {
-    font-size: var(--font-size-body);
-    color: var(--color-body);
-    line-height: var(--line-height-body);
-  }
-
-  .header-bio a {
-    text-decoration: underline;
   }
 
   .pill {
