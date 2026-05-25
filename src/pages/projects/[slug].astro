@@ -47,20 +47,20 @@ const otherProjects = [prevProject, nextProject];
 
     <main class="body">
 
-      <section class="section" data-reveal>
+      <section class="section">
         <span class="section-label">Challenge</span>
         <h2 class="section-heading">{project.challenge.heading}</h2>
         <p class="section-body">{project.challenge.body}</p>
         <div class="image-grid">
           {project.challenge.images.map((src, i) => (
-            <div class="image-frame" data-reveal data-delay={i > 0 ? String(i * 100) : undefined}>
+            <div class="image-frame">
               <img src={src} alt={project.title + " — " + project.challenge.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
             </div>
           ))}
         </div>
       </section>
 
-      <section class="section" data-reveal>
+      <section class="section">
         <span class="section-label">Result</span>
         <h2 class="section-heading">{project.result.heading}</h2>
         <p class="section-body">{project.result.body}</p>
@@ -72,7 +72,7 @@ const otherProjects = [prevProject, nextProject];
         )}
         <div class="image-grid">
           {project.result.images.map((src, i) => (
-            <div class="image-frame" data-reveal data-delay={i > 0 ? String(i * 100) : undefined}>
+            <div class="image-frame">
               <img src={src} alt={project.title + " — " + project.result.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
             </div>
           ))}

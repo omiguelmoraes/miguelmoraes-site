@@ -31,7 +31,7 @@ export const allProjects = {
     thumbnail: '/projects/yoursbank/01.webp',
     coverPosition: 'top left',
     url: 'https://yoursbank.com.br/',
-    tags: ['Web Design', 'UI/UX'],
+    tags: ['Web Design'],
     challenge: {
       heading: "Translating Yours Bank's innovative proposition into a platform that builds trust and drives action",
       body: "The previous site didn't reflect the fintech's value proposition or meet the expectations of users who needed to understand and trust the product. More than a visual redesign, the goal was to communicate security in a sector full of distrust — with a lightweight, conversion-focused structure.",
@@ -53,7 +53,7 @@ export const allProjects = {
     cover: '/projects/flouds/01.webp',
     thumbnail: '/projects/flouds/01.webp',
     url: 'https://flouds.com.br',
-    tags: ['Web Design', 'UI/UX'],
+    tags: ['Web Design'],
     challenge: {
       heading: 'Turning a data-driven brand into a high-performance digital presence',
       body: "After building Flouds' visual identity, the next step was to transform their positioning into a digital presence that went beyond a simple showcase. The site needed to communicate authority, explain the value proposition clearly, and work as a strategic acquisition channel — converting visitors into qualified leads directly and effectively.",
@@ -75,7 +75,7 @@ export const allProjects = {
     url: 'https://msk.ind.br/',
     cover: '/projects/msk/01.webp',
     thumbnail: '/projects/msk/01.webp',
-    tags: ['Web Design', 'UI/UX'],
+    tags: ['Web Design'],
     challenge: {
       heading: "Converting 26 years of expertise into a modern digital presence built to generate business",
       body: "MSK is a reference in its sector, but their digital positioning didn't match that strength. The goal was to create a site that not only modernized their image, but functioned as a sales tool — making their vast product catalog easy to navigate and optimizing qualified lead capture.",
@@ -97,7 +97,7 @@ export const allProjects = {
     url: 'https://santsaude.com.br/',
     cover: '/projects/sant/01.webp',
     thumbnail: '/projects/sant/01.webp',
-    tags: ['Web Design', 'UI/UX'],
+    tags: ['Web Design'],
     challenge: {
       heading: 'Aligning a healthcare platform with its mission through usability and scalability',
       body: "The previous site was overloaded. Excessive animations and a dense information architecture created a confusing and frustrating user experience. Slow loading times were a direct barrier for users seeking essential health information — compromising both performance and the effectiveness of the channel.",

@@ -67,27 +67,6 @@ body {
   min-height: 100vh;
 }
 
-[data-reveal] {
-  will-change: opacity, transform;
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-[data-reveal].visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-[data-reveal][data-delay="100"] { transition-delay: 0.1s; }
-[data-reveal][data-delay="200"] { transition-delay: 0.2s; }
-[data-reveal][data-delay="300"] { transition-delay: 0.3s; }
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; transition: none; }
-  will-change: opacity, transform;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -101,11 +80,6 @@ img {
   display: block;
   max-width: 100%;
 }
-
-/* Reveal Animation Staggering */
-[data-reveal][data-delay="400"] { transition-delay: 0.4s; }
-[data-reveal][data-delay="500"] { transition-delay: 0.5s; }
-[data-reveal][data-delay="600"] { transition-delay: 0.6s; }
 
 /* Custom View Transitions */
 
