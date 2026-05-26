@@ -114,12 +114,12 @@ const featured = {
         <span class='section-label'>Products</span>
         <div class='list'>
           {products.map(link => (
-            <a 
-              href={link.disabled ? undefined : link.href} 
-              target={link.sameTab ? '_self' : '_blank'} 
-              rel='noopener' 
+            <a
+              href={link.disabled ? undefined : link.href}
+              rel='noopener'
               class:list={['item', { 'item--disabled': link.disabled }]}
               target={link.disabled ? undefined : (link.sameTab ? '_self' : '_blank')}
+              data-tooltip={link.status ?? undefined}
             >
               <i class={'ph ' + link.icon + ' item-icon'}></i>
               <div class='item-text'>
@@ -135,20 +135,6 @@ const featured = {
         </div>
       </section>
     )}
-
-    <section class='section'>
-      <span class='section-label'>Curated Music</span>
-      <iframe 
-        style='border-radius:12px' 
-        src='https://open.spotify.com/embed/playlist/79tT9iOJCGPcXqgVgTeEsU?utm_source=generator&theme=0' 
-        width='100%' 
-        height='80' 
-        frameBorder='0' 
-        allowfullscreen='' 
-        allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture' 
-        loading='lazy'
-      ></iframe>
-    </section>
 
     <section class='section'>
       <span class='section-label'>Recent Reading</span>
@@ -253,7 +239,7 @@ const featured = {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: var(--font-size-small);
+    font-size: 13px;
     color: var(--color-muted);
     background: var(--color-pill-bg);
     border: 1px solid var(--color-border);
@@ -327,12 +313,38 @@ const featured = {
   .item--disabled {
     opacity: 0.4;
     cursor: default;
-    pointer-events: none;
+    position: relative;
   }
 
   .item--disabled:hover {
     background: var(--color-pill-bg);
     border-color: var(--color-border);
+    transform: none;
+  }
+
+  @media (hover: hover) {
+    .item-status {
+      display: none;
+    }
+
+    .item--disabled[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+      background: var(--color-title);
+      color: var(--color-bg);
+      font-family: var(--font-mono);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+    }
   }
 
   .item-icon {
@@ -362,7 +374,7 @@ const featured = {
   }
 
   .item-status {
-    font-size: 9px;
+    font-size: var(--font-size-xs);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -373,14 +385,14 @@ const featured = {
   }
 
   .item-sub {
-    font-size: var(--font-size-small);
+    font-size: 13px;
     color: var(--color-muted);
     line-height: 1.4;
   }
 
   .item-arrow {
     font-size: 14px;
-    color: var(--color-border);
+    color: var(--color-muted);
     flex-shrink: 0;
   }
 
@@ -422,7 +434,7 @@ const featured = {
   
   .book-card::before {
     content: attr(title);
-    font-size: 9px;
+    font-size: var(--font-size-xs);
     color: var(--color-muted);
     font-weight: 500;
     line-height: 1.2;
@@ -508,7 +520,7 @@ const featured = {
 
   .featured-tag {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--font-size-xs);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
