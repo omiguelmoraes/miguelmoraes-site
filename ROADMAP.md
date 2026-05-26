@@ -27,8 +27,11 @@
 ## Changelog
 
 ### 2026-05-26
-- Typography: tokens ajustados +1px em todos os níveis sub-título (`--font-size-body` 14→15px, `--font-size-small` 12→13px, `--font-size-xs` 11→12px)
+- Typography: tokens de tamanho ajustados (`--font-size-body` 14→15px, `--font-size-small` 12→14px, `--font-size-xs` 11→12px)
 - Hardcoded `font-size` substituídos por tokens em `index.astro`, `links.astro` e `toolkit.astro`
+- Dark mode `--color-body` #999 → #aaa (mais contraste nas descrições)
+- `.row-link` font-weight 400 → 500 (hierarquia título vs descrição)
+- `.row-content` gap 2px → 4px; `.row-desc` margin-top 4px → 8px (separação metadado/descrição)
 
 
 - Troca de fontes: Inter/SF Mono → Geist + Geist Mono (consistência cross-device)
