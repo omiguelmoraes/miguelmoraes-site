@@ -11,9 +11,9 @@
   --font-family: 'Geist', sans-serif;
   --font-mono: 'Geist Mono', monospace;
   --font-size-title: 20px;
-  --font-size-body: 14px;
-  --font-size-small: 12px;
-  --font-size-xs: 11px;
+  --font-size-body: 15px;
+  --font-size-small: 14px;
+  --font-size-xs: 12px;
 
   --line-height-title: 26px;
   --line-height-body: 1.8;
@@ -30,7 +30,7 @@
 /* Dark mode */
 [data-theme="dark"] {
   --color-title: #eeeeee;
-  --color-body: #999999;
+  --color-body: #aaaaaa;
   --color-muted: #888888;
   --color-bg: #111111;
   --color-border: #2a2a2a;
@@ -41,7 +41,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --color-title: #eeeeee;
-    --color-body: #999999;
+    --color-body: #aaaaaa;
     --color-muted: #888888;
     --color-bg: #111111;
     --color-border: #2a2a2a;

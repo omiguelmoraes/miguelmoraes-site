@@ -26,6 +26,20 @@
 
 ## Changelog
 
+### 2026-05-26
+- Typography: tokens ajustados +1px em todos os níveis sub-título (`--font-size-body` 14→15px, `--font-size-small` 12→13px, `--font-size-xs` 11→12px)
+- Hardcoded `font-size` substituídos por tokens em `index.astro`, `links.astro` e `toolkit.astro`
+
+
+- Troca de fontes: Inter/SF Mono → Geist + Geist Mono (consistência cross-device)
+- Design system: adicionado token `--font-size-xs: 11px`; `--color-muted` dark mode ajustado de #666 para #888 (contraste)
+- Removida seção "Curated Music" da `/links` (embed Spotify pesado e fora do estilo)
+- `/links`: tooltip CSS no hover para "Coming soon" no desktop; badge mantido no mobile
+- `/links`: corrigido `.item-arrow` e `.item-status` usando tokens corretos
+- `[slug].astro`: corrigidos `.meta-sep` e `.section-label` (font-family e tamanho via tokens)
+- `projects/index.astro`: hover de cards usando `var(--color-muted)` em vez de valores hardcoded
+- `index.astro`: diferenciados `.row-sub` (metadado, menor/apagado) e `.row-desc` (descrição, corpo) em todas as seções
+
 ### 2026-05-25
 - Removido sistema de scroll-reveal (IntersectionObserver + `data-reveal`) de todas as páginas
 - Lightbox: adicionadas setas de navegação prev/next (visual + teclado já funcionava)
