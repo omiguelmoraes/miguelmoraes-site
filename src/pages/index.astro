@@ -55,7 +55,7 @@ const featuredProjects = Object.entries(allProjects)
       <p class="section-body">Selected work in web design, UI/UX and branding.</p>
       <div class="rows rows--tight">
         {featuredProjects.map(([slug, project]) => (
-          <div class="row">
+          <div class="row row--link">
             <div class="row-head">
               <a href={`/projects/${slug}`} class="row-link">{project.title}</a>
               <span class="date">{project.year}</span>
@@ -74,7 +74,7 @@ const featuredProjects = Object.entries(allProjects)
         <p class="section-body">Notes and essays on design, code and building things.</p>
         <div class="rows rows--tight">
           {posts.map(post => (
-            <div class="row">
+            <div class="row row--link">
               <div class="row-head">
                 <a href={`/blog/${post.id}`} class="row-link">{post.data.title}</a>
                 <span class="date">{post.data.date.getFullYear()}</span>

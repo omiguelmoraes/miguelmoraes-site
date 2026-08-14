@@ -89,6 +89,23 @@
 }
 
 /* Título à esquerda, data em badge à direita, na mesma linha */
+/* Link esticado: o <a> continua só no título, então o leitor de tela anuncia
+   um link nomeado pelo título, mas a área de clique cobre a linha inteira */
+.row--link {
+  position: relative;
+}
+
+.row--link .row-link::after {
+  content: '';
+  position: absolute;
+  inset: -6px -8px;
+  border-radius: 8px;
+}
+
+.row--link:hover .row-link {
+  text-decoration: underline;
+}
+
 .row-head {
   display: flex;
   align-items: baseline;
@@ -208,7 +225,24 @@ a.row-link:hover {
 
   /* Empilhado, o badge vira uma pílula solta numa linha só pra ele. Sem a
      casca, a data lê como parte da meta do item */
-  .row-head {
+  /* Link esticado: o <a> continua só no título, então o leitor de tela anuncia
+   um link nomeado pelo título, mas a área de clique cobre a linha inteira */
+.row--link {
+  position: relative;
+}
+
+.row--link .row-link::after {
+  content: '';
+  position: absolute;
+  inset: -6px -8px;
+  border-radius: 8px;
+}
+
+.row--link:hover .row-link {
+  text-decoration: underline;
+}
+
+.row-head {
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
