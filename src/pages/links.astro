@@ -10,21 +10,21 @@ const links = [
   },
   {
     label: 'Website',
-    sub: 'Projects, writing and everything else',
+    sub: 'Projects and writing',
     href: 'https://miguelmoraes.pro',
     icon: 'ph-globe',
     sameTab: true,
   },
   {
     label: 'Blog',
-    sub: 'Notas e reflexões, em português',
+    sub: 'Notas em português',
     href: '/blog',
     icon: 'ph-article',
     sameTab: true,
   },
   {
     label: 'Korbi Studio',
-    sub: 'For brands that take design seriously',
+    sub: 'Design for serious brands',
     href: 'https://www.korbi.studio',
     icon: 'ph-buildings',
   },
@@ -382,7 +382,12 @@ const featured = {
     color: var(--color-muted);
   }
 
+  /* Uma linha sempre: texto longo corta com reticências em vez de esticar o
+     botão e desalinhar a lista */
   .item-sub {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: var(--font-size-small);
     color: var(--color-muted);
     line-height: 1.4;
