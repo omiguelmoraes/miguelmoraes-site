@@ -23,7 +23,7 @@ const SUBSTACK = 'miguelmoraes';
           type="email"
           name="email"
           required
-          placeholder="teu@email.com"
+          placeholder="seu@email.com"
           aria-label="Seu e-mail"
           class="subscribe-input"
         />
@@ -42,8 +42,10 @@ const SUBSTACK = 'miguelmoraes';
   )}
 
   <div class="post-cta-socials">
-    <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener">Instagram ↗</a>
-    <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener">X ↗</a>
+    <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><i class="ph ph-instagram-logo"></i></a>
+    <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="X" title="X"><i class="ph ph-x-logo"></i></a>
+    <a href="https://linkedin.com/in/omiguelmoraes" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+    <a href="https://www.youtube.com/@omiguelmoraesx" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><i class="ph ph-youtube-logo"></i></a>
   </div>
 </aside>
 
@@ -180,9 +182,11 @@ const SUBSTACK = 'miguelmoraes';
   }
 
   .post-cta-socials a {
-    font-size: var(--font-size-small);
+    display: inline-flex;
+    font-size: 18px;
     color: var(--color-muted);
     text-decoration: none;
+    transition: color 0.15s;
   }
 
   .post-cta-socials a:hover {
