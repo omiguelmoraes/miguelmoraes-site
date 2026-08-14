@@ -22,10 +22,13 @@
     Array.from(document.querySelectorAll('.lightbox-trigger')) as HTMLImageElement[];
 
   function show(trigger: HTMLImageElement) {
-    const { img } = getEls();
+    const { lightbox, img } = getEls();
     if (!img) return;
     img.src = trigger.dataset.full || trigger.currentSrc || trigger.src;
     img.alt = trigger.alt ?? '';
+    // Guarda a posição em vez de comparar src depois: img.src devolve URL
+    // absoluta e data-full guarda caminho relativo, então a busca nunca casava
+    if (lightbox) lightbox.dataset.index = String(triggers().indexOf(trigger));
   }
 
   function open(trigger: HTMLImageElement) {
