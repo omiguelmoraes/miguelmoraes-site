@@ -17,9 +17,9 @@ const formatDate = (date: Date) =>
 >
   <div class="page">
 
-    <header class="header">
-      <h1 class="title">Blog</h1>
-      <p class="sub">Notas e reflexões sobre design, código e o dia a dia de quem constrói.</p>
+    <header class="page-header">
+      <h1 class="page-title">Blog</h1>
+      <p class="page-intro">Notas e reflexões sobre design, código e o dia a dia de quem constrói.</p>
     </header>
 
     {posts.length > 0 ? (
@@ -53,24 +53,8 @@ const formatDate = (date: Date) =>
   }
   .back:hover { color: var(--color-title); }
 
-  .header {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
 
-  .title {
-    font-size: var(--font-size-title);
-    font-weight: 400;
-    color: var(--color-title);
-    line-height: var(--line-height-title);
-  }
 
-  .sub {
-    font-size: var(--font-size-body);
-    color: var(--color-muted);
-    line-height: var(--line-height-body);
-  }
 
   .list {
     display: flex;

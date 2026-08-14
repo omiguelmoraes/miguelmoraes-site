@@ -6,6 +6,34 @@
   gap: var(--section-gap);
 }
 
+/* Hierarquia de título
+   .page-title  — nome da página (um por página, no topo)
+   .section-title — rótulo de seção dentro de uma página */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: var(--prose-max-width);
+}
+
+.page-title {
+  font-size: var(--font-size-title);
+  font-weight: 500;
+  color: var(--color-title);
+  line-height: var(--line-height-title);
+}
+
+.page-intro {
+  font-size: var(--font-size-body);
+  color: var(--color-body);
+  line-height: var(--line-height-body);
+}
+
+.page-intro a {
+  color: var(--color-title);
+  text-decoration: underline;
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -31,32 +59,50 @@
 .rows {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 32px;
 }
 
-.rows--divided > .row + .row {
-  border-top: 1px solid var(--color-border);
-  padding-top: 16px;
+/* Listas sem descrição longa respiram menos */
+.rows--tight {
+  gap: 20px;
+}
+
+.row-images--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 320px;
 }
 
 .row {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+/* Título à esquerda, data em badge à direita, na mesma linha */
+.row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .date {
-  width: var(--date-col-width);
   flex-shrink: 0;
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-mono);
   color: var(--color-muted);
-  line-height: var(--line-height-body);
+  background: var(--color-pill-bg);
+  padding: 2px 8px;
+  border-radius: 10px;
+  line-height: 1.7;
+  white-space: nowrap;
 }
 
 .row-content {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  flex: 1;
   min-width: 0;
 }
 
@@ -114,38 +160,36 @@ a.row-link:hover {
 
 /* Horizontal image strip inside a row */
 .row-images {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
   margin-top: 12px;
-  padding-bottom: 4px;
 }
 
 .row-image {
-  flex-shrink: 0;
-  scroll-snap-align: start;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--color-border);
+  background: var(--color-wash);
 }
 
 .row-image img {
   display: block;
-  width: 200px;
-  height: 130px;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  height: auto;
   object-fit: cover;
   cursor: zoom-in;
 }
 
 @media (max-width: 600px) {
-  .row {
+  .row-head {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
   }
 
-  .date {
-    width: auto;
-    font-size: var(--font-size-small);
+  .row-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
