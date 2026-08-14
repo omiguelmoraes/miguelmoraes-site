@@ -46,19 +46,25 @@
   padding-top: var(--section-gap);
 }
 
+/* Mesmo estilo do título de página: um só nível tipográfico no site inteiro */
 .section-title {
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  line-height: var(--line-height-section);
-  color: var(--color-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: var(--font-size-title);
+  font-weight: 500;
+  color: var(--color-title);
+  line-height: var(--line-height-title);
 }
 
 .section-body {
   font-size: var(--font-size-body);
   color: var(--color-body);
   line-height: var(--line-height-body);
+  max-width: var(--prose-max-width);
+  margin-top: -8px;
+}
+
+.section-body a {
+  color: var(--color-title);
+  text-decoration: underline;
 }
 
 .rows {
