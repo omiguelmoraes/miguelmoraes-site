@@ -46,6 +46,12 @@
   padding-top: var(--section-gap);
 }
 
+/* Seção sem título é continuação do bloco anterior, não uma nova seção */
+.content > * + .section:not(:has(> .section-title)) {
+  border-top: none;
+  padding-top: 0;
+}
+
 /* Mesmo estilo do título de página: um só nível tipográfico no site inteiro */
 .section-title {
   font-size: var(--font-size-title);
