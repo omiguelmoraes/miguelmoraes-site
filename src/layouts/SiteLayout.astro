@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/sections.css';
 
 interface Props {
@@ -20,6 +21,7 @@ const { title, description, image, lang } = Astro.props;
     <Sidebar />
     <main class="main">
       <slot />
+      <Footer />
     </main>
   </div>
 </BaseLayout>

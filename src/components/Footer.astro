@@ -1,0 +1,56 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <span class="footer-wordmark">Miguel Moraes</span>
+  <span class="footer-meta">
+    © {year} · <span class="js-local-time">--:--</span> em Porto Alegre
+  </span>
+</footer>
+
+<script>
+  // Relógio no rodapé e no menu mobile: mesma classe, um script só.
+  // Chamada imediata porque astro:page-load já disparou quando este módulo roda
+  function tick() {
+    const els = document.querySelectorAll('.js-local-time');
+    if (!els.length) return;
+    const now = new Intl.DateTimeFormat('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).format(new Date());
+    els.forEach(el => (el.textContent = now));
+  }
+
+  tick();
+  setInterval(tick, 30_000);
+  document.addEventListener('astro:page-load', tick);
+</script>
+
+<style>
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 80px 0 8px;
+    text-align: center;
+  }
+
+  /* Marca o fim da página sem precisar de linha nem de bloco pesado */
+  .footer-wordmark {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-border);
+    user-select: none;
+  }
+
+  .footer-meta {
+    font-size: var(--font-size-xs);
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+  }
+</style>
