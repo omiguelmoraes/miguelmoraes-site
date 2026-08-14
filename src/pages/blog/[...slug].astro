@@ -244,14 +244,9 @@ const related = all
     background-color: transparent !important;
   }
 
-  :root[data-theme='dark'] .prose .astro-code,
-  :root[data-theme='dark'] .prose .astro-code span {
-    color: var(--shiki-dark);
-  }
-
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme='light']) .prose .astro-code,
-    :root:not([data-theme='light']) .prose .astro-code span {
+    .prose .astro-code,
+    .prose .astro-code span {
       color: var(--shiki-dark);
     }
   }

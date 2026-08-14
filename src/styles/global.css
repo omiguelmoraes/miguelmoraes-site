@@ -31,19 +31,9 @@
   --row-text-max-width: 60ch;
 }
 
-/* Dark mode */
-[data-theme="dark"] {
-  --color-title: #eeeeee;
-  --color-body: #aaaaaa;
-  --color-muted: #888888;
-  --color-bg: #111111;
-  --color-border: #2a2a2a;
-  --color-wash: #1a1a1a;
-  --color-pill-bg: #1e1e1e;
-}
-
+/* Sem toggle: o tema segue a preferência do sistema */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root {
     --color-title: #eeeeee;
     --color-body: #aaaaaa;
     --color-muted: #888888;

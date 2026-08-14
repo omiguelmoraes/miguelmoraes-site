@@ -313,8 +313,10 @@ const featured = {
     text-decoration: none;
   }
 
-  [data-theme='dark'] .item:hover {
-    border-color: #444;
+  @media (prefers-color-scheme: dark) {
+    .item:hover {
+      border-color: #444;
+    }
   }
 
   .item--disabled {
@@ -494,8 +496,10 @@ const featured = {
     text-decoration: none;
   }
 
-  [data-theme='dark'] .featured:hover {
-    border-color: #444;
+  @media (prefers-color-scheme: dark) {
+    .featured:hover {
+      border-color: #444;
+    }
   }
 
   .featured-image {

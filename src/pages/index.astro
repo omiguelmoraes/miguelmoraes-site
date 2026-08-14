@@ -165,11 +165,12 @@ const featuredProjects = Object.entries(allProjects)
     opacity: 1;
   }
 
+  /* Sem caixa no hover: o recuo negativo que alinhava o glifo deixava o
+     fundo do hover transbordando pra fora da coluna de texto */
   .socials {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
-    margin-left: -8px;
+    gap: 18px;
   }
 
   .socials a {
@@ -177,14 +178,11 @@ const featuredProjects = Object.entries(allProjects)
     color: var(--color-muted);
     text-decoration: none;
     font-size: 18px;
-    padding: 8px;
-    border-radius: 8px;
-    transition: color 0.15s, background 0.15s;
+    transition: color 0.15s;
   }
 
   .socials a:hover {
     color: var(--color-title);
-    background: var(--color-wash);
   }
 
 </style>
