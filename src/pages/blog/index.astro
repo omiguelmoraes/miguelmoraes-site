@@ -61,7 +61,7 @@ const categories = Object.entries(counts).sort((a, b) => b[1] - a[1]);
   .page {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: var(--block-gap);
     max-width: var(--prose-max-width);
   }
 

@@ -40,15 +40,12 @@
   gap: 16px;
 }
 
-/* Sem linha: a separação fica só no espaço, mantendo o mesmo respiro */
-.content > * + .section {
-  padding-top: var(--section-gap);
-}
+/* Separação vem só do gap do .content. Antes havia um padding-top aqui pra
+   afastar da linha divisória, que somava com o gap e dobrava o espaço */
 
-/* Seção sem título é continuação do bloco anterior, não uma nova seção */
+/* Seção sem título é continuação do bloco anterior */
 .content > * + .section:not(:has(> .section-title)) {
-  border-top: none;
-  padding-top: 0;
+  margin-top: calc(var(--section-gap) * -1 + var(--block-gap));
 }
 
 /* Mesmo estilo do título de página: um só nível tipográfico no site inteiro */
