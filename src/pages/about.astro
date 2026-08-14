@@ -80,7 +80,7 @@ const photos = Object.entries(photoModules)
         <div class="photo-grid">
           {photos.map(photo => (
             <div class="row-image">
-              <Image src={photo} alt="" widths={[400, 800]} sizes="(max-width: 600px) 50vw, 340px" class="lightbox-trigger" loading="lazy" />
+              <Image src={photo} alt="" widths={[400, 800]} sizes="(max-width: 600px) 45vw, 330px" class="lightbox-trigger" loading="lazy" />
             </div>
           ))}
         </div>
@@ -110,7 +110,7 @@ const photos = Object.entries(photoModules)
   .photo-grid :global(img) {
     display: block;
     width: 100%;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 3 / 4;
     height: auto;
     object-fit: cover;
     cursor: zoom-in;
