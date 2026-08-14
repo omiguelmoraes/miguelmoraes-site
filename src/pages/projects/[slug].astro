@@ -314,8 +314,11 @@ const otherProjects = [prevProject, nextProject];
     line-height: var(--line-height-body);
   }
 
+  /* Sozinho num rodapé largo, alinhado à direita a seta aponta pro lado que a
+     pessoa vai. Na home ele fica à esquerda porque segue o ritmo da lista */
   .footer-links {
     display: flex;
+    justify-content: flex-end;
   }
 
   .home-link {
