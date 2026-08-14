@@ -344,12 +344,9 @@ const featured = {
       transform: translateY(-50%);
       background: var(--color-title);
       color: var(--color-bg);
-      font-family: var(--font-mono);
       font-size: var(--font-size-xs);
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 3px 8px;
+      font-weight: 500;
+      padding: 4px 9px;
       border-radius: 4px;
       white-space: nowrap;
       pointer-events: none;
@@ -411,13 +408,11 @@ const featured = {
     gap: 12px;
   }
 
+  /* Alinhado ao resto do site, que abandonou o mono caixa-alta como rótulo */
   .section-label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-muted);
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    color: var(--color-title);
   }
 
   .reading-grid {
