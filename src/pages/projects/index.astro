@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
+import Filters from '../../components/Filters.astro';
 import { allProjects } from '../../data/projects';
 
 const filterTags = ['Branding', 'Web Design', 'UI/UX'];
@@ -17,12 +18,10 @@ const totalCount = Object.values(allProjects).length;
       <p class="page-intro">Selected work in web design, UI/UX and front-end.</p>
     </header>
 
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All <span class="filter-count">{totalCount}</span></button>
-      {filterTags.map(tag => (
-        <button class="filter-btn" data-filter={tag}>{tag} <span class="filter-count">{tagCounts[tag]}</span></button>
-      ))}
-    </div>
+    <Filters
+      allCount={totalCount}
+      options={filterTags.map(tag => ({ label: tag, value: tag, count: tagCounts[tag] }))}
+    />
 
     <div class="grid">
       {Object.entries(allProjects).map(([slug, project]) => (
@@ -49,33 +48,6 @@ const totalCount = Object.values(allProjects).length;
   </div>
 </SiteLayout>
 
-<script>
-  // Delegação no document, registrada quando o módulo roda. Depender de
-  // astro:page-load não funciona: o ClientRouter dispara esse evento antes
-  // deste script (module = deferido) executar.
-  document.addEventListener('click', (e) => {
-    const btn = (e.target as HTMLElement).closest('.filter-btn') as HTMLButtonElement | null;
-    if (!btn) return;
-
-    const group = btn.parentElement;
-    group?.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    const filter = btn.dataset.filter!;
-    const items = document.querySelectorAll<HTMLElement>('[data-tags]');
-    let visible = 0;
-    items.forEach(item => {
-      const tags = (item.dataset.tags ?? '').split(',');
-      const show = filter === 'all' || tags.includes(filter);
-      item.style.display = show ? '' : 'none';
-      if (show) visible++;
-    });
-
-    const emptyState = document.getElementById('empty-state');
-    if (emptyState) emptyState.hidden = visible > 0;
-  });
-</script>
-
 <style>
   .page {
     display: flex;
@@ -93,45 +65,6 @@ const totalCount = Object.values(allProjects).length;
 
 
 
-  .filters {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .filter-btn {
-    background: transparent;
-    color: var(--color-muted);
-    border: 1px solid var(--color-border);
-    font-size: var(--font-size-small);
-    font-family: inherit;
-    padding: 4px 14px;
-    border-radius: 12px;
-    cursor: pointer;
-    line-height: 1.6;
-    transition: border-color 0.15s, color 0.15s, background 0.15s;
-  }
-
-  .filter-btn:hover {
-    color: var(--color-title);
-    border-color: var(--color-muted);
-  }
-
-  .filter-btn.active {
-    background: var(--color-title);
-    border-color: var(--color-title);
-    color: var(--color-bg);
-  }
-
-  .filter-count {
-    opacity: 0.45;
-    font-size: 0.85em;
-    margin-left: 1px;
-  }
-
-  .filter-btn.active .filter-count {
-    opacity: 0.6;
-  }
 
   .empty-state {
     padding: 64px 0;
@@ -232,21 +165,4 @@ const totalCount = Object.values(allProjects).length;
     }
   }
 
-  @media (max-width: 700px) {
-    .filters {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scrollbar-width: none;
-      margin-inline: calc(var(--layout-padding-x) * -1);
-      padding-inline: var(--layout-padding-x);
-    }
-
-    .filters::-webkit-scrollbar {
-      display: none;
-    }
-
-    .filter-btn {
-      flex-shrink: 0;
-    }
-  }
 </style>

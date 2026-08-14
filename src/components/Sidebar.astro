@@ -43,6 +43,16 @@ const isActive = (href: string) =>
         {item.label}
       </a>
     ))}
+
+    <div class="nav-footer">
+      <div class="nav-socials">
+        <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        <a href="https://linkedin.com/in/omiguelmoraes" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+        <a href="https://www.behance.net/omiguelmoraes" target="_blank" rel="noopener" aria-label="Behance"><i class="ph ph-behance-logo"></i></a>
+        <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="X"><i class="ph ph-x-logo"></i></a>
+      </div>
+      <span class="nav-time"><span id="nav-local-time">--:--</span> · Porto Alegre, Brazil</span>
+    </div>
   </nav>
 </aside>
 
@@ -80,6 +90,21 @@ const isActive = (href: string) =>
   });
 
   document.addEventListener('astro:before-swap', () => setOpen(false));
+
+  function tick() {
+    const el = document.getElementById('nav-local-time');
+    if (!el) return;
+    el.textContent = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Sao_Paulo',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).format(new Date());
+  }
+
+  tick();
+  setInterval(tick, 30_000);
+  document.addEventListener('astro:page-load', tick);
 </script>
 
 <style>
@@ -160,6 +185,10 @@ const isActive = (href: string) =>
     display: inline-block;
   }
 
+  .nav-footer {
+    display: none;
+  }
+
   .nav {
     display: flex;
     flex-direction: column;
@@ -214,15 +243,25 @@ const isActive = (href: string) =>
       display: block;
     }
 
-    /* Dropdown: fechado por padrão, abre com o hambúrguer */
+    /* Aberto, o cabeçalho vira painel de tela cheia */
+    .sidebar.nav-open {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      margin: 0;
+      padding: 16px var(--layout-padding-x) max(24px, env(safe-area-inset-bottom));
+      border-bottom: none;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
     .nav {
-      margin-left: 0;
-      margin-top: 20px;
-      gap: 0;
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      overflow: hidden;
       display: none;
+      margin-left: -10px;
+      margin-top: 28px;
+      gap: 2px;
+      flex: 1;
     }
 
     .sidebar.nav-open .nav {
@@ -230,16 +269,38 @@ const isActive = (href: string) =>
     }
 
     .nav-item {
-      padding: 12px 16px;
-      border-radius: 0;
-    }
-
-    .nav-item + .nav-item {
-      border-top: 1px solid var(--color-border);
+      font-size: var(--font-size-title);
+      padding: 10px;
     }
 
     .nav-item.active {
-      background: var(--color-pill-bg);
+      background: transparent;
+    }
+
+    .nav-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: auto;
+      padding: 24px 10px 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .nav-socials {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-socials a {
+      color: var(--color-muted);
+      font-size: 20px;
+      display: inline-flex;
+    }
+
+    .nav-time {
+      font-size: var(--font-size-small);
+      color: var(--color-muted);
+      font-variant-numeric: tabular-nums;
     }
   }
 
