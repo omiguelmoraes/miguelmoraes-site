@@ -22,9 +22,18 @@ const isActive = (href: string) =>
       <span class="name">Miguel Moraes</span>
       <span class="role">Designer</span>
     </div>
+    <button
+      class="nav-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <i class="ph ph-list icon-open"></i>
+      <i class="ph ph-x icon-close"></i>
+    </button>
   </div>
 
-  <nav class="nav" aria-label="Main">
+  <nav class="nav" id="site-nav" aria-label="Main">
     {nav.map(item => (
       <a
         href={item.href}
@@ -36,6 +45,42 @@ const isActive = (href: string) =>
     ))}
   </nav>
 </aside>
+
+<script>
+  // Delegação no document: os scripts inline do Astro são type=module e rodam
+  // depois do ClientRouter disparar astro:page-load, então registrar no evento
+  // não pega o primeiro carregamento
+  const sidebar = () => document.querySelector('.sidebar');
+
+  function setOpen(open: boolean) {
+    const el = sidebar();
+    if (!el) return;
+    el.classList.toggle('nav-open', open);
+    const btn = el.querySelector('.nav-toggle');
+    btn?.setAttribute('aria-expanded', String(open));
+    btn?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+
+    if (target.closest('.nav-toggle')) {
+      setOpen(!sidebar()?.classList.contains('nav-open'));
+      return;
+    }
+
+    if (!sidebar()?.classList.contains('nav-open')) return;
+
+    // Clicar num link navega; clicar fora fecha
+    if (target.closest('.nav-item') || !target.closest('.nav')) setOpen(false);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  document.addEventListener('astro:before-swap', () => setOpen(false));
+</script>
 
 <style>
   .sidebar {
@@ -88,6 +133,33 @@ const isActive = (href: string) =>
     line-height: var(--line-height-body);
   }
 
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-title);
+    cursor: pointer;
+    padding: 8px;
+    line-height: 0;
+    font-size: 20px;
+    margin-left: auto;
+    transition: background 0.15s;
+  }
+
+  .nav-toggle:hover {
+    background: var(--color-wash);
+  }
+
+  .nav-toggle .icon-close,
+  .sidebar.nav-open .nav-toggle .icon-open {
+    display: none;
+  }
+
+  .sidebar.nav-open .nav-toggle .icon-close {
+    display: inline-block;
+  }
+
   .nav {
     display: flex;
     flex-direction: column;
@@ -120,7 +192,7 @@ const isActive = (href: string) =>
      a navegação atrás de um toque sem necessidade. */
   @media (max-width: 900px) {
     .sidebar {
-      gap: 20px;
+      gap: 0;
     }
 
     .identity {
@@ -130,39 +202,45 @@ const isActive = (href: string) =>
     }
 
     .avatar {
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
     }
 
+    .name {
+      font-size: var(--font-size-body);
+    }
+
+    .nav-toggle {
+      display: block;
+    }
+
+    /* Dropdown: fechado por padrão, abre com o hambúrguer */
     .nav {
-      flex-direction: row;
-      gap: 20px;
       margin-left: 0;
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: 4px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .nav::-webkit-scrollbar {
+      margin-top: 20px;
+      gap: 0;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
       display: none;
     }
 
+    .sidebar.nav-open .nav {
+      display: flex;
+    }
+
     .nav-item {
-      white-space: nowrap;
-      padding: 0 0 8px;
-      margin-bottom: -5px;
+      padding: 12px 16px;
       border-radius: 0;
-      border-bottom: 1px solid transparent;
     }
 
-    .nav-item:hover,
-    .nav-item.active {
-      background: transparent;
+    .nav-item + .nav-item {
+      border-top: 1px solid var(--color-border);
     }
 
     .nav-item.active {
-      border-bottom-color: var(--color-title);
+      background: var(--color-pill-bg);
     }
   }
+
 </style>
