@@ -51,8 +51,10 @@ const { title, description, image, lang } = Astro.props;
       padding: 0 var(--layout-padding-x) var(--layout-padding-y);
     }
 
-    /* Sangra até a borda da tela pro fundo cobrir o conteúdo que passa por baixo */
-    .shell > :global(.sidebar) {
+    /* Sangra até a borda da tela pro fundo cobrir o conteúdo que passa por baixo.
+       Exclui o estado aberto: lá o Sidebar assume com position: fixed, e sem o
+       :not as duas regras empatariam em especificidade */
+    .shell > :global(.sidebar:not(.nav-open)) {
       position: sticky;
       top: 0;
       z-index: 20;

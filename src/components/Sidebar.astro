@@ -66,6 +66,7 @@ const isActive = (href: string) =>
     const el = sidebar();
     if (!el) return;
     el.classList.toggle('nav-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
     const btn = el.querySelector('.nav-toggle');
     btn?.setAttribute('aria-expanded', String(open));
     btn?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -248,6 +249,7 @@ const isActive = (href: string) =>
       position: fixed;
       inset: 0;
       z-index: 60;
+      background: var(--color-bg);
       margin: 0;
       padding: 16px var(--layout-padding-x) max(24px, env(safe-area-inset-bottom));
       border-bottom: none;
