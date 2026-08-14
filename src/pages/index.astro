@@ -2,6 +2,7 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { getCollection } from 'astro:content';
 import { allProjects } from '../data/projects';
+import ContactLinks from '../components/ContactLinks.astro';
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -89,24 +90,10 @@ const featuredProjects = Object.entries(allProjects)
     <!-- Connect -->
     <section class="section">
       <h2 class="section-title">Connect</h2>
-      <p class="section-body">WhatsApp is the fastest way to reach me. Email works too.</p>
-      <div class="contact-actions">
-        <a href="https://api.whatsapp.com/send?phone=5551998734305" target="_blank" rel="noopener" class="contact-primary">
-          <i class="ph ph-whatsapp-logo"></i>
-          WhatsApp
-        </a>
-        <a href="mailto:omiguelmoraes@outlook.com" class="contact-primary contact-primary--ghost">
-          <i class="ph ph-envelope-simple"></i>
-          omiguelmoraes@outlook.com
-        </a>
-      </div>
-      <div class="socials">
-        <a href="https://linkedin.com/in/omiguelmoraes" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
-        <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-        <a href="https://www.behance.net/omiguelmoraes" target="_blank" rel="noopener" aria-label="Behance"><i class="ph ph-behance-logo"></i></a>
-        <a href="https://www.youtube.com/@omiguelmoraesx" target="_blank" rel="noopener" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
-        <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="X"><i class="ph ph-x-logo"></i></a>
-      </div>
+      <p class="section-body">
+        WhatsApp is the fastest way to reach me. Email works too: <a href="mailto:omiguelmoraes@outlook.com">omiguelmoraes@outlook.com</a>.
+      </p>
+      <ContactLinks />
     </section>
 
   </div>
@@ -132,57 +119,5 @@ const featuredProjects = Object.entries(allProjects)
     background: var(--color-wash);
   }
 
-  .contact-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .contact-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: var(--font-size-body);
-    color: var(--color-bg);
-    background: var(--color-title);
-    padding: 8px 16px;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: opacity 0.15s;
-  }
-
-  .contact-primary:hover {
-    opacity: 0.85;
-  }
-
-  .contact-primary--ghost {
-    color: var(--color-title);
-    background: var(--color-pill-bg);
-  }
-
-  .contact-primary--ghost:hover {
-    background: var(--color-wash);
-    opacity: 1;
-  }
-
-  /* Sem caixa no hover: o recuo negativo que alinhava o glifo deixava o
-     fundo do hover transbordando pra fora da coluna de texto */
-  .socials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-  }
-
-  .socials a {
-    display: inline-flex;
-    color: var(--color-muted);
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.15s;
-  }
-
-  .socials a:hover {
-    color: var(--color-title);
-  }
 
 </style>
