@@ -9,23 +9,10 @@ const links = [
     icon: 'ph-whatsapp-logo',
   },
   {
-    label: 'Portfolio',
-    sub: 'The good stuff',
+    label: 'Website',
+    sub: 'Projects, writing and everything else',
     href: 'https://miguelmoraes.pro',
     icon: 'ph-globe',
-    sameTab: true,
-  },
-  {
-    label: 'Korbi Studio',
-    sub: 'The studio I built',
-    href: 'https://www.korbi.studio',
-    icon: 'ph-buildings',
-  },
-  {
-    label: 'Toolkit',
-    sub: 'What I actually use',
-    href: '/toolkit',
-    icon: 'ph-stack',
     sameTab: true,
   },
   {
@@ -34,6 +21,12 @@ const links = [
     href: '/blog',
     icon: 'ph-article',
     sameTab: true,
+  },
+  {
+    label: 'Korbi Studio',
+    sub: 'For brands that take design seriously',
+    href: 'https://www.korbi.studio',
+    icon: 'ph-buildings',
   },
 ];
 
@@ -109,7 +102,6 @@ const featured = {
           <img src={featured.image} alt={featured.title} width='400' height='225' loading='lazy' />
         </div>
         <div class='featured-content'>
-          <span class='featured-tag'>{featured.label}</span>
           <span class='featured-title'>{featured.title}</span>
           <span class='featured-sub'>{featured.sub}</span>
         </div>
@@ -524,14 +516,6 @@ const featured = {
     background: var(--color-pill-bg);
   }
 
-  .featured-tag {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-  }
 
   .featured-title {
     font-size: var(--font-size-body);
