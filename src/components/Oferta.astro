@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  label?: string;
+}
+
+const { title, href, label = 'Ver mais' } = Astro.props;
+---
+
+<aside class="oferta">
+  <div class="oferta-content">
+    <span class="oferta-title">{title}</span>
+    <p class="oferta-body"><slot /></p>
+  </div>
+  <a href={href} target="_blank" rel="noopener" class="oferta-link">{label} →</a>
+</aside>
+
+<style>
+  .oferta {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--color-wash);
+  }
+
+  .oferta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .oferta-title {
+    font-size: var(--font-size-body);
+    color: var(--color-title);
+  }
+
+  .oferta-body {
+    font-size: var(--font-size-small);
+    color: var(--color-body);
+    line-height: var(--line-height-body);
+  }
+
+  .oferta-link {
+    font-size: var(--font-size-small);
+    color: var(--color-title);
+    text-decoration: none;
+    align-self: flex-start;
+    border-bottom: 1px solid var(--color-border);
+    transition: border-color 0.15s;
+  }
+
+  .oferta-link:hover {
+    border-color: var(--color-title);
+  }
+</style>

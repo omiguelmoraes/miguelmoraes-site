@@ -1,6 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Lightbox from '../components/Lightbox.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -50,6 +55,28 @@ const jsonLd = {
           I like creating things that look good, and actually mean something. Currently at Barca, and I run <a href="https://www.korbi.studio" target="_blank" rel="noopener" style="text-decoration: underline">Korbi</a> on the side, my own studio for brands that think the same&nbsp;way.
         </p>
       </section>
+
+      <!-- Writing -->
+      {posts.length > 0 && (
+        <section class="section">
+          <h2 class="section-title">Writing</h2>
+          <p class="section-note">Notes and essays, in Portuguese.</p>
+          <div class="rows">
+            {posts.map(post => (
+              <div class="row">
+                <span class="date">{post.data.date.getFullYear()}</span>
+                <div class="row-content">
+                  <a href={`/blog/${post.id}`} class="row-link">{post.data.title}</a>
+                </div>
+              </div>
+            ))}
+            <div class="row">
+              <span class="date"></span>
+              <a href="/blog" class="see-all">See all writing →</a>
+            </div>
+          </div>
+        </section>
+      )}
 
       <!-- Projects -->
       <section class="section">
@@ -470,6 +497,13 @@ const jsonLd = {
     font-size: var(--font-size-body);
     color: var(--color-body);
     line-height: var(--line-height-body);
+  }
+
+  .section-note {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    line-height: var(--line-height-body);
+    margin-top: -8px;
   }
 
   .rows {

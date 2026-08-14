@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  lang="pt-BR"
+  title="Blog — Miguel Moraes"
+  description="Notas e reflexões sobre design, código e o dia a dia de quem constrói."
+>
+  <div class="page">
+
+    <nav class="nav">
+      <a href="/" class="back">← Miguel Moraes</a>
+    </nav>
+
+    <header class="header">
+      <h1 class="title">Blog</h1>
+      <p class="sub">Notas e reflexões sobre design, código e o dia a dia de quem constrói.</p>
+    </header>
+
+    {posts.length > 0 ? (
+      <div class="list">
+        {posts.map(post => (
+          <a href={`/blog/${post.id}`} class="item">
+            <span class="item-date">{formatDate(post.data.date)}</span>
+            <div class="item-content">
+              <span class="item-title">{post.data.title}</span>
+              <p class="item-sub">{post.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="empty">Em breve.</p>
+    )}
+
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding: 48px var(--layout-padding-x) var(--layout-padding-y);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .back {
+    font-size: var(--font-size-body);
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+  .back:hover { color: var(--color-title); }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .title {
+    font-size: var(--font-size-title);
+    font-weight: 400;
+    color: var(--color-title);
+    line-height: var(--line-height-title);
+  }
+
+  .sub {
+    font-size: var(--font-size-body);
+    color: var(--color-muted);
+    line-height: var(--line-height-body);
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .item {
+    display: flex;
+    gap: 16px;
+    text-decoration: none;
+  }
+
+  .item-date {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    flex-shrink: 0;
+    width: 130px;
+    line-height: var(--line-height-body);
+  }
+
+  .item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .item-title {
+    font-size: var(--font-size-body);
+    color: var(--color-title);
+    line-height: var(--line-height-body);
+  }
+
+  .item:hover .item-title {
+    text-decoration: underline;
+  }
+
+  .item-sub {
+    font-size: var(--font-size-small);
+    color: var(--color-body);
+    line-height: var(--line-height-body);
+  }
+
+  .empty {
+    color: var(--color-muted);
+    font-size: var(--font-size-body);
+  }
+
+  @media (max-width: 600px) {
+    .item {
+      flex-direction: column;
+      gap: 4px;
+    }
+    .item-date {
+      width: auto;
+    }
+  }
+</style>
