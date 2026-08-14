@@ -1,27 +1,16 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { Image } from 'astro:assets';
 
-const toolkit = [
-  { name: 'Mac Mini M4', note: "Apple's most capable compact desktop — fast, silent, small.", href: 'https://www.apple.com/mac-mini/', group: 'Hardware' },
-  { name: 'MX Master 3', note: "Best productivity mouse I've used. Comfortable for long sessions.", href: 'https://www.logitech.com/products/mice/mx-master-3s.html', group: 'Hardware' },
-  { name: 'AOC 27" QHD', note: 'Sharp, spacious monitor for everyday design and dev work.', href: '', group: 'Hardware' },
-  { name: 'Aula F75', note: 'Compact 75% mechanical keyboard. Great value.', href: '', group: 'Hardware' },
-  { name: 'Edifier W820NB', note: 'Wireless headphones with decent noise cancellation.', href: '', group: 'Hardware' },
-  { name: 'Figma', note: 'Design, prototyping, and brand work.', href: 'https://figma.com', group: 'Software' },
-  { name: 'Cursor', note: 'AI-powered code editor. Changed how I write code.', href: 'https://cursor.sh', group: 'Software' },
-  { name: 'Claude', note: 'AI for coding, content creation, and thinking through problems.', href: 'https://claude.ai', group: 'Software' },
-  { name: 'Obsidian', note: 'Second brain and note-taking. All my notes live here.', href: 'https://obsidian.md', group: 'Software' },
-  { name: 'TickTick', note: 'Task and project management with time blocking built in.', href: 'https://ticktick.com', group: 'Software' },
-  { name: 'Ghostty', note: 'Fast and minimal terminal.', href: 'https://ghostty.org', group: 'Software' },
-  { name: 'Arc', note: 'Browser I switched to, mainly for Spaces and the sidebar.', href: 'https://arc.net/', group: 'Software' },
-  { name: 'Apple Calendar', note: 'Simple. Does the job.', href: '', group: 'Software' },
-  { name: "Don't Make Me Think", note: 'Steve Krug — The classic on web usability. Essential for anyone in design.', href: '', group: 'Books' },
-  { name: 'Win Without Pitching Manifesto', note: 'Blair Enns — How to position yourself and stop competing on price.', href: '', group: 'Books' },
-  { name: 'Rework', note: 'Jason Fried & DHH — A different way to think about work and building things.', href: '', group: 'Books' },
-  { name: 'The Art of Thinking in Graphs', note: 'Visual thinking and structured problem-solving.', href: '', group: 'Books' },
-  { name: 'Princípio de UX', note: 'Daniel Furtado — UX in Portuguese, well-grounded and practical.', href: '', group: 'Books' },
-  { name: 'Fall in Love with the Problem, Not the Solution', note: 'Uri Levine — On building products that solve real problems.', href: '', group: 'Books' },
-];
+// Qualquer imagem solta em src/assets/about/ aparece aqui, sem tocar no código
+const photoModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/about/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+const photos = Object.entries(photoModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, mod]) => mod.default);
 ---
 
 <SiteLayout
@@ -39,6 +28,20 @@ const toolkit = [
         Most of what I do comes back to the same question: why some things get noticed and others don't. I write about it in <a href="/blog">Portuguese</a>, and I build things to find&nbsp;out.
       </p>
     </header>
+
+    {photos.length > 0 && (
+      <section class="section">
+        <h2 class="section-title">Photos</h2>
+        <p class="section-body">Bits of the day to day — desk, city, work in progress.</p>
+        <div class="photo-grid">
+          {photos.map(photo => (
+            <div class="row-image">
+              <Image src={photo} alt="" widths={[300, 600]} sizes="(max-width: 600px) 50vw, 220px" class="lightbox-trigger" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Side Projects -->
     <section class="section">
@@ -79,29 +82,6 @@ const toolkit = [
       </div>
     </section>
 
-    <!-- Toolkit -->
-    <section class="section" id="toolkit">
-      <h2 class="section-title">Toolkit</h2>
-      <p class="section-body">Gear, software and books I use and recommend.</p>
-      <div class="rows rows--tight">
-        {toolkit.map(item => (
-          <div class="row">
-            <div class="row-head">
-              {item.href ? (
-                <a href={item.href} target="_blank" rel="noopener" class="row-link">
-                  {item.name}
-                  <i class="ph ph-arrow-square-out"></i>
-                </a>
-              ) : (
-                <span class="row-link">{item.name}</span>
-              )}
-              <span class="date">{item.group}</span>
-            </div>
-            <span class="row-sub">{item.note}</span>
-          </div>
-        ))}
-      </div>
-    </section>
 
     <!-- Contact -->
     <section class="section">
@@ -163,4 +143,29 @@ const toolkit = [
     </section>
 
   </div>
+
+  <Lightbox />
 </SiteLayout>
+
+<style>
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .photo-grid :global(img) {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    height: auto;
+    object-fit: cover;
+    cursor: zoom-in;
+  }
+
+  @media (max-width: 600px) {
+    .photo-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

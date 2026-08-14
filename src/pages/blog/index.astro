@@ -8,6 +8,12 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+
+// Categorias saem das tags dos posts, ordenadas por frequência
+const tagCounts = posts
+  .flatMap(p => p.data.tags)
+  .reduce<Record<string, number>>((acc, tag) => ({ ...acc, [tag]: (acc[tag] ?? 0) + 1 }), {});
+const tags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
 ---
 
 <SiteLayout
@@ -22,10 +28,19 @@ const formatDate = (date: Date) =>
       <p class="page-intro">Notas e reflexões sobre design, código e o dia a dia de quem constrói.</p>
     </header>
 
+    {tags.length > 1 && (
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Todos <span class="filter-count">{posts.length}</span></button>
+        {tags.map(([tag, count]) => (
+          <button class="filter-btn" data-filter={tag}>{tag} <span class="filter-count">{count}</span></button>
+        ))}
+      </div>
+    )}
+
     {posts.length > 0 ? (
       <div class="list">
         {posts.map(post => (
-          <a href={`/blog/${post.id}`} class="item">
+          <a href={`/blog/${post.id}`} class="item" data-tags={post.data.tags.join(',')}>
             <span class="item-title">{post.data.title}</span>
             <span class="item-date">{formatDate(post.data.date)}</span>
           </a>
@@ -35,10 +50,79 @@ const formatDate = (date: Date) =>
       <p class="empty">Em breve.</p>
     )}
 
+    <p class="empty" id="empty-state" hidden>Nada nessa categoria ainda.</p>
+
   </div>
 </SiteLayout>
 
+<script>
+  function setupFilters() {
+    const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const items = document.querySelectorAll<HTMLElement>('.item');
+    const emptyState = document.getElementById('empty-state');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter!;
+        let visible = 0;
+        items.forEach(item => {
+          const tags = (item.dataset.tags ?? '').split(',');
+          const show = filter === 'all' || tags.includes(filter);
+          item.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        if (emptyState) emptyState.hidden = visible > 0;
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupFilters);
+</script>
+
 <style>
+  .filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: transparent;
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    font-size: var(--font-size-small);
+    font-family: inherit;
+    padding: 4px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    line-height: 1.6;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+
+  .filter-btn:hover {
+    color: var(--color-title);
+    border-color: var(--color-muted);
+  }
+
+  .filter-btn.active {
+    background: var(--color-title);
+    border-color: var(--color-title);
+    color: var(--color-bg);
+  }
+
+  .filter-count {
+    opacity: 0.45;
+    font-size: 0.85em;
+    margin-left: 1px;
+  }
+
+  .filter-btn.active .filter-count {
+    opacity: 0.6;
+  }
+
   .page {
     display: flex;
     flex-direction: column;
