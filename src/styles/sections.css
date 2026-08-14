@@ -40,14 +40,19 @@
   gap: 16px;
 }
 
+/* Divisor entre seções — o empilhamento de texto precisa de marco visual */
+.content > * + .section {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--section-gap);
+}
+
 .section-title {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-small);
-  font-weight: 700;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
   line-height: var(--line-height-section);
-  color: var(--color-title);
+  color: var(--color-muted);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
 .section-body {
@@ -67,10 +72,6 @@
   gap: 20px;
 }
 
-.row-images--single {
-  grid-template-columns: minmax(0, 1fr);
-  max-width: 320px;
-}
 
 .row {
   display: flex;
@@ -164,6 +165,11 @@ a.row-link:hover {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
   margin-top: 12px;
+}
+
+.row-images--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 320px;
 }
 
 .row-image {
