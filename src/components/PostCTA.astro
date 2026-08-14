@@ -18,7 +18,12 @@ const SUBSTACK = 'miguelmoraes';
         </p>
       </div>
 
-      <form class="subscribe" data-substack={SUBSTACK}>
+      <form
+        class="subscribe"
+        data-substack={SUBSTACK}
+        action={`https://${SUBSTACK}.substack.com/api/v1/free`}
+        method="post"
+      >
         <input
           type="email"
           name="email"
@@ -50,18 +55,16 @@ const SUBSTACK = 'miguelmoraes';
 </aside>
 
 <script>
-  // Delegação: os scripts inline do Astro são type=module e rodam depois do
-  // ClientRouter disparar astro:page-load
-  document.addEventListener('submit', async (e) => {
-    const form = (e.target as HTMLElement).closest('.subscribe') as HTMLFormElement | null;
-    if (!form) return;
-    e.preventDefault();
-
+  // Três camadas de propósito: o form tem action/method reais, então mesmo sem
+  // JS o e-mail chega no Substack; o listener usa fase de captura, que dispara
+  // antes de qualquer coisa cancelar o evento; e a ligação acontece tanto no
+  // carregamento do módulo quanto a cada navegação do ClientRouter.
+  async function handle(form: HTMLFormElement) {
     const pub = form.dataset.substack;
     const input = form.querySelector('.subscribe-input') as HTMLInputElement;
     const btn = form.querySelector('.subscribe-btn') as HTMLButtonElement;
-    const msg = document.querySelector('.subscribe-msg') as HTMLElement;
-    if (!pub || !input.value) return;
+    const msg = form.parentElement?.querySelector('.subscribe-msg') as HTMLElement | null;
+    if (!pub || !input?.value) return;
 
     btn.disabled = true;
     btn.textContent = 'Enviando...';
@@ -76,15 +79,39 @@ const SUBSTACK = 'miguelmoraes';
         body: JSON.stringify({ email: input.value, first_url: location.href }),
       });
       form.hidden = true;
-      msg.textContent = 'Quase lá: confirma a inscrição no e-mail que acabou de chegar.';
-      msg.hidden = false;
+      if (msg) {
+        msg.textContent = 'Quase lá: confirma a inscrição no e-mail que acabou de chegar.';
+        msg.hidden = false;
+      }
     } catch {
-      msg.innerHTML = `Não consegui inscrever agora. <a href="https://${pub}.substack.com/subscribe" target="_blank" rel="noopener">Assina direto no Substack</a>.`;
-      msg.hidden = false;
+      if (msg) {
+        msg.innerHTML = `Não consegui inscrever agora. <a href="https://${pub}.substack.com/subscribe" target="_blank" rel="noopener">Assina direto no Substack</a>.`;
+        msg.hidden = false;
+      }
       btn.disabled = false;
       btn.textContent = 'Assinar';
     }
-  });
+  }
+
+  function onSubmit(e: Event) {
+    const form = (e.target as HTMLElement)?.closest?.('.subscribe') as HTMLFormElement | null;
+    if (!form) return;
+    e.preventDefault();
+    handle(form);
+  }
+
+  document.addEventListener('submit', onSubmit, true);
+
+  function bind() {
+    document.querySelectorAll<HTMLFormElement>('.subscribe').forEach(form => {
+      if (form.dataset.bound) return;
+      form.dataset.bound = '1';
+      form.addEventListener('submit', onSubmit);
+    });
+  }
+
+  bind();
+  document.addEventListener('astro:page-load', bind);
 </script>
 
 <style>
