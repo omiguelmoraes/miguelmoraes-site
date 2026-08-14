@@ -209,10 +209,19 @@ a.row-link:hover {
     max-width: none;
   }
 
+  /* Empilhado, o badge vira uma pílula solta numa linha só pra ele. Sem a
+     casca, a data lê como parte da meta do item */
   .row-head {
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
+    gap: 2px;
+  }
+
+  .date {
+    background: transparent;
+    padding: 0;
+    font-family: inherit;
+    font-size: var(--font-size-small);
   }
 
   .row-images {
