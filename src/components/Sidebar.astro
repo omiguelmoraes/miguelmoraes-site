@@ -76,10 +76,10 @@ const isActive = (href: string) =>
   }
 
   .name {
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-title);
     font-weight: 500;
     color: var(--color-title);
-    line-height: var(--line-height-body);
+    line-height: var(--line-height-title);
   }
 
   .role {
@@ -92,23 +92,27 @@ const isActive = (href: string) =>
     display: flex;
     flex-direction: column;
     gap: 2px;
+    margin-left: -10px;
   }
 
   .nav-item {
     font-size: var(--font-size-body);
     color: var(--color-muted);
     text-decoration: none;
-    padding: 4px 0;
-    transition: color 0.15s;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: color 0.15s, background 0.15s;
   }
 
   .nav-item:hover {
     color: var(--color-title);
+    background: var(--color-wash);
   }
 
   .nav-item.active {
     color: var(--color-title);
     font-weight: 500;
+    background: var(--color-pill-bg);
   }
 
   /* Mobile: identidade e nav viram cabeçalho horizontal.
@@ -133,6 +137,7 @@ const isActive = (href: string) =>
     .nav {
       flex-direction: row;
       gap: 20px;
+      margin-left: 0;
       border-bottom: 1px solid var(--color-border);
       padding-bottom: 4px;
       overflow-x: auto;
@@ -147,7 +152,13 @@ const isActive = (href: string) =>
       white-space: nowrap;
       padding: 0 0 8px;
       margin-bottom: -5px;
+      border-radius: 0;
       border-bottom: 1px solid transparent;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      background: transparent;
     }
 
     .nav-item.active {

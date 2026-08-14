@@ -1,5 +1,9 @@
 ---
 import '../styles/global.css';
+// No frontmatter viram <link> de verdade; dentro de <script> o Vite injeta em
+// runtime e o ClientRouter descarta o estilo ao trocar o <head>
+import '@phosphor-icons/web/regular';
+import '@phosphor-icons/web/bold';
 import { ClientRouter } from 'astro:transitions';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
@@ -63,10 +67,6 @@ const ogImage = new URL(image, Astro.site);
         const theme = localStorage.getItem('theme');
         if (theme) e.newDocument.documentElement.setAttribute('data-theme', theme);
       });
-    </script>
-    <script>
-      import '@phosphor-icons/web/regular';
-      import '@phosphor-icons/web/bold';
     </script>
   <script defer src="https://umami-blond-ten.vercel.app/script.js" data-website-id="b1833d27-7a87-4710-83aa-b7b587f9d7b5"></script>
   </head>

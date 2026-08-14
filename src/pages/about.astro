@@ -20,28 +20,17 @@ const photos = Object.entries(photoModules)
   <div class="content">
 
     <header class="page-header">
-      <h1 class="page-title">About</h1>
+      <h1 class="page-title">Hi, I'm Miguel</h1>
       <p class="page-intro">
-        I'm a designer from Porto Alegre, Brazil. I work at the intersection of visual design, UI/UX and front-end — I like understanding how things are built, not just how they look. Currently Web Designer at <a href="https://barca.cc/" target="_blank" rel="noopener">Barca</a>, studying Systems Analysis and Development at Unisinos, and running <a href="https://www.korbi.studio" target="_blank" rel="noopener">Korbi Studio</a> on the&nbsp;side.
+        I'm 22, from Porto Alegre, and I've been designing since before I knew it was a job. Today I'm Web Designer at <a href="https://barca.cc/" target="_blank" rel="noopener">Barca</a>, studying Systems Analysis and Development at Unisinos, and running <a href="https://www.korbi.studio" target="_blank" rel="noopener">Korbi Studio</a> on the&nbsp;side.
       </p>
       <p class="page-intro">
-        Most of what I do comes back to the same question: why some things get noticed and others don't. I write about it in <a href="/blog">Portuguese</a>, and I build things to find&nbsp;out.
+        I'm the kind of designer who opens the inspector. I got tired of handing files over and watching the details get lost, so I learned to build — and most of what I ship now, I ship&nbsp;myself.
+      </p>
+      <p class="page-intro">
+        Outside of screens: the gym every day, way too much coffee, and books I keep buying faster than I read them. I write in <a href="/blog">Portuguese</a> about all of&nbsp;it.
       </p>
     </header>
-
-    {photos.length > 0 && (
-      <section class="section">
-        <h2 class="section-title">Photos</h2>
-        <p class="section-body">Bits of the day to day — desk, city, work in progress.</p>
-        <div class="photo-grid">
-          {photos.map(photo => (
-            <div class="row-image">
-              <Image src={photo} alt="" widths={[300, 600]} sizes="(max-width: 600px) 50vw, 220px" class="lightbox-trigger" loading="lazy" />
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
 
     <!-- Side Projects -->
     <section class="section">
@@ -82,6 +71,20 @@ const photos = Object.entries(photoModules)
       </div>
     </section>
 
+
+    {photos.length > 0 && (
+      <section class="section">
+        <h2 class="section-title">Life Recently</h2>
+        <p class="section-body">Desk, city, gym, work in progress. Whatever the last few weeks looked&nbsp;like.</p>
+        <div class="photo-grid">
+          {photos.map(photo => (
+            <div class="row-image">
+              <Image src={photo} alt="" widths={[400, 800]} sizes="(max-width: 600px) 50vw, 340px" class="lightbox-trigger" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Contact -->
     <section class="section">
@@ -150,8 +153,8 @@ const photos = Object.entries(photoModules)
 <style>
   .photo-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .photo-grid :global(img) {
