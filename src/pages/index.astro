@@ -59,7 +59,7 @@ const featuredProjects = Object.entries(allProjects)
               <a href={`/projects/${slug}`} class="row-link">{project.title}</a>
               <span class="date">{project.year}</span>
             </div>
-            <span class="row-sub">{project.tags[0]}</span>
+            <span class="row-sub">{project.description}</span>
           </div>
         ))}
         <a href="/projects" class="see-all">See all projects →</a>
