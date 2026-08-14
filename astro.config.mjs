@@ -1,13 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import mdx from '@astrojs/mdx';
 import rehypeExternalLinks from 'rehype-external-links';
 
 export default defineConfig({
   site: 'https://miguelmoraes.pro',
   trailingSlash: 'never',
-  integrations: [sitemap(), mdx()],
+  integrations: [sitemap()],
   markdown: {
     // Link externo em post abre em aba nova sem eu precisar marcar na mão a
     // cada texto. Link interno segue na mesma aba
