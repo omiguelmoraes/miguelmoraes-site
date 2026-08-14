@@ -65,5 +65,13 @@ const { title, description, image, lang } = Astro.props;
       margin: 0 calc(var(--layout-padding-x) * -1);
       padding: 16px var(--layout-padding-x);
     }
+
+    /* O painel do menu é position: fixed, e no iOS o fixed não alcança as faixas
+       sob as barras translúcidas do Safari — o conteúdo atrás vaza por ali.
+       Escondendo o main, essas faixas mostram só o fundo do html, mesma cor do
+       painel. visibility em vez de display pra não perder a posição do scroll */
+    :global(body.nav-open) .main {
+      visibility: hidden;
+    }
   }
 </style>

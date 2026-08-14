@@ -68,6 +68,8 @@ const isActive = (href: string) =>
     const el = sidebar();
     if (!el) return;
     el.classList.toggle('nav-open', open);
+    // No body também: o SiteLayout usa pra esconder o conteúdo atrás do painel
+    document.body.classList.toggle('nav-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
     const btn = el.querySelector('.nav-toggle');
     btn?.setAttribute('aria-expanded', String(open));
@@ -265,21 +267,19 @@ const isActive = (href: string) =>
     }
 
     /* Aberto, o cabeçalho vira painel de tela cheia */
-    /* lvh = viewport com as barras do Safari escondidas. Com 100dvh o painel
-       encolhe junto com a barra e, enquanto ela anima, vaza o conteúdo de trás
-       no topo e no rodapé; lvh cobre em qualquer estado. O padding devolve a
-       altura da barra pro rodapé do menu não ficar embaixo dela, e o
-       overscroll-behavior corta o rubber band que arrasta a página de trás */
+    /* 100dvh acompanha a barra do Safari no iOS; com inset:0 puro o rodapé do
+       menu fica escondido atrás da barra de endereço quando ela reaparece.
+       As faixas das barras translúcidas ficam fora do alcance do fixed — quem
+       cobre elas é o body.nav-open no SiteLayout */
     .sidebar.nav-open {
       position: fixed;
       inset: 0;
       height: 100vh;
-      height: 100lvh;
+      height: 100dvh;
       z-index: 60;
       background: var(--color-bg);
       margin: 0;
-      padding: 16px var(--layout-padding-x)
-        max(24px, env(safe-area-inset-bottom), calc(100lvh - 100dvh + 24px));
+      padding: 16px var(--layout-padding-x) max(24px, env(safe-area-inset-bottom));
       border-bottom: none;
       display: flex;
       flex-direction: column;
