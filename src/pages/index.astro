@@ -55,23 +55,13 @@ const featuredProjects = Object.entries(allProjects)
       <p class="section-body">Selected work in web design, UI/UX and branding.</p>
       <div class="rows rows--tight">
         {featuredProjects.map(([slug, project]) => (
-          <a href={`/projects/${slug}`} class="project-row">
-            <img
-              src={`/projects/${slug}/card.webp`}
-              alt={project.title}
-              width="600"
-              height="400"
-              loading="lazy"
-              class="project-cover"
-            />
-            <span class="project-info">
-              <span class="project-head">
-                <span class="project-title">{project.title}</span>
-                <span class="date">{project.year}</span>
-              </span>
-              <span class="row-sub">{project.description}</span>
-            </span>
-          </a>
+          <div class="row">
+            <div class="row-head">
+              <a href={`/projects/${slug}`} class="row-link">{project.title}</a>
+              <span class="date">{project.year}</span>
+            </div>
+            <span class="row-sub">{project.description}</span>
+          </div>
         ))}
         <a href="/projects" class="see-all">See all projects →</a>
       </div>
@@ -107,68 +97,6 @@ const featuredProjects = Object.entries(allProjects)
 </SiteLayout>
 
 <style>
-  /* Site de designer: o trabalho precisa aparecer. Capa em 3:2 ocupando um
-     terço da linha, servida em 600px (20-38KB) em vez da original de 300KB */
-  .project-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    text-decoration: none;
-  }
-
-  .project-cover {
-    width: 200px;
-    height: auto;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    border-radius: 10px;
-    flex-shrink: 0;
-    background: var(--color-wash);
-    border: 1px solid var(--color-border);
-    transition: opacity 0.15s;
-  }
-
-  .project-row:hover .project-cover {
-    opacity: 0.9;
-  }
-
-  .project-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1;
-    min-width: 0;
-    padding-top: 2px;
-  }
-
-  .project-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .project-title {
-    font-size: var(--font-size-body);
-    font-weight: 500;
-    color: var(--color-title);
-    line-height: var(--line-height-body);
-  }
-
-  .project-row:hover .project-title {
-    text-decoration: underline;
-  }
-
-  @media (max-width: 600px) {
-    .project-row {
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .project-cover {
-      width: 100%;
-    }
-  }
 
   .pill {
     display: inline-flex;
