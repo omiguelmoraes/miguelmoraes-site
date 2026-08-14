@@ -15,13 +15,15 @@ const isActive = (href: string) =>
 
 <aside class="sidebar">
   <div class="identity">
-    <a href="/" class="avatar" aria-label="Home">
-      <img src="/webp/avatar.webp" alt="Miguel Moraes" width="72" height="72" />
+    <a href="/" class="identity-link" aria-label="Home">
+      <span class="avatar">
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="72" height="72" />
+      </span>
+      <span class="identity-text">
+        <span class="name">Miguel Moraes</span>
+        <span class="role">Designer</span>
+      </span>
     </a>
-    <div class="identity-text">
-      <span class="name">Miguel Moraes</span>
-      <span class="role">Designer</span>
-    </div>
     <button
       class="nav-toggle"
       aria-label="Open menu"
@@ -123,6 +125,14 @@ const isActive = (href: string) =>
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+
+  /* Foto, nome e cargo num link só: alvo maior e um destino em vez de dois */
+  .identity-link {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
   }
 
   .avatar {
@@ -230,6 +240,12 @@ const isActive = (href: string) =>
     }
 
     .identity {
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .identity-link {
       flex-direction: row;
       align-items: center;
       gap: 14px;
