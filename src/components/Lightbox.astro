@@ -47,11 +47,11 @@
   }
 
   function navigate(dir: 1 | -1) {
-    const { img } = getEls();
+    const { lightbox } = getEls();
     const all = triggers();
-    if (!img || all.length === 0) return;
-    const i = all.findIndex(t => (t.dataset.full || t.currentSrc || t.src) === img.src);
-    const next = ((i === -1 ? 0 : i + dir) + all.length) % all.length;
+    if (!lightbox || all.length === 0) return;
+    const i = Number(lightbox.dataset.index ?? 0);
+    const next = (((i + dir) % all.length) + all.length) % all.length;
     show(all[next]);
   }
 
