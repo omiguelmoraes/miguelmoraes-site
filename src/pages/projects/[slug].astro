@@ -54,7 +54,7 @@ const otherProjects = [prevProject, nextProject];
         <div class="image-grid">
           {project.challenge.images.map((src, i) => (
             <div class="image-frame">
-              <img src={src} alt={project.title + " — " + project.challenge.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
+              <img src={src} alt={project.title + ": " + project.challenge.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
             </div>
           ))}
         </div>
@@ -73,7 +73,7 @@ const otherProjects = [prevProject, nextProject];
         <div class="image-grid">
           {project.result.images.map((src, i) => (
             <div class="image-frame">
-              <img src={src} alt={project.title + " — " + project.result.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
+              <img src={src} alt={project.title + ": " + project.result.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
             </div>
           ))}
         </div>

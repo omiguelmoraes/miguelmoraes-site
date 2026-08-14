@@ -10,63 +10,75 @@
 </div>
 
 <script>
-  function setupLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
-    const prevBtn = lightbox?.querySelector('.lightbox-prev') as HTMLButtonElement;
-    const nextBtn = lightbox?.querySelector('.lightbox-next') as HTMLButtonElement;
-    if (!lightbox || !lightboxImg) return;
+  // Delegação no document: registrado uma vez e imune a quando o script roda em
+  // relação ao swap do ClientRouter. Ligar listener por imagem dependia de os
+  // elementos já existirem no momento do setup.
+  const getEls = () => ({
+    lightbox: document.getElementById('lightbox'),
+    img: document.getElementById('lightbox-img') as HTMLImageElement | null,
+  });
 
-    const triggers = document.querySelectorAll('.lightbox-trigger');
+  const triggers = () =>
+    Array.from(document.querySelectorAll('.lightbox-trigger')) as HTMLImageElement[];
 
-    const showImage = (trigger: HTMLImageElement) => {
-      lightboxImg.src = trigger.src;
-      lightboxImg.classList.remove('rotate-90');
-      if (trigger.classList.contains('rotate-90')) lightboxImg.classList.add('rotate-90');
-    };
-
-    const navigate = (dir: 1 | -1) => {
-      const allTriggers = Array.from(document.querySelectorAll('.lightbox-trigger')) as HTMLImageElement[];
-      const currentIndex = allTriggers.findIndex(t => t.src === lightboxImg.src);
-      if (currentIndex === -1) return;
-      let next = currentIndex + dir;
-      if (next >= allTriggers.length) next = 0;
-      if (next < 0) next = allTriggers.length - 1;
-      showImage(allTriggers[next]);
-    };
-
-    triggers.forEach((img) => {
-      img.addEventListener('click', () => {
-        showImage(img as HTMLImageElement);
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    const closeLightbox = () => {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    };
-
-    prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
-    nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox || (e.target as HTMLElement).classList.contains('lightbox-close')) {
-        closeLightbox();
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') navigate(1);
-      if (e.key === 'ArrowLeft') navigate(-1);
-    });
+  function show(trigger: HTMLImageElement) {
+    const { img } = getEls();
+    if (!img) return;
+    img.src = trigger.currentSrc || trigger.src;
+    img.alt = trigger.alt ?? '';
   }
 
-  // Initialize on page load and after every swap (for View Transitions)
-  document.addEventListener('astro:page-load', setupLightbox);
+  function open(trigger: HTMLImageElement) {
+    const { lightbox } = getEls();
+    if (!lightbox) return;
+    show(trigger);
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    const { lightbox } = getEls();
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function navigate(dir: 1 | -1) {
+    const { img } = getEls();
+    const all = triggers();
+    if (!img || all.length === 0) return;
+    const i = all.findIndex(t => (t.currentSrc || t.src) === img.src);
+    const next = ((i === -1 ? 0 : i + dir) + all.length) % all.length;
+    show(all[next]);
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+
+    const trigger = target.closest('.lightbox-trigger') as HTMLImageElement | null;
+    if (trigger) {
+      open(trigger);
+      return;
+    }
+
+    const { lightbox } = getEls();
+    if (!lightbox?.classList.contains('open')) return;
+
+    if (target.closest('.lightbox-prev')) { e.stopPropagation(); navigate(-1); return; }
+    if (target.closest('.lightbox-next')) { e.stopPropagation(); navigate(1); return; }
+    if (target === lightbox || target.closest('.lightbox-close')) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const { lightbox } = getEls();
+    if (!lightbox?.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') navigate(1);
+    if (e.key === 'ArrowLeft') navigate(-1);
+  });
+
+  // O overlay não sobrevive à troca de página; garante o estado limpo
+  document.addEventListener('astro:before-swap', close);
 </script>
 
 <style>
