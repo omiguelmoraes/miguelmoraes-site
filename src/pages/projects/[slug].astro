@@ -216,14 +216,18 @@ const otherProjects = [prevProject, nextProject];
     line-height: 1.6;
   }
 
-  /* No máximo 2 lado a lado; imagem órfã ocupa a linha inteira em vez de
-     ficar meia-largura com um buraco do lado */
+  /* Full-width é o padrão: imagem de projeto vale pelo detalhe, e meia largura
+     desperdiça isso. No máximo a primeira linha vai em duas colunas */
   .image-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
     margin-top: 20px;
     align-items: start;
+  }
+
+  .image-grid > .image-frame:nth-child(n + 3) {
+    grid-column: 1 / -1;
   }
 
   .image-grid > .image-frame:last-child:nth-child(odd) {
