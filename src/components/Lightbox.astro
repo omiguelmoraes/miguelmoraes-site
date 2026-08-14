@@ -24,7 +24,7 @@
   function show(trigger: HTMLImageElement) {
     const { img } = getEls();
     if (!img) return;
-    img.src = trigger.currentSrc || trigger.src;
+    img.src = trigger.dataset.full || trigger.currentSrc || trigger.src;
     img.alt = trigger.alt ?? '';
   }
 
@@ -47,7 +47,7 @@
     const { img } = getEls();
     const all = triggers();
     if (!img || all.length === 0) return;
-    const i = all.findIndex(t => (t.currentSrc || t.src) === img.src);
+    const i = all.findIndex(t => (t.dataset.full || t.currentSrc || t.src) === img.src);
     const next = ((i === -1 ? 0 : i + dir) + all.length) % all.length;
     show(all[next]);
   }
