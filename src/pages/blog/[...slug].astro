@@ -2,6 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
+import PostCTA from '../../components/PostCTA.astro';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths = (async () => {
@@ -55,6 +56,8 @@ const related = [...sameCategory, ...all.filter(p => !sameCategory.includes(p))]
     <article class="prose">
       <Content />
     </article>
+
+    <PostCTA />
 
     {related.length > 0 && (
       <aside class="related">
