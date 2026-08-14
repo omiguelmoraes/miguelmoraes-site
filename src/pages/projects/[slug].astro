@@ -182,11 +182,8 @@ const otherProjects = [prevProject, nextProject];
   }
 
   .section-label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: var(--font-size-small);
+    font-weight: 400;
     color: var(--color-muted);
   }
 
@@ -219,11 +216,24 @@ const otherProjects = [prevProject, nextProject];
     line-height: 1.6;
   }
 
+  /* No máximo 2 lado a lado; imagem órfã ocupa a linha inteira em vez de
+     ficar meia-largura com um buraco do lado */
   .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
     margin-top: 20px;
+    align-items: start;
+  }
+
+  .image-grid > .image-frame:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 700px) {
+    .image-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 
   .image-frame {
