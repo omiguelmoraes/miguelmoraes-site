@@ -1,0 +1,58 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import '../styles/sections.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang?: 'en' | 'pt-BR';
+}
+
+const { title, description, image, lang } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={image} lang={lang}>
+  <slot name="head" slot="head" />
+
+  <div class="shell">
+    <Sidebar />
+    <main class="main">
+      <slot />
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .shell {
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding: var(--layout-padding-y) var(--layout-padding-x);
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    gap: var(--shell-gap);
+    align-items: start;
+  }
+
+  .shell > :global(.sidebar) {
+    position: sticky;
+    top: var(--layout-padding-y);
+  }
+
+  .main {
+    min-width: 0;
+  }
+
+  @media (max-width: 900px) {
+    .shell {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+      padding: 48px var(--layout-padding-x) var(--layout-padding-y);
+    }
+
+    .shell > :global(.sidebar) {
+      position: static;
+    }
+  }
+</style>

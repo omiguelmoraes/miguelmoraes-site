@@ -19,12 +19,15 @@
   --line-height-body: 1.8;
   --line-height-section: 1.4;
 
-  --layout-max-width: 600px;
+  --layout-max-width: 1000px;
   --layout-padding-x: 24px;
   --layout-padding-y: 80px;
   --section-gap: 58px;
   --row-gap: 24px;
   --date-col-width: 130px;
+  --sidebar-width: 180px;
+  --shell-gap: 56px;
+  --prose-max-width: 680px;
 }
 
 /* Dark mode */

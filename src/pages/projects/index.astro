@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
 import { allProjects } from '../../data/projects';
 
 const filterTags = ['Branding', 'Web Design', 'UI/UX'];
@@ -9,12 +9,8 @@ const tagCounts: Record<string, number> = Object.fromEntries(
 const totalCount = Object.values(allProjects).length;
 ---
 
-<BaseLayout title="Projects — Miguel Moraes" description="Selected work in web design, UI/UX and front-end.">
+<SiteLayout title="Projects — Miguel Moraes" description="Selected work in web design, UI/UX and front-end.">
   <div class="page">
-
-    <nav class="nav">
-      <a href="/" class="back">← Miguel Moraes</a>
-    </nav>
 
     <header class="header">
       <h1 class="title">Projects</h1>
@@ -32,7 +28,7 @@ const totalCount = Object.values(allProjects).length;
       {Object.entries(allProjects).map(([slug, project]) => (
         <a href={`/projects/${slug}`} class="card" data-tags={project.tags.join(',')}>
           <div class="card-image">
-            <img src={project.cover} alt={project.title} width="260" height="180" loading="lazy" style={project.coverPosition ? `object-position: ${project.coverPosition}` : undefined} />
+            <img src={project.cover} alt={project.title} width="480" height="360" loading="lazy" style={project.coverPosition ? `object-position: ${project.coverPosition}` : undefined} />
           </div>
           <div class="card-content">
             <span class="card-meta">{project.year} · {project.location.split(', ').at(-1)}</span>
@@ -51,7 +47,7 @@ const totalCount = Object.values(allProjects).length;
     </div>
 
   </div>
-</BaseLayout>
+</SiteLayout>
 
 <script>
   const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
@@ -78,9 +74,6 @@ const totalCount = Object.values(allProjects).length;
 
 <style>
   .page {
-    max-width: var(--layout-max-width);
-    margin: 0 auto;
-    padding: 48px var(--layout-padding-x) var(--layout-padding-y);
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -160,30 +153,29 @@ const totalCount = Object.values(allProjects).length;
   }
 
   .grid {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
   }
 
   .card {
     display: flex;
-    align-items: stretch;
-    border-radius: 12px;
-    overflow: hidden;
+    flex-direction: column;
     text-decoration: none;
-    border: 1px solid var(--color-border);
-    transition: border-color 0.15s;
+    transition: opacity 0.15s;
   }
 
   .card:hover {
-    border-color: var(--color-muted);
+    opacity: 0.92;
   }
 
   .card-image {
-    width: 260px;
-    flex-shrink: 0;
+    width: 100%;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
-    background: var(--color-border);
+    background: var(--color-wash);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
   }
 
   .card-image img {
@@ -191,14 +183,18 @@ const totalCount = Object.values(allProjects).length;
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover .card-image img {
+    transform: scale(1.02);
   }
 
   .card-content {
-    padding: 24px 28px;
+    padding: 14px 2px 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    justify-content: center;
+    gap: 4px;
   }
 
   .card-meta {
@@ -241,13 +237,10 @@ const totalCount = Object.values(allProjects).length;
     line-height: 1.6;
   }
 
-  @media (max-width: 600px) {
-    .card {
-      flex-direction: column;
-    }
-    .card-image {
-      width: 100%;
-      height: 200px;
+  @media (max-width: 700px) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
     }
   }
 </style>

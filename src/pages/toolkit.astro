@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
 
 const hardware = [
   { name: 'Mac Mini M4', note: "Apple's most capable compact desktop — fast, silent, small.", href: 'https://www.apple.com/mac-mini/' },
@@ -30,12 +30,9 @@ const books = [
 ];
 ---
 
-<BaseLayout title="Toolkit — Miguel Moraes" description="Gear, software and books I use and recommend.">
+<SiteLayout title="Toolkit — Miguel Moraes" description="Gear, software and books I use and recommend.">
   <div class="page">
 
-    <nav class="nav">
-      <a href="/links" class="back">← Miguel Moraes</a>
-    </nav>
 
     <header class="header">
       <h1 class="title">Toolkit</h1>
@@ -100,7 +97,7 @@ const books = [
     </section>
 
   </div>
-</BaseLayout>
+</SiteLayout>
 
 <style>
   .page {

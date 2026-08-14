@@ -1,0 +1,155 @@
+---
+const nav = [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Writing', href: '/blog' },
+  { label: 'About', href: '/about' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(`${href}/`);
+---
+
+<aside class="sidebar">
+  <div class="identity">
+    <a href="/links" class="avatar" aria-label="Links">
+      <img src="/webp/avatar.webp" alt="Miguel Moraes" width="72" height="72" />
+    </a>
+    <div class="identity-text">
+      <span class="name">Miguel Moraes</span>
+      <span class="role">Designer</span>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Main">
+    {nav.map(item => (
+      <a
+        href={item.href}
+        class:list={['nav-item', { active: isActive(item.href) }]}
+        aria-current={isActive(item.href) ? 'page' : undefined}
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</aside>
+
+<style>
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .identity {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--color-wash);
+    display: block;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.15s;
+  }
+
+  .avatar:hover img {
+    opacity: 0.85;
+  }
+
+  .identity-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    color: var(--color-title);
+    line-height: var(--line-height-body);
+  }
+
+  .role {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    line-height: var(--line-height-body);
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-item {
+    font-size: var(--font-size-body);
+    color: var(--color-muted);
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color 0.15s;
+  }
+
+  .nav-item:hover {
+    color: var(--color-title);
+  }
+
+  .nav-item.active {
+    color: var(--color-title);
+    font-weight: 500;
+  }
+
+  /* Mobile: identidade e nav viram cabeçalho horizontal.
+     Quatro itens curtos cabem numa linha — hambúrguer esconderia
+     a navegação atrás de um toque sem necessidade. */
+  @media (max-width: 900px) {
+    .sidebar {
+      gap: 20px;
+    }
+
+    .identity {
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+    }
+
+    .nav {
+      flex-direction: row;
+      gap: 20px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-item {
+      white-space: nowrap;
+      padding: 0 0 8px;
+      margin-bottom: -5px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-item.active {
+      border-bottom-color: var(--color-title);
+    }
+  }
+</style>

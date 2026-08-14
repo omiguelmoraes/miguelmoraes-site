@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
@@ -10,16 +10,12 @@ const formatDate = (date: Date) =>
   date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
 ---
 
-<BaseLayout
+<SiteLayout
   lang="pt-BR"
   title="Blog — Miguel Moraes"
   description="Notas e reflexões sobre design, código e o dia a dia de quem constrói."
 >
   <div class="page">
-
-    <nav class="nav">
-      <a href="/" class="back">← Miguel Moraes</a>
-    </nav>
 
     <header class="header">
       <h1 class="title">Blog</h1>
@@ -40,16 +36,14 @@ const formatDate = (date: Date) =>
     )}
 
   </div>
-</BaseLayout>
+</SiteLayout>
 
 <style>
   .page {
-    max-width: var(--layout-max-width);
-    margin: 0 auto;
-    padding: 48px var(--layout-padding-x) var(--layout-padding-y);
     display: flex;
     flex-direction: column;
     gap: 32px;
+    max-width: var(--prose-max-width);
   }
 
   .back {
