@@ -60,6 +60,7 @@
 }
 
 html {
+  scrollbar-gutter: stable;
   font-family: var(--font-family);
   font-size: var(--font-size-body);
   color: var(--color-title);

@@ -50,6 +50,7 @@ const totalCount = Object.values(allProjects).length;
 </SiteLayout>
 
 <script>
+  function setupFilters() {
   const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
   const cards = document.querySelectorAll<HTMLElement>('.card');
   const emptyState = document.getElementById('empty-state');
@@ -70,6 +71,9 @@ const totalCount = Object.values(allProjects).length;
       if (emptyState) emptyState.hidden = visible > 0;
     });
   });
+  }
+
+  document.addEventListener('astro:page-load', setupFilters);
 </script>
 
 <style>
