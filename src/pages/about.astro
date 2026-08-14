@@ -1,5 +1,27 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+
+const toolkit = [
+  { name: 'Mac Mini M4', note: "Apple's most capable compact desktop — fast, silent, small.", href: 'https://www.apple.com/mac-mini/', group: 'Hardware' },
+  { name: 'MX Master 3', note: "Best productivity mouse I've used. Comfortable for long sessions.", href: 'https://www.logitech.com/products/mice/mx-master-3s.html', group: 'Hardware' },
+  { name: 'AOC 27" QHD', note: 'Sharp, spacious monitor for everyday design and dev work.', href: '', group: 'Hardware' },
+  { name: 'Aula F75', note: 'Compact 75% mechanical keyboard. Great value.', href: '', group: 'Hardware' },
+  { name: 'Edifier W820NB', note: 'Wireless headphones with decent noise cancellation.', href: '', group: 'Hardware' },
+  { name: 'Figma', note: 'Design, prototyping, and brand work.', href: 'https://figma.com', group: 'Software' },
+  { name: 'Cursor', note: 'AI-powered code editor. Changed how I write code.', href: 'https://cursor.sh', group: 'Software' },
+  { name: 'Claude', note: 'AI for coding, content creation, and thinking through problems.', href: 'https://claude.ai', group: 'Software' },
+  { name: 'Obsidian', note: 'Second brain and note-taking. All my notes live here.', href: 'https://obsidian.md', group: 'Software' },
+  { name: 'TickTick', note: 'Task and project management with time blocking built in.', href: 'https://ticktick.com', group: 'Software' },
+  { name: 'Ghostty', note: 'Fast and minimal terminal.', href: 'https://ghostty.org', group: 'Software' },
+  { name: 'Arc', note: 'Browser I switched to, mainly for Spaces and the sidebar.', href: 'https://arc.net/', group: 'Software' },
+  { name: 'Apple Calendar', note: 'Simple. Does the job.', href: '', group: 'Software' },
+  { name: "Don't Make Me Think", note: 'Steve Krug — The classic on web usability. Essential for anyone in design.', href: '', group: 'Books' },
+  { name: 'Win Without Pitching Manifesto', note: 'Blair Enns — How to position yourself and stop competing on price.', href: '', group: 'Books' },
+  { name: 'Rework', note: 'Jason Fried & DHH — A different way to think about work and building things.', href: '', group: 'Books' },
+  { name: 'The Art of Thinking in Graphs', note: 'Visual thinking and structured problem-solving.', href: '', group: 'Books' },
+  { name: 'Princípio de UX', note: 'Daniel Furtado — UX in Portuguese, well-grounded and practical.', href: '', group: 'Books' },
+  { name: 'Fall in Love with the Problem, Not the Solution', note: 'Uri Levine — On building products that solve real problems.', href: '', group: 'Books' },
+];
 ---
 
 <SiteLayout
@@ -54,8 +76,30 @@ import SiteLayout from '../layouts/SiteLayout.astro';
           <span class="row-sub">Templates for freelancers</span>
         </div>
 
-        <a href="/toolkit" class="see-all">See my toolkit →</a>
+      </div>
+    </section>
 
+    <!-- Toolkit -->
+    <section class="section" id="toolkit">
+      <h2 class="section-title">Toolkit</h2>
+      <p class="section-body">Gear, software and books I use and recommend.</p>
+      <div class="rows rows--tight">
+        {toolkit.map(item => (
+          <div class="row">
+            <div class="row-head">
+              {item.href ? (
+                <a href={item.href} target="_blank" rel="noopener" class="row-link">
+                  {item.name}
+                  <i class="ph ph-arrow-square-out"></i>
+                </a>
+              ) : (
+                <span class="row-link">{item.name}</span>
+              )}
+              <span class="date">{item.group}</span>
+            </div>
+            <span class="row-sub">{item.note}</span>
+          </div>
+        ))}
       </div>
     </section>
 
