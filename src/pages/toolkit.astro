@@ -100,10 +100,12 @@ const books = [
 </SiteLayout>
 
 <style>
+  /* Menos que o --section-gap padrão: as listas daqui são caixas com borda,
+     então já têm limite visual próprio e não dependem tanto do vazio */
   .page {
     display: flex;
     flex-direction: column;
-    gap: var(--section-gap);
+    gap: 40px;
     max-width: var(--prose-max-width);
   }
 
