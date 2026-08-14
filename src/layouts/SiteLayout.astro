@@ -47,12 +47,19 @@ const { title, description, image, lang } = Astro.props;
   @media (max-width: 900px) {
     .shell {
       grid-template-columns: minmax(0, 1fr);
-      gap: 40px;
-      padding: 48px var(--layout-padding-x) var(--layout-padding-y);
+      gap: 32px;
+      padding: 0 var(--layout-padding-x) var(--layout-padding-y);
     }
 
+    /* Sangra até a borda da tela pro fundo cobrir o conteúdo que passa por baixo */
     .shell > :global(.sidebar) {
-      position: static;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      margin: 0 calc(var(--layout-padding-x) * -1);
+      padding: 16px var(--layout-padding-x);
     }
   }
 </style>

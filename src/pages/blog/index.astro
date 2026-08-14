@@ -187,4 +187,22 @@ const tags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
       text-align: left;
     }
   }
+
+  @media (max-width: 700px) {
+    .filters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-inline: calc(var(--layout-padding-x) * -1);
+      padding-inline: var(--layout-padding-x);
+    }
+
+    .filters::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-btn {
+      flex-shrink: 0;
+    }
+  }
 </style>
