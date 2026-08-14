@@ -265,21 +265,26 @@ const isActive = (href: string) =>
     }
 
     /* Aberto, o cabeçalho vira painel de tela cheia */
-    /* 100dvh acompanha a barra do Safari no iOS; com inset:0 puro o rodapé do
-       menu fica escondido atrás da barra de endereço quando ela reaparece */
+    /* lvh = viewport com as barras do Safari escondidas. Com 100dvh o painel
+       encolhe junto com a barra e, enquanto ela anima, vaza o conteúdo de trás
+       no topo e no rodapé; lvh cobre em qualquer estado. O padding devolve a
+       altura da barra pro rodapé do menu não ficar embaixo dela, e o
+       overscroll-behavior corta o rubber band que arrasta a página de trás */
     .sidebar.nav-open {
       position: fixed;
       inset: 0;
       height: 100vh;
-      height: 100dvh;
+      height: 100lvh;
       z-index: 60;
       background: var(--color-bg);
       margin: 0;
-      padding: 16px var(--layout-padding-x) max(24px, env(safe-area-inset-bottom));
+      padding: 16px var(--layout-padding-x)
+        max(24px, env(safe-area-inset-bottom), calc(100lvh - 100dvh + 24px));
       border-bottom: none;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
+      overscroll-behavior: contain;
     }
 
     .nav {
