@@ -1,24 +1,89 @@
 ---
-// Fecha o post oferecendo o próximo passo natural de quem gostou do texto:
-// acompanhar. Oferta de serviço não entra aqui porque quem lê é par, não cliente.
+// Fecha o post oferecendo o próximo passo natural de quem gostou do texto.
+// Oferta de serviço não entra aqui porque quem lê é par, não cliente.
+//
+// Vazio desliga o formulário: formulário que não coleta nada é pior que
+// nenhum formulário.
+const SUBSTACK = 'miguelmoraes';
 ---
 
 <aside class="post-cta">
-  <p class="post-cta-text">
-    Escrevo sobre design, código e por que umas coisas são notadas e outras não.
-    Se isso te serviu, me acompanha por lá.
-  </p>
-  <div class="post-cta-actions">
-    <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener" class="post-cta-btn">
-      <i class="ph ph-instagram-logo"></i>
-      Seguir no Instagram
-    </a>
-    <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener" class="post-cta-btn post-cta-btn--ghost">
-      <i class="ph ph-x-logo"></i>
-      X
-    </a>
+  {SUBSTACK ? (
+    <>
+      <div class="post-cta-head">
+        <span class="post-cta-title">Recebe os próximos por e-mail</span>
+        <p class="post-cta-text">
+          Escrevo sobre design, código e por que umas coisas são notadas e outras não.
+          Sem frequência fixa, sem enrolação.
+        </p>
+      </div>
+
+      <form class="subscribe" data-substack={SUBSTACK}>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="teu@email.com"
+          aria-label="Seu e-mail"
+          class="subscribe-input"
+        />
+        <button type="submit" class="subscribe-btn">Assinar</button>
+      </form>
+
+      <p class="subscribe-msg" role="status" hidden></p>
+    </>
+  ) : (
+    <div class="post-cta-head">
+      <span class="post-cta-title">Me acompanha</span>
+      <p class="post-cta-text">
+        Escrevo sobre design, código e por que umas coisas são notadas e outras não.
+      </p>
+    </div>
+  )}
+
+  <div class="post-cta-socials">
+    <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener">Instagram ↗</a>
+    <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener">X ↗</a>
   </div>
 </aside>
+
+<script>
+  // Delegação: os scripts inline do Astro são type=module e rodam depois do
+  // ClientRouter disparar astro:page-load
+  document.addEventListener('submit', async (e) => {
+    const form = (e.target as HTMLElement).closest('.subscribe') as HTMLFormElement | null;
+    if (!form) return;
+    e.preventDefault();
+
+    const pub = form.dataset.substack;
+    const input = form.querySelector('.subscribe-input') as HTMLInputElement;
+    const btn = form.querySelector('.subscribe-btn') as HTMLButtonElement;
+    const msg = document.querySelector('.subscribe-msg') as HTMLElement;
+    if (!pub || !input.value) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    try {
+      // no-cors: o Substack aceita o POST mas não devolve resposta legível,
+      // então a confirmação real chega no e-mail da pessoa
+      await fetch(`https://${pub}.substack.com/api/v1/free`, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: input.value, first_url: location.href }),
+      });
+      form.hidden = true;
+      msg.textContent = 'Quase lá: confirma a inscrição no e-mail que acabou de chegar.';
+      msg.hidden = false;
+    } catch {
+      msg.innerHTML = `Não consegui inscrever agora. <a href="https://${pub}.substack.com/subscribe" target="_blank" rel="noopener">Assina direto no Substack</a>.`;
+      msg.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Assinar';
+    }
+  });
+</script>
 
 <style>
   .post-cta {
@@ -31,44 +96,96 @@
     background: var(--color-wash);
   }
 
+  .post-cta-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .post-cta-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-title);
+  }
+
   .post-cta-text {
     font-size: 15px;
     line-height: 1.6;
-    color: var(--color-body);
+    color: var(--color-muted);
     max-width: 46ch;
   }
 
-  .post-cta-actions {
+  .subscribe {
     display: flex;
-    flex-wrap: wrap;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
-  .post-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  .subscribe-input {
+    flex: 1;
+    min-width: 200px;
+    font-family: inherit;
+    font-size: var(--font-size-small);
+    color: var(--color-title);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px 14px;
+  }
+
+  .subscribe-input::placeholder {
+    color: var(--color-muted);
+  }
+
+  .subscribe-input:focus {
+    outline: none;
+    border-color: var(--color-muted);
+  }
+
+  .subscribe-btn {
+    font-family: inherit;
     font-size: var(--font-size-small);
     color: var(--color-bg);
     background: var(--color-title);
-    padding: 9px 16px;
+    border: none;
     border-radius: 10px;
-    text-decoration: none;
+    padding: 10px 20px;
+    cursor: pointer;
     transition: opacity 0.15s;
   }
 
-  .post-cta-btn:hover {
+  .subscribe-btn:hover {
     opacity: 0.85;
   }
 
-  .post-cta-btn--ghost {
-    color: var(--color-title);
-    background: transparent;
-    border: 1px solid var(--color-border);
+  .subscribe-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 
-  .post-cta-btn--ghost:hover {
-    background: var(--color-bg);
-    opacity: 1;
+  .subscribe-msg {
+    font-size: var(--font-size-small);
+    color: var(--color-body);
+    line-height: 1.6;
+  }
+
+  .subscribe-msg a {
+    color: var(--color-title);
+    text-decoration: underline;
+  }
+
+  .post-cta-socials {
+    display: flex;
+    gap: 18px;
+  }
+
+  .post-cta-socials a {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+
+  .post-cta-socials a:hover {
+    color: var(--color-title);
   }
 </style>

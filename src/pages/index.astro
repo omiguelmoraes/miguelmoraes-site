@@ -55,13 +55,21 @@ const featuredProjects = Object.entries(allProjects)
       <p class="section-body">Selected work in web design, UI/UX and branding.</p>
       <div class="rows rows--tight">
         {featuredProjects.map(([slug, project]) => (
-          <div class="row">
-            <div class="row-head">
-              <a href={`/projects/${slug}`} class="row-link">{project.title}</a>
-              <span class="date">{project.year}</span>
-            </div>
-            <span class="row-sub">{project.description}</span>
-          </div>
+          <a href={`/projects/${slug}`} class="project-row">
+            <img
+              src={`/projects/${slug}/thumb.webp`}
+              alt=""
+              width="48"
+              height="48"
+              loading="lazy"
+              class="project-thumb"
+            />
+            <span class="project-info">
+              <span class="project-title">{project.title}</span>
+              <span class="row-sub">{project.description}</span>
+            </span>
+            <span class="date">{project.year}</span>
+          </a>
         ))}
         <a href="/projects" class="see-all">See all projects →</a>
       </div>
@@ -79,7 +87,6 @@ const featuredProjects = Object.entries(allProjects)
                 <a href={`/blog/${post.id}`} class="row-link">{post.data.title}</a>
                 <span class="date">{post.data.date.getFullYear()}</span>
               </div>
-              <span class="row-sub">{post.data.description}</span>
             </div>
           ))}
           <a href="/blog" class="see-all">See all writing →</a>
@@ -98,6 +105,59 @@ const featuredProjects = Object.entries(allProjects)
 </SiteLayout>
 
 <style>
+  .project-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  /* Thumb quadrada e pequena: dá reconhecimento visual sem virar galeria.
+     Servida em 144px pra ficar nítida em tela retina, com 3KB por arquivo */
+  .project-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--color-wash);
+    border: 1px solid var(--color-border);
+  }
+
+  .project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .project-title {
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    color: var(--color-title);
+    line-height: var(--line-height-body);
+  }
+
+  .project-row:hover .project-title {
+    text-decoration: underline;
+  }
+
+  .project-row .date {
+    margin-top: 2px;
+  }
+
+  @media (max-width: 600px) {
+    .project-row {
+      flex-wrap: wrap;
+    }
+
+    .project-row .date {
+      margin-left: 62px;
+      margin-top: -2px;
+    }
+  }
+
   .pill {
     display: inline-flex;
     align-items: center;
