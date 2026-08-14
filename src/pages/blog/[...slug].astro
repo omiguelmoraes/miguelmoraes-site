@@ -18,12 +18,13 @@ const { Content } = await render(post);
 const formatDate = (date: Date) =>
   date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
 
-// Posts relacionados: mesma tag, mais recentes primeiro
-const all = (await getCollection('blog', ({ data }) => !data.draft)).filter(p => p.id !== post.id);
-const related = all
-  .filter(p => p.data.tags.some(tag => post.data.tags.includes(tag)))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+// Relacionados: mesma categoria primeiro, completando com os mais recentes
+// pra seção nunca aparecer vazia quando a categoria tem um post só
+const all = (await getCollection('blog', ({ data }) => !data.draft))
+  .filter(p => p.id !== post.id)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sameCategory = all.filter(p => p.data.category === post.data.category);
+const related = [...sameCategory, ...all.filter(p => !sameCategory.includes(p))].slice(0, 3);
 ---
 
 <SiteLayout

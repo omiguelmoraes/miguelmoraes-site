@@ -10,11 +10,12 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 const formatDate = (date: Date) =>
   date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
 
-// Categorias saem das tags dos posts, ordenadas por frequência
-const tagCounts = posts
-  .flatMap(p => p.data.tags)
-  .reduce<Record<string, number>>((acc, tag) => ({ ...acc, [tag]: (acc[tag] ?? 0) + 1 }), {});
-const tags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
+// Uma categoria por post, ordenadas por frequência
+const counts = posts.reduce<Record<string, number>>(
+  (acc, p) => ({ ...acc, [p.data.category]: (acc[p.data.category] ?? 0) + 1 }),
+  {}
+);
+const categories = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 ---
 
 <SiteLayout
@@ -29,18 +30,18 @@ const tags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
       <p class="page-intro">Notas e reflexões sobre design, código e o dia a dia de quem constrói.</p>
     </header>
 
-    {tags.length > 1 && (
+    {categories.length > 1 && (
       <Filters
         allLabel="Todos"
         allCount={posts.length}
-        options={tags.map(([tag, count]) => ({ label: tag, value: tag, count }))}
+        options={categories.map(([name, count]) => ({ label: name, value: name, count }))}
       />
     )}
 
     {posts.length > 0 ? (
       <div class="list">
         {posts.map(post => (
-          <a href={`/blog/${post.id}`} class="item" data-tags={post.data.tags.join(',')}>
+          <a href={`/blog/${post.id}`} class="item" data-tags={post.data.category}>
             <span class="item-title">{post.data.title}</span>
             <span class="item-date">{formatDate(post.data.date)}</span>
           </a>
