@@ -140,10 +140,13 @@ a.row-link:hover {
   text-decoration: underline;
 }
 
+/* Medida de leitura curta: o texto para antes do badge de data em vez de
+   correr por baixo dele */
 .row-sub {
   font-size: var(--font-size-small);
   color: var(--color-muted);
   line-height: var(--line-height-body);
+  max-width: var(--row-text-max-width);
 }
 
 .row-desc {
@@ -151,6 +154,7 @@ a.row-link:hover {
   color: var(--color-body);
   line-height: var(--line-height-body);
   margin-top: 8px;
+  max-width: var(--row-text-max-width);
 }
 
 .row-label {
@@ -201,6 +205,11 @@ a.row-link:hover {
 }
 
 @media (max-width: 600px) {
+  .row-sub,
+  .row-desc {
+    max-width: none;
+  }
+
   .row-head {
     flex-direction: column;
     align-items: flex-start;

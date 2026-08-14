@@ -28,6 +28,7 @@
   --sidebar-width: 180px;
   --shell-gap: 56px;
   --prose-max-width: 680px;
+  --row-text-max-width: 60ch;
 }
 
 /* Dark mode */
