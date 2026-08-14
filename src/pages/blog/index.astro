@@ -7,7 +7,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 );
 
 const formatDate = (date: Date) =>
-  date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+  date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
 ---
 
 <BaseLayout
@@ -30,11 +30,8 @@ const formatDate = (date: Date) =>
       <div class="list">
         {posts.map(post => (
           <a href={`/blog/${post.id}`} class="item">
+            <span class="item-title">{post.data.title}</span>
             <span class="item-date">{formatDate(post.data.date)}</span>
-            <div class="item-content">
-              <span class="item-title">{post.data.title}</span>
-              <p class="item-sub">{post.data.description}</p>
-            </div>
           </a>
         ))}
       </div>
@@ -84,31 +81,20 @@ const formatDate = (date: Date) =>
   .list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
   }
 
   .item {
     display: flex;
-    gap: 16px;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
     text-decoration: none;
-  }
-
-  .item-date {
-    font-size: var(--font-size-small);
-    color: var(--color-muted);
-    flex-shrink: 0;
-    width: 130px;
-    line-height: var(--line-height-body);
-  }
-
-  .item-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
   }
 
   .item-title {
     font-size: var(--font-size-body);
+    font-weight: 500;
     color: var(--color-title);
     line-height: var(--line-height-body);
   }
@@ -117,10 +103,12 @@ const formatDate = (date: Date) =>
     text-decoration: underline;
   }
 
-  .item-sub {
+  .item-date {
     font-size: var(--font-size-small);
-    color: var(--color-body);
+    color: var(--color-muted);
+    flex-shrink: 0;
     line-height: var(--line-height-body);
+    text-align: right;
   }
 
   .empty {
@@ -131,10 +119,10 @@ const formatDate = (date: Date) =>
   @media (max-width: 600px) {
     .item {
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
     }
     .item-date {
-      width: auto;
+      text-align: left;
     }
   }
 </style>

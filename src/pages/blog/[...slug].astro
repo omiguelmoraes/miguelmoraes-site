@@ -56,7 +56,12 @@ const related = all
         <h2 class="related-title">Continue lendo</h2>
         <div class="related-list">
           {related.map(p => (
-            <a href={`/blog/${p.id}`} class="related-item">{p.data.title}</a>
+            <a href={`/blog/${p.id}`} class="related-item">
+              <span class="related-item-title">{p.data.title}</span>
+              <span class="related-item-date">
+                {p.data.date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
+              </span>
+            </a>
           ))}
         </div>
       </aside>
@@ -134,12 +139,36 @@ const related = all
   }
 
   .related-item {
-    font-size: var(--font-size-body);
-    color: var(--color-title);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
     text-decoration: none;
+  }
+
+  .related-item-title {
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    color: var(--color-title);
     line-height: var(--line-height-body);
   }
-  .related-item:hover { text-decoration: underline; }
+
+  .related-item:hover .related-item-title { text-decoration: underline; }
+
+  .related-item-date {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .related-item {
+      flex-direction: column;
+      gap: 2px;
+    }
+    .related-item-date { text-align: left; }
+  }
 </style>
 
 <style is:global>
