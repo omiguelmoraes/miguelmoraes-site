@@ -97,7 +97,7 @@ const related = [...sameCategory, ...all.filter(p => !sameCategory.includes(p))]
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding-bottom: 8px;
+    padding-bottom: 16px;
   }
 
   .post-meta {
@@ -125,9 +125,10 @@ const related = [...sameCategory, ...all.filter(p => !sameCategory.includes(p))]
   /* Mesmo tamanho e mesma cor do corpo apagava a fronteira entre resumo e
      texto. A cor mais clara resolve sem precisar aumentar o tamanho */
   .post-lead {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.55;
     color: var(--color-muted);
+    max-width: 54ch;
   }
 
   .cover {
