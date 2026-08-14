@@ -92,6 +92,24 @@ const isActive = (href: string) =>
 
   document.addEventListener('astro:before-swap', () => setOpen(false));
 
+  // Relógio no rodapé e no menu mobile: mesma classe, um script só.
+  // Chamada imediata porque astro:page-load já disparou quando este módulo roda
+  function tick() {
+    const els = document.querySelectorAll('.js-local-time');
+    if (!els.length) return;
+    const now = new Intl.DateTimeFormat('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).format(new Date());
+    els.forEach(el => (el.textContent = now));
+  }
+
+  tick();
+  setInterval(tick, 30_000);
+  document.addEventListener('astro:page-load', tick);
+
 </script>
 
 <style>
