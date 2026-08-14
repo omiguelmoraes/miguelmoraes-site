@@ -50,30 +50,30 @@ const totalCount = Object.values(allProjects).length;
 </SiteLayout>
 
 <script>
-  function setupFilters() {
-  const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const cards = document.querySelectorAll<HTMLElement>('.card');
-  const emptyState = document.getElementById('empty-state');
+  // Delegação no document, registrada quando o módulo roda. Depender de
+  // astro:page-load não funciona: o ClientRouter dispara esse evento antes
+  // deste script (module = deferido) executar.
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.filter-btn') as HTMLButtonElement | null;
+    if (!btn) return;
 
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    const group = btn.parentElement;
+    group?.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
-      const filter = btn.dataset.filter!;
-      let visible = 0;
-      cards.forEach(card => {
-        const tags = card.dataset.tags!.split(',');
-        const show = filter === 'all' || tags.includes(filter);
-        card.style.display = show ? 'flex' : 'none';
-        if (show) visible++;
-      });
-      if (emptyState) emptyState.hidden = visible > 0;
+    const filter = btn.dataset.filter!;
+    const items = document.querySelectorAll<HTMLElement>('[data-tags]');
+    let visible = 0;
+    items.forEach(item => {
+      const tags = (item.dataset.tags ?? '').split(',');
+      const show = filter === 'all' || tags.includes(filter);
+      item.style.display = show ? '' : 'none';
+      if (show) visible++;
     });
-  });
-  }
 
-  document.addEventListener('astro:page-load', setupFilters);
+    const emptyState = document.getElementById('empty-state');
+    if (emptyState) emptyState.hidden = visible > 0;
+  });
 </script>
 
 <style>
