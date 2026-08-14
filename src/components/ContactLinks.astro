@@ -1,0 +1,69 @@
+---
+const links = [
+  { label: 'WhatsApp', href: 'https://api.whatsapp.com/send?phone=5551998734305', icon: 'ph-whatsapp-logo', primary: true },
+  { label: 'Email', href: 'mailto:omiguelmoraes@outlook.com', icon: 'ph-envelope-simple' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/omiguelmoraes', icon: 'ph-linkedin-logo' },
+  { label: 'Instagram', href: 'https://instagram.com/omiguelmoraes', icon: 'ph-instagram-logo' },
+  { label: 'Behance', href: 'https://www.behance.net/omiguelmoraes', icon: 'ph-behance-logo' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@omiguelmoraesx', icon: 'ph-youtube-logo' },
+  { label: 'X', href: 'https://x.com/omiguelmoraes', icon: 'ph-x-logo' },
+];
+---
+
+<div class="contact-links">
+  {links.map(link => (
+    <a
+      href={link.href}
+      target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+      rel={link.href.startsWith('mailto:') ? undefined : 'noopener'}
+      class:list={['contact-link', { primary: link.primary }]}
+      aria-label={link.label}
+      title={link.label}
+    >
+      <i class={`ph ${link.icon}`}></i>
+    </a>
+  ))}
+</div>
+
+<style>
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Ícone sozinho depende de rótulo acessível: aria-label pro leitor de tela,
+     title pro tooltip de quem está no desktop */
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+  }
+
+  .contact-link:hover {
+    color: var(--color-title);
+    background: var(--color-wash);
+    border-color: var(--color-muted);
+  }
+
+  .contact-link.primary {
+    background: var(--color-title);
+    border-color: var(--color-title);
+    color: var(--color-bg);
+  }
+
+  .contact-link.primary:hover {
+    background: var(--color-title);
+    border-color: var(--color-title);
+    color: var(--color-bg);
+    opacity: 0.85;
+  }
+</style>

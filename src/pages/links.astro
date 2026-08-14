@@ -9,24 +9,24 @@ const links = [
     icon: 'ph-whatsapp-logo',
   },
   {
-    label: 'Portfolio',
-    sub: 'The good stuff',
+    label: 'Website',
+    sub: 'Projects and writing',
     href: 'https://miguelmoraes.pro',
     icon: 'ph-globe',
     sameTab: true,
   },
   {
-    label: 'Korbi Studio',
-    sub: 'The studio I built',
-    href: 'https://www.korbi.studio',
-    icon: 'ph-buildings',
+    label: 'Blog',
+    sub: 'Notas em português',
+    href: '/blog',
+    icon: 'ph-article',
+    sameTab: true,
   },
   {
-    label: 'Toolkit',
-    sub: 'What I actually use',
-    href: '/toolkit',
-    icon: 'ph-stack',
-    sameTab: true,
+    label: 'Korbi Studio',
+    sub: 'Design for serious brands',
+    href: 'https://www.korbi.studio',
+    icon: 'ph-buildings',
   },
 ];
 
@@ -102,7 +102,6 @@ const featured = {
           <img src={featured.image} alt={featured.title} width='400' height='225' loading='lazy' />
         </div>
         <div class='featured-content'>
-          <span class='featured-tag'>{featured.label}</span>
           <span class='featured-title'>{featured.title}</span>
           <span class='featured-sub'>{featured.sub}</span>
         </div>
@@ -306,8 +305,10 @@ const featured = {
     text-decoration: none;
   }
 
-  [data-theme='dark'] .item:hover {
-    border-color: #444;
+  @media (prefers-color-scheme: dark) {
+    .item:hover {
+      border-color: #444;
+    }
   }
 
   .item--disabled {
@@ -335,12 +336,9 @@ const featured = {
       transform: translateY(-50%);
       background: var(--color-title);
       color: var(--color-bg);
-      font-family: var(--font-mono);
       font-size: var(--font-size-xs);
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 3px 8px;
+      font-weight: 500;
+      padding: 4px 9px;
       border-radius: 4px;
       white-space: nowrap;
       pointer-events: none;
@@ -384,7 +382,12 @@ const featured = {
     color: var(--color-muted);
   }
 
+  /* Uma linha sempre: texto longo corta com reticências em vez de esticar o
+     botão e desalinhar a lista */
   .item-sub {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: var(--font-size-small);
     color: var(--color-muted);
     line-height: 1.4;
@@ -402,13 +405,11 @@ const featured = {
     gap: 12px;
   }
 
+  /* Alinhado ao resto do site, que abandonou o mono caixa-alta como rótulo */
   .section-label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-muted);
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    color: var(--color-title);
   }
 
   .reading-grid {
@@ -487,8 +488,10 @@ const featured = {
     text-decoration: none;
   }
 
-  [data-theme='dark'] .featured:hover {
-    border-color: #444;
+  @media (prefers-color-scheme: dark) {
+    .featured:hover {
+      border-color: #444;
+    }
   }
 
   .featured-image {
@@ -518,14 +521,6 @@ const featured = {
     background: var(--color-pill-bg);
   }
 
-  .featured-tag {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-  }
 
   .featured-title {
     font-size: var(--font-size-body);

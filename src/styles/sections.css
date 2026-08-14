@@ -1,0 +1,261 @@
+/* Section + row primitives shared across Home, About and inner pages */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+/* Hierarquia de título
+   .page-title  — nome da página (um por página, no topo)
+   .section-title — rótulo de seção dentro de uma página */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: var(--prose-max-width);
+}
+
+.page-title {
+  font-size: var(--font-size-title);
+  font-weight: 500;
+  color: var(--color-title);
+  line-height: var(--line-height-title);
+}
+
+.page-intro {
+  font-size: var(--font-size-body);
+  color: var(--color-body);
+  line-height: var(--line-height-body);
+}
+
+.page-intro a {
+  color: var(--color-title);
+  text-decoration: underline;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Separação vem só do gap do .content. Antes havia um padding-top aqui pra
+   afastar da linha divisória, que somava com o gap e dobrava o espaço */
+
+/* Seção sem título é continuação do bloco anterior */
+.content > * + .section:not(:has(> .section-title)) {
+  margin-top: calc(var(--section-gap) * -1 + var(--block-gap));
+}
+
+/* Mesmo estilo do título de página: um só nível tipográfico no site inteiro */
+.section-title {
+  font-size: var(--font-size-title);
+  font-weight: 500;
+  color: var(--color-title);
+  line-height: var(--line-height-title);
+}
+
+.section-body {
+  font-size: var(--font-size-body);
+  color: var(--color-body);
+  line-height: var(--line-height-body);
+  max-width: var(--prose-max-width);
+  margin-top: -8px;
+}
+
+.section-body a {
+  color: var(--color-title);
+  text-decoration: underline;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Listas sem descrição longa respiram menos */
+.rows--tight {
+  gap: 20px;
+}
+
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+/* Título à esquerda, data em badge à direita, na mesma linha */
+/* Link esticado: o <a> continua só no título, então o leitor de tela anuncia
+   um link nomeado pelo título, mas a área de clique cobre a linha inteira */
+.row--link {
+  position: relative;
+}
+
+.row--link .row-link::after {
+  content: '';
+  position: absolute;
+  inset: -6px -8px;
+  border-radius: 8px;
+}
+
+.row--link:hover .row-link {
+  text-decoration: underline;
+}
+
+.row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.date {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+  background: var(--color-pill-bg);
+  padding: 2px 8px;
+  border-radius: 10px;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+
+.row-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.row-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  color: var(--color-title);
+  line-height: var(--line-height-body);
+  text-decoration: none;
+}
+
+.row-link i {
+  opacity: 0.4;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+a.row-link:hover {
+  text-decoration: underline;
+}
+
+/* Medida de leitura curta: o texto para antes do badge de data em vez de
+   correr por baixo dele */
+.row-sub {
+  font-size: var(--font-size-small);
+  color: var(--color-muted);
+  line-height: var(--line-height-body);
+  max-width: var(--row-text-max-width);
+}
+
+.row-desc {
+  font-size: var(--font-size-body);
+  color: var(--color-body);
+  line-height: var(--line-height-body);
+  margin-top: 8px;
+  max-width: var(--row-text-max-width);
+}
+
+.row-label {
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  color: var(--color-title);
+  line-height: var(--line-height-body);
+}
+
+.see-all {
+  font-size: var(--font-size-body);
+  color: var(--color-muted);
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.see-all:hover {
+  color: var(--color-title);
+}
+
+/* Horizontal image strip inside a row */
+.row-images {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.row-images--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 320px;
+}
+
+.row-image {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-wash);
+}
+
+.row-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  height: auto;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+@media (max-width: 600px) {
+  .row-sub,
+  .row-desc {
+    max-width: none;
+  }
+
+  /* Empilhado, o badge vira uma pílula solta numa linha só pra ele. Sem a
+     casca, a data lê como parte da meta do item */
+  /* Link esticado: o <a> continua só no título, então o leitor de tela anuncia
+   um link nomeado pelo título, mas a área de clique cobre a linha inteira */
+.row--link {
+  position: relative;
+}
+
+.row--link .row-link::after {
+  content: '';
+  position: absolute;
+  inset: -6px -8px;
+  border-radius: 8px;
+}
+
+.row--link:hover .row-link {
+  text-decoration: underline;
+}
+
+.row-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .date {
+    background: transparent;
+    padding: 0;
+    font-family: inherit;
+    font-size: var(--font-size-small);
+  }
+
+  .row-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,317 @@
+---
+const nav = [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Writing', href: '/blog' },
+  { label: 'Career', href: '/career' },
+  { label: 'About', href: '/about' },
+  { label: 'Toolkit', href: '/toolkit' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(`${href}/`);
+---
+
+<aside class="sidebar">
+  <div class="identity">
+    <a href="/" class="avatar" aria-label="Home">
+      <img src="/webp/avatar.webp" alt="Miguel Moraes" width="72" height="72" />
+    </a>
+    <div class="identity-text">
+      <span class="name">Miguel Moraes</span>
+      <span class="role">Designer</span>
+    </div>
+    <button
+      class="nav-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <i class="ph ph-list icon-open"></i>
+      <i class="ph ph-x icon-close"></i>
+    </button>
+  </div>
+
+  <nav class="nav" id="site-nav" aria-label="Main">
+    {nav.map(item => (
+      <a
+        href={item.href}
+        class:list={['nav-item', { active: isActive(item.href) }]}
+        aria-current={isActive(item.href) ? 'page' : undefined}
+      >
+        {item.label}
+      </a>
+    ))}
+
+    <div class="nav-footer">
+      <div class="nav-socials">
+        <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        <a href="https://linkedin.com/in/omiguelmoraes" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+        <a href="https://www.behance.net/omiguelmoraes" target="_blank" rel="noopener" aria-label="Behance"><i class="ph ph-behance-logo"></i></a>
+        <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="X"><i class="ph ph-x-logo"></i></a>
+      </div>
+      <span class="nav-time"><span class="js-local-time">--:--</span> · Porto Alegre, Brazil</span>
+    </div>
+  </nav>
+</aside>
+
+<script>
+  // Delegação no document: os scripts inline do Astro são type=module e rodam
+  // depois do ClientRouter disparar astro:page-load, então registrar no evento
+  // não pega o primeiro carregamento
+  const sidebar = () => document.querySelector('.sidebar');
+
+  function setOpen(open: boolean) {
+    const el = sidebar();
+    if (!el) return;
+    el.classList.toggle('nav-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    const btn = el.querySelector('.nav-toggle');
+    btn?.setAttribute('aria-expanded', String(open));
+    btn?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+
+    if (target.closest('.nav-toggle')) {
+      setOpen(!sidebar()?.classList.contains('nav-open'));
+      return;
+    }
+
+    if (!sidebar()?.classList.contains('nav-open')) return;
+
+    // Clicar num link navega; clicar fora fecha
+    if (target.closest('.nav-item') || !target.closest('.nav')) setOpen(false);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  document.addEventListener('astro:before-swap', () => setOpen(false));
+
+  // Relógio no rodapé e no menu mobile: mesma classe, um script só.
+  // Chamada imediata porque astro:page-load já disparou quando este módulo roda
+  function tick() {
+    const els = document.querySelectorAll('.js-local-time');
+    if (!els.length) return;
+    const now = new Intl.DateTimeFormat('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).format(new Date());
+    els.forEach(el => (el.textContent = now));
+  }
+
+  tick();
+  setInterval(tick, 30_000);
+  document.addEventListener('astro:page-load', tick);
+
+</script>
+
+<style>
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .identity {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--color-wash);
+    display: block;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.15s;
+  }
+
+  .avatar:hover img {
+    opacity: 0.85;
+  }
+
+  .identity-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    font-size: var(--font-size-title);
+    font-weight: 500;
+    color: var(--color-title);
+    line-height: var(--line-height-title);
+  }
+
+  .role {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    line-height: var(--line-height-body);
+  }
+
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-title);
+    cursor: pointer;
+    padding: 8px;
+    line-height: 0;
+    font-size: 20px;
+    margin-left: auto;
+    transition: background 0.15s;
+  }
+
+  .nav-toggle:hover {
+    background: var(--color-wash);
+  }
+
+  .nav-toggle .icon-close,
+  .sidebar.nav-open .nav-toggle .icon-open {
+    display: none;
+  }
+
+  .sidebar.nav-open .nav-toggle .icon-close {
+    display: inline-block;
+  }
+
+  .nav-footer {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-left: -10px;
+  }
+
+  .nav-item {
+    font-size: var(--font-size-body);
+    color: var(--color-muted);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .nav-item:hover {
+    color: var(--color-title);
+    background: var(--color-wash);
+  }
+
+  .nav-item.active {
+    color: var(--color-title);
+    font-weight: 500;
+    background: var(--color-pill-bg);
+  }
+
+  /* Mobile: identidade e nav viram cabeçalho horizontal.
+     Quatro itens curtos cabem numa linha — hambúrguer esconderia
+     a navegação atrás de um toque sem necessidade. */
+  @media (max-width: 900px) {
+    .sidebar {
+      gap: 0;
+    }
+
+    .identity {
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+    }
+
+    .name {
+      font-size: var(--font-size-body);
+    }
+
+    .nav-toggle {
+      display: block;
+    }
+
+    /* Aberto, o cabeçalho vira painel de tela cheia */
+    /* 100dvh acompanha a barra do Safari no iOS; com inset:0 puro o rodapé do
+       menu fica escondido atrás da barra de endereço quando ela reaparece */
+    .sidebar.nav-open {
+      position: fixed;
+      inset: 0;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 60;
+      background: var(--color-bg);
+      margin: 0;
+      padding: 16px var(--layout-padding-x) max(24px, env(safe-area-inset-bottom));
+      border-bottom: none;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .nav {
+      display: none;
+      margin-left: -10px;
+      margin-top: 28px;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .sidebar.nav-open .nav {
+      display: flex;
+    }
+
+    .nav-item {
+      font-size: var(--font-size-title);
+      padding: 10px;
+    }
+
+    .nav-item.active {
+      background: transparent;
+    }
+
+    .nav-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: auto;
+      padding: 24px 10px 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .nav-socials {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-socials a {
+      color: var(--color-muted);
+      font-size: 20px;
+      display: inline-flex;
+    }
+
+    .nav-time {
+      font-size: var(--font-size-small);
+      color: var(--color-muted);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+</style>

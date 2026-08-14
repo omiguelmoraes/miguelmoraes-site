@@ -8,7 +8,7 @@
   --color-wash: #f2f2f2;
   --color-pill-bg: #f6f6f6;
 
-  --font-family: 'Geist', sans-serif;
+  --font-family: 'Rethink Sans', sans-serif;
   --font-mono: 'Geist Mono', monospace;
   --font-size-title: 20px;
   --font-size-body: 15px;
@@ -19,27 +19,22 @@
   --line-height-body: 1.8;
   --line-height-section: 1.4;
 
-  --layout-max-width: 600px;
+  --layout-max-width: 1000px;
   --layout-padding-x: 24px;
   --layout-padding-y: 80px;
-  --section-gap: 58px;
+  --section-gap: 56px;
+  --block-gap: 32px;
   --row-gap: 24px;
   --date-col-width: 130px;
+  --sidebar-width: 180px;
+  --shell-gap: 56px;
+  --prose-max-width: 680px;
+  --row-text-max-width: 60ch;
 }
 
-/* Dark mode */
-[data-theme="dark"] {
-  --color-title: #eeeeee;
-  --color-body: #aaaaaa;
-  --color-muted: #888888;
-  --color-bg: #111111;
-  --color-border: #2a2a2a;
-  --color-wash: #1a1a1a;
-  --color-pill-bg: #1e1e1e;
-}
-
+/* Sem toggle: o tema segue a preferência do sistema */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root {
     --color-title: #eeeeee;
     --color-body: #aaaaaa;
     --color-muted: #888888;
@@ -57,6 +52,7 @@
 }
 
 html {
+  scrollbar-gutter: stable;
   font-family: var(--font-family);
   font-size: var(--font-size-body);
   color: var(--color-title);

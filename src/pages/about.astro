@@ -1,0 +1,141 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { Image, getImage } from 'astro:assets';
+import ContactLinks from '../components/ContactLinks.astro';
+
+// Qualquer imagem solta em src/assets/about/ aparece aqui, sem tocar no código
+const photoModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/about/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+const photos = await Promise.all(
+  Object.entries(photoModules)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(async ([, mod]) => ({
+      src: mod.default,
+      // O lightbox usava o currentSrc, que é a versão pequena do srcset. Sem uma
+      // fonte maior, a imagem abria no tamanho da miniatura
+      full: (await getImage({ src: mod.default, width: 1400, format: 'webp' })).src,
+    }))
+);
+---
+
+<SiteLayout
+  title="About — Miguel Moraes"
+  description="Designer from Porto Alegre, Brazil. Side projects, and how to reach me."
+>
+  <div class="content">
+
+    <header class="page-header">
+      <h1 class="page-title">Hi, I'm Miguel</h1>
+      <p class="page-intro">
+        I'm 26, from Porto Alegre. I design and build websites: at <a href="https://barca.cc/" target="_blank" rel="noopener">Barca</a> during the week, and at <a href="https://www.korbi.studio" target="_blank" rel="noopener">Korbi</a>, my own studio, on the&nbsp;side.
+      </p>
+      <p class="page-intro">
+        I came in from the visual side and kept going until I could ship the thing myself. Handing a file over and watching the details disappear got old fast. That's also why I'm studying Systems Analysis and Development: I wanted to understand what happens after the&nbsp;design.
+      </p>
+      <p class="page-intro">
+        The question I keep coming back to is why some things get noticed and others don't. Same product, same price, completely different outcome. I write about that in <a href="/blog">Portuguese</a>, and I train every day, which is the only routine I've actually managed to&nbsp;keep.
+      </p>
+    </header>
+
+    {photos.length > 0 && (
+      <section class="section">
+        <h2 class="section-title">Life Recently</h2>
+        <p class="section-body">Desk, city, gym, work in progress. Whatever the last few weeks looked&nbsp;like.</p>
+        <div class="photo-grid">
+          {photos.map(photo => (
+            <div class="row-image">
+              <Image
+                src={photo.src}
+                alt=""
+                widths={[400, 800]}
+                sizes="(max-width: 600px) 45vw, 170px"
+                class="lightbox-trigger"
+                data-full={photo.full}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Side Projects -->
+    <section class="section">
+      <h2 class="section-title">Side Projects</h2>
+      <p class="section-body">Things I build outside of work: a studio, a product, and whatever comes next.</p>
+      <div class="rows rows--tight">
+
+        <div class="row">
+          <div class="row-head">
+            <a href="https://www.korbi.studio" target="_blank" rel="noopener" class="row-link">
+              Korbi Studio
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+            <span class="date">2026</span>
+          </div>
+          <span class="row-sub">Strategic design studio</span>
+        </div>
+
+        <div class="row">
+          <div class="row-head">
+            <span class="row-link">Mentorship & Consulting</span>
+            <span class="date">2026</span>
+          </div>
+          <span class="row-sub">One-on-one for visual designers & freelancers · Coming soon</span>
+        </div>
+
+        <div class="row">
+          <div class="row-head">
+            <a href="/packpro" class="row-link">
+              PackPro
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+            <span class="date">2024</span>
+          </div>
+          <span class="row-sub">Templates for freelancers</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Contact -->
+    <section class="section">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-body">WhatsApp is the fastest way to reach me.</p>
+      <ContactLinks />
+
+    </section>
+
+  </div>
+
+  <Lightbox />
+</SiteLayout>
+
+<style>
+  /* Faixa de quatro quadrados: registro do dia a dia, não galeria. Em duas
+     colunas verticais o bloco ocupava mais altura que qualquer seção da página */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .photo-grid :global(img) {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    object-fit: cover;
+    cursor: zoom-in;
+  }
+
+  @media (max-width: 600px) {
+    .photo-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

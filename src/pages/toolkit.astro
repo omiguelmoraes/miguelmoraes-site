@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
 
 const hardware = [
-  { name: 'Mac Mini M4', note: "Apple's most capable compact desktop — fast, silent, small.", href: 'https://www.apple.com/mac-mini/' },
+  { name: 'Mac Mini M4', note: "Apple's most capable compact desktop. Fast, silent, small.", href: 'https://www.apple.com/mac-mini/' },
   { name: 'MX Master 3', note: 'Best productivity mouse I\'ve used. Comfortable for long sessions.', href: 'https://www.logitech.com/products/mice/mx-master-3s.html' },
   { name: 'AOC 27" QHD', note: 'Sharp, spacious monitor for everyday design and dev work.', href: '' },
   { name: 'Aula F75', note: 'Compact 75% mechanical keyboard. Great value.', href: '' },
@@ -14,36 +14,33 @@ const software = [
   { name: 'Cursor', note: 'AI-powered code editor. Changed how I write code.', href: 'https://cursor.sh' },
   { name: 'Claude', note: 'AI for coding, content creation, and thinking through problems.', href: 'https://claude.ai' },
   { name: 'Obsidian', note: 'Second brain and note-taking. All my notes live here.', href: 'https://obsidian.md' },
-  { name: 'Things 3', note: 'Clean, fast task and project management.', href: 'https://culturedcode.com/things/' },
+  { name: 'TickTick', note: 'Task and project management with time blocking built in.', href: 'https://ticktick.com' },
   { name: 'Ghostty', note: 'Fast and minimal terminal.', href: 'https://ghostty.org' },
-  { name: 'Safari', note: 'Default browser. Fast and battery-friendly on Mac.', href: '' },
+  { name: 'Arc', note: 'Browser I switched to, mainly for Spaces and the sidebar.', href: 'https://arc.net/' },
   { name: 'Apple Calendar', note: 'Simple. Does the job.', href: '' },
 ];
 
 const books = [
-  { name: "Don't Make Me Think", note: 'Steve Krug — The classic on web usability. Essential for anyone in design.', href: '' },
-  { name: 'Win Without Pitching Manifesto', note: 'Blair Enns — How to position yourself and stop competing on price.', href: '' },
-  { name: 'Rework', note: 'Jason Fried & DHH — A different way to think about work and building things.', href: '' },
+  { name: "Don't Make Me Think", note: 'Steve Krug. The classic on web usability. Essential for anyone in design.', href: '' },
+  { name: 'Win Without Pitching Manifesto', note: 'Blair Enns. How to position yourself and stop competing on price.', href: '' },
+  { name: 'Rework', note: 'Jason Fried & DHH. A different way to think about work and building things.', href: '' },
   { name: 'The Art of Thinking in Graphs', note: 'Visual thinking and structured problem-solving.', href: '' },
-  { name: 'Princípio de UX', note: 'Daniel Furtado — UX in Portuguese, well-grounded and practical.', href: '' },
-  { name: 'Fall in Love with the Problem, Not the Solution', note: 'Uri Levine — On building products that solve real problems.', href: '' },
+  { name: 'Princípio de UX', note: 'Daniel Furtado. UX in Portuguese, well-grounded and practical.', href: '' },
+  { name: 'Fall in Love with the Problem, Not the Solution', note: 'Uri Levine. On building products that solve real problems.', href: '' },
 ];
 ---
 
-<BaseLayout title="Toolkit — Miguel Moraes" description="Gear, software and books I use and recommend.">
+<SiteLayout title="Toolkit — Miguel Moraes" description="Gear, software and books I use and recommend.">
   <div class="page">
 
-    <nav class="nav">
-      <a href="/links" class="back">← Miguel Moraes</a>
-    </nav>
 
-    <header class="header">
-      <h1 class="title">Toolkit</h1>
-      <p class="sub">Gear, software and books I use and recommend.</p>
+    <header class="page-header">
+      <h1 class="page-title">Toolkit</h1>
+      <p class="page-intro">Gear, software and books I use and recommend.</p>
     </header>
 
     <section class="section">
-      <span class="section-label">Hardware</span>
+      <h2 class="section-title">Hardware</h2>
       <ul class="list">
         {hardware.map(item => (
           <li class="item">
@@ -62,7 +59,7 @@ const books = [
     </section>
 
     <section class="section">
-      <span class="section-label">Software</span>
+      <h2 class="section-title">Software</h2>
       <ul class="list">
         {software.map(item => (
           <li class="item">
@@ -81,7 +78,7 @@ const books = [
     </section>
 
     <section class="section">
-      <span class="section-label">Books</span>
+      <h2 class="section-title">Books</h2>
       <ul class="list">
         {books.map(item => (
           <li class="item">
@@ -100,58 +97,23 @@ const books = [
     </section>
 
   </div>
-</BaseLayout>
+</SiteLayout>
 
 <style>
+  /* Menos que o --section-gap padrão: as listas daqui são caixas com borda,
+     então já têm limite visual próprio e não dependem tanto do vazio */
   .page {
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
     display: flex;
     flex-direction: column;
     gap: 40px;
+    max-width: var(--prose-max-width);
   }
 
-  .back {
-    font-size: var(--font-size-body);
-    color: var(--color-muted);
-    text-decoration: none;
-  }
-  .back:hover { color: var(--color-title); }
 
-  .header {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
 
-  .title {
-    font-size: var(--font-size-title);
-    font-weight: 400;
-    color: var(--color-title);
-    line-height: var(--line-height-title);
-  }
 
-  .sub {
-    font-size: var(--font-size-body);
-    color: var(--color-muted);
-    line-height: var(--line-height-body);
-  }
 
-  .section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
 
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-  }
 
   .list {
     list-style: none;

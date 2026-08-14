@@ -1,5 +1,10 @@
 ---
 import '../styles/global.css';
+// No frontmatter viram <link> de verdade; dentro de <script> o Vite injeta em
+// runtime e o ClientRouter descarta o estilo ao trocar o <head>
+import '@phosphor-icons/web/regular';
+import '@phosphor-icons/web/bold';
+import { ClientRouter } from 'astro:transitions';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 
@@ -7,20 +12,24 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  lang?: 'en' | 'pt-BR';
 }
 
 const {
   title = 'Miguel Moraes — Designer',
   description = 'Designer focused on visual design, UX/UI and front-end. Based in Brazil, open to remote projects.',
   image = '/og.png',
+  lang = 'en',
 } = Astro.props;
+
+const ogLocale = lang === 'pt-BR' ? 'pt_BR' : 'en_US';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,7 +44,7 @@ const ogImage = new URL(image, Astro.site);
     <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Miguel Moraes" />
 
     <!-- Twitter -->
@@ -44,87 +53,18 @@ const ogImage = new URL(image, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <ClientRouter />
     <slot name="head" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
-    <script is:inline>
-      const saved = localStorage.getItem('theme');
-      if (saved) document.documentElement.setAttribute('data-theme', saved);
-
-      document.addEventListener('astro:before-swap', (e) => {
-        const theme = localStorage.getItem('theme');
-        if (theme) e.newDocument.documentElement.setAttribute('data-theme', theme);
-      });
-    </script>
-    <script>
-      import '@phosphor-icons/web/regular';
-      import '@phosphor-icons/web/bold';
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
   <script defer src="https://umami-blond-ten.vercel.app/script.js" data-website-id="b1833d27-7a87-4710-83aa-b7b587f9d7b5"></script>
   </head>
   <body>
-    <button id="theme-toggle" aria-label="Toggle dark mode">
-      <i id="icon-sun" class="ph ph-sun" style="font-size:16px"></i>
-      <i id="icon-moon" class="ph ph-moon" style="font-size:16px;display:none"></i>
-    </button>
     <slot />
     <Analytics />
     <SpeedInsights />
   </body>
 </html>
 
-<script>
-  function setupTheme() {
-    const btn = document.getElementById('theme-toggle');
-    const sun = document.getElementById('icon-sun');
-    const moon = document.getElementById('icon-moon');
-    if (!btn || !sun || !moon) return;
-
-    const html = document.documentElement;
-
-    function getTheme() {
-      return html.getAttribute('data-theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    }
-
-    function updateIcon(theme: string) {
-      sun.style.display = theme === 'dark' ? 'none' : 'block';
-      moon.style.display = theme === 'dark' ? 'block' : 'none';
-    }
-
-    updateIcon(getTheme());
-
-    btn.addEventListener('click', () => {
-      const next = getTheme() === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      updateIcon(next);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', setupTheme);
-</script>
-
-<style>
-  #theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--color-pill-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    cursor: pointer;
-    color: var(--color-muted);
-    padding: 8px;
-    line-height: 0;
-    transition: color 0.15s, background 0.15s;
-    z-index: 10;
-  }
-
-  #theme-toggle:hover {
-    color: var(--color-title);
-    background: var(--color-wash);
-  }
-</style>

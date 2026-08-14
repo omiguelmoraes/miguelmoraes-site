@@ -1,0 +1,235 @@
+---
+interface Option {
+  label: string;
+  value: string;
+  count: number;
+}
+
+interface Props {
+  options: Option[];
+  allLabel?: string;
+  allCount: number;
+}
+
+const { options, allLabel = 'All', allCount } = Astro.props;
+---
+
+<div class="filters">
+  <button class="filters-trigger" aria-expanded="false" aria-haspopup="listbox">
+    <span class="filters-current">{allLabel}</span>
+    <i class="ph ph-caret-down"></i>
+  </button>
+
+  <div class="filters-list" role="listbox">
+    <button class="filter-btn active" data-filter="all" role="option" aria-selected="true">
+      {allLabel} <span class="filter-count">{allCount}</span>
+    </button>
+    {options.map(opt => (
+      <button class="filter-btn" data-filter={opt.value} role="option" aria-selected="false">
+        {opt.label} <span class="filter-count">{opt.count}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<div class="filters-backdrop"></div>
+
+<script>
+  // Delegação no document: os scripts inline do Astro são type=module e rodam
+  // depois do ClientRouter disparar astro:page-load
+  const root = () => document.querySelector('.filters');
+
+  function setOpen(open: boolean) {
+    const el = root();
+    if (!el) return;
+    el.classList.toggle('open', open);
+    el.querySelector('.filters-trigger')?.setAttribute('aria-expanded', String(open));
+    document.querySelector('.filters-backdrop')?.classList.toggle('visible', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  function apply(btn: HTMLButtonElement) {
+    const el = root();
+    el?.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+
+    const current = el?.querySelector('.filters-current');
+    if (current) current.textContent = btn.textContent?.replace(/\s*\d+\s*$/, '').trim() ?? '';
+
+    const filter = btn.dataset.filter!;
+    let visible = 0;
+    document.querySelectorAll<HTMLElement>('[data-tags]').forEach(item => {
+      const tags = (item.dataset.tags ?? '').split(',');
+      const show = filter === 'all' || tags.includes(filter);
+      item.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    const empty = document.getElementById('empty-state');
+    if (empty) empty.hidden = visible > 0;
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+
+    if (target.closest('.filters-trigger')) {
+      setOpen(!root()?.classList.contains('open'));
+      return;
+    }
+
+    const btn = target.closest('.filter-btn') as HTMLButtonElement | null;
+    if (btn) {
+      apply(btn);
+      setOpen(false);
+      return;
+    }
+
+    if (root()?.classList.contains('open') && !target.closest('.filters-list')) setOpen(false);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  document.addEventListener('astro:before-swap', () => setOpen(false));
+</script>
+
+<style>
+  .filters-trigger {
+    display: none;
+  }
+
+  .filters-backdrop {
+    display: none;
+  }
+
+  .filters-list {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: transparent;
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    font-size: var(--font-size-small);
+    font-family: inherit;
+    padding: 4px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    line-height: 1.6;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+
+  .filter-btn:hover {
+    color: var(--color-title);
+    border-color: var(--color-muted);
+  }
+
+  .filter-btn.active {
+    background: var(--color-title);
+    border-color: var(--color-title);
+    color: var(--color-bg);
+  }
+
+  .filter-count {
+    opacity: 0.45;
+    font-size: 0.85em;
+    margin-left: 1px;
+  }
+
+  .filter-btn.active .filter-count {
+    opacity: 0.6;
+  }
+
+  /* Mobile: vira um gatilho só que abre a lista inteira, em vez de rolar
+     na horizontal ou empilhar em várias linhas */
+  @media (max-width: 700px) {
+    .filters-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-title);
+      color: var(--color-bg);
+      border: none;
+      font-family: inherit;
+      font-size: var(--font-size-small);
+      padding: 6px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      line-height: 1.6;
+    }
+
+    .filters-trigger i {
+      font-size: 14px;
+      transition: transform 0.2s;
+    }
+
+    .filters.open .filters-trigger i {
+      transform: rotate(180deg);
+    }
+
+    .filters-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 40;
+    }
+
+    .filters-backdrop.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .filters-list {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 0;
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+      border-radius: 16px 16px 0 0;
+      padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+      max-height: 70dvh;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.25s ease;
+    }
+
+    .filters.open .filters-list {
+      transform: translateY(0);
+    }
+
+    .filter-btn {
+      border: none;
+      border-radius: 0;
+      text-align: left;
+      padding: 14px 24px;
+      font-size: var(--font-size-body);
+    }
+
+    .filter-btn.active {
+      background: transparent;
+      color: var(--color-title);
+      font-weight: 500;
+    }
+
+    .filter-btn.active .filter-count,
+    .filter-count {
+      opacity: 0.45;
+    }
+  }
+</style>

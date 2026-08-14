@@ -1,0 +1,312 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import PostCTA from '../../components/PostCTA.astro';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+
+// Relacionados: mesma categoria primeiro, completando com os mais recentes
+// pra seção nunca aparecer vazia quando a categoria tem um post só
+const all = (await getCollection('blog', ({ data }) => !data.draft))
+  .filter(p => p.id !== post.id)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sameCategory = all.filter(p => p.data.category === post.data.category);
+const related = [...sameCategory, ...all.filter(p => !sameCategory.includes(p))].slice(0, 3);
+---
+
+<SiteLayout
+  lang="pt-BR"
+  title={`${post.data.title} — Miguel Moraes`}
+  description={post.data.description}
+>
+  <div class="page">
+
+    <nav class="nav">
+      <a href="/blog" class="back">← Todos os artigos</a>
+    </nav>
+
+    <header class="post-header">
+      <div class="post-meta">
+        <span>{post.data.category}</span>
+        <span class="post-meta-sep">·</span>
+        <span>{formatDate(post.data.date)}</span>
+      </div>
+      <h1 class="post-title">{post.data.title}</h1>
+      <p class="post-lead">{post.data.description}</p>
+    </header>
+
+    {post.data.cover && (
+      <Image src={post.data.cover} alt={post.data.title} class="cover" loading="eager" />
+    )}
+
+    <article class="prose">
+      <Content />
+    </article>
+
+    <PostCTA />
+
+    {related.length > 0 && (
+      <aside class="related">
+        <h2 class="related-title">Continue lendo</h2>
+        <div class="related-list">
+          {related.map(p => (
+            <a href={`/blog/${p.id}`} class="related-item">
+              <span class="related-item-title">{p.data.title}</span>
+              <span class="related-item-date">
+                {p.data.date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
+              </span>
+            </a>
+          ))}
+        </div>
+      </aside>
+    )}
+
+  </div>
+</SiteLayout>
+
+<style>
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--block-gap);
+    max-width: 660px;
+  }
+
+  .back {
+    font-size: var(--font-size-body);
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+  .back:hover { color: var(--color-title); }
+
+  .post-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 16px;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+  }
+
+  .post-meta-sep {
+    opacity: 0.5;
+  }
+
+  /* Mesma escala dos títulos de página do site; só o peso sobe, porque
+     aqui ele é o h1 de um texto longo */
+  .post-title {
+    font-size: var(--font-size-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: var(--line-height-title);
+    color: var(--color-title);
+  }
+
+  /* Mesmo tamanho e mesma cor do corpo apagava a fronteira entre resumo e
+     texto. A cor mais clara resolve sem precisar aumentar o tamanho */
+  .post-lead {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--color-muted);
+    max-width: 54ch;
+  }
+
+  .cover {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+  }
+
+  .related {
+    border-top: 1px solid var(--color-border);
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .related-title {
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    color: var(--color-muted);
+  }
+
+  .related-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .related-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    text-decoration: none;
+  }
+
+  .related-item-title {
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    color: var(--color-title);
+    line-height: var(--line-height-body);
+  }
+
+  .related-item:hover .related-item-title { text-decoration: underline; }
+
+  .related-item-date {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .related-item {
+      flex-direction: column;
+      gap: 2px;
+    }
+    .related-item-date { text-align: left; }
+  }
+</style>
+
+<style is:global>
+  /* Espaçamento por tipo em vez de um intervalo igual pra tudo: parágrafo
+     próximo do vizinho, título com folga acima e colado no que ele abre */
+  .prose {
+    font-size: 16px;
+    color: var(--color-body);
+    line-height: 1.7;
+  }
+
+  .prose > * + * {
+    margin-top: 16px;
+  }
+
+  .prose h2 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    color: var(--color-title);
+    margin-top: 44px;
+  }
+
+  .prose h2 + * {
+    margin-top: 10px;
+  }
+
+  .prose h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-title);
+    margin-top: 32px;
+  }
+
+  .prose h3 + * {
+    margin-top: 8px;
+  }
+
+  .prose a {
+    color: var(--color-title);
+    text-decoration: underline;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .prose li::marker {
+    color: var(--color-muted);
+  }
+
+  .prose img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+  }
+
+  .prose figure {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .prose figcaption {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+  }
+
+  .prose blockquote {
+    border-left: 2px solid var(--color-border);
+    padding-left: 16px;
+    color: var(--color-muted);
+  }
+
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--color-pill-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--color-title);
+  }
+
+  .prose pre {
+    background: var(--color-wash);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  .prose pre code {
+    background: none;
+    padding: 0;
+  }
+
+  /* Shiki: cor do token segue o tema do site, não o tema do highlighter */
+  .prose .astro-code,
+  .prose .astro-code span {
+    color: var(--shiki-light);
+    background-color: transparent !important;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .prose .astro-code,
+    .prose .astro-code span {
+      color: var(--shiki-dark);
+    }
+  }
+
+  .prose hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+  }
+</style>

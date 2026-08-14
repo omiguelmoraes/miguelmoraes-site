@@ -1,0 +1,126 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Filters from '../../components/Filters.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+
+// Uma categoria por post, ordenadas por frequência
+const counts = posts.reduce<Record<string, number>>(
+  (acc, p) => ({ ...acc, [p.data.category]: (acc[p.data.category] ?? 0) + 1 }),
+  {}
+);
+const categories = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+---
+
+<SiteLayout
+  lang="pt-BR"
+  title="Blog — Miguel Moraes"
+  description="Notas e reflexões sobre design, código e o dia a dia de quem constrói."
+>
+  <div class="page">
+
+    <header class="page-header">
+      <h1 class="page-title">Blog</h1>
+      <p class="page-intro">Notas e reflexões sobre design, código e o dia a dia de quem constrói.</p>
+    </header>
+
+    {categories.length > 1 && (
+      <Filters
+        allLabel="Todos"
+        allCount={posts.length}
+        options={categories.map(([name, count]) => ({ label: name, value: name, count }))}
+      />
+    )}
+
+    {posts.length > 0 ? (
+      <div class="list">
+        {posts.map(post => (
+          <a href={`/blog/${post.id}`} class="item" data-tags={post.data.category}>
+            <span class="item-title">{post.data.title}</span>
+            <span class="item-date">{formatDate(post.data.date)}</span>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="empty">Em breve.</p>
+    )}
+
+    <p class="empty" id="empty-state" hidden>Nada nessa categoria ainda.</p>
+
+  </div>
+</SiteLayout>
+
+<style>
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--block-gap);
+    max-width: var(--prose-max-width);
+  }
+
+  .back {
+    font-size: var(--font-size-body);
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+  .back:hover { color: var(--color-title); }
+
+
+
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    text-decoration: none;
+  }
+
+  .item-title {
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    color: var(--color-title);
+    line-height: var(--line-height-body);
+  }
+
+  .item:hover .item-title {
+    text-decoration: underline;
+  }
+
+  .item-date {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    flex-shrink: 0;
+    line-height: var(--line-height-body);
+    text-align: right;
+  }
+
+  .empty {
+    color: var(--color-muted);
+    font-size: var(--font-size-body);
+  }
+
+  @media (max-width: 600px) {
+    .item {
+      flex-direction: column;
+      gap: 2px;
+    }
+    .item-date {
+      text-align: left;
+    }
+  }
+
+</style>

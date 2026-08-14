@@ -1,0 +1,222 @@
+---
+// Fecha o post oferecendo o próximo passo natural de quem gostou do texto.
+// Oferta de serviço não entra aqui porque quem lê é par, não cliente.
+//
+// Vazio desliga o formulário: formulário que não coleta nada é pior que
+// nenhum formulário.
+const SUBSTACK = 'miguelmoraes';
+---
+
+<aside class="post-cta">
+  {SUBSTACK ? (
+    <>
+      <div class="post-cta-head">
+        <span class="post-cta-title">Recebe os próximos por e-mail</span>
+        <p class="post-cta-text">
+          Escrevo sobre design, código e por que umas coisas são notadas e outras não.
+          Sem frequência fixa, sem enrolação.
+        </p>
+      </div>
+
+      <form
+        class="subscribe"
+        data-substack={SUBSTACK}
+        action={`https://${SUBSTACK}.substack.com/api/v1/free`}
+        method="post"
+      >
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="seu@email.com"
+          aria-label="Seu e-mail"
+          class="subscribe-input"
+        />
+        <button type="submit" class="subscribe-btn">Assinar</button>
+      </form>
+
+      <p class="subscribe-msg" role="status" hidden></p>
+    </>
+  ) : (
+    <div class="post-cta-head">
+      <span class="post-cta-title">Me acompanha</span>
+      <p class="post-cta-text">
+        Escrevo sobre design, código e por que umas coisas são notadas e outras não.
+      </p>
+    </div>
+  )}
+
+  <div class="post-cta-socials">
+    <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><i class="ph ph-instagram-logo"></i></a>
+    <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="X" title="X"><i class="ph ph-x-logo"></i></a>
+    <a href="https://linkedin.com/in/omiguelmoraes" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+    <a href="https://www.youtube.com/@omiguelmoraesx" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><i class="ph ph-youtube-logo"></i></a>
+  </div>
+</aside>
+
+<script>
+  // Três camadas de propósito: o form tem action/method reais, então mesmo sem
+  // JS o e-mail chega no Substack; o listener usa fase de captura, que dispara
+  // antes de qualquer coisa cancelar o evento; e a ligação acontece tanto no
+  // carregamento do módulo quanto a cada navegação do ClientRouter.
+  async function handle(form: HTMLFormElement) {
+    const pub = form.dataset.substack;
+    const input = form.querySelector('.subscribe-input') as HTMLInputElement;
+    const btn = form.querySelector('.subscribe-btn') as HTMLButtonElement;
+    const msg = form.parentElement?.querySelector('.subscribe-msg') as HTMLElement | null;
+    if (!pub || !input?.value) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    try {
+      // no-cors: o Substack aceita o POST mas não devolve resposta legível,
+      // então a confirmação real chega no e-mail da pessoa
+      await fetch(`https://${pub}.substack.com/api/v1/free`, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: input.value, first_url: location.href }),
+      });
+      form.hidden = true;
+      if (msg) {
+        msg.textContent = 'Quase lá: confirma a inscrição no e-mail que acabou de chegar.';
+        msg.hidden = false;
+      }
+    } catch {
+      if (msg) {
+        msg.innerHTML = `Não consegui inscrever agora. <a href="https://${pub}.substack.com/subscribe" target="_blank" rel="noopener">Assina direto no Substack</a>.`;
+        msg.hidden = false;
+      }
+      btn.disabled = false;
+      btn.textContent = 'Assinar';
+    }
+  }
+
+  function onSubmit(e: Event) {
+    const form = (e.target as HTMLElement)?.closest?.('.subscribe') as HTMLFormElement | null;
+    if (!form) return;
+    e.preventDefault();
+    handle(form);
+  }
+
+  document.addEventListener('submit', onSubmit, true);
+
+  function bind() {
+    document.querySelectorAll<HTMLFormElement>('.subscribe').forEach(form => {
+      if (form.dataset.bound) return;
+      form.dataset.bound = '1';
+      form.addEventListener('submit', onSubmit);
+    });
+  }
+
+  bind();
+  document.addEventListener('astro:page-load', bind);
+</script>
+
+<style>
+  .post-cta {
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--color-wash);
+  }
+
+  .post-cta-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .post-cta-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-title);
+  }
+
+  .post-cta-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-muted);
+    max-width: 46ch;
+  }
+
+  .subscribe {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .subscribe-input {
+    flex: 1;
+    min-width: 200px;
+    font-family: inherit;
+    font-size: var(--font-size-small);
+    color: var(--color-title);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px 14px;
+  }
+
+  .subscribe-input::placeholder {
+    color: var(--color-muted);
+  }
+
+  .subscribe-input:focus {
+    outline: none;
+    border-color: var(--color-muted);
+  }
+
+  .subscribe-btn {
+    font-family: inherit;
+    font-size: var(--font-size-small);
+    color: var(--color-bg);
+    background: var(--color-title);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .subscribe-btn:hover {
+    opacity: 0.85;
+  }
+
+  .subscribe-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .subscribe-msg {
+    font-size: var(--font-size-small);
+    color: var(--color-body);
+    line-height: 1.6;
+  }
+
+  .subscribe-msg a {
+    color: var(--color-title);
+    text-decoration: underline;
+  }
+
+  .post-cta-socials {
+    display: flex;
+    gap: 18px;
+  }
+
+  .post-cta-socials a {
+    display: inline-flex;
+    font-size: 18px;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .post-cta-socials a:hover {
+    color: var(--color-title);
+  }
+</style>
