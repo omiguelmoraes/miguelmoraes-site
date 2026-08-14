@@ -40,6 +40,28 @@ const photos = await Promise.all(
       </p>
     </header>
 
+    {photos.length > 0 && (
+      <section class="section">
+        <h2 class="section-title">Life Recently</h2>
+        <p class="section-body">Desk, city, gym, work in progress. Whatever the last few weeks looked&nbsp;like.</p>
+        <div class="photo-grid">
+          {photos.map(photo => (
+            <div class="row-image">
+              <Image
+                src={photo.src}
+                alt=""
+                widths={[400, 800]}
+                sizes="(max-width: 600px) 45vw, 330px"
+                class="lightbox-trigger"
+                data-full={photo.full}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
     <!-- Side Projects -->
     <section class="section">
       <h2 class="section-title">Side Projects</h2>
@@ -79,28 +101,6 @@ const photos = await Promise.all(
       </div>
     </section>
 
-
-    {photos.length > 0 && (
-      <section class="section">
-        <h2 class="section-title">Life Recently</h2>
-        <p class="section-body">Desk, city, gym, work in progress. Whatever the last few weeks looked&nbsp;like.</p>
-        <div class="photo-grid">
-          {photos.map(photo => (
-            <div class="row-image">
-              <Image
-                src={photo.src}
-                alt=""
-                widths={[400, 800]}
-                sizes="(max-width: 600px) 45vw, 330px"
-                class="lightbox-trigger"
-                data-full={photo.full}
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
 
     <!-- Contact -->
     <section class="section">
