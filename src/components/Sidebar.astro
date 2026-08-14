@@ -245,9 +245,13 @@ const isActive = (href: string) =>
     }
 
     /* Aberto, o cabeçalho vira painel de tela cheia */
+    /* 100dvh acompanha a barra do Safari no iOS; com inset:0 puro o rodapé do
+       menu fica escondido atrás da barra de endereço quando ela reaparece */
     .sidebar.nav-open {
       position: fixed;
       inset: 0;
+      height: 100vh;
+      height: 100dvh;
       z-index: 60;
       background: var(--color-bg);
       margin: 0;
