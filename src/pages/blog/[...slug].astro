@@ -85,14 +85,6 @@ const related = all
   }
   .back:hover { color: var(--color-title); }
 
-
-  .date {
-    font-size: var(--font-size-small);
-    color: var(--color-muted);
-  }
-
-
-
   .post-date {
     font-size: var(--font-size-small);
     color: var(--color-muted);
@@ -243,6 +235,25 @@ const related = all
   .prose pre code {
     background: none;
     padding: 0;
+  }
+
+  /* Shiki: cor do token segue o tema do site, não o tema do highlighter */
+  .prose .astro-code,
+  .prose .astro-code span {
+    color: var(--shiki-light);
+    background-color: transparent !important;
+  }
+
+  :root[data-theme='dark'] .prose .astro-code,
+  :root[data-theme='dark'] .prose .astro-code span {
+    color: var(--shiki-dark);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .prose .astro-code,
+    :root:not([data-theme='light']) .prose .astro-code span {
+      color: var(--shiki-dark);
+    }
   }
 
   .prose hr {

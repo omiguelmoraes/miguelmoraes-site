@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
 import Lightbox from '../../components/Lightbox.astro';
 import { allProjects } from '../../data/projects';
 
@@ -16,11 +16,11 @@ const nextProject = projectEntries[(currentIndex + 1) % projectEntries.length];
 const otherProjects = [prevProject, nextProject];
 ---
 
-<BaseLayout image={project.cover} title={project.title + " — Miguel Moraes"} description={project.description}>
+<SiteLayout image={project.cover} title={project.title + " — Miguel Moraes"} description={project.description}>
   <div class="page">
 
     <nav class="nav">
-      <a href="/" class="back">← Miguel Moraes</a>
+      <a href="/projects" class="back">← All projects</a>
     </nav>
 
     <header class="header">
@@ -102,15 +102,12 @@ const otherProjects = [prevProject, nextProject];
     </footer>
 
   </div>
-</BaseLayout>
+</SiteLayout>
 
 <Lightbox />
 
 <style>
   .page {
-    max-width: var(--layout-max-width);
-    margin: 0 auto;
-    padding: 48px var(--layout-padding-x) var(--layout-padding-y);
     display: flex;
     flex-direction: column;
     gap: 48px;

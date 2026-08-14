@@ -24,7 +24,11 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
-const featuredProjects = Object.entries(allProjects).slice(0, 3);
+// Flouds aparece como branding e como web design, com o mesmo título — sem
+// thumbnail pra diferenciar, a home mostrava a mesma linha duas vezes
+const featuredProjects = Object.entries(allProjects)
+  .filter(([, p], i, arr) => arr.findIndex(([, o]) => o.title === p.title) === i)
+  .slice(0, 3);
 ---
 
 <SiteLayout>
