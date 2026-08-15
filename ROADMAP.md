@@ -32,6 +32,8 @@
 - Lightbox mostra a mesma legenda embaixo da foto (via `data-caption`) e cede altura da imagem quando ela existe
 - Legenda centralizada embaixo da imagem (na página e no lightbox)
 - Avatar em squircle (era círculo) na sidebar, no menu mobile e na `/links` — `border-radius: 24%` + `corner-shape: squircle`
+- Nova OG image (`public/og.png`): fundo branco, avatar em squircle + "Miguel Moraes" em Rethink Sans, centralizado (a antiga era halftone com foto antiga)
+- `scripts/make-og.py` e `scripts/make-icons.py` regeram OG e favicons a partir do avatar
 - Favicon regerado a partir de `public/webp/avatar.webp` (era foto antiga), no mesmo squircle: `favicon.png` 180px, `favicon.ico` 16/32/48 e novo `apple-touch-icon.png` 180px quadrado (iOS aplica a própria máscara)
 
 ### 2026-05-26
