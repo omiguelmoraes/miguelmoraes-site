@@ -250,11 +250,15 @@ const otherProjects = [prevProject, nextProject];
     margin: 0;
   }
 
+  /* Centralizada: a foto ocupa a coluna inteira, então a legenda alinhada ao
+     centro dela se lê como legenda, e não como mais uma linha de texto corrido */
   .image-caption {
     font-size: var(--font-size-small);
     color: var(--color-muted);
     line-height: var(--line-height-body);
     max-width: 60ch;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .image-frame {

@@ -30,6 +30,7 @@
 - Legenda opcional nas imagens de projeto: `images` aceita `{ src, caption }` além de string pura (`toImage()` em `src/data/projects.ts`)
 - `[slug].astro` renderiza as imagens em `<figure>` + `<figcaption>`; sem caption o markup segue igual
 - Lightbox mostra a mesma legenda embaixo da foto (via `data-caption`) e cede altura da imagem quando ela existe
+- Legenda centralizada embaixo da imagem (na página e no lightbox)
 
 ### 2026-05-26
 - Typography: tokens de tamanho ajustados (`--font-size-body` 14→15px, `--font-size-small` 12→14px, `--font-size-xs` 11→12px)
