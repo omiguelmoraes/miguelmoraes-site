@@ -8,9 +8,10 @@ OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser('~/Dev/miguelmora
 W, H = 1200, 630
 BG = (255, 255, 255)
 TITLE = (17, 17, 17)          # --color-title
-AVATAR = 180
-GAP = 36
-NAME_SIZE = 64
+AVATAR = 150
+GAP = 32
+NAME_SIZE = 56
+LINE_SPACING = 6
 SS = 4                        # supersampling do squircle
 
 
@@ -45,8 +46,10 @@ except Exception:
 canvas = Image.new('RGB', (W, H), BG)
 draw = ImageDraw.Draw(canvas)
 
-name = 'Miguel Moraes'
-box = draw.textbbox((0, 0), name, font=font)
+# Nome em duas linhas e foto menor: o grupo cabe no corte quadrado central que
+# LinkedIn e afins fazem do 1200x630
+name = 'Miguel\nMoraes'
+box = draw.multiline_textbbox((0, 0), name, font=font, spacing=LINE_SPACING)
 tw, th = box[2] - box[0], box[3] - box[1]
 
 group_w = AVATAR + GAP + tw
@@ -54,7 +57,10 @@ x = (W - group_w) // 2
 y_center = H // 2
 
 canvas.paste(avatar, (x, y_center - AVATAR // 2), avatar)
-draw.text((x + AVATAR + GAP - box[0], y_center - th // 2 - box[1]), name, font=font, fill=TITLE)
+draw.multiline_text(
+    (x + AVATAR + GAP - box[0], y_center - th // 2 - box[1]),
+    name, font=font, fill=TITLE, spacing=LINE_SPACING,
+)
 
 canvas.save(OUT)
 print(OUT)
