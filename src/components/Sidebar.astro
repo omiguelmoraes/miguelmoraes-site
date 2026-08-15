@@ -137,10 +137,13 @@ const isActive = (href: string) =>
     text-decoration: none;
   }
 
+  /* Squircle de ícone de app: border-radius em % dá o arredondado em qualquer
+     tamanho, e corner-shape refina a curva onde o browser já suporta */
   .avatar {
     width: 64px;
     height: 64px;
-    border-radius: 50%;
+    border-radius: 24%;
+    corner-shape: squircle;
     overflow: hidden;
     background: var(--color-wash);
     display: block;

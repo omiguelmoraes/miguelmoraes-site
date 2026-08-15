@@ -31,6 +31,8 @@
 - `[slug].astro` renderiza as imagens em `<figure>` + `<figcaption>`; sem caption o markup segue igual
 - Lightbox mostra a mesma legenda embaixo da foto (via `data-caption`) e cede altura da imagem quando ela existe
 - Legenda centralizada embaixo da imagem (na página e no lightbox)
+- Avatar em squircle (era círculo) na sidebar, no menu mobile e na `/links` — `border-radius: 24%` + `corner-shape: squircle`
+- Favicon regerado a partir de `public/webp/avatar.webp` (era foto antiga), no mesmo squircle: `favicon.png` 180px, `favicon.ico` 16/32/48 e novo `apple-touch-icon.png` 180px quadrado (iOS aplica a própria máscara)
 
 ### 2026-05-26
 - Typography: tokens de tamanho ajustados (`--font-size-body` 14→15px, `--font-size-small` 12→14px, `--font-size-xs` 11→12px)
