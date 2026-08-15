@@ -134,3 +134,11 @@ export const allProjects = {
 
 export type ProjectSlug = keyof typeof allProjects;
 export type Project = typeof allProjects[ProjectSlug];
+
+// Imagem pode ser só o caminho ou { src, caption }. Quem não tem legenda segue
+// string pura, então nada precisa ser migrado
+export type ProjectImage = string | { src: string; caption: string };
+
+export function toImage(img: ProjectImage) {
+  return typeof img === 'string' ? { src: img, caption: '' } : img;
+}

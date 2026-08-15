@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import Lightbox from '../../components/Lightbox.astro';
-import { allProjects } from '../../data/projects';
+import { allProjects, toImage } from '../../data/projects';
 
 export function getStaticPaths() {
   return Object.keys(allProjects).map((slug) => ({ params: { slug } }));
@@ -52,11 +52,17 @@ const otherProjects = [prevProject, nextProject];
         <h2 class="section-heading">{project.challenge.heading}</h2>
         <p class="section-body">{project.challenge.body}</p>
         <div class="image-grid">
-          {project.challenge.images.map((src, i) => (
-            <div class="image-frame">
-              <img src={src} alt={project.title + ": " + project.challenge.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
-            </div>
-          ))}
+          {project.challenge.images.map((img, i) => {
+            const { src, caption } = toImage(img);
+            return (
+              <figure class="image-item">
+                <div class="image-frame">
+                  <img src={src} alt={caption || project.title + ": " + project.challenge.heading + ", image " + (i + 1)} data-caption={caption} class="lightbox-trigger" loading="lazy" width="800" height="600" />
+                </div>
+                {caption && <figcaption class="image-caption">{caption}</figcaption>}
+              </figure>
+            );
+          })}
         </div>
       </section>
 
@@ -71,11 +77,17 @@ const otherProjects = [prevProject, nextProject];
           </a>
         )}
         <div class="image-grid">
-          {project.result.images.map((src, i) => (
-            <div class="image-frame">
-              <img src={src} alt={project.title + ": " + project.result.heading + ", image " + (i + 1)} class="lightbox-trigger" loading="lazy" width="800" height="600" />
-            </div>
-          ))}
+          {project.result.images.map((img, i) => {
+            const { src, caption } = toImage(img);
+            return (
+              <figure class="image-item">
+                <div class="image-frame">
+                  <img src={src} alt={caption || project.title + ": " + project.result.heading + ", image " + (i + 1)} data-caption={caption} class="lightbox-trigger" loading="lazy" width="800" height="600" />
+                </div>
+                {caption && <figcaption class="image-caption">{caption}</figcaption>}
+              </figure>
+            );
+          })}
         </div>
       </section>
 
@@ -229,6 +241,20 @@ const otherProjects = [prevProject, nextProject];
     .image-grid {
       grid-template-columns: minmax(0, 1fr);
     }
+  }
+
+  .image-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .image-caption {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    line-height: var(--line-height-body);
+    max-width: 60ch;
   }
 
   .image-frame {
