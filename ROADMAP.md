@@ -31,6 +31,10 @@
 - Avatar da assinatura reusa `/webp/avatar.webp` no mesmo squircle da sidebar, em 28px
 - Data agora sai em `<time datetime>`, legível por máquina
 - Corrigido off-by-one na data exibida: o `date` do frontmatter vira meia-noite UTC e era formatado em UTC-3, mostrando o dia anterior (`2026-08-12` aparecia como "11 de agosto"). `formatDate` passou a usar `timeZone: 'UTC'`
+- `BaseLayout`/`SiteLayout` aceitam `type` (`website` | `article`) pro `og:type`; post de blog passa `article`
+- Post de blog usa a própria capa como `og:image` (cai na `og.png` do site quando não tem) e ganhou JSON-LD `BlogPosting` com autor, data e categoria
+- `public/og-packpro.png` criada — as tags OG e o JSON-LD `Product` da PackPro apontavam pra um arquivo que não existia, então a landing compartilhava sem preview
+- `scripts/make-og-packpro.py` gera essa imagem na paleta da página (fundo `#050505`, accent `#E84820`, Inter Tight) e avisa se algum elemento estoura o corte quadrado central
 
 ### 2026-08-15
 - Legenda opcional nas imagens de projeto: `images` aceita `{ src, caption }` além de string pura (`toImage()` em `src/data/projects.ts`)

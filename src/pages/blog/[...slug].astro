@@ -33,13 +33,46 @@ const all = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const sameCategory = all.filter(p => p.data.category === post.data.category);
 const related = [...sameCategory, ...all.filter(p => !sameCategory.includes(p))].slice(0, 3);
+
+// Post sem capa cai na OG padrão do site
+const ogImage = post.data.cover?.src ?? '/og.png';
+
+// Só a data (sem hora) porque o frontmatter não tem horário — cravar meia-noite
+// aqui seria inventar precisão que o dado não tem
+const publishedDate = post.data.date.toISOString().slice(0, 10);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": publishedDate,
+  "image": new URL(ogImage, Astro.site).href,
+  "url": new URL(`/blog/${post.id}`, Astro.site).href,
+  "mainEntityOfPage": new URL(`/blog/${post.id}`, Astro.site).href,
+  "inLanguage": "pt-BR",
+  "articleSection": post.data.category,
+  "author": {
+    "@type": "Person",
+    "name": "Miguel Moraes",
+    "url": "https://miguelmoraes.pro",
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Miguel Moraes",
+    "url": "https://miguelmoraes.pro",
+  },
+};
 ---
 
 <SiteLayout
   lang="pt-BR"
+  type="article"
   title={`${post.data.title} — Miguel Moraes`}
   description={post.data.description}
+  image={ogImage}
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <div class="page">
 
     <nav class="nav">

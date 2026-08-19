@@ -13,6 +13,7 @@ interface Props {
   description?: string;
   image?: string;
   lang?: 'en' | 'pt-BR';
+  type?: 'website' | 'article';
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   description = 'Designer focused on visual design, UX/UI and front-end. Based in Brazil, open to remote projects.',
   image = '/og.png',
   lang = 'en',
+  type = 'website',
 } = Astro.props;
 
 const ogLocale = lang === 'pt-BR' ? 'pt_BR' : 'en_US';
@@ -43,7 +45,7 @@ const ogImage = new URL(image, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Miguel Moraes" />
 
