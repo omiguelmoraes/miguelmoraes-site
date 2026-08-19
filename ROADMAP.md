@@ -35,6 +35,8 @@
 - Post de blog usa a própria capa como `og:image` (cai na `og.png` do site quando não tem) e ganhou JSON-LD `BlogPosting` com autor, data e categoria
 - `public/og-packpro.png` criada — as tags OG e o JSON-LD `Product` da PackPro apontavam pra um arquivo que não existia, então a landing compartilhava sem preview
 - `scripts/make-og-packpro.py` gera essa imagem na paleta da página (fundo `#050505`, accent `#E84820`, Inter Tight) e avisa se algum elemento estoura o corte quadrado central
+- Feed RSS em `/rss.xml` (`@astrojs/rss`), com `trailingSlash: false` pros links baterem com o canonical de cada post
+- `<link rel="alternate">` no `BaseLayout` pro feed ser descoberto sozinho pelos leitores
 
 ### 2026-08-15
 - Legenda opcional nas imagens de projeto: `images` aceita `{ src, caption }` além de string pura (`toImage()` em `src/data/projects.ts`)
