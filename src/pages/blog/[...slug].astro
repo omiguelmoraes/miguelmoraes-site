@@ -84,8 +84,7 @@ const jsonLd = {
       <h1 class="post-title">{post.data.title}</h1>
       <p class="post-lead">{post.data.description}</p>
       <div class="byline">
-        <img class="byline-avatar" src="/webp/avatar.webp" alt="" width="28" height="28" />
-        <span class="byline-name">Miguel Moraes</span>
+        <img class="byline-avatar" src="/webp/avatar.webp" alt="Miguel Moraes" width="28" height="28" />
         <time class="byline-date" datetime={post.data.date.toISOString()}>
           {formatDate(post.data.date)}
         </time>
@@ -166,11 +165,6 @@ const jsonLd = {
     object-fit: cover;
     background: var(--color-wash);
     flex-shrink: 0;
-  }
-
-  .byline-name {
-    font-size: var(--font-size-small);
-    color: var(--color-title);
   }
 
   .byline-date {
