@@ -26,6 +26,12 @@
 
 ## Changelog
 
+### 2026-08-19
+- Header do post reestruturado (`src/pages/blog/[...slug].astro`): categoria como eyebrow, título, lead e uma linha de assinatura fechando o bloco — avatar + nome à esquerda, data à direita (antes categoria e data dividiam a linha acima do título)
+- Avatar da assinatura reusa `/webp/avatar.webp` no mesmo squircle da sidebar, em 28px
+- Data agora sai em `<time datetime>`, legível por máquina
+- Corrigido off-by-one na data exibida: o `date` do frontmatter vira meia-noite UTC e era formatado em UTC-3, mostrando o dia anterior (`2026-08-12` aparecia como "11 de agosto"). `formatDate` passou a usar `timeZone: 'UTC'`
+
 ### 2026-08-15
 - Legenda opcional nas imagens de projeto: `images` aceita `{ src, caption }` além de string pura (`toImage()` em `src/data/projects.ts`)
 - `[slug].astro` renderiza as imagens em `<figure>` + `<figcaption>`; sem caption o markup segue igual

@@ -16,8 +16,15 @@ export const getStaticPaths = (async () => {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+// timeZone UTC porque a data do frontmatter vira meia-noite UTC: formatando no
+// fuso local (UTC-3) o dia voltava um, e aí o texto discordava do <time datetime>
 const formatDate = (date: Date) =>
-  date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+  date.toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
 
 // Relacionados: mesma categoria primeiro, completando com os mais recentes
 // pra seção nunca aparecer vazia quando a categoria tem um post só
@@ -40,13 +47,16 @@ const related = [...sameCategory, ...all.filter(p => !sameCategory.includes(p))]
     </nav>
 
     <header class="post-header">
-      <div class="post-meta">
-        <span>{post.data.category}</span>
-        <span class="post-meta-sep">·</span>
-        <span>{formatDate(post.data.date)}</span>
-      </div>
+      <span class="post-category">{post.data.category}</span>
       <h1 class="post-title">{post.data.title}</h1>
       <p class="post-lead">{post.data.description}</p>
+      <div class="byline">
+        <img class="byline-avatar" src="/webp/avatar.webp" alt="" width="28" height="28" />
+        <span class="byline-name">Miguel Moraes</span>
+        <time class="byline-date" datetime={post.data.date.toISOString()}>
+          {formatDate(post.data.date)}
+        </time>
+      </div>
     </header>
 
     {post.data.cover && (
@@ -100,16 +110,41 @@ const related = [...sameCategory, ...all.filter(p => !sameCategory.includes(p))]
     padding-bottom: 16px;
   }
 
-  .post-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .post-category {
     font-size: var(--font-size-small);
     color: var(--color-muted);
   }
 
-  .post-meta-sep {
-    opacity: 0.5;
+  /* Assinatura fecha o header: autor à esquerda, data empurrada pra direita.
+     A folga maior acima separa o bloco do lead sem precisar de divisória */
+  .byline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  /* Mesmo squircle do avatar do Sidebar, na escala de metadado */
+  .byline-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 24%;
+    corner-shape: squircle;
+    object-fit: cover;
+    background: var(--color-wash);
+    flex-shrink: 0;
+  }
+
+  .byline-name {
+    font-size: var(--font-size-small);
+    color: var(--color-title);
+  }
+
+  .byline-date {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
   /* Mesma escala dos títulos de página do site; só o peso sobe, porque
