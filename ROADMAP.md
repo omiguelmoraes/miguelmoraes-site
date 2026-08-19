@@ -37,6 +37,10 @@
 - `scripts/make-og-packpro.py` gera essa imagem na paleta da página (fundo `#050505`, accent `#E84820`, Inter Tight) e avisa se algum elemento estoura o corte quadrado central
 - Feed RSS em `/rss.xml` (`@astrojs/rss`), com `trailingSlash: false` pros links baterem com o canonical de cada post
 - `<link rel="alternate">` no `BaseLayout` pro feed ser descoberto sozinho pelos leitores
+- Fontes auto-hospedadas via API nativa do Astro 6 (`fonts` no config + `<Font>`): saíram os 2 preconnects e o CSS bloqueante do Google Fonts das 18 páginas
+- Rethink Sans, Geist Mono e Inter Tight (PackPro) agora saem de `/_astro/fonts/` — 92 KB em 3 woff2, subset `latin`
+- `--font-family`/`--font-mono` (e `--font` da PackPro) apontam pras CSS vars do Astro, que já trazem fallback com métrica casada pra reduzir CLS
+- Preload só na Rethink Sans: a mono só aparece em bloco de código e não vale disputar banda no primeiro paint
 
 ### 2026-08-15
 - Legenda opcional nas imagens de projeto: `images` aceita `{ src, caption }` além de string pura (`toImage()` em `src/data/projects.ts`)

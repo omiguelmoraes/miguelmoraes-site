@@ -8,8 +8,8 @@
   --color-wash: #f2f2f2;
   --color-pill-bg: #f6f6f6;
 
-  --font-family: 'Rethink Sans', sans-serif;
-  --font-mono: 'Geist Mono', monospace;
+  --font-family: var(--font-rethink-sans);
+  --font-mono: var(--font-geist-mono);
   --font-size-title: 20px;
   --font-size-body: 15px;
   --font-size-small: 14px;

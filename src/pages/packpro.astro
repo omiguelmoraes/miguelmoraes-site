@@ -1,4 +1,6 @@
 ---
+import { Font } from 'astro:assets';
+
 const kiwify = 'https://pay.kiwify.com.br/FNeJdk9';
 const instagram = 'https://instagram.com/omiguelmoraes';
 ---
@@ -19,9 +21,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   <meta property="og:image" content="https://miguelmoraes.pro/og-packpro.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <Font cssVariable="--font-inter-tight" preload />
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
   <script type="application/ld+json">
@@ -358,7 +358,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     --border-light: rgba(0,0,0,0.08);
     --text-light: #111111;
     --muted-light: #666666;
-    --font: 'Inter Tight', sans-serif;
+    --font: var(--font-inter-tight);
   }
 
   body {

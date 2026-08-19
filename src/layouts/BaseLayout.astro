@@ -7,6 +7,7 @@ import '@phosphor-icons/web/bold';
 import { ClientRouter } from 'astro:transitions';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import { Font } from 'astro:assets';
 
 interface Props {
   title?: string;
@@ -60,9 +61,10 @@ const ogImage = new URL(image, Astro.site);
     <slot name="head" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
+    <!-- preload só na Rethink Sans: ela pinta o texto da página. A mono
+         aparece em bloco de código e não vale disputar banda no primeiro paint -->
+    <Font cssVariable="--font-rethink-sans" preload />
+    <Font cssVariable="--font-geist-mono" />
   <script defer src="https://umami-blond-ten.vercel.app/script.js" data-website-id="b1833d27-7a87-4710-83aa-b7b587f9d7b5"></script>
   </head>
   <body>

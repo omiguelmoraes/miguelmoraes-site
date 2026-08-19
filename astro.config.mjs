@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import rehypeExternalLinks from 'rehype-external-links';
 
@@ -7,6 +7,38 @@ export default defineConfig({
   site: 'https://miguelmoraes.pro',
   trailingSlash: 'never',
   integrations: [sitemap()],
+  // Astro baixa e serve as fontes junto do site: mata os dois handshakes com
+  // o Google e o round-trip bloqueante do CSS deles antes do texto pintar.
+  // subsets latin só — o conteúdo é português e inglês
+  fonts: [
+    {
+      name: 'Rethink Sans',
+      cssVariable: '--font-rethink-sans',
+      provider: fontProviders.google(),
+      weights: [400, 500, 600, 700],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: ['sans-serif'],
+    },
+    {
+      name: 'Geist Mono',
+      cssVariable: '--font-geist-mono',
+      provider: fontProviders.google(),
+      weights: [400],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: ['monospace'],
+    },
+    {
+      name: 'Inter Tight',
+      cssVariable: '--font-inter-tight',
+      provider: fontProviders.google(),
+      weights: [400, 500, 600, 700],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: ['sans-serif'],
+    },
+  ],
   markdown: {
     // Link externo em post abre em aba nova sem eu precisar marcar na mão a
     // cada texto. Link interno segue na mesma aba
