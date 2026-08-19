@@ -84,7 +84,9 @@ const jsonLd = {
       <h1 class="post-title">{post.data.title}</h1>
       <p class="post-lead">{post.data.description}</p>
       <div class="byline">
-        <img class="byline-avatar" src="/webp/avatar.webp" alt="Miguel Moraes" width="28" height="28" />
+        <span class="byline-author" data-tooltip="Miguel Moraes">
+          <img class="byline-avatar" src="/webp/avatar.webp" alt="Miguel Moraes" width="28" height="28" />
+        </span>
         <time class="byline-date" datetime={post.data.date.toISOString()}>
           {formatDate(post.data.date)}
         </time>
@@ -154,6 +156,36 @@ const jsonLd = {
     align-items: center;
     gap: 10px;
     margin-top: 12px;
+  }
+
+  .byline-author {
+    position: relative;
+    display: flex;
+  }
+
+  /* Mesmo pill de tooltip da /links. Só no ponteiro: no toque o :hover fica
+     grudado depois do tap, e aí o rótulo não sai mais da tela */
+  @media (hover: hover) {
+    .byline-author::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 0;
+      background: var(--color-title);
+      color: var(--color-bg);
+      font-size: var(--font-size-xs);
+      font-weight: 500;
+      padding: 4px 9px;
+      border-radius: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .byline-author:hover::after {
+      opacity: 1;
+    }
   }
 
   /* Mesmo squircle do avatar do Sidebar, na escala de metadado */

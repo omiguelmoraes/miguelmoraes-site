@@ -28,7 +28,7 @@
 
 ### 2026-08-19
 - Header do post reestruturado (`src/pages/blog/[...slug].astro`): categoria como eyebrow, título, lead e uma linha de assinatura fechando o bloco — avatar à esquerda, data à direita (antes categoria e data dividiam a linha acima do título)
-- Avatar da assinatura reusa `/webp/avatar.webp` no mesmo squircle da sidebar, em 28px, com `alt` nomeado por ser a única marca de autoria visível (o nome em texto saiu: a sidebar já mostra o mesmo avatar e nome logo acima)
+- Avatar da assinatura reusa `/webp/avatar.webp` no mesmo squircle da sidebar, em 28px, com `alt` nomeado por ser a única marca de autoria visível (o nome em texto saiu: a sidebar já mostra o mesmo avatar e nome logo acima); o nome volta em tooltip no hover, reusando o pill da `/links` e o guard `@media (hover: hover)`
 - Data agora sai em `<time datetime>`, legível por máquina
 - Corrigido off-by-one na data exibida: o `date` do frontmatter vira meia-noite UTC e era formatado em UTC-3, mostrando o dia anterior (`2026-08-12` aparecia como "11 de agosto"). `formatDate` passou a usar `timeZone: 'UTC'`
 - `BaseLayout`/`SiteLayout` aceitam `type` (`website` | `article`) pro `og:type`; post de blog passa `article`
