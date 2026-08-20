@@ -36,6 +36,7 @@ const otherProjects = [prevProject, nextProject];
         )}
       </div>
       <h1 class="title">{project.title}</h1>
+      {project.headline && <p class="headline">{project.headline}</p>}
       <div class="tags">
         {project.tags.map(tag => <span class="tag">{tag}</span>)}
       </div>
@@ -47,49 +48,50 @@ const otherProjects = [prevProject, nextProject];
 
     <main class="body">
 
-      <section class="section">
-        <span class="section-label">Challenge</span>
-        <h2 class="section-heading">{project.challenge.heading}</h2>
-        <p class="section-body">{project.challenge.body}</p>
-        <div class="image-grid">
-          {project.challenge.images.map((img, i) => {
-            const { src, caption } = toImage(img);
-            return (
-              <figure class="image-item">
-                <div class="image-frame">
-                  <img src={src} alt={caption || project.title + ": " + project.challenge.heading + ", image " + (i + 1)} data-caption={caption} class="lightbox-trigger" loading="lazy" width="800" height="600" />
-                </div>
-                {caption && <figcaption class="image-caption">{caption}</figcaption>}
-              </figure>
-            );
-          })}
-        </div>
-      </section>
+      {project.sections.map((section, si) => (
+        <section class="section">
+          <span class="section-label">{section.label}</span>
+          {section.heading && <h2 class="section-heading">{section.heading}</h2>}
+          {section.body.map((bloco) => (
+            bloco.type === 'list'
+              ? <ul class="section-list">{bloco.items.map((item) => <li set:html={item} />)}</ul>
+              : <p class="section-body" set:html={bloco.html} />
+          ))}
+          {si === project.sections.length - 1 && project.url && (
+            <a href={project.url} target="_blank" rel="noopener" class="visit-link">
+              View project
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </a>
+          )}
+          <div class="image-grid">
+            {section.images.map((img, i) => {
+              const { src, caption } = toImage(img);
+              return (
+                <figure class="image-item">
+                  <div class="image-frame">
+                    <img src={src} alt={caption || project.title + ": " + (section.heading || section.label) + ", image " + (i + 1)} data-caption={caption} class="lightbox-trigger" loading="lazy" width="800" height="600" />
+                  </div>
+                  {caption && <figcaption class="image-caption">{caption}</figcaption>}
+                </figure>
+              );
+            })}
+          </div>
+        </section>
+      ))}
 
-      <section class="section">
-        <span class="section-label">Result</span>
-        <h2 class="section-heading">{project.result.heading}</h2>
-        <p class="section-body">{project.result.body}</p>
-        {(('url' in project && project.url) || ('figmaUrl' in project && project.figmaUrl)) && (
-          <a href={('url' in project && project.url) ? project.url : (project as any).figmaUrl} target="_blank" rel="noopener" class="visit-link">
-            View project
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          </a>
-        )}
-        <div class="image-grid">
-          {project.result.images.map((img, i) => {
-            const { src, caption } = toImage(img);
-            return (
-              <figure class="image-item">
-                <div class="image-frame">
-                  <img src={src} alt={caption || project.title + ": " + project.result.heading + ", image " + (i + 1)} data-caption={caption} class="lightbox-trigger" loading="lazy" width="800" height="600" />
-                </div>
-                {caption && <figcaption class="image-caption">{caption}</figcaption>}
-              </figure>
-            );
-          })}
-        </div>
-      </section>
+      {project.results && (
+        <section class="section">
+          <span class="section-label">In numbers</span>
+          <div class="results">
+            {project.results.map((r) => (
+              <div class="result">
+                <span class="result-value">{r.value}</span>
+                <span class="result-label">{r.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
     </main>
 
@@ -203,6 +205,57 @@ const otherProjects = [prevProject, nextProject];
     font-weight: 400;
     line-height: 1.35;
     color: var(--color-title);
+  }
+
+  .headline {
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--color-body);
+    max-width: 46ch;
+    margin-top: 4px;
+  }
+
+  .section-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 20px;
+    max-width: 60ch;
+    font-size: var(--font-size-body);
+    color: var(--color-body);
+    line-height: var(--line-height-body);
+  }
+
+  .section-list li::marker { color: var(--color-muted); }
+
+  .results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .result {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 22px 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-wash);
+  }
+
+  .result-value {
+    font-size: 34px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-title);
+  }
+
+  .result-label {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    line-height: 1.45;
   }
 
   .section-body {

@@ -6,11 +6,18 @@ import projects from './projects.json';
 // string pura, então nada precisa ser migrado
 export type ProjectImage = string | { src: string; caption: string };
 
+type Block =
+  | { type: 'p'; html: string }
+  | { type: 'list'; items: string[] };
+
 type Section = {
+  label: string;
   heading: string;
-  body: string;
+  body: Block[];
   images: ProjectImage[];
 };
+
+type Result = { value: string; label: string };
 
 export type Project = {
   title: string;
@@ -24,11 +31,13 @@ export type Project = {
   thumbnail: string;
   coverPosition?: string;
   tags: string[];
-  challenge: Section;
-  result: Section;
+  headline?: string;
+  role?: string;
+  results?: Result[];
+  sections: Section[];
 };
 
-export const allProjects: Record<string, Project> = projects;
+export const allProjects = projects as unknown as Record<string, Project>;
 
 export type ProjectSlug = keyof typeof allProjects;
 
