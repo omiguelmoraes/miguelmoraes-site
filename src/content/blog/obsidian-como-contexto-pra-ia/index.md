@@ -1,22 +1,25 @@
 ---
-title: "Meu Obsidian não é um app de notas, é o contexto da minha IA"
-description: "Como eu organizo o vault pra IA chegar sabendo quem eu sou, no que trabalho e como decido, sem eu ter que explicar tudo de novo em cada conversa."
+title: Em época de IA, quem tem contexto é rei
+description: Como eu integro o Obsidian com IA para chegar sabendo quem eu sou, no que trabalho e como decido, sem eu ter que explicar tudo de novo em cada conversa.
 date: 2026-08-14
-category: "Processo"
+category: Processo
 draft: false
+created: 2026-08-14 14:00
+updated: 2026-08-19T10:27
 ---
+![](./IMG_1092.jpg)
 
-A cada conversa nova com IA, você começa do zero. Explica quem é, no que tá trabalhando, como gosta que as coisas sejam feitas. Aí a conversa acaba e na próxima você explica tudo de novo.
+Por meses eu abri conversa nova com IA e gastei o começo dela explicando sempre a mesma coisa. Quem eu sou, no que estou trabalhando, como gosto que as coisas sejam feitas. Aí a conversa acabava e na seguinte eu explicava tudo de novo.
 
-Isso me irritou por meses antes de eu perceber que já tinha a solução na mão.
+Isso me irritou bastante antes de eu perceber que já tinha a solução na mão.
 
-Meu Obsidian já era onde eu guardava projeto, reunião, reflexão e decisão. Quando comecei a usar IA todo dia de verdade, ele não precisou virar outra coisa. Ele já era exatamente o que faltava.
+Meu [Obsidian](https://obsidian.md) já era onde eu guardava projeto, reunião, reflexão e decisão. Quando comecei a usar IA todo dia de verdade, ele não precisou virar outra coisa. Ele já era exatamente o que faltava.
 
 ## O arquivo
 
-Na raiz do [vault](https://obsidian.md) tem um `CLAUDE.md`. Arquivo comum, em markdown, que a IA lê antes de qualquer coisa.
+Na raiz do vault tem um `CLAUDE.md`. Arquivo comum, em markdown, que a IA lê antes de qualquer coisa.
 
-Dentro dele está o que eu não quero repetir nunca mais: quem eu sou, onde trabalho, como quero que falem comigo, a estrutura das pastas, e as regras que eu já cansei de corrigir na mão.
+Dentro dele está o que eu não quero repetir nunca mais. Quem eu sou. Onde trabalho. Como quero que falem comigo. A estrutura das pastas. As regras que eu já cansei de corrigir na mão.
 
 Prompt some quando a conversa acaba. Isso fica.
 
@@ -25,13 +28,13 @@ Prompt some quando a conversa acaba. Isso fica.
 O vault segue mais ou menos o [PARA](https://fortelabs.com/blog/para/), mas o que faz diferença não é o método, é a regra de onde cada coisa mora:
 
 - Tarefa com prazo vai pro [Things](https://culturedcode.com/things/)
-- Bloco de tempo vai pro Calendar
+- Bloco de tempo vai pro Apple Calendar
 - O quê e o porquê do projeto ficam no Obsidian
 - Projeto de código vive no [Linear](https://linear.app)
 
 Cada item mora em um lugar só. Nunca copio entre eles.
 
-Isso parece organização pessoal, e é. Mas o efeito colateral foi que a IA sempre sabe onde procurar. Quando eu peço uma análise da semana, ela sabe que planejamento tá na weekly note, execução tá no Things e decisão de projeto tá na nota do projeto. Não precisa adivinhar.
+Isso parece organização pessoal, e é. Mas o efeito colateral foi que a IA sempre sabe onde procurar. Quando eu peço uma análise da semana, ela sabe que planejamento está na weekly note, execução está no Things e decisão de projeto está na nota do projeto. Não precisa adivinhar.
 
 ## O log
 
@@ -45,11 +48,11 @@ Uma linha, sem cerimônia. É o rastro do que aconteceu, e serve pra reconstruir
 
 ## O que mudou de verdade
 
-O ganho não é escrever mais rápido. É não ter que explicar de novo.
+O ganho está em não precisar explicar de novo.
 
-Quando eu abro uma conversa e digo "o cliente pediu ajuste na landing", ela já sabe qual cliente, qual squad, que a stack é Framer e onde tá o design system daquele projeto. O trabalho começa no assunto, não na preparação.
+Quando eu abro uma conversa e digo "o cliente pediu ajuste na landing", ela já sabe qual cliente, qual squad, que a stack é [Framer](https://framer.com) e onde está o design system daquele projeto. Começo direto no assunto.
 
-E teve um efeito que eu não esperava. Escrever pra IA me obrigou a deixar minhas decisões explícitas. Muita coisa que eu achava que sabia sobre como trabalho só existia na minha cabeça de forma vaga. Quando você precisa dizer qual é o espaçamento padrão entre seções, descobre se tinha uma regra ou se estava improvisando há dois anos.
+Tem um efeito colateral que eu já tinha sentido [prototipando com IA](/blog/como-eu-crio-sites-com-ia) e que aqui apareceu de novo, maior. Escrever o contexto me obrigou a deixar decisão explícita. Muita coisa que eu achava que sabia sobre como trabalho só existia na minha cabeça de forma vaga, e só apareceu quando precisei escrever a regra.
 
 ## Se você for tentar
 
