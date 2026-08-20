@@ -1,6 +1,6 @@
 ---
 created: 2026-08-14 14:00
-updated: 2026-08-19T23:10
+updated: 2026-08-19T22:34
 title: Meu computador inteiro cabe em quatro pastas
 description: "O método P.A.R.A. aplicado no Finder, no Obsidian e no Drive: quatro pastas, uma inbox de triagem e uma rotina de manutenção pra parar de procurar arquivo."
 date: 2026-08-19
@@ -80,6 +80,8 @@ Todo lugar em que tu tem volume significativo e constante de arquivo aceita esse
 Com o tempo eu fui adotando alguns momentos na rotina pra parar e organizar.
 
 Eu abro o Finder e vasculho tudo que não estou mais usando, ou projeto que já foi encerrado, e vou jogando pra Archive.
+
+Tento fazer isso todo domingo, pra começar a semana um pouco mais organizado já. Ou simplesmente quando sinto que as coisas estão ficando bagunçadas. Serve como um bom reset.
 
 ## Usa a IA pra fazer o trabalho chato
 

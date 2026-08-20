@@ -346,6 +346,11 @@ const jsonLd = {
     border: 1px solid var(--color-border);
   }
 
+  /* imagem e legenda vêm no mesmo parágrafo, vindas do markdown */
+  .prose p:has(> img) {
+    text-align: center;
+  }
+
   .prose figure {
     display: flex;
     flex-direction: column;
