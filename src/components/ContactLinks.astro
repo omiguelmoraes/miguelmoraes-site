@@ -67,4 +67,18 @@ const links = [
     color: var(--color-bg);
     opacity: 0.85;
   }
+
+  /* No mobile a linha única quebra torta; vira grade 4x2 (são 8 links),
+     com as células esticando pra dar um alvo de toque maior */
+  @media (max-width: 600px) {
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .contact-link {
+      width: auto;
+      height: 52px;
+    }
+  }
 </style>
