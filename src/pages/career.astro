@@ -331,6 +331,12 @@ import Filters from '../components/Filters.astro';
     margin-top: calc(var(--section-gap) * -1 + var(--block-gap));
   }
 
+  /* O .content usa gap de seção (56px), mas o filtro é do bloco do header:
+     aproxima pro mesmo respiro que Projects e Stack usam (--block-gap) */
+  .content > :global(.filters) {
+    margin-top: calc(var(--block-gap) - var(--section-gap));
+  }
+
   /* Entre experiências: mais que as rows normais (32px), menos que a quebra
      de seção (56px), pra hierarquia item < seção continuar de pé */
   .rows--career {
