@@ -60,7 +60,11 @@ const totalCount = Object.values(allProjects).length;
     color: var(--color-muted);
     text-decoration: none;
   }
-  .back:hover { color: var(--color-title); }
+  @media (hover: hover) {
+    .back:hover {
+      color: var(--color-title);
+    }
+  }
 
 
 
@@ -86,8 +90,10 @@ const totalCount = Object.values(allProjects).length;
     transition: opacity 0.15s;
   }
 
-  .card:hover {
-    opacity: 0.92;
+  @media (hover: hover) {
+    .card:hover {
+      opacity: 0.92;
+    }
   }
 
   .card-image {
@@ -107,8 +113,10 @@ const totalCount = Object.values(allProjects).length;
     transition: transform 0.3s ease;
   }
 
-  .card:hover .card-image img {
-    transform: scale(1.02);
+  @media (hover: hover) {
+    .card:hover .card-image img {
+      transform: scale(1.02);
+    }
   }
 
   .card-content {

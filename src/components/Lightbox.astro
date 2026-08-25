@@ -175,8 +175,10 @@
     transition: background 0.2s;
   }
   
-  .lightbox-close:hover { 
-    background: rgba(255,255,255,0.2);
+  @media (hover: hover) {
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.2);
+    }
   }
 
   .lightbox-prev,
@@ -201,9 +203,11 @@
   .lightbox-prev { left: 24px; }
   .lightbox-next { right: 24px; }
 
-  .lightbox-prev:hover,
-  .lightbox-next:hover {
-    background: rgba(255,255,255,0.2);
+  @media (hover: hover) {
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: rgba(255,255,255,0.2);
+    }
   }
 
   @media (max-width: 480px) {

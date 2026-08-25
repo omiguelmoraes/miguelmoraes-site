@@ -399,8 +399,10 @@ import Filters from '../components/Filters.astro';
     display: none;
   }
 
-  .acc summary:hover :global(.row-link) {
-    text-decoration: underline;
+  @media (hover: hover) {
+    .acc summary:hover :global(.row-link) {
+      text-decoration: underline;
+    }
   }
 
   /* Números de escopo: blocos no desktop, um por linha no mobile */
@@ -424,9 +426,11 @@ import Filters from '../components/Filters.astro';
       background 0.18s ease;
   }
 
-  .stat:hover {
-    border-color: var(--color-muted);
-    background: var(--color-wash);
+  @media (hover: hover) {
+    .stat:hover {
+      border-color: var(--color-muted);
+      background: var(--color-wash);
+    }
   }
 
   .stat b {
@@ -447,8 +451,10 @@ import Filters from '../components/Filters.astro';
     transition: color 0.18s ease;
   }
 
-  .acc summary:hover .acc-cta {
-    color: var(--color-title);
+  @media (hover: hover) {
+    .acc summary:hover .acc-cta {
+      color: var(--color-title);
+    }
   }
 
   .acc summary:focus-visible {
@@ -546,10 +552,12 @@ import Filters from '../components/Filters.astro';
 
   /* Mesmo realce das caixas de resultado, pra os dois blocos do painel
      responderem igual ao mouse */
-  .pill:hover {
-    border-color: var(--color-muted);
-    background: var(--color-wash);
-    color: var(--color-title);
+  @media (hover: hover) {
+    .pill:hover {
+      border-color: var(--color-muted);
+      background: var(--color-wash);
+      color: var(--color-title);
+    }
   }
 
   /* Abertura animada onde o browser já suporta; o JS cobre o resto */

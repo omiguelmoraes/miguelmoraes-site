@@ -260,13 +260,17 @@ const total = hardware.length + design.length + dev.length + productivity.length
     inset: 0;
   }
 
-  .item:has(.item-link):hover .item-name {
-    text-decoration: underline;
-    text-underline-offset: 3px;
+  @media (hover: hover) {
+    .item:has(.item-link):hover .item-name {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   }
 
-  .item:has(.item-link):hover .item-link {
-    color: var(--color-title);
+  @media (hover: hover) {
+    .item:has(.item-link):hover .item-link {
+      color: var(--color-title);
+    }
   }
 
   .item:last-child {
@@ -300,7 +304,9 @@ const total = hardware.length + design.length + dev.length + productivity.length
     transition: color 0.15s;
   }
 
-  .item-link:hover {
-    color: var(--color-title);
+  @media (hover: hover) {
+    .item-link:hover {
+      color: var(--color-title);
+    }
   }
 </style>

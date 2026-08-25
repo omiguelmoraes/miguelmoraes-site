@@ -135,7 +135,11 @@ const jsonLd = {
     color: var(--color-muted);
     text-decoration: none;
   }
-  .back:hover { color: var(--color-title); }
+  @media (hover: hover) {
+    .back:hover {
+      color: var(--color-title);
+    }
+  }
 
   .post-header {
     display: flex;
@@ -267,7 +271,11 @@ const jsonLd = {
     line-height: var(--line-height-body);
   }
 
-  .related-item:hover .related-item-title { text-decoration: underline; }
+  @media (hover: hover) {
+    .related-item:hover .related-item-title {
+      text-decoration: underline;
+    }
+  }
 
   .related-item-date {
     font-size: var(--font-size-small);

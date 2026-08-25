@@ -156,8 +156,10 @@ const isActive = (href: string) =>
     transition: opacity 0.15s;
   }
 
-  .avatar:hover img {
-    opacity: 0.85;
+  @media (hover: hover) {
+    .avatar:hover img {
+      opacity: 0.85;
+    }
   }
 
   .identity-text {
@@ -192,8 +194,10 @@ const isActive = (href: string) =>
     transition: background 0.15s;
   }
 
-  .nav-toggle:hover {
-    background: var(--color-wash);
+  @media (hover: hover) {
+    .nav-toggle:hover {
+      background: var(--color-wash);
+    }
   }
 
   .nav-toggle .icon-close,
@@ -225,9 +229,11 @@ const isActive = (href: string) =>
     transition: color 0.15s, background 0.15s;
   }
 
-  .nav-item:hover {
-    color: var(--color-title);
-    background: var(--color-wash);
+  @media (hover: hover) {
+    .nav-item:hover {
+      color: var(--color-title);
+      background: var(--color-wash);
+    }
   }
 
   .nav-item.active {

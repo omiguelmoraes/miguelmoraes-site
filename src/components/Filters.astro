@@ -126,9 +126,11 @@ const { options, allLabel = 'All', allCount } = Astro.props;
     transition: border-color 0.15s, color 0.15s, background 0.15s;
   }
 
-  .filter-btn:hover {
-    color: var(--color-title);
-    border-color: var(--color-muted);
+  @media (hover: hover) {
+    .filter-btn:hover {
+      color: var(--color-title);
+      border-color: var(--color-muted);
+    }
   }
 
   .filter-btn.active {

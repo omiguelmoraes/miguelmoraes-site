@@ -183,8 +183,10 @@ const SUBSTACK = 'miguelmoraes';
     transition: opacity 0.15s;
   }
 
-  .subscribe-btn:hover {
-    opacity: 0.85;
+  @media (hover: hover) {
+    .subscribe-btn:hover {
+      opacity: 0.85;
+    }
   }
 
   .subscribe-btn:disabled {
@@ -216,7 +218,9 @@ const SUBSTACK = 'miguelmoraes';
     transition: color 0.15s;
   }
 
-  .post-cta-socials a:hover {
-    color: var(--color-title);
+  @media (hover: hover) {
+    .post-cta-socials a:hover {
+      color: var(--color-title);
+    }
   }
 </style>

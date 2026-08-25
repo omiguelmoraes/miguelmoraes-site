@@ -133,7 +133,11 @@ const otherProjects = [prevProject, nextProject];
     color: var(--color-muted);
     text-decoration: none;
   }
-  .back:hover { color: var(--color-title); }
+  @media (hover: hover) {
+    .back:hover {
+      color: var(--color-title);
+    }
+  }
 
   .header {
     display: flex;
@@ -335,7 +339,11 @@ const otherProjects = [prevProject, nextProject];
     font-size: var(--font-size-body);
     color: var(--color-title);
   }
-  .visit-link:hover { text-decoration: underline; }
+  @media (hover: hover) {
+    .visit-link:hover {
+      text-decoration: underline;
+    }
+  }
   .visit-link svg { opacity: 0.4; }
 
   /* Project footer */
@@ -381,7 +389,11 @@ const otherProjects = [prevProject, nextProject];
     transition: opacity 0.15s;
   }
 
-  .footer-project:hover .footer-project-cover img { opacity: 0.8; }
+  @media (hover: hover) {
+    .footer-project:hover .footer-project-cover img {
+      opacity: 0.8;
+    }
+  }
 
   .footer-project-title {
     font-size: var(--font-size-body);
@@ -401,5 +413,9 @@ const otherProjects = [prevProject, nextProject];
     color: var(--color-muted);
     text-decoration: none;
   }
-  .home-link:hover { color: var(--color-title); }
+  @media (hover: hover) {
+    .home-link:hover {
+      color: var(--color-title);
+    }
+  }
 </style>

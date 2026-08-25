@@ -69,8 +69,10 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+@media (hover: hover) {
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 img {
@@ -85,9 +87,14 @@ img {
   transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), border-color 0.2s ease, background 0.2s ease !important;
 }
 
-.card:hover, .link-block:hover, .item:hover, .featured:hover {
-  transform: translateY(-2px);
-  text-decoration: none !important;
+@media (hover: hover) {
+  .card:hover,
+  .link-block:hover,
+  .item:hover,
+  .featured:hover {
+    transform: translateY(-2px);
+    text-decoration: none !important;
+  }
 }
 
 .card:active, .link-block:active, .item:active, .featured:active {
@@ -99,10 +106,12 @@ img {
   transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.card:hover .card-image img, 
-.link-block:hover .link-block-image img, 
-.featured:hover .featured-image img {
-  transform: scale(1.04);
+@media (hover: hover) {
+  .card:hover .card-image img,
+  .link-block:hover .link-block-image img,
+  .featured:hover .featured-image img {
+    transform: scale(1.04);
+  }
 }
 
 /* Smooth Scroll */

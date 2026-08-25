@@ -33,8 +33,10 @@ const year = new Date().getFullYear();
     transition: color 0.18s ease;
   }
 
-  .to-top:hover {
-    color: var(--color-title);
+  @media (hover: hover) {
+    .to-top:hover {
+      color: var(--color-title);
+    }
   }
 
   .to-top i {

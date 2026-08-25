@@ -128,12 +128,16 @@ const featuredProjects = Object.entries(allProjects)
     transition: transform 0.3s ease;
   }
 
-  .project-preview:hover {
-    text-decoration: none;
+  @media (hover: hover) {
+    .project-preview:hover {
+      text-decoration: none;
+    }
   }
 
-  .project-preview:hover .project-preview-image img {
-    transform: scale(1.03);
+  @media (hover: hover) {
+    .project-preview:hover .project-preview-image img {
+      transform: scale(1.03);
+    }
   }
 
   .project-preview:nth-child(4) {
@@ -186,8 +190,10 @@ const featuredProjects = Object.entries(allProjects)
     margin-top: 4px;
   }
 
-  .pill:hover {
-    background: var(--color-wash);
+  @media (hover: hover) {
+    .pill:hover {
+      background: var(--color-wash);
+    }
   }
 
 

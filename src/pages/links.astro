@@ -284,8 +284,10 @@ const featured = {
     transition: color 0.15s;
   }
 
-  .socials a:hover {
-    color: var(--color-title);
+  @media (hover: hover) {
+    .socials a:hover {
+      color: var(--color-title);
+    }
   }
 
   .list {
@@ -306,16 +308,20 @@ const featured = {
     transition: background 0.15s, border-color 0.15s, transform 0.15s;
   }
 
-  .item:hover {
-    background: var(--color-wash);
-    border-color: #ccc;
-    transform: translateY(-1px);
-    text-decoration: none;
+  @media (hover: hover) {
+    .item:hover {
+      background: var(--color-wash);
+      border-color: #ccc;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
   }
 
   @media (prefers-color-scheme: dark) {
-    .item:hover {
-      border-color: #444;
+    @media (hover: hover) {
+      .item:hover {
+        border-color: #444;
+      }
     }
   }
 
@@ -325,10 +331,12 @@ const featured = {
     position: relative;
   }
 
-  .item--disabled:hover {
-    background: var(--color-pill-bg);
-    border-color: var(--color-border);
-    transform: none;
+  @media (hover: hover) {
+    .item--disabled:hover {
+      background: var(--color-pill-bg);
+      border-color: var(--color-border);
+      transform: none;
+    }
   }
 
   @media (hover: hover) {
@@ -450,8 +458,10 @@ const featured = {
     z-index: 0;
   }
 
-  .book-card:hover {
-    transform: translateY(-4px) rotate(2deg);
+  @media (hover: hover) {
+    .book-card:hover {
+      transform: translateY(-4px) rotate(2deg);
+    }
   }
 
   .book-card img {
@@ -490,15 +500,19 @@ const featured = {
     transition: border-color 0.15s, transform 0.15s;
   }
 
-  .featured:hover {
-    border-color: #ccc;
-    transform: translateY(-1px);
-    text-decoration: none;
+  @media (hover: hover) {
+    .featured:hover {
+      border-color: #ccc;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
   }
 
   @media (prefers-color-scheme: dark) {
-    .featured:hover {
-      border-color: #444;
+    @media (hover: hover) {
+      .featured:hover {
+        border-color: #444;
+      }
     }
   }
 
@@ -517,8 +531,10 @@ const featured = {
     transition: transform 0.3s ease;
   }
 
-  .featured:hover .featured-image img {
-    transform: scale(1.02);
+  @media (hover: hover) {
+    .featured:hover .featured-image img {
+      transform: scale(1.02);
+    }
   }
 
   .featured-content {

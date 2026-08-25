@@ -102,8 +102,10 @@
   border-radius: 8px;
 }
 
-.row--link:hover .row-link {
-  text-decoration: underline;
+@media (hover: hover) {
+  .row--link:hover .row-link {
+    text-decoration: underline;
+  }
 }
 
 .row-head {
@@ -149,8 +151,10 @@
   font-size: 14px;
 }
 
-a.row-link:hover {
-  text-decoration: underline;
+@media (hover: hover) {
+  a.row-link:hover {
+    text-decoration: underline;
+  }
 }
 
 /* Medida de leitura curta: o texto para antes do badge de data em vez de
@@ -184,8 +188,10 @@ a.row-link:hover {
   margin-top: 4px;
 }
 
-.see-all:hover {
-  color: var(--color-title);
+@media (hover: hover) {
+  .see-all:hover {
+    color: var(--color-title);
+  }
 }
 
 /* Horizontal image strip inside a row */
@@ -238,8 +244,10 @@ a.row-link:hover {
   border-radius: 8px;
 }
 
-.row--link:hover .row-link {
-  text-decoration: underline;
+@media (hover: hover) {
+  .row--link:hover .row-link {
+    text-decoration: underline;
+  }
 }
 
 .row-head {

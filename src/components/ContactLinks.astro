@@ -49,10 +49,12 @@ const links = [
     transition: color 0.15s, background 0.15s, border-color 0.15s;
   }
 
-  .contact-link:hover {
-    color: var(--color-title);
-    background: var(--color-wash);
-    border-color: var(--color-muted);
+  @media (hover: hover) {
+    .contact-link:hover {
+      color: var(--color-title);
+      background: var(--color-wash);
+      border-color: var(--color-muted);
+    }
   }
 
   .contact-link.primary {
@@ -61,11 +63,13 @@ const links = [
     color: var(--color-bg);
   }
 
-  .contact-link.primary:hover {
-    background: var(--color-title);
-    border-color: var(--color-title);
-    color: var(--color-bg);
-    opacity: 0.85;
+  @media (hover: hover) {
+    .contact-link.primary:hover {
+      background: var(--color-title);
+      border-color: var(--color-title);
+      color: var(--color-bg);
+      opacity: 0.85;
+    }
   }
 
   /* No mobile a linha única quebra torta; vira grade 4x2 (são 8 links),
