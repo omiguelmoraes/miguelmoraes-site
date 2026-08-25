@@ -3,14 +3,42 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
+  <button class="to-top" type="button">
+    Back to top
+    <i class="ph ph-arrow-up"></i>
+  </button>
   <span class="footer-meta">Miguel Moraes © {year}</span>
 </footer>
 
 <style>
   .footer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
     padding: 88px 0 8px;
+  }
+
+  .to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    transition: color 0.18s ease;
+  }
+
+  .to-top:hover {
+    color: var(--color-title);
+  }
+
+  .to-top i {
+    font-size: 13px;
   }
 
   .footer-meta {
@@ -19,3 +47,11 @@ const year = new Date().getFullYear();
     opacity: 0.65;
   }
 </style>
+
+<script>
+  document.addEventListener('click', (event) => {
+    if (!(event.target as HTMLElement).closest('.to-top')) return;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+</script>

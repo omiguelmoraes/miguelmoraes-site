@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Lightbox from '../components/Lightbox.astro';
+import Filters from '../components/Filters.astro';
 ---
 
 <SiteLayout
@@ -16,8 +17,17 @@ import Lightbox from '../components/Lightbox.astro';
       </p>
     </header>
 
+    <Filters
+      allCount={11}
+      options={[
+        { label: 'Work', value: 'work', count: 6 },
+        { label: 'Education', value: 'education', count: 3 },
+        { label: 'Speaking', value: 'speaking', count: 2 },
+      ]}
+    />
+
     <!-- Work -->
-    <section class="section">
+    <section class="section" data-tags="work">
       <div class="rows rows--career">
 
         <details class="acc">
@@ -216,7 +226,7 @@ import Lightbox from '../components/Lightbox.astro';
     </section>
 
     <!-- Education -->
-    <section class="section">
+    <section class="section" data-tags="education">
       <h2 class="section-title">Education</h2>
       <p class="section-body">Formal education and the certifications worth mentioning.</p>
       <div class="rows">
@@ -266,7 +276,7 @@ import Lightbox from '../components/Lightbox.astro';
     </section>
 
     <!-- Speaking -->
-    <section class="section">
+    <section class="section" data-tags="speaking">
       <h2 class="section-title">Speaking</h2>
       <p class="section-body">Talks and podcasts on branding, design systems and building with AI. I also post on <a href="https://www.youtube.com/@omiguelmoraesx" target="_blank" rel="noopener">YouTube</a>, and plan to do it more often.</p>
       <div class="rows">
@@ -306,6 +316,20 @@ import Lightbox from '../components/Lightbox.astro';
 <style>
   /* Career: cada experiência é um <details>. O nativo já dá teclado, foco e
      Ctrl+F achando texto fechado — o CSS aqui só cuida da aparência. */
+
+  /* Com um filtro ativo, a seção está sozinha na tela: o título dela repete o
+     que a pill já diz, e o toggle não faz sentido — abre tudo de uma vez */
+  .content[data-filtered] .section-title,
+  .content[data-filtered] .section-body,
+  .content[data-filtered] .acc-cta {
+    display: none;
+  }
+
+  .content[data-filtered] .acc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+
   /* Entre experiências: mais que as rows normais (32px), menos que a quebra
      de seção (56px), pra hierarquia item < seção continuar de pé */
   .rows--career {
@@ -446,8 +470,6 @@ import Lightbox from '../components/Lightbox.astro';
     flex-direction: column;
     gap: 24px;
     margin-top: 24px;
-    padding-left: 18px;
-    border-left: 1px solid var(--color-border);
   }
 
   .dd-label {
@@ -546,8 +568,6 @@ import Lightbox from '../components/Lightbox.astro';
   @media (max-width: 600px) {
     .dd-list li { max-width: none; }
 
-    .dd { padding-left: 14px; }
-
     .stats {
       flex-direction: column;
       gap: 14px;
@@ -556,6 +576,19 @@ import Lightbox from '../components/Lightbox.astro';
 </style>
 
 <script>
+
+  // O filtro muda o modo de leitura da página, não só o que aparece
+  document.addEventListener('click', (event) => {
+    const btn = (event.target as HTMLElement).closest<HTMLButtonElement>('.filter-btn');
+    if (!btn) return;
+
+    const filtered = btn.dataset.filter !== 'all';
+    document.querySelector('.content')?.toggleAttribute('data-filtered', filtered);
+    document.querySelectorAll<HTMLDetailsElement>('.acc').forEach((d) => {
+      d.open = filtered;
+    });
+  });
+
   // Safari ainda não anima ::details-content. Sem isso o card abre seco.
   const nativeAnim = CSS.supports('interpolate-size', 'allow-keywords');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
