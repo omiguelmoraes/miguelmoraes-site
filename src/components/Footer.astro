@@ -3,7 +3,7 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
-  <button class="to-top" type="button">
+  <button class="to-top" type="button" hidden>
     Back to top
     <i class="ph ph-arrow-up"></i>
   </button>
@@ -49,6 +49,18 @@ const year = new Date().getFullYear();
 </style>
 
 <script>
+  // Só aparece onde há rolagem que valha desfazer: duas telas de altura.
+  // Assim a decisão é da página, não uma lista fixa que envelhece
+  function toggleBackToTop() {
+    const btn = document.querySelector<HTMLButtonElement>('.to-top');
+    if (!btn) return;
+    btn.hidden = document.documentElement.scrollHeight < window.innerHeight * 2;
+  }
+
+  document.addEventListener('astro:page-load', toggleBackToTop);
+  window.addEventListener('resize', toggleBackToTop);
+  toggleBackToTop();
+
   document.addEventListener('click', (event) => {
     if (!(event.target as HTMLElement).closest('.to-top')) return;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

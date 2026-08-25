@@ -2,7 +2,12 @@
   "redirects": [
     {
       "source": "/uses",
-      "destination": "/toolkit",
+      "destination": "/stack",
+      "permanent": true
+    },
+    {
+      "source": "/toolkit",
+      "destination": "/stack",
       "permanent": true
     }
   ]

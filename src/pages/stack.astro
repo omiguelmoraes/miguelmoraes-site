@@ -1,0 +1,282 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Filters from '../components/Filters.astro';
+
+const hardware = [
+  { name: 'Mac Mini M4', logo: 'apple.png', note: "Apple's most capable compact desktop. Fast, silent, small.", href: 'https://www.apple.com/mac-mini/' },
+  { name: 'Arzopa 16" Portable', logo: 'arzopa.png', note: 'Second screen anywhere. More room to spread work out and keep it organised.', href: 'https://www.arzopa.com/' },
+  { name: 'AOC 27" QHD', note: 'Sharp, spacious monitor for everyday design and dev work.', href: '' },
+  { name: 'Aula F75', note: 'Compact 75% mechanical keyboard. Great value.', href: '' },
+  { name: 'MX Master 3', logo: 'logitech.png', note: 'Best productivity mouse I\'ve used. Comfortable for long sessions.', href: 'https://www.logitech.com/products/mice/mx-master-3s.html' },
+  { name: 'Edifier W820NB', logo: 'edifier.png', note: 'Wireless headphones with decent noise cancellation.', href: '' },
+];
+
+const design = [
+  { name: 'Figma', logo: 'figma.png', note: 'Design, prototyping, and brand work.', href: 'https://figma.com' },
+  { name: 'Framer', logo: 'framer.png', note: 'Where the client sites I build go live.', href: 'https://framer.com' },
+  { name: 'Eagle', logo: 'eagle.png', note: 'Visual references, all in one local library.', href: 'https://eagle.cool' },
+  { name: 'Clarity', logo: 'clarity.png', note: 'Heatmaps and session data. How I know if a page actually works.', href: 'https://clarity.microsoft.com' },
+];
+
+const dev = [
+  { name: 'Zed', logo: 'zed.png', note: 'Fast, minimal code editor. Claude Code runs inside it.', href: 'https://zed.dev' },
+  { name: 'Claude', logo: 'claude.png', note: 'AI for coding, content creation, and thinking through problems.', href: 'https://claude.ai' },
+  { name: 'Ghostty', logo: 'ghostty.png', note: 'Fast and minimal terminal.', href: 'https://ghostty.org' },
+  { name: 'GitHub', logo: 'github.svg', note: 'Where the code lives. Every project I build has a repo here.', href: 'https://github.com' },
+  { name: 'Vercel', logo: 'vercel.png', note: 'Hosting and deploys. Push to main and it is live.', href: 'https://vercel.com' },
+  { name: 'Astro', logo: 'astro.svg', note: 'The framework behind this site and most of what I build.', href: 'https://astro.build' },
+  { name: 'Linear', logo: 'linear.svg', note: 'Issues and roadmap for everything that is code.', href: 'https://linear.app' },
+];
+
+const productivity = [
+  { name: 'Obsidian', logo: 'obsidian.png', note: 'Second brain and note-taking. All my notes live here.', href: 'https://obsidian.md' },
+  { name: 'Things 3', logo: 'things.png', note: 'Tasks and habits. Everything with a deadline lives here.', href: 'https://culturedcode.com/things/' },
+  { name: 'Apple Calendar', logo: 'apple.png', note: 'Simple. Does the job.', href: '' },
+  { name: 'CleanShot X', logo: 'cleanshot.png', note: 'Screenshots and screen recordings, annotated in seconds.', href: 'https://cleanshot.com' },
+  { name: 'Safari', logo: 'apple.png', note: 'Went back to it for speed and battery. Simple wins.', href: '' },
+  { name: 'Slack', logo: 'slack.png', note: 'Where the team talks. Squads, briefs and quick calls.', href: 'https://slack.com' },
+  { name: 'WhatsApp', logo: 'whatsapp.svg', note: 'Client conversations that never made it to email.', href: '' },
+  { name: 'ClickUp', logo: 'clickup.png', note: 'Task tracking on the agency side of the work.', href: 'https://clickup.com' },
+];
+
+const books = [
+  { name: "Don't Make Me Think", note: 'Steve Krug. The classic on web usability. Essential for anyone in design.', href: '' },
+  { name: 'Win Without Pitching Manifesto', note: 'Blair Enns. How to position yourself and stop competing on price.', href: '' },
+  { name: 'Rework', note: 'Jason Fried & DHH. A different way to think about work and building things.', href: '' },
+  { name: 'The Art of Thinking in Graphs', note: 'Visual thinking and structured problem-solving.', href: '' },
+  { name: 'Princípio de UX', note: 'Daniel Furtado. UX in Portuguese, well-grounded and practical.', href: '' },
+  { name: 'Fall in Love with the Problem, Not the Solution', note: 'Uri Levine. On building products that solve real problems.', href: '' },
+];
+const total = hardware.length + design.length + dev.length + productivity.length + books.length;
+---
+
+<SiteLayout title="Stack — Miguel Moraes" description="The hardware, software and books I actually use.">
+  <div class="page">
+
+
+    <header class="page-header">
+      <h1 class="page-title">Stack</h1>
+      <p class="page-intro">The hardware, software and books I actually use — not a wish&nbsp;list.</p>
+    </header>
+
+    <Filters
+      allCount={total}
+      options={[
+        { label: 'Hardware', value: 'hardware', count: hardware.length },
+        { label: 'Design', value: 'design', count: design.length },
+        { label: 'Dev', value: 'dev', count: dev.length },
+        { label: 'Productivity', value: 'productivity', count: productivity.length },
+        { label: 'Books', value: 'books', count: books.length },
+      ]}
+    />
+
+    <section class="section" data-tags="hardware">
+      <h2 class="section-title">Hardware</h2>
+      <ul class="list">
+        {hardware.map(item => (
+          <li class="item">
+            <div class="item-text">
+              <span class="item-name">
+                {item.name}
+                {item.logo && <span class="logo"><img src={`/stack/logos/${item.logo}`} alt="" width="20" height="20" loading="lazy" /></span>}
+              </span>
+              <span class="item-note">{item.note}</span>
+            </div>
+            {item.href && (
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section" data-tags="design">
+      <h2 class="section-title">Design</h2>
+      <ul class="list">
+        {design.map(item => (
+          <li class="item">
+            <div class="item-text">
+              <span class="item-name">
+                {item.name}
+                {item.logo && <span class="logo"><img src={`/stack/logos/${item.logo}`} alt="" width="20" height="20" loading="lazy" /></span>}
+              </span>
+              <span class="item-note">{item.note}</span>
+            </div>
+            {item.href && (
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section" data-tags="dev">
+      <h2 class="section-title">Dev</h2>
+      <ul class="list">
+        {dev.map(item => (
+          <li class="item">
+            <div class="item-text">
+              <span class="item-name">
+                {item.name}
+                {item.logo && <span class="logo"><img src={`/stack/logos/${item.logo}`} alt="" width="20" height="20" loading="lazy" /></span>}
+              </span>
+              <span class="item-note">{item.note}</span>
+            </div>
+            {item.href && (
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section" data-tags="productivity">
+      <h2 class="section-title">Productivity</h2>
+      <ul class="list">
+        {productivity.map(item => (
+          <li class="item">
+            <div class="item-text">
+              <span class="item-name">
+                {item.name}
+                {item.logo && <span class="logo"><img src={`/stack/logos/${item.logo}`} alt="" width="20" height="20" loading="lazy" /></span>}
+              </span>
+              <span class="item-note">{item.note}</span>
+            </div>
+            {item.href && (
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section" data-tags="books">
+      <h2 class="section-title">Books</h2>
+      <ul class="list">
+        {books.map(item => (
+          <li class="item">
+            <div class="item-text">
+              <span class="item-name">
+                {item.name}
+                {item.logo && <span class="logo"><img src={`/stack/logos/${item.logo}`} alt="" width="20" height="20" loading="lazy" /></span>}
+              </span>
+              <span class="item-note">{item.note}</span>
+            </div>
+            {item.href && (
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+  </div>
+</SiteLayout>
+
+<style>
+
+  .item-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Mesmo chip da Career, um degrau menor: aqui ele acompanha um nome curto */
+  .logo {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: #ffffff;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Menos que o --section-gap padrão: as listas daqui são caixas com borda,
+     então já têm limite visual próprio e não dependem tanto do vazio */
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: var(--prose-max-width);
+  }
+
+
+
+
+
+
+
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .item:last-child {
+    border-bottom: none;
+  }
+
+  .item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .item-name {
+    font-size: var(--font-size-body);
+    color: var(--color-title);
+    line-height: 1.4;
+  }
+
+  .item-note {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  .item-link {
+    color: var(--color-muted);
+    flex-shrink: 0;
+    padding: 4px;
+    transition: color 0.15s;
+  }
+
+  .item-link:hover {
+    color: var(--color-title);
+  }
+</style>

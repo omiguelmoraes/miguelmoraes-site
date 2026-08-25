@@ -317,17 +317,18 @@ import Filters from '../components/Filters.astro';
   /* Career: cada experiência é um <details>. O nativo já dá teclado, foco e
      Ctrl+F achando texto fechado — o CSS aqui só cuida da aparência. */
 
-  /* Com um filtro ativo, a seção está sozinha na tela: o título dela repete o
-     que a pill já diz, e o toggle não faz sentido — abre tudo de uma vez */
+  /* Com um filtro ativo, a seção está sozinha na tela e o título dela repete
+     o que a pill já diz */
   .content[data-filtered] .section-title,
-  .content[data-filtered] .section-body,
-  .content[data-filtered] .acc-cta {
+  .content[data-filtered] .section-body {
     display: none;
   }
 
-  .content[data-filtered] .acc summary {
-    pointer-events: none;
-    cursor: default;
+  /* Sem título visível, toda seção filtrada tem que colar no filtro do mesmo
+     jeito que a Work — que já nasce sem título e recebe a margem negativa
+     global do sections.css */
+  .content[data-filtered] > * + .section {
+    margin-top: calc(var(--section-gap) * -1 + var(--block-gap));
   }
 
   /* Entre experiências: mais que as rows normais (32px), menos que a quebra
@@ -577,16 +578,13 @@ import Filters from '../components/Filters.astro';
 
 <script>
 
-  // O filtro muda o modo de leitura da página, não só o que aparece
+  // Filtrar esconde o título da seção, mas não muda o estado dos cards
   document.addEventListener('click', (event) => {
     const btn = (event.target as HTMLElement).closest<HTMLButtonElement>('.filter-btn');
     if (!btn) return;
 
     const filtered = btn.dataset.filter !== 'all';
     document.querySelector('.content')?.toggleAttribute('data-filtered', filtered);
-    document.querySelectorAll<HTMLDetailsElement>('.acc').forEach((d) => {
-      d.open = filtered;
-    });
   });
 
   // Safari ainda não anima ::details-content. Sem isso o card abre seco.
