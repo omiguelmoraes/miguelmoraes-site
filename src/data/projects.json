@@ -11,6 +11,7 @@
     "tags": [
       "Branding"
     ],
+    "role": "Brand Designer",
     "sections": [
       {
         "label": "Challenge",
@@ -56,8 +57,10 @@
     "thumbnail": "/projects/yoursbank/yoursbank-01.webp",
     "coverPosition": "top left",
     "tags": [
-      "Web Design"
+      "Web Design",
+      "UI/UX"
     ],
+    "role": "UI/UX & Web Designer",
     "sections": [
       {
         "label": "Challenge",
@@ -103,6 +106,7 @@
     "tags": [
       "Web Design"
     ],
+    "role": "Web Designer & Front-End Developer",
     "sections": [
       {
         "label": "Challenge",
@@ -146,8 +150,10 @@
     "cover": "/projects/msk/msk-01.webp",
     "thumbnail": "/projects/msk/msk-01.webp",
     "tags": [
-      "Web Design"
+      "Web Design",
+      "UI/UX"
     ],
+    "role": "Web Designer & UX Lead",
     "sections": [
       {
         "label": "Challenge",
@@ -191,8 +197,10 @@
     "cover": "/projects/sant/sant-01.webp",
     "thumbnail": "/projects/sant/sant-01.webp",
     "tags": [
-      "Web Design"
+      "Web Design",
+      "UI/UX"
     ],
+    "role": "UI/UX Designer",
     "sections": [
       {
         "label": "Challenge",
@@ -237,6 +245,7 @@
     "tags": [
       "Branding"
     ],
+    "role": "Brand Designer",
     "sections": [
       {
         "label": "Challenge",

@@ -28,6 +28,12 @@ const otherProjects = [prevProject, nextProject];
         <span class="meta-item">{project.year}</span>
         <span class="meta-sep">·</span>
         <span class="meta-item">{project.location}</span>
+        {project.role && (
+          <>
+            <span class="meta-sep">·</span>
+            <span class="meta-item">{project.role}</span>
+          </>
+        )}
         {project.industry && (
           <>
             <span class="meta-sep">·</span>
