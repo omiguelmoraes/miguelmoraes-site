@@ -51,15 +51,19 @@ const year = new Date().getFullYear();
 </style>
 
 <script>
-  // Só aparece onde há rolagem que valha desfazer: duas telas de altura.
-  // Assim a decisão é da página, não uma lista fixa que envelhece
   function toggleBackToTop() {
     const btn = document.querySelector<HTMLButtonElement>('.to-top');
     if (!btn) return;
-    btn.hidden = document.documentElement.scrollHeight < window.innerHeight * 2;
+    
+    // Só aparece se a página for longa (2.2x viewport) E o usuário tiver rolado pelo menos 500px
+    const isLongPage = document.documentElement.scrollHeight > window.innerHeight * 2.2;
+    const hasScrolledDown = window.scrollY > 500;
+    
+    btn.hidden = !(isLongPage && hasScrolledDown);
   }
 
   document.addEventListener('astro:page-load', toggleBackToTop);
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
   window.addEventListener('resize', toggleBackToTop);
   toggleBackToTop();
 
