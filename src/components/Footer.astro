@@ -33,6 +33,11 @@ const year = new Date().getFullYear();
     transition: color 0.18s ease;
   }
 
+  /* Oculta de fato quando a propriedade hidden é aplicada pelo script */
+  .to-top[hidden] {
+    display: none !important;
+  }
+
   @media (hover: hover) {
     .to-top:hover {
       color: var(--color-title);
@@ -55,9 +60,9 @@ const year = new Date().getFullYear();
     const btn = document.querySelector<HTMLButtonElement>('.to-top');
     if (!btn) return;
     
-    // Só aparece se a página for longa (2.2x viewport) E o usuário tiver rolado pelo menos 500px
+    // Só exibe se a página for extensa (2.2x da tela) E se o usuário rolou mais de 400px
     const isLongPage = document.documentElement.scrollHeight > window.innerHeight * 2.2;
-    const hasScrolledDown = window.scrollY > 500;
+    const hasScrolledDown = window.scrollY > 400;
     
     btn.hidden = !(isLongPage && hasScrolledDown);
   }
