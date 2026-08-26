@@ -11,7 +11,12 @@
     "tags": [
       "Branding"
     ],
-    "role": "Brand Designer",
+    "role": "Designer",
+    "stack": [
+      "Figma",
+      "Illustrator",
+      "Photoshop"
+    ],
     "sections": [
       {
         "label": "Challenge",
@@ -57,10 +62,15 @@
     "thumbnail": "/projects/yoursbank/yoursbank-01.webp",
     "coverPosition": "top left",
     "tags": [
-      "Web Design",
-      "UI/UX"
+      "Web Design"
     ],
-    "role": "UI/UX & Web Designer",
+    "role": "Designer & Developer",
+    "stack": [
+      "Figma",
+      "Astro",
+      "Tailwind",
+      "TypeScript"
+    ],
     "sections": [
       {
         "label": "Challenge",
@@ -106,7 +116,12 @@
     "tags": [
       "Web Design"
     ],
-    "role": "Web Designer & Front-End Developer",
+    "role": "Designer & Developer",
+    "stack": [
+      "Figma",
+      "Astro",
+      "Tailwind"
+    ],
     "sections": [
       {
         "label": "Challenge",
@@ -150,10 +165,14 @@
     "cover": "/projects/msk/msk-01.webp",
     "thumbnail": "/projects/msk/msk-01.webp",
     "tags": [
-      "Web Design",
-      "UI/UX"
+      "Web Design"
     ],
-    "role": "Web Designer & UX Lead",
+    "role": "Designer & Developer",
+    "stack": [
+      "Figma",
+      "Astro",
+      "Tailwind"
+    ],
     "sections": [
       {
         "label": "Challenge",
@@ -197,10 +216,14 @@
     "cover": "/projects/sant/sant-01.webp",
     "thumbnail": "/projects/sant/sant-01.webp",
     "tags": [
-      "Web Design",
-      "UI/UX"
+      "Web Design"
     ],
-    "role": "UI/UX Designer",
+    "role": "Designer & Developer",
+    "stack": [
+      "Figma",
+      "Astro",
+      "Tailwind"
+    ],
     "sections": [
       {
         "label": "Challenge",
@@ -245,7 +268,11 @@
     "tags": [
       "Branding"
     ],
-    "role": "Brand Designer",
+    "role": "Designer",
+    "stack": [
+      "Figma",
+      "Illustrator"
+    ],
     "sections": [
       {
         "label": "Challenge",

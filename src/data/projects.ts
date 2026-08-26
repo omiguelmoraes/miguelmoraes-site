@@ -33,6 +33,7 @@ export type Project = {
   tags: string[];
   headline?: string;
   role?: string;
+  stack?: string[];
   results?: Result[];
   sections: Section[];
 };
