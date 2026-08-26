@@ -17,6 +17,18 @@
       "Illustrator",
       "Photoshop"
     ],
+    "credits": [
+      {
+        "role": "Design",
+        "name": "Miguel Moraes",
+        "url": null
+      },
+      {
+        "role": "Client",
+        "name": "Flouds Performance",
+        "url": null
+      }
+    ],
     "sections": [
       {
         "label": "Challenge",

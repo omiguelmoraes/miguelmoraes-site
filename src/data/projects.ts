@@ -34,6 +34,8 @@ export type Project = {
   headline?: string;
   role?: string;
   stack?: string[];
+  figmaUrl?: string;
+  credits?: { role: string; name: string; url?: string }[];
   results?: Result[];
   sections: Section[];
 };
