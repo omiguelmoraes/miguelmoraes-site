@@ -24,27 +24,30 @@ const otherProjects = [prevProject, nextProject];
     </nav>
 
     <header class="header">
-      <div class="meta">
-        <span class="meta-item">{project.year}</span>
-        <span class="meta-sep">·</span>
-        <span class="meta-item">{project.location}</span>
-        {project.role && (
-          <>
-            <span class="meta-sep">·</span>
-            <span class="meta-item">{project.role}</span>
-          </>
-        )}
-        {project.industry && (
-          <>
-            <span class="meta-sep">·</span>
-            <span class="meta-item">{project.industry}</span>
-          </>
-        )}
+      <div class="header-main">
+        <h1 class="title">{project.title}</h1>
+        {project.headline && <p class="headline">{project.headline}</p>}
       </div>
-      <h1 class="title">{project.title}</h1>
-      {project.headline && <p class="headline">{project.headline}</p>}
-      <div class="tags">
-        {project.tags.map(tag => <span class="tag">{tag}</span>)}
+
+      <div class="meta-grid">
+        <div class="meta-col">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">{project.role || project.category}</span>
+        </div>
+        <div class="meta-col">
+          <span class="meta-label">Year</span>
+          <span class="meta-value">{project.year}</span>
+        </div>
+        <div class="meta-col">
+          <span class="meta-label">Location</span>
+          <span class="meta-value">{project.location}</span>
+        </div>
+        {project.industry && (
+          <div class="meta-col">
+            <span class="meta-label">Industry</span>
+            <span class="meta-value">{project.industry}</span>
+          </div>
+        )}
       </div>
     </header>
 
@@ -148,25 +151,48 @@ const otherProjects = [prevProject, nextProject];
   .header {
     display: flex;
     flex-direction: column;
+    gap: 24px;
+  }
+
+  .header-main {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
   }
 
-  .meta {
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .meta-col {
     display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 4px;
   }
 
-  .meta-item {
-    font-size: var(--font-size-small);
+  .meta-label {
+    font-size: var(--font-size-xs);
     color: var(--color-muted);
-    line-height: var(--line-height-body);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
   }
 
-  .meta-sep {
+  .meta-value {
     font-size: var(--font-size-small);
-    color: var(--color-muted);
+    color: var(--color-title);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 640px) {
+    .meta-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   .title {
