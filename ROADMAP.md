@@ -30,7 +30,7 @@
 - PackPro LP (`src/pages/packpro.astro`): Redesign completo para Full White Mode com estética inspirada no Notion (fundo `#ffffff`, lavagens em cinza claro, bordas limpas `#e5e5e8`, cartões estilo callout e sombras de elevação sutis)
 - Reescrita estratégica de copy focada em alta conversão: autoridade instantânea, blindagem de escopo, 5 minutos de setup e retorno no primeiro cliente
 - Seção de Templates Showcase: remoção do elemento sintético de mockup da Hero e inclusão de uma seção dedicada "3 documentos essenciais", apresentando Proposta Comercial, Contrato e Orçamento Rápido em um grid de 3 colunas (desktop) e slider horizontal nativo swipeable (`scroll-snap`) no mobile
-- Ícones de Check Estilizados: inclusão de badges circulares em tom laranja (`var(--accent-wash)`) com checkmark para cada item da lista de oferta no card de pricing e nos cartões de template
+- Refinamento de Craft UI: troca dos ícones por SVGs nítidos de checkmark dentro de badges circulares laranja, adição de cabeçalho estilo Notion/Figma (`FIGMA FILE · TEMPLATE 01`) nos cartões de produto, inclusão de fonte monospace (`Geist Mono`) para metadados e pulso ativo na hero
 
 ### 2026-08-24
 - Home: a seção de projetos agora mostra três previews visuais dos cases no desktop e quatro em uma grade 2×2 no mobile, com título e ano e mantendo o link para a página completa de projetos

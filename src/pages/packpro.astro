@@ -22,6 +22,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <Font cssVariable="--font-inter-tight" preload />
+  <Font cssVariable="--font-geist-mono" />
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
   <script type="application/ld+json">
@@ -81,11 +82,11 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <section class="hero">
   <div class="container hero-inner">
     <span class="eyebrow">
-      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
-      Kit de Documentos no Figma
+      <span class="pulse-dot"></span>
+      KIT DE DOCUMENTOS NO FIGMA
     </span>
     <h1 class="hero-title">
-      Pareça uma agência. Cobre como uma.
+      Pareça uma agência.<br />Cobre como uma.
     </h1>
     <p class="hero-sub">Proposta comercial, contrato e orçamento prontos no Figma. Envie documentos impecáveis em 5 minutos e feche projetos de maior valor.</p>
 
@@ -94,11 +95,14 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     </a>
     
     <div class="trust-group">
-      <div class="trust-grid">
-        <div class="trust-item"><i class="ph ph-check-circle-fill"></i> De <s style="opacity: 0.5;">R$391</s> por R$37</div>
-        <div class="trust-item"><i class="ph ph-check-circle-fill"></i> 7 dias de garantia</div>
-        <div class="trust-item"><i class="ph ph-check-circle-fill"></i> +200 freelancers</div>
-        <div class="trust-item"><i class="ph ph-check-circle-fill"></i> Acesso imediato</div>
+      <div class="trust-bar">
+        <span>✓ De <s style="opacity: 0.45;">R$391</s> por <strong>R$37</strong></span>
+        <span class="t-sep">·</span>
+        <span>✓ 7 dias de garantia</span>
+        <span class="t-sep">·</span>
+        <span>✓ +200 freelancers</span>
+        <span class="t-sep">·</span>
+        <span>✓ Acesso imediato</span>
       </div>
     </div>
   </div>
@@ -133,7 +137,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <section class="section section-showcase">
   <div class="container">
     <span class="section-eyebrow">
-      <i class="ph ph-figma-logo"></i> Arquivos Editáveis
+      <i class="ph ph-figma-logo"></i> ARQUIVOS EDITÁVEIS
     </span>
     <h2 class="section-title">3 documentos essenciais. Prontos para duplicar.</h2>
     <p class="section-sub">Estrutura visual profissional criada no Figma com componentes limpos, tipografia ajustada e suporte a Modo Claro e Escuro.</p>
@@ -146,46 +150,109 @@ const instagram = 'https://instagram.com/omiguelmoraes';
       <div class="templates-grid">
         <!-- CARD 1 -->
         <div class="template-card">
-          <div class="card-top">
-            <span class="card-badge">Template 01</span>
-            <span class="card-icon"><i class="ph ph-presentation-chart"></i></span>
+          <div class="card-header-bar">
+            <span class="card-meta"><i class="ph ph-figma-logo"></i> FIGMA FILE</span>
+            <span class="card-tag">TEMPLATE 01</span>
           </div>
           <h3 class="card-title">Proposta Comercial</h3>
           <p class="card-desc">O documento que justifica o seu preço e posiciona você no topo desde o primeiro contato.</p>
           <ul class="card-list">
-            <li><span class="card-check"><i class="ph ph-check-bold"></i></span> Versões em Modo Claro e Escuro</li>
-            <li><span class="card-check"><i class="ph ph-check-bold"></i></span> Apresentação, escopo & cronograma</li>
-            <li><span class="card-check"><i class="ph ph-check-bold"></i></span> Tabela de investimento transparente</li>
+            <li>
+              <span class="card-check">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Versões em Modo Claro e Escuro</span>
+            </li>
+            <li>
+              <span class="card-check">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Apresentação, escopo & cronograma</span>
+            </li>
+            <li>
+              <span class="card-check">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Tabela de investimento transparente</span>
+            </li>
           </ul>
         </div>
 
         <!-- CARD 2 -->
         <div class="template-card">
-          <div class="card-top">
-            <span class="card-badge">Template 02</span>
-            <span class="card-icon"><i class="ph ph-article"></i></span>
+          <div class="card-header-bar">
+            <span class="card-meta"><i class="ph ph-figma-logo"></i> FIGMA FILE</span>
+            <span class="card-tag">TEMPLATE 02</span>
           </div>
           <h3 class="card-title">Contrato de Serviços</h3>
           <p class="card-desc">Sua blindagem contra refações infinitas, prazos estourados e calotes de pagamento.</p>
           <ul class="card-list">
-            <li><span class="card-check"><i class="ph ph-check-bold"></i></span> Cláusulas de pagamento & atrasos</li>
-            <li><span class="card-check"><i class="ph ph-check-bold"></i></span> Limite de revisões estipulado</li>
-            <li><span class="card-check"><i class="ph ph-check-bold"></i></span> Propriedade dos arquivos finais</li>
+            <li>
+              <span class="card-check">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Cláusulas de pagamento & atrasos</span>
+            </li>
+            <li>
+              <span class="card-check">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Limite de revisões estipulado</span>
+            </li>
+            <li>
+              <span class="card-check">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Propriedade dos arquivos finais</span>
+            </li>
           </ul>
         </div>
 
         <!-- CARD 3 -->
         <div class="template-card">
-          <div class="card-top">
-            <span class="card-badge">Template 03</span>
-            <span class="card-icon"><i class="ph ph-file-text"></i></span>
+          <div class="card-header-bar">
+            <span class="card-meta"><i class="ph ph-figma-logo"></i> FIGMA FILE</span>
+            <span class="card-tag">TEMPLATE 03</span>
           </div>
           <h3 class="card-title">Orçamento Rápido</h3>
           <p class="card-desc">Respostas ágeis para demandas diretas sem perder o peso e o alinhamento profissional.</p>
           <ul class="card-list">
-            <li><span class="card-check"><i class="ph ph-check-bold"></i></span> Estrutura enxuta de 1 página</li>
-            <li><span class="card-check"><i class="ph ph-check-bold"></i></span> Resposta em minutos para o lead</li>
-            <li><span class="card-check"><i class="ph ph-check-bold"></i></span> Visual alinhado ao seu estúdio</li>
+            <li>
+              <span class="card-check">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Estrutura enxuta de 1 página</span>
+            </li>
+            <li>
+              <span class="card-check">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Resposta em minutos para o lead</span>
+            </li>
+            <li>
+              <span class="card-check">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Visual alinhado ao seu estúdio</span>
+            </li>
           </ul>
         </div>
       </div>
@@ -289,15 +356,50 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <section class="section section-wash">
   <div class="container">
     <div class="pricing-card">
-      <span class="pricing-badge">Condição Especial</span>
+      <span class="pricing-badge">OFERTA VITALÍCIA · R$37</span>
       <div class="pricing-price">R$37</div>
       <p class="pricing-sub">Acesso vitalício. Sem assinaturas ou taxas escondidas.</p>
       <ul class="checklist">
-        <li><span class="check"><i class="ph ph-check-bold"></i></span> <span>3 templates editáveis no Figma (Proposta, Contrato e Orçamento)</span></li>
-        <li><span class="check"><i class="ph ph-check-bold"></i></span> <span>Versões em Modo Claro e Modo Escuro inclusas</span></li>
-        <li><span class="check"><i class="ph ph-check-bold"></i></span> <span>Acesso imediato no seu e-mail logo após a confirmação</span></li>
-        <li><span class="check"><i class="ph ph-check-bold"></i></span> <span>Atualizações gratuitas para sempre</span></li>
-        <li><span class="check"><i class="ph ph-check-bold"></i></span> <span>7 dias de garantia incondicional (reembolso sem perguntas)</span></li>
+        <li>
+          <span class="check">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>3 templates editáveis no Figma (Proposta, Contrato e Orçamento)</span>
+        </li>
+        <li>
+          <span class="check">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Versões em Modo Claro e Modo Escuro inclusas</span>
+        </li>
+        <li>
+          <span class="check">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Acesso imediato no seu e-mail logo após a confirmação</span>
+        </li>
+        <li>
+          <span class="check">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Atualizações gratuitas para sempre</span>
+        </li>
+        <li>
+          <span class="check">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>7 dias de garantia incondicional (reembolso sem perguntas)</span>
+        </li>
       </ul>
       <a href={kiwify} target="_blank" rel="noopener" class="btn-primary btn-full">
         Garantir os 3 templates por R$37 →
@@ -456,6 +558,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     --accent-hover: #D43C16;
     --accent-wash: rgba(232, 72, 32, 0.08);
     --font: var(--font-inter-tight);
+    --font-mono: var(--font-geist-mono), monospace;
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 16px;
@@ -493,9 +596,9 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .dot { color: var(--accent); font-weight: bold; }
 
-  /* HERO CLEAN */
+  /* HERO CRAFT */
   .hero {
-    padding: 96px 0 80px;
+    padding: 104px 0 88px;
     border-bottom: 1px solid var(--border);
     background: var(--bg);
   }
@@ -510,27 +613,44 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
   .eyebrow {
     font-size: 11px;
+    font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     color: var(--accent);
     background: var(--accent-wash);
-    border: 1px solid rgba(232, 72, 32, 0.15);
-    padding: 4px 12px;
+    border: 1px solid rgba(232, 72, 32, 0.18);
+    padding: 5px 14px;
     border-radius: 20px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     font-weight: 600;
   }
-  .hero-title { font-size: clamp(34px, 4.2vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text); }
-  .hero-sub { color: var(--muted); max-width: 540px; font-size: 17px; line-height: 1.6; }
-  .btn-hero { font-size: 15px; padding: 15px 32px; font-weight: 600; }
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 2px rgba(232, 72, 32, 0.2);
+  }
+  .hero-title { font-size: clamp(36px, 4.8vw, 60px); font-weight: 700; line-height: 1.06; letter-spacing: -0.035em; color: var(--text); }
+  .hero-sub { color: var(--muted); max-width: 520px; font-size: 17px; line-height: 1.6; }
+  .btn-hero { font-size: 15px; padding: 16px 36px; font-weight: 600; border-radius: var(--radius-sm); }
   
-  /* TRUST GRID */
+  /* TRUST BAR */
   .trust-group { width: 100%; margin-top: 8px; }
-  .trust-grid { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px; color: var(--muted); font-weight: 500; justify-content: center; }
-  .trust-item { display: flex; align-items: center; gap: 6px; }
-  .trust-item i { color: var(--accent); font-size: 15px; }
+  .trust-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font);
+  }
+  .t-sep { color: var(--border-strong); opacity: 0.8; font-weight: 400; }
 
   /* NUMBERS BAR */
   .numbers-bar { background: var(--bg); padding: 40px 0; border-bottom: 1px solid var(--border); }
@@ -546,6 +666,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .section-wash { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .section-eyebrow {
     font-size: 11px;
+    font-family: var(--font-mono);
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -556,10 +677,10 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     gap: 8px;
     font-weight: 600;
   }
-  .section-title { font-size: clamp(26px, 4vw, 42px); font-weight: 700; margin-bottom: 16px; text-align: center; line-height: 1.15; letter-spacing: -0.02em; color: var(--text); }
+  .section-title { font-size: clamp(26px, 4vw, 42px); font-weight: 700; margin-bottom: 16px; text-align: center; line-height: 1.15; letter-spacing: -0.025em; color: var(--text); }
   .section-sub { text-align: center; max-width: 580px; margin: 0 auto 48px; color: var(--muted); font-size: 15px; line-height: 1.6; }
 
-  /* TEMPLATES SHOWCASE SECTION */
+  /* TEMPLATES SHOWCASE SECTION CRAFT */
   .section-showcase { background: var(--bg); }
   .scroll-hint-mobile { display: none; }
   .templates-scroll-wrapper { width: 100%; }
@@ -568,27 +689,28 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 32px 24px;
+    padding: 28px 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 6px 16px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), border-color 0.25s ease, box-shadow 0.25s ease;
   }
   @media (hover: hover) {
     .template-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       border-color: var(--border-strong);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.07);
     }
   }
-  .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-  .card-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); background: var(--accent-wash); padding: 4px 10px; border-radius: 20px; }
-  .card-icon { font-size: 22px; color: var(--accent); }
+  .card-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-family: var(--font-mono); }
+  .card-meta { font-size: 10px; color: var(--muted-light); letter-spacing: 0.06em; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .card-meta i { color: var(--accent); font-size: 13px; }
+  .card-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); background: var(--accent-wash); padding: 3px 8px; border-radius: 12px; }
   .card-title { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
   .card-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin-bottom: 24px; }
-  .card-list { list-style: none; display: flex; flex-direction: column; gap: 10px; border-top: 1px dashed var(--border); padding-top: 20px; margin-top: auto; }
-  .card-list li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text); font-weight: 500; }
+  .card-list { list-style: none; display: flex; flex-direction: column; gap: 12px; border-top: 1px dashed var(--border); padding-top: 20px; margin-top: auto; }
+  .card-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--text); font-weight: 500; line-height: 1.45; }
   .card-check {
     width: 20px;
     height: 20px;
@@ -598,10 +720,11 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
     flex-shrink: 0;
-    border: 1px solid rgba(232, 72, 32, 0.18);
+    border: 1px solid rgba(232, 72, 32, 0.2);
+    margin-top: 1px;
   }
+  .card-check svg { width: 11px; height: 11px; stroke-width: 2.2; }
 
   /* HOW IT WORKS */
   .section-how { border-bottom: 1px solid var(--border); }
@@ -614,7 +737,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
   }
   .step-divider { font-size: 18px; color: var(--border-strong); padding: 0 16px; margin-top: 36px; }
-  .step-num { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; background: var(--accent-wash); display: inline-block; padding: 2px 8px; border-radius: 4px; }
+  .step-num { font-size: 11px; font-family: var(--font-mono); font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; background: var(--accent-wash); display: inline-block; padding: 2px 8px; border-radius: 4px; }
   .step-title { font-size: 17px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; color: var(--text); }
   .step-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
@@ -667,7 +790,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
   .notion-dot-group { display: flex; gap: 6px; }
   .n-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); display: block; opacity: 0.6; }
-  .comparison-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
+  .comparison-tag { font-size: 11px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
   .comparison-list { padding: 24px 28px; }
   .comparison-item {
     display: flex;
@@ -691,7 +814,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .final-price { font-size: 38px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1; margin-top: 4px; }
   .comparison-note { text-align: center; font-size: 13px; color: var(--muted); margin-top: 20px; }
 
-  /* PRICING CARD WITH VISIBLE ORANGE BADGE CHECKS */
+  /* PRICING CARD CRAFT */
   .pricing-card {
     max-width: 480px; margin: 0 auto; background: var(--surface);
     border: 1px solid var(--border); padding: 48px; text-align: center; border-radius: var(--radius-lg);
@@ -702,7 +825,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: var(--accent);
   }
-  .pricing-badge { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); background: var(--accent-wash); border: 1px solid rgba(232, 72, 32, 0.2); padding: 5px 14px; margin-bottom: 24px; display: inline-block; border-radius: 20px; font-weight: 700; }
+  .pricing-badge { font-size: 10px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); background: var(--accent-wash); border: 1px solid rgba(232, 72, 32, 0.2); padding: 5px 14px; margin-bottom: 24px; display: inline-block; border-radius: 20px; font-weight: 700; }
   .pricing-price { font-size: 72px; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 4px; color: var(--text); }
   .pricing-sub { color: var(--muted); font-size: 15px; margin-bottom: 32px; }
   .checklist { text-align: left; margin-bottom: 32px; list-style: none; display: flex; flex-direction: column; gap: 14px; }
@@ -716,11 +839,11 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
     flex-shrink: 0;
     border: 1px solid rgba(232, 72, 32, 0.2);
     margin-top: 1px;
   }
+  .check svg { width: 11px; height: 11px; stroke-width: 2.2; }
   .btn-full { width: 100%; justify-content: center; font-size: 15px; padding: 15px 24px; min-height: 48px; }
   .pricing-note { font-size: 13px; color: var(--muted); margin-top: 18px; }
 
@@ -737,7 +860,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .about-grid { display: grid; grid-template-columns: 240px 1fr; gap: 64px; align-items: center; }
   .about-photo-wrap { position: sticky; top: 40px; }
   .about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; border-radius: var(--radius-md); display: block; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); }
-  .about-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; margin-bottom: 8px; display: block; }
+  .about-eyebrow { font-size: 11px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; margin-bottom: 8px; display: block; }
   .about-title { font-size: clamp(22px, 3vw, 30px); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--text); }
   .about-content p { color: var(--muted); font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
   .about-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
@@ -824,29 +947,20 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     .section { padding: 56px 0; }
     .hero { padding-top: 48px; padding-bottom: 48px; }
     .hero-inner { gap: 20px; }
-    .hero-title { font-size: clamp(30px, 8.5vw, 42px); line-height: 1.12; }
+    .hero-title { font-size: clamp(32px, 8.8vw, 44px); line-height: 1.1; }
     .hero-sub { max-width: 100%; font-size: 15px; line-height: 1.55; }
     .btn-hero { width: 100%; min-height: 48px; font-size: 15px; }
 
-    /* TRUST GRID MOBILE CENTERED */
+    /* TRUST BAR MOBILE */
     .trust-group { margin-top: 4px; }
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px 12px;
-      justify-content: center;
-      text-align: left;
+    .trust-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
       font-size: 12px;
     }
-    .trust-item {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      padding: 8px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      justify-content: center;
-      white-space: nowrap;
-    }
+    .t-sep { display: none; }
 
     /* NUMBERS BAR MOBILE */
     .numbers-bar { padding: 32px 0; }
@@ -864,7 +978,8 @@ const instagram = 'https://instagram.com/omiguelmoraes';
       align-items: center;
       justify-content: flex-end;
       gap: 6px;
-      font-size: 12px;
+      font-size: 11px;
+      font-family: var(--font-mono);
       color: var(--accent);
       font-weight: 600;
       margin-bottom: 16px;
@@ -884,7 +999,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
       width: max-content;
     }
     .template-card {
-      width: 82vw;
+      width: 84vw;
       max-width: 320px;
       scroll-snap-align: center;
       flex-shrink: 0;
