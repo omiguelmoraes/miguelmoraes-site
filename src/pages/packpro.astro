@@ -797,10 +797,10 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .section-sub { text-align: center; max-width: 580px; margin: 0 auto 56px; color: var(--muted); font-size: 15px; line-height: 1.6; }
 
   /* TEMPLATES SHOWCASE SECTION CRAFT */
-  .section-showcase { background: var(--bg); }
+  .section-showcase { background: var(--bg); overflow: visible; }
   .scroll-hint-mobile { display: none; }
   .templates-scroll-wrapper { width: 100%; }
-  .templates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .templates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
   .template-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -1136,8 +1136,8 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     .number-item:nth-last-child(-n+2) { border-bottom: none; }
     .number-val { font-size: 26px; }
 
-    /* TEMPLATE SHOWCASE MOBILE VAZADO HORIZONTAL TICKER */
-    .section-showcase { padding: 48px 0; overflow: hidden; }
+    /* TEMPLATE SHOWCASE MOBILE VAZADO HORIZONTAL TICKER UNCLIPPED */
+    .section-showcase { padding: 48px 0; overflow: visible; }
     .scroll-hint-mobile {
       display: flex;
       align-items: center;
@@ -1151,7 +1151,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     }
     .templates-scroll-wrapper {
       margin: 0 -20px;
-      padding: 0 20px 20px;
+      padding: 12px 20px 24px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-padding-left: 20px;
@@ -1164,13 +1164,15 @@ const instagram = 'https://instagram.com/omiguelmoraes';
       gap: 14px;
       width: max-content;
       padding-right: 20px;
+      align-items: stretch;
     }
     .template-card {
-      width: calc(78vw - 12px);
+      width: calc(82vw - 16px);
       max-width: 295px;
       scroll-snap-align: start;
       flex-shrink: 0;
-      padding: 24px 18px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
 
     .before-after-grid { grid-template-columns: 1fr; gap: 16px; }
