@@ -404,8 +404,27 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 <script>
   const stickyCta = document.getElementById('sticky-cta')!;
   const hero = document.querySelector('.hero')!;
-  const observer = new IntersectionObserver(([e]) => stickyCta.classList.toggle('visible', !e.isIntersecting), { threshold: 0 });
-  observer.observe(hero);
+  const finalCta = document.querySelector('.final-cta')!;
+
+  let heroOut = false;
+  let finalCtaIn = false;
+
+  function updateSticky() {
+    stickyCta.classList.toggle('visible', heroOut && !finalCtaIn);
+  }
+
+  const heroObserver = new IntersectionObserver(([e]) => {
+    heroOut = !e.isIntersecting;
+    updateSticky();
+  }, { threshold: 0 });
+
+  const finalCtaObserver = new IntersectionObserver(([e]) => {
+    finalCtaIn = e.isIntersecting;
+    updateSticky();
+  }, { threshold: 0 });
+
+  heroObserver.observe(hero);
+  finalCtaObserver.observe(finalCta);
 </script>
 
 <style>
@@ -781,7 +800,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .sticky-cta-text { font-size: 13px; color: var(--text); font-weight: 600; white-space: nowrap; }
 
   /* FOOTER */
-  .footer { padding: 48px 24px 64px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); background: var(--bg-alt); }
+  .footer { padding: 48px 24px 100px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); background: var(--bg-alt); }
   .footer-link { color: var(--text); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; font-weight: 600; }
   @media (hover: hover) {
     .footer-link:hover {
@@ -912,7 +931,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     .faq-q { padding: 16px 18px; font-size: 14px; }
     .faq-a { padding: 0 18px 16px; font-size: 13px; }
     
-    /* STICKY CTA WITH IOS SAFE AREA */
+    /* STICKY CTA WITH IOS SAFE AREA & FOOTER OVERLAP FIX */
     .sticky-cta {
       bottom: 0; left: 0; right: 0; width: 100%;
       border-radius: 0; border: none; border-top: 1px solid var(--border);
@@ -925,5 +944,6 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     .btn-large { width: 100%; }
     .final-cta { padding: 56px 0; }
     .final-cta-title { font-size: clamp(22px, 7vw, 30px); }
+    .footer { padding-bottom: max(120px, calc(90px + env(safe-area-inset-bottom))); }
   }
 </style>
