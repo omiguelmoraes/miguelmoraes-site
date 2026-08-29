@@ -90,19 +90,32 @@ const instagram = 'https://instagram.com/omiguelmoraes';
         <span>Cobre como uma.</span>
       </h1>
       <p class="hero-sub">Proposta comercial, contrato e orçamento prontos no Figma. Envie documentos impecáveis em 5 minutos e feche projetos de maior valor.</p>
+      
+      <!-- MOBILE ONLY MINI PREVIEW CARD -->
+      <div class="mobile-doc-preview" aria-hidden="true">
+        <div class="mobile-doc-card">
+          <div class="mobile-doc-header">
+            <span>SEU NOME / MARCA</span>
+            <span class="mobile-badge"><i class="ph ph-figma-logo"></i> Figma</span>
+          </div>
+          <div class="mobile-doc-title">PROPOSTA COMERCIAL · CONTRATO · ORÇAMENTO</div>
+          <div class="mobile-doc-pills">
+            <span><i class="ph ph-check-bold"></i> Modo Claro & Escuro</span>
+            <span><i class="ph ph-check-bold"></i> 100% Editável</span>
+          </div>
+        </div>
+      </div>
+
       <a href={kiwify} target="_blank" rel="noopener" class="btn-primary btn-hero">
         Garantir os 3 templates por R$37 →
       </a>
+      
       <div class="trust-group">
-        <div class="trust-line">
-          <span>✓ De <s style="opacity: 0.5;">R$391</s> por apenas <strong>R$37</strong></span>
-          <span class="trust-sep">·</span>
-          <span>✓ 7 dias de garantia incondicional</span>
-        </div>
-        <div class="trust-line">
-          <span>✓ Usado por +200 freelancers</span>
-          <span class="trust-sep">·</span>
-          <span>✓ Acesso imediato no Figma</span>
+        <div class="trust-grid">
+          <div class="trust-item"><i class="ph ph-check-circle-fill"></i> De <s style="opacity: 0.5;">R$391</s> por R$37</div>
+          <div class="trust-item"><i class="ph ph-check-circle-fill"></i> 7 dias de garantia</div>
+          <div class="trust-item"><i class="ph ph-check-circle-fill"></i> +200 freelancers</div>
+          <div class="trust-item"><i class="ph ph-check-circle-fill"></i> Acesso imediato</div>
         </div>
       </div>
     </div>
@@ -144,22 +157,26 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 </section>
 
 <div class="numbers-bar">
-  <div class="container numbers-grid">
-    <div class="number-item">
-      <span class="number-val">200+</span>
-      <span class="number-label">freelancers ativos</span>
-    </div>
-    <div class="number-item">
-      <span class="number-val">3 em 1</span>
-      <span class="number-label">proposta, contrato e orçamento</span>
-    </div>
-    <div class="number-item">
-      <span class="number-val">5 min</span>
-      <span class="number-label">para personalizar e enviar</span>
-    </div>
-    <div class="number-item">
-      <span class="number-val">R$37</span>
-      <span class="number-label">pagamento único para sempre</span>
+  <div class="container">
+    <div class="numbers-wrapper">
+      <div class="numbers-grid">
+        <div class="number-item">
+          <span class="number-val">200+</span>
+          <span class="number-label">freelancers ativos</span>
+        </div>
+        <div class="number-item">
+          <span class="number-val">3 em 1</span>
+          <span class="number-label">proposta, contrato e orçamento</span>
+        </div>
+        <div class="number-item">
+          <span class="number-val">5 min</span>
+          <span class="number-label">para personalizar e enviar</span>
+        </div>
+        <div class="number-item">
+          <span class="number-val">R$37</span>
+          <span class="number-label">pagamento único para sempre</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -447,12 +464,9 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
   /* HERO */
   .hero {
-    padding: 96px 0 80px;
+    padding: 88px 0 72px;
     border-bottom: 1px solid var(--border);
-    background:
-      radial-gradient(ellipse at 85% 40%, rgba(232, 72, 32, 0.07) 0%, transparent 55%),
-      radial-gradient(ellipse at 15% 90%, rgba(232, 72, 32, 0.04) 0%, transparent 45%),
-      var(--bg);
+    background: var(--bg);
   }
   .hero-grid { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; }
   .hero-content { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
@@ -474,11 +488,17 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .hero-title span { display: block; }
   .hero-sub { color: var(--muted); max-width: 440px; font-size: 17px; line-height: 1.6; }
   .btn-hero { font-size: 15px; padding: 14px 28px; font-weight: 600; }
-  .trust-group { display: flex; flex-direction: column; gap: 6px; }
-  .trust-line { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
-  .trust-sep { opacity: 0.3; }
+  
+  /* MOBILE PREVIEW CARD (HIDDEN ON DESKTOP) */
+  .mobile-doc-preview { display: none; width: 100%; }
 
-  /* DOC CARDS */
+  /* TRUST GRID */
+  .trust-group { width: 100%; }
+  .trust-grid { display: flex; flex-wrap: wrap; gap: 12px 20px; font-size: 13px; color: var(--muted); font-weight: 500; }
+  .trust-item { display: flex; align-items: center; gap: 6px; }
+  .trust-item i { color: var(--accent); font-size: 15px; }
+
+  /* DOC CARDS DESKTOP */
   .hero-visual { display: flex; align-items: center; justify-content: flex-end; }
   .doc-stack { position: relative; width: 420px; height: 480px; margin-right: -40px; }
   .doc-card {
@@ -544,11 +564,12 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .pill-4 { bottom: 90px; right: -36px; }
 
   /* NUMBERS BAR */
-  .numbers-bar { background: var(--bg-alt); border-bottom: 1px solid var(--border); padding: 40px 0; }
+  .numbers-bar { background: var(--bg); padding: 48px 0; border-bottom: 1px solid var(--border); }
+  .numbers-wrapper { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 32px; }
   .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
   .number-item { text-align: center; padding: 0 16px; border-right: 1px solid var(--border); }
   .number-item:last-child { border-right: none; }
-  .number-val { display: block; font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+  .number-val { display: block; font-size: clamp(24px, 2.8vw, 36px); font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
   .number-label { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; font-weight: 500; }
 
   /* SECTIONS */
@@ -673,13 +694,13 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .checklist { text-align: left; margin-bottom: 32px; list-style: none; display: flex; flex-direction: column; gap: 12px; }
   .checklist li { display: flex; align-items: center; gap: 12px; color: var(--text); font-size: 14px; }
   .check { color: var(--accent); font-weight: 700; flex-shrink: 0; font-size: 15px; display: flex; align-items: center; }
-  .btn-full { width: 100%; justify-content: center; font-size: 15px; padding: 15px 24px; }
+  .btn-full { width: 100%; justify-content: center; font-size: 15px; padding: 15px 24px; min-height: 48px; }
   .pricing-note { font-size: 13px; color: var(--muted); margin-top: 18px; }
 
   /* FAQ */
   .faq { max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
   .faq-item { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02); }
-  .faq-q { padding: 18px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; font-size: 15px; font-weight: 600; gap: 16px; color: var(--text); }
+  .faq-q { padding: 18px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; font-size: 15px; font-weight: 600; gap: 16px; color: var(--text); min-height: 48px; }
   .faq-q::-webkit-details-marker { display: none; }
   .faq-caret { transition: transform 0.25s ease; opacity: 0.4; flex-shrink: 0; color: var(--text); font-size: 16px; }
   details[open] .faq-caret { transform: rotate(90deg); opacity: 1; color: var(--accent); }
@@ -698,7 +719,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .final-cta { padding: 96px 0; border-top: 1px solid var(--border); background: var(--bg); }
   .final-cta-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
   .final-cta-title { font-size: clamp(24px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; max-width: 560px; line-height: 1.15; color: var(--text); }
-  .btn-large { font-size: 16px; padding: 16px 32px; font-weight: 600; }
+  .btn-large { font-size: 16px; padding: 16px 32px; font-weight: 600; min-height: 48px; }
   .final-cta-sub { font-size: 13px; color: var(--muted); }
 
   /* BUTTONS */
@@ -717,6 +738,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     font-size: 14px;
     font-family: var(--font);
     box-shadow: 0 2px 8px rgba(232, 72, 32, 0.25);
+    min-height: 44px;
   }
   .btn-ghost {
     border: 1px solid var(--border-strong);
@@ -733,6 +755,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     font-family: var(--font);
     font-weight: 500;
     background: var(--surface);
+    min-height: 44px;
   }
   @media (hover: hover) {
     .btn-primary:hover {
@@ -748,7 +771,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   /* STICKY CTA */
   .sticky-cta {
     position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120%);
-    background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px);
     border: 1px solid var(--border); padding: 8px 8px 8px 24px;
     display: flex; align-items: center; gap: 24px; border-radius: 40px;
     transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1); z-index: 100;
@@ -768,39 +791,139 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* MOBILE RESPONSIVE */
+  /* MOBILE RESPONSIVE REFINEMENTS */
   @media (max-width: 768px) {
     .container { padding: 0 20px; }
-    .section { padding: 64px 0; }
-    .hero { padding-top: 48px; padding-bottom: 48px; }
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-content { align-items: center; text-align: center; padding-bottom: 0; }
-    .hero-title { font-size: clamp(34px, 9vw, 44px); }
-    .hero-sub { max-width: 100%; }
-    .btn-hero { width: 100%; }
+    .section { padding: 56px 0; }
+    .hero { padding-top: 40px; padding-bottom: 44px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 0; }
+    .hero-content { align-items: center; text-align: center; gap: 20px; }
+    .hero-title { font-size: clamp(30px, 8.5vw, 42px); line-height: 1.12; }
+    .hero-sub { max-width: 100%; font-size: 15px; line-height: 1.55; }
+    .btn-hero { width: 100%; min-height: 48px; font-size: 15px; }
+    
+    /* MOBILE DOC PREVIEW SHOWS ON MOBILE */
+    .mobile-doc-preview {
+      display: block;
+      margin: 4px 0 8px;
+    }
+    .mobile-doc-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+    .mobile-doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .mobile-badge {
+      background: var(--accent-wash);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .mobile-doc-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .mobile-doc-pills {
+      display: flex;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .mobile-doc-pills span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .mobile-doc-pills i {
+      color: var(--accent);
+    }
+
     .hero-visual { display: none; }
-    .steps { grid-template-columns: 1fr; gap: 16px; }
+
+    /* TRUST GRID MOBILE CENTERED */
+    .trust-group { margin-top: 4px; }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 12px;
+      justify-content: center;
+      text-align: left;
+      font-size: 12px;
+    }
+    .trust-item {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    /* NUMBERS BAR MOBILE */
+    .numbers-bar { padding: 32px 0; }
+    .numbers-wrapper { padding: 20px 12px; }
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 16px 0; }
+    .number-item { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 8px; }
+    .number-item:nth-child(odd) { border-right: 1px solid var(--border); }
+    .number-item:nth-last-child(-n+2) { border-bottom: none; }
+    .number-val { font-size: 26px; }
+
+    .steps { grid-template-columns: 1fr; gap: 12px; }
     .step-divider { display: none; }
     .bento { grid-template-columns: 1fr; gap: 12px; }
-    .bento-card { padding: 24px; }
+    .bento-card { padding: 24px 20px; }
+    
+    .comparison-card { border-radius: var(--radius-sm); }
+    .comparison-list { padding: 16px 18px; }
+    .comparison-item { padding: 12px 0; }
+    .item-desc { display: none; } /* Hide detailed line on small mobile for clean list */
+
     .about-grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
-    .about-photo-wrap { position: static; width: 140px; margin: 0 auto; }
+    .about-photo-wrap { position: static; width: 130px; margin: 0 auto; }
     .about-title { text-align: center; }
     .about-btns { grid-template-columns: 1fr; }
     .btn-primary, .btn-ghost { width: 100%; }
-    .numbers-bar { padding: 28px 0; }
-    .numbers-grid { grid-template-columns: repeat(2, 1fr); }
-    .number-item { border-right: none; border-bottom: 1px solid var(--border); padding: 16px 0; }
-    .number-item:nth-child(odd) { border-right: 1px solid var(--border); }
-    .number-item:nth-last-child(-n+2) { border-bottom: none; }
+
     .pricing-card { padding: 32px 20px; }
-    .faq-q { padding: 16px 20px; }
-    .faq-a { padding: 0 20px 16px; }
-    .sticky-cta { bottom: 0; left: 0; right: 0; width: 100%; border-radius: 0; border: none; border-top: 1px solid var(--border); padding: 12px 20px; transform: translateY(120%); }
+    .pricing-price { font-size: 60px; }
+    .faq-q { padding: 16px 18px; font-size: 14px; }
+    .faq-a { padding: 0 18px 16px; font-size: 13px; }
+    
+    /* STICKY CTA WITH IOS SAFE AREA */
+    .sticky-cta {
+      bottom: 0; left: 0; right: 0; width: 100%;
+      border-radius: 0; border: none; border-top: 1px solid var(--border);
+      padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+      transform: translateY(120%);
+      background: rgba(255, 255, 255, 0.96);
+    }
     .sticky-cta.visible { transform: translateY(0); }
     .sticky-cta-text { display: none; }
     .btn-large { width: 100%; }
-    .final-cta { padding: 64px 0; }
-    .final-cta-title { font-size: clamp(22px, 7vw, 32px); }
+    .final-cta { padding: 56px 0; }
+    .final-cta-title { font-size: clamp(22px, 7vw, 30px); }
   }
 </style>

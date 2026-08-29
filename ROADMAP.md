@@ -29,6 +29,7 @@
 ### 2026-08-29
 - PackPro LP (`src/pages/packpro.astro`): Redesign completo para Full White Mode com estética inspirada no Notion (fundo `#ffffff`, lavagens em cinza claro, bordas limpas `#e5e5e8`, cartões estilo callout e sombras de elevação sutis)
 - Reescrita estratégica de copy focada em alta conversão: autoridade instantânea, blindagem de escopo, 5 minutos de setup e retorno no primeiro cliente
+- Refinamento de UX Mobile: substituição do fundo avermelhado por branco puro, alinhamento 2x2 limpo da lista de garantias na hero, inclusão de mini-card visual de preview do documento Figma para telas pequenas, novo container arredondado para a barra de números e suporte a `env(safe-area-inset-bottom)` no Sticky CTA do iOS
 
 ### 2026-08-24
 - Home: a seção de projetos agora mostra três previews visuais dos cases no desktop e quatro em uma grade 2×2 no mobile, com título e ano e mantendo o link para a página completa de projetos
