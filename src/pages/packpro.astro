@@ -257,7 +257,71 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
+<!-- SEÇÃO ANTES VS DEPOIS -->
 <section class="section section-wash">
+  <div class="container">
+    <span class="section-eyebrow">
+      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
+      A virada de chave
+    </span>
+    <h2 class="section-title section-title--has-sub">O que muda na sua rotina de vendas</h2>
+    <p class="section-sub">A diferença entre mandar uma mensagem informal e apresentar uma proposta de nível corporativo.</p>
+
+    <div class="before-after-grid">
+      <!-- ANTES CARD -->
+      <div class="ba-card ba-card--before">
+        <div class="ba-badge ba-badge--before">
+          <i class="ph ph-x-circle"></i> ANTES DO PACKPRO
+        </div>
+        <ul class="ba-list">
+          <li>
+            <span class="ba-icon ba-icon--before">✕</span>
+            <span>Orçamento solto enviado no chat do WhatsApp</span>
+          </li>
+          <li>
+            <span class="ba-icon ba-icon--before">✕</span>
+            <span>PDFs genéricos ou desalinhados no Canva</span>
+          </li>
+          <li>
+            <span class="ba-icon ba-icon--before">✕</span>
+            <span>Sem contrato: cliente pede refações infinitas</span>
+          </li>
+          <li>
+            <span class="ba-icon ba-icon--before">✕</span>
+            <span>Sensação de amadorismo e cliente pechinchando</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- DEPOIS CARD -->
+      <div class="ba-card ba-card--after">
+        <div class="ba-badge ba-badge--after">
+          <i class="ph ph-check-circle"></i> COM O PACKPRO
+        </div>
+        <ul class="ba-list">
+          <li>
+            <span class="ba-icon ba-icon--after">✓</span>
+            <span>Proposta visual impecável no Figma pronta em 5 min</span>
+          </li>
+          <li>
+            <span class="ba-icon ba-icon--after">✓</span>
+            <span>Apresentação corporativa que justifica o seu preço</span>
+          </li>
+          <li>
+            <span class="ba-icon ba-icon--after">✓</span>
+            <span>Contrato blindado com prazos e limite de alterações</span>
+          </li>
+          <li>
+            <span class="ba-icon ba-icon--after">✓</span>
+            <span>Posicionamento de agência e autoridade total</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
   <div class="container">
     <span class="section-eyebrow">
       <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
@@ -284,6 +348,47 @@ const instagram = 'https://instagram.com/omiguelmoraes';
         <div class="bento-icon-wrap"><i class="ph ph-trend-up bento-icon"></i></div>
         <h3 class="bento-name">Retorno no 1º Cliente</h3>
         <p class="bento-desc">Se a sua nova proposta fechar um único projeto a mais, o investimento de R$37 se paga mais de 50 vezes no mesmo dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO DE TESTEMUNHOS / PROVA SOCIAL -->
+<section class="section section-wash">
+  <div class="container">
+    <span class="section-eyebrow">
+      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
+      Feedback de quem usa
+    </span>
+    <h2 class="section-title section-title--has-sub">O que dizem os freelancers</h2>
+    <p class="section-sub">Profissionais que elevaram a régua de apresentação e fecharam projetos maiores.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"No primeiro orçamento que mandei usando o template de proposta, fechei um projeto de R$ 3.800 sem o cliente pedir R$ 1 de desconto. O visual passa muito respeito."</p>
+        <div class="t-author">
+          <span class="t-name">Lucas Silveira</span>
+          <span class="t-role">Web Designer & Dev</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Só as cláusulas de limitação de refação e atraso no pagamento do modelo de contrato já valem 100 vezes o preço do PackPro. Me salvou de muita dor de cabeça."</p>
+        <div class="t-author">
+          <span class="t-name">Mariana Costa</span>
+          <span class="t-role">UI/UX Designer</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Levo literalmente 5 minutos pra editar no Figma e exportar em PDF. Ficou muito fácil manter o padrão de agência sem perder tempo montando tudo do zero."</p>
+        <div class="t-author">
+          <span class="t-name">Gabriel Ramos</span>
+          <span class="t-role">Product Designer</span>
+        </div>
       </div>
     </div>
   </div>
@@ -734,6 +839,66 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
   .card-check svg { width: 11px; height: 11px; stroke-width: 2.2; }
 
+  /* ANTES VS DEPOIS SECTION */
+  .before-after-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ba-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  }
+  .ba-card--before { border-color: var(--border); }
+  .ba-card--after { border-color: rgba(232, 72, 32, 0.3); background: #FFFFFF; box-shadow: 0 8px 30px rgba(232, 72, 32, 0.04); }
+  .ba-badge {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .ba-badge--before { background: var(--bg-wash); color: var(--muted); border: 1px solid var(--border); }
+  .ba-badge--after { background: var(--accent-wash); color: var(--accent); border: 1px solid rgba(232, 72, 32, 0.2); }
+  .ba-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .ba-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: var(--text); line-height: 1.5; font-weight: 500; }
+  .ba-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .ba-icon--before { background: rgba(0, 0, 0, 0.05); color: #888888; }
+  .ba-icon--after { background: var(--accent-wash); color: var(--accent); border: 1px solid rgba(232, 72, 32, 0.2); }
+
+  /* TESTIMONIALS SECTION */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .testimonial-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  }
+  .t-stars { color: #F59E0B; font-size: 13px; letter-spacing: 2px; margin-bottom: 14px; }
+  .t-text { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+  .t-author { border-top: 1px dashed var(--border); padding-top: 14px; margin-top: auto; }
+  .t-name { font-size: 14px; font-weight: 700; color: var(--text); display: block; }
+  .t-role { font-size: 12px; color: var(--muted); display: block; font-family: var(--font-mono); margin-top: 2px; }
+
   /* HOW IT WORKS */
   .section-how { border-bottom: 1px solid var(--border); }
   .steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: start; }
@@ -1018,6 +1183,11 @@ const instagram = 'https://instagram.com/omiguelmoraes';
       flex-shrink: 0;
       padding: 24px 18px;
     }
+
+    .before-after-grid { grid-template-columns: 1fr; gap: 16px; }
+    .ba-card { padding: 24px 20px; }
+    .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
+    .testimonial-card { padding: 24px 20px; }
 
     .steps { grid-template-columns: 1fr; gap: 12px; }
     .step-divider { display: none; }
