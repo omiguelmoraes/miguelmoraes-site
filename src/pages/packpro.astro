@@ -971,7 +971,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     .number-item:nth-last-child(-n+2) { border-bottom: none; }
     .number-val { font-size: 26px; }
 
-    /* TEMPLATE SHOWCASE MOBILE HORIZONTAL TICKER */
+    /* TEMPLATE SHOWCASE MOBILE VAZADO HORIZONTAL TICKER */
     .section-showcase { padding: 48px 0; overflow: hidden; }
     .scroll-hint-mobile {
       display: flex;
@@ -986,9 +986,10 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     }
     .templates-scroll-wrapper {
       margin: 0 -20px;
-      padding: 0 20px 16px;
+      padding: 0 20px 20px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
+      scroll-padding-left: 20px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
     }
@@ -997,13 +998,14 @@ const instagram = 'https://instagram.com/omiguelmoraes';
       display: flex;
       gap: 14px;
       width: max-content;
+      padding-right: 20px;
     }
     .template-card {
-      width: 84vw;
-      max-width: 320px;
-      scroll-snap-align: center;
+      width: calc(78vw - 12px);
+      max-width: 295px;
+      scroll-snap-align: start;
       flex-shrink: 0;
-      padding: 24px 20px;
+      padding: 24px 18px;
     }
 
     .steps { grid-template-columns: 1fr; gap: 12px; }
