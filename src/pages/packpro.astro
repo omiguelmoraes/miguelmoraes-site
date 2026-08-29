@@ -353,48 +353,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
-<!-- SEÇÃO DE TESTEMUNHOS / PROVA SOCIAL -->
 <section class="section section-wash">
-  <div class="container">
-    <span class="section-eyebrow">
-      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
-      Feedback de quem usa
-    </span>
-    <h2 class="section-title section-title--has-sub">O que dizem os freelancers</h2>
-    <p class="section-sub">Profissionais que elevaram a régua de apresentação e fecharam projetos maiores.</p>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">"No primeiro orçamento que mandei usando o template de proposta, fechei um projeto de R$ 3.800 sem o cliente pedir R$ 1 de desconto. O visual passa muito respeito."</p>
-        <div class="t-author">
-          <span class="t-name">Lucas Silveira</span>
-          <span class="t-role">Web Designer & Dev</span>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Só as cláusulas de limitação de refação e atraso no pagamento do modelo de contrato já valem 100 vezes o preço do PackPro. Me salvou de muita dor de cabeça."</p>
-        <div class="t-author">
-          <span class="t-name">Mariana Costa</span>
-          <span class="t-role">UI/UX Designer</span>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Levo literalmente 5 minutos pra editar no Figma e exportar em PDF. Ficou muito fácil manter o padrão de agência sem perder tempo montando tudo do zero."</p>
-        <div class="t-author">
-          <span class="t-name">Gabriel Ramos</span>
-          <span class="t-role">Product Designer</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
   <div class="container">
     <span class="section-eyebrow">
       <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
@@ -455,7 +414,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
-<section class="section section-wash">
+<section class="section">
   <div class="container">
     <div class="pricing-card">
       <span class="pricing-badge">OFERTA VITALÍCIA · R$37</span>
@@ -881,24 +840,6 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .ba-icon--before { background: rgba(0, 0, 0, 0.05); color: #888888; }
   .ba-icon--after { background: var(--accent-wash); color: var(--accent); border: 1px solid rgba(232, 72, 32, 0.2); }
 
-  /* TESTIMONIALS SECTION */
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .testimonial-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 28px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-  }
-  .t-stars { color: #F59E0B; font-size: 13px; letter-spacing: 2px; margin-bottom: 14px; }
-  .t-text { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
-  .t-author { border-top: 1px dashed var(--border); padding-top: 14px; margin-top: auto; }
-  .t-name { font-size: 14px; font-weight: 700; color: var(--text); display: block; }
-  .t-role { font-size: 12px; color: var(--muted); display: block; font-family: var(--font-mono); margin-top: 2px; }
-
   /* HOW IT WORKS */
   .section-how { border-bottom: 1px solid var(--border); }
   .steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: start; }
@@ -1186,8 +1127,6 @@ const instagram = 'https://instagram.com/omiguelmoraes';
 
     .before-after-grid { grid-template-columns: 1fr; gap: 16px; }
     .ba-card { padding: 24px 20px; }
-    .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
-    .testimonial-card { padding: 24px 20px; }
 
     .steps { grid-template-columns: 1fr; gap: 12px; }
     .step-divider { display: none; }
