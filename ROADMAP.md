@@ -33,6 +33,7 @@
 - Refinamento de Craft UI & Mobile Peek: troca dos ícones por SVGs nítidos de checkmark dentro de badges circulares laranja, topo estilo Notion/Figma nos cartões, fonte monospace (`Geist Mono`) para metadados e ajuste da largura dos cards no mobile (`calc(78vw - 12px)`) para deixar o próximo cartão visivelmente vazado na lateral direita
 - Ritmo Vertical & Respiro: aumento da margem inferior dos títulos de seção (`.section-title`) para 48px no desktop e 32px no mobile quando não há subtítulo, garantindo espaçamento visual harmonioso em relação aos cartões
 - Seções de Alta Conversão & Integridade: adição da seção "Antes vs Depois" (comparando envio no Whats/Canva vs proposta corporativa no Figma) e manutenção de prova social 100% autêntica sem inventar depoimentos fictícios
+- Craft da Numbers Bar & Ritmo das Seções: transformação da barra de estatísticas em um painel estilo Notion Dashboard com mini-ícones e cabeçalho em `font-mono`, além da correção na alternância dos fundos cinza wash (`#F8F8FA`), garantindo contraste elegante no card de Checkout R$37 antes da seção de Fluxo Simples
 
 ### 2026-08-24
 - Home: a seção de projetos agora mostra três previews visuais dos cases no desktop e quatro em uma grade 2×2 no mobile, com título e ano e mantendo o link para a página completa de projetos

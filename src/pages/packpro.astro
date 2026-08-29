@@ -76,6 +76,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </div>
 
+<!-- 1. HERO (White) -->
 <section class="hero">
   <div class="container hero-inner">
     <span class="eyebrow">
@@ -105,23 +106,32 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
+<!-- 2. NUMBERS BAR (Notion Style Dashboard) -->
 <div class="numbers-bar">
   <div class="container">
     <div class="numbers-wrapper">
+      <div class="numbers-header">
+        <span class="num-h-meta"><span class="num-h-dot"></span> MÉTRICAS E IMPACTO</span>
+        <span class="num-h-tag">ESTRUTURA VALIDADA</span>
+      </div>
       <div class="numbers-grid">
         <div class="number-item">
+          <div class="number-icon-wrap"><i class="ph ph-users-three"></i></div>
           <span class="number-val">200+</span>
           <span class="number-label">freelancers ativos</span>
         </div>
         <div class="number-item">
+          <div class="number-icon-wrap"><i class="ph ph-files"></i></div>
           <span class="number-val">3 em 1</span>
-          <span class="number-label">proposta, contrato e orçamento</span>
+          <span class="number-label">proposta, contrato & orçamento</span>
         </div>
         <div class="number-item">
+          <div class="number-icon-wrap"><i class="ph ph-clock-clockwise"></i></div>
           <span class="number-val">5 min</span>
-          <span class="number-label">para personalizar e enviar</span>
+          <span class="number-label">para personalizar no Figma</span>
         </div>
         <div class="number-item">
+          <div class="number-icon-wrap"><i class="ph ph-seal-check"></i></div>
           <span class="number-val">R$37</span>
           <span class="number-label">pagamento único para sempre</span>
         </div>
@@ -130,7 +140,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </div>
 
-<!-- SHOWCASE DOS 3 TEMPLATES -->
+<!-- 3. SHOWCASE DOS 3 TEMPLATES (White) -->
 <section class="section section-showcase">
   <div class="container">
     <span class="section-eyebrow">
@@ -257,7 +267,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
-<!-- SEÇÃO ANTES VS DEPOIS -->
+<!-- 4. ANTES VS DEPOIS (Wash #F8F8FA) -->
 <section class="section section-wash">
   <div class="container">
     <span class="section-eyebrow">
@@ -321,6 +331,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
+<!-- 5. BENTO GRID (White) -->
 <section class="section">
   <div class="container">
     <span class="section-eyebrow">
@@ -353,7 +364,8 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
-<section class="section section-wash">
+<!-- 6. TUDO INCLUSO / COMPARATIVO (White) -->
+<section class="section">
   <div class="container">
     <span class="section-eyebrow">
       <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
@@ -414,7 +426,8 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
-<section class="section">
+<!-- 7. PRICING CARD (Wash #F8F8FA) -->
+<section class="section section-wash">
   <div class="container">
     <div class="pricing-card">
       <span class="pricing-badge">OFERTA VITALÍCIA · R$37</span>
@@ -470,6 +483,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
+<!-- 8. FLUXO SIMPLES (White) -->
 <section class="section section-how">
   <div class="container">
     <span class="section-eyebrow">
@@ -499,6 +513,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
+<!-- 9. FAQ (Wash #F8F8FA) -->
 <section class="section section-wash">
   <div class="container">
     <span class="section-eyebrow">FAQ</span>
@@ -532,6 +547,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
+<!-- 10. CRIADOR (White) -->
 <section class="section">
   <div class="container">
     <div class="about-grid">
@@ -552,6 +568,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
+<!-- 11. FINAL CTA (White, Top Border) -->
 <section class="final-cta">
   <div class="container final-cta-inner">
     <h2 class="final-cta-title">Sua próxima proposta pode fechar por um valor 2x maior.</h2>
@@ -562,6 +579,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   </div>
 </section>
 
+<!-- 12. FOOTER (Wash #F8F8FA) -->
 <footer class="footer">
   <p><a href="/links" target="_blank" rel="noopener" class="footer-link">Miguel Moraes</a> © 2026 Todos os direitos reservados.</p>
 </footer>
@@ -713,14 +731,58 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   }
   .t-sep { color: var(--border-strong); opacity: 0.8; font-weight: 400; }
 
-  /* NUMBERS BAR */
-  .numbers-bar { background: var(--bg); padding: 40px 0; border-bottom: 1px solid var(--border); }
-  .numbers-wrapper { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 32px; }
-  .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-  .number-item { text-align: center; padding: 0 16px; border-right: 1px solid var(--border); }
+  /* NUMBERS BAR CRAFT */
+  .numbers-bar { background: var(--bg); padding: 48px 0; border-bottom: 1px solid var(--border); }
+  .numbers-wrapper {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px 32px 32px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+  }
+  .numbers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 1px dashed var(--border);
+    font-family: var(--font-mono);
+  }
+  .num-h-meta { font-size: 10px; color: var(--muted); font-weight: 700; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px; }
+  .num-h-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block; }
+  .num-h-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); background: var(--accent-wash); padding: 3px 10px; border-radius: 12px; }
+
+  .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .number-item {
+    text-align: center;
+    padding: 8px 16px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+  }
   .number-item:last-child { border-right: none; }
-  .number-val { display: block; font-size: clamp(24px, 2.8vw, 36px); font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
-  .number-label { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; font-weight: 500; }
+  @media (hover: hover) {
+    .number-item:hover { transform: translateY(-2px); }
+  }
+  .number-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  }
+  .number-val { display: block; font-size: clamp(24px, 2.6vw, 34px); font-weight: 700; letter-spacing: -0.03em; color: var(--text); line-height: 1.1; }
+  .number-label { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; font-weight: 500; line-height: 1.35; }
 
   /* SECTIONS & RESPIRO / SPACING FIX */
   .section { padding: 100px 0; }
@@ -1079,14 +1141,17 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     }
     .t-sep { display: none; }
 
-    /* NUMBERS BAR MOBILE */
+    /* NUMBERS BAR MOBILE CRAFT */
     .numbers-bar { padding: 32px 0; }
-    .numbers-wrapper { padding: 20px 12px; }
-    .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 16px 0; }
-    .number-item { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 8px; }
-    .number-item:nth-child(odd) { border-right: 1px solid var(--border); }
+    .numbers-wrapper { padding: 18px 16px 20px; }
+    .numbers-header { padding-bottom: 14px; margin-bottom: 16px; }
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 16px 12px; }
+    .number-item { border-right: none; border-bottom: 1px dashed var(--border); padding: 12px 6px; }
+    .number-item:nth-child(odd) { border-right: 1px dashed var(--border); }
     .number-item:nth-last-child(-n+2) { border-bottom: none; }
-    .number-val { font-size: 26px; }
+    .number-icon-wrap { width: 32px; height: 32px; font-size: 16px; margin-bottom: 10px; }
+    .number-val { font-size: 24px; }
+    .number-label { font-size: 11.5px; }
 
     /* TEMPLATE SHOWCASE MOBILE VAZADO HORIZONTAL TICKER */
     .section-showcase { padding: 48px 0; overflow: hidden; }
