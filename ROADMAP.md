@@ -30,7 +30,8 @@
 - PackPro LP (`src/pages/packpro.astro`): Redesign completo para Full White Mode com estética inspirada no Notion (fundo `#ffffff`, lavagens em cinza claro, bordas limpas `#e5e5e8`, cartões estilo callout e sombras de elevação sutis)
 - Reescrita estratégica de copy focada em alta conversão: autoridade instantânea, blindagem de escopo, 5 minutos de setup e retorno no primeiro cliente
 - Seção de Templates Showcase: remoção do elemento sintético de mockup da Hero e inclusão de uma seção dedicada "3 documentos essenciais", apresentando Proposta Comercial, Contrato e Orçamento Rápido em um grid de 3 colunas (desktop) e slider horizontal nativo swipeable (`scroll-snap`) no mobile
-- Refinamento de Craft UI & Mobile Peek: troca dos ícones por SVGs nítidos de checkmark dentro de badges circulares laranja, topo estilo Notion/Figma nos cartões, fonte monospace (`Geist Mono`) para metadados e ajuste da largura dos cards no mobile (`calc(78vw - 12px)`) para deixar o próximo cartão visivelmente vazado na lateral direita, tornando a rolagem horizontal 100% intuitiva
+- Refinamento de Craft UI & Mobile Peek: troca dos ícones por SVGs nítidos de checkmark dentro de badges circulares laranja, topo estilo Notion/Figma nos cartões, fonte monospace (`Geist Mono`) para metadados e ajuste da largura dos cards no mobile (`calc(78vw - 12px)`) para deixar o próximo cartão visivelmente vazado na lateral direita
+- Ritmo Vertical & Respiro: aumento da margem inferior dos títulos de seção (`.section-title`) para 48px no desktop e 32px no mobile quando não há subtítulo, garantindo espaçamento visual harmonioso em relação aos cartões
 
 ### 2026-08-24
 - Home: a seção de projetos agora mostra três previews visuais dos cases no desktop e quatro em uma grade 2×2 no mobile, com título e ano e mantendo o link para a página completa de projetos

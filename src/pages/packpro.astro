@@ -56,9 +56,6 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     fbq('init', '1577513524086938');
     fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1577513524086938&ev=PageView&noscript=1"
-  /></noscript>
   <!-- End Meta Pixel Code -->
 
   <script is:inline>
@@ -139,7 +136,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     <span class="section-eyebrow">
       <i class="ph ph-figma-logo"></i> ARQUIVOS EDITÁVEIS
     </span>
-    <h2 class="section-title">3 documentos essenciais. Prontos para duplicar.</h2>
+    <h2 class="section-title section-title--has-sub">3 documentos essenciais. Prontos para duplicar.</h2>
     <p class="section-sub">Estrutura visual profissional criada no Figma com componentes limpos, tipografia ajustada e suporte a Modo Claro e Escuro.</p>
 
     <div class="scroll-hint-mobile" aria-hidden="true">
@@ -461,7 +458,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
       </details>
       <details class="faq-item">
         <summary class="faq-q">O contrato é juridicamente válido? <i class="ph ph-caret-right faq-caret"></i></summary>
-        <p class="faq-a">O contrato traz a estrutura e cláusulas essenciais que todo serviço freelancer precisa: escopo, prazos, política de refação, condições de pagamento e direitos autorais. É um modelo sólido pronto para você adaptar. Para projetos corporativos de grande porte, sempre recomendamos validação jurídica própria.</p>
+        <p class="faq-a">O contrato traz a estrutura e cláusulas essenciais que todo serviço freelancer precisa: escopo, prazos, política de refação, condições de pagamento e direitos autorais. É um modelo sólido pronto para você adaptar. Para contratos de valor alto ou situações específicas, sempre recomendamos validação jurídica própria.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-q">Como funciona a garantia de 7 dias? <i class="ph ph-caret-right faq-caret"></i></summary>
@@ -661,7 +658,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   .number-val { display: block; font-size: clamp(24px, 2.8vw, 36px); font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
   .number-label { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; font-weight: 500; }
 
-  /* SECTIONS */
+  /* SECTIONS & RESPIRO / SPACING FIX */
   .section { padding: 100px 0; }
   .section-wash { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .section-eyebrow {
@@ -677,8 +674,19 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     gap: 8px;
     font-weight: 600;
   }
-  .section-title { font-size: clamp(26px, 4vw, 42px); font-weight: 700; margin-bottom: 16px; text-align: center; line-height: 1.15; letter-spacing: -0.025em; color: var(--text); }
-  .section-sub { text-align: center; max-width: 580px; margin: 0 auto 48px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+  .section-title {
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 700;
+    margin-bottom: 48px;
+    text-align: center;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--text);
+  }
+  .section-title.section-title--has-sub {
+    margin-bottom: 14px;
+  }
+  .section-sub { text-align: center; max-width: 580px; margin: 0 auto 56px; color: var(--muted); font-size: 15px; line-height: 1.6; }
 
   /* TEMPLATES SHOWCASE SECTION CRAFT */
   .section-showcase { background: var(--bg); }
@@ -945,6 +953,9 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   @media (max-width: 768px) {
     .container { padding: 0 20px; }
     .section { padding: 56px 0; }
+    .section-title { margin-bottom: 32px; }
+    .section-title.section-title--has-sub { margin-bottom: 10px; }
+    .section-sub { margin-bottom: 32px; }
     .hero { padding-top: 48px; padding-bottom: 48px; }
     .hero-inner { gap: 20px; }
     .hero-title { font-size: clamp(32px, 8.8vw, 44px); line-height: 1.1; }
@@ -1029,7 +1040,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
     .checklist { gap: 12px; }
     .checklist li { font-size: 13.5px; }
     .faq-q { padding: 16px 18px; font-size: 14px; }
-    .faq-a { padding: 0 18px 16px; font-size: 13px; }
+    .faq-a { padding: 0 20px 16px; font-size: 13px; }
     
     /* STICKY CTA WITH IOS SAFE AREA & FOOTER OVERLAP FIX */
     .sticky-cta {
