@@ -26,6 +26,13 @@
 
 ## Changelog
 
+### 2026-08-29
+- PackPro LP (`src/pages/packpro.astro`): Redesign completo para Full White Mode com estética inspirada no Notion (fundo `#ffffff`, lavagens em cinza claro, bordas limpas `#e5e5e8`, cartões estilo callout e sombras de elevação sutis)
+- Reescrita estratégica de copy focada em alta conversão: autoridade instantânea, blindagem de escopo, 5 minutos de setup e retorno no primeiro cliente
+
+### 2026-08-24
+- Home: a seção de projetos agora mostra três previews visuais dos cases no desktop e quatro em uma grade 2×2 no mobile, com título e ano e mantendo o link para a página completa de projetos
+
 ### 2026-08-19
 - Header do post reestruturado (`src/pages/blog/[...slug].astro`): categoria como eyebrow, título, lead e uma linha de assinatura fechando o bloco — avatar à esquerda, data à direita (antes categoria e data dividiam a linha acima do título)
 - Avatar da assinatura reusa `/webp/avatar.webp` no mesmo squircle da sidebar, em 28px, com `alt` nomeado por ser a única marca de autoria visível (o nome em texto saiu: a sidebar já mostra o mesmo avatar e nome logo acima); o nome volta em tooltip no hover, reusando o pill da `/links` e o guard `@media (hover: hover)`
