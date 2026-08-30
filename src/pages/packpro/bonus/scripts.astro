@@ -1,0 +1,373 @@
+---
+import PackProBonus from '../../../layouts/PackProBonus.astro';
+
+const regras = [
+  {
+    t: 'Nunca mande a proposta sem avisar que ela vai chegar',
+    d: 'Combine o dia na call de briefing: "te mando quinta até meio-dia". Proposta esperada é proposta aberta. Proposta que cai do nada entra na fila junto com os outros PDFs.',
+  },
+  {
+    t: 'Mande em horário comercial e no meio da semana',
+    d: 'Terça a quinta, entre 9h e 16h. Sexta à noite e domingo colocam sua proposta no fim de uma pilha que só vai ser aberta na segunda, quando ela já não é mais novidade.',
+  },
+  {
+    t: 'Toda mensagem termina com uma pergunta ou uma data',
+    d: 'Mensagem sem próximo passo é mensagem que morre no "vou ver e te falo". Sempre feche com uma pergunta fácil de responder ou uma data marcada.',
+  },
+  {
+    t: 'Diga o preço sem pedir desculpa',
+    d: 'Nada de "ficaria em torno de", "mas dá pra negociar", emoji nervoso. Você fala o valor, ponto final, e espera. O silêncio depois do preço é do cliente, não seu.',
+  },
+];
+
+const envio = [
+  {
+    nome: '1. Envio pelo WhatsApp',
+    quando: 'Dia combinado',
+    corpo: [
+      'Oi <v>[Nome]</v>, tudo certo? Como combinamos, segue a proposta do <v>[projeto]</v>.',
+      'Montei em cima do que você me falou na call: <v>[objetivo em uma linha, com as palavras dele]</v>. Está tudo lá dentro, escopo, prazo, investimento e como funciona o processo.',
+      'Dá uma lida com calma. Se fizer sentido, a gente marca 15 minutos essa semana pra eu te explicar as etapas e você tirar dúvida. Prefere quinta de manhã ou sexta à tarde?',
+    ],
+    nota: { lbl: 'Por que funciona', txt: 'Repete o objetivo dele antes do preço, e o fechamento oferece duas opções de horário em vez de perguntar se ele quer conversar.' },
+  },
+  {
+    nome: '2. Envio por e-mail',
+    quando: 'Cliente corporativo',
+    corpo: [
+      '<b>Assunto:</b> Proposta <v>[Projeto]</v> · <v>[Empresa]</v>',
+      'Oi <v>[Nome]</v>, tudo bem?',
+      'Segue em anexo a proposta do <v>[projeto]</v>, com escopo, cronograma e investimento.',
+      'Resumo em três linhas:<br>· Objetivo: <v>[o que precisa acontecer em 90 dias]</v><br>· Entregas: <v>[lista curta]</v><br>· Prazo: <v>[X semanas]</v> a partir do kickoff',
+      'A proposta é válida por 15 dias e a agenda respeita a ordem de confirmação. Se quiser, marco 15 minutos pra passar pelas etapas com você. Qual o melhor dia?',
+    ],
+    nota: { lbl: 'Por que funciona', txt: 'O resumo no corpo do e-mail deixa a decisão possível mesmo pra quem não vai abrir o anexo agora, e a validade cria prazo sem soar como pressão.' },
+  },
+];
+
+const followup = [
+  {
+    nome: '3. Primeiro toque',
+    quando: '48 horas depois',
+    corpo: [
+      'Oi <v>[Nome]</v>, passando rápido pra saber se a proposta chegou direitinho e se ficou alguma dúvida no escopo ou no prazo.',
+      'Qualquer ponto que você quiser ajustar, me fala que eu adapto. Consigo te dar um retorno hoje mesmo.',
+    ],
+    nota: { lbl: 'Cuidado', txt: 'Não pergunte "e aí, o que achou?". Isso convida um julgamento. Pergunte sobre dúvida, que convida uma conversa.' },
+  },
+  {
+    nome: '4. Segundo toque, com valor',
+    quando: '5 a 7 dias depois',
+    corpo: [
+      'Oi <v>[Nome]</v>, tudo certo? Lembrei de você agora: <v>[referência, artigo ou exemplo útil pro negócio dele]</v>.',
+      'Sobre a proposta, ela vence <v>[data]</v>. Se ainda faz sentido, consigo segurar uma janela na agenda pra <v>[mês]</v>. Te aviso quando ela fechar.',
+    ],
+    nota: { lbl: 'Por que funciona', txt: 'Você aparece entregando algo, não cobrando. A escassez é real (sua agenda) e por isso não soa como truque.' },
+  },
+  {
+    nome: '5. Encerramento educado',
+    quando: '12 a 15 dias depois',
+    corpo: [
+      'Oi <v>[Nome]</v>, imagino que a prioridade tenha mudado aí, o que é super normal.',
+      'Vou arquivar essa proposta pra não ficar te lembrando. Se voltar pra mesa em algum momento, é só me chamar que eu reabro com os valores atualizados. Sucesso com o <v>[projeto ou empresa]</v>.',
+    ],
+    nota: { lbl: 'Por que funciona', txt: 'É a mensagem com maior taxa de resposta de todas. Ao encerrar sem ressentimento, você tira a pressão e muita gente responde "não, calma, vamos sim".' },
+  },
+];
+
+const objecoes = [
+  {
+    n: '01',
+    quote: '"Achei um pouco caro."',
+    leitura: 'Quase nunca é sobre dinheiro. É sobre o cliente não conseguir enxergar o que está comprando. Antes de mexer no preço, mexa na clareza do valor.',
+    corpo: [
+      'Entendo. Só pra eu te ajudar melhor: caro em relação a outro orçamento que você recebeu, ou caro em relação ao que vocês tinham reservado pra isso?',
+      '<i>(depois da resposta)</i> Faz sentido. Esse valor cobre <v>[entrega 1, entrega 2, entrega 3]</v>, e principalmente <v>[o resultado que ele disse querer]</v>. Se o momento pede um investimento menor, eu prefiro reduzir o escopo a reduzir a qualidade: dá pra começar por <v>[etapa menor]</v> e evoluir depois. Quer que eu monte assim?',
+    ],
+    nota: { lbl: 'Não faça', txt: 'Dar desconto na primeira resistência. Desconto imediato ensina que o seu preço era inflado, e o cliente vai testar de novo na próxima.' },
+  },
+  {
+    n: '02',
+    quote: '"Vou pensar e te falo."',
+    leitura: '"Vou pensar" quase sempre esconde uma dúvida específica que ele não quis dizer, ou uma terceira pessoa que precisa aprovar. Seu trabalho é descobrir qual das duas.',
+    corpo: [
+      'Claro, decisão assim merece pensar mesmo. Só pra eu te mandar a informação certa: o que você quer avaliar melhor, o investimento, o prazo ou o escopo?',
+      'E tem mais alguém que vai olhar isso com você? Se tiver, eu posso preparar um resumo de uma página pra facilitar essa conversa aí dentro.',
+    ],
+    nota: { lbl: 'Não faça', txt: 'Responder "sem problema, fico no aguardo". Isso encerra a conversa sem data e joga o próximo passo pra uma pessoa que já está ocupada.' },
+  },
+  {
+    n: '03',
+    quote: '"Recebi uma proposta bem mais barata."',
+    leitura: 'Ele está te dando a chance de justificar a diferença. Não ataque o concorrente, compare o que está dentro de cada escopo.',
+    corpo: [
+      'Acredito, e provavelmente é um bom profissional. Vale comparar o que tem dentro de cada uma, porque preço só é comparável quando o escopo é o mesmo.',
+      'Na minha estão inclusos <v>[rodadas de ajuste, prazo, entrega dos arquivos, suporte pós-entrega]</v>. Se lá também estiver tudo isso pelo valor menor, é uma boa escolha e eu te digo isso com tranquilidade. Se não estiver, a diferença de preço provavelmente vai aparecer depois, em pedido extra ou em retrabalho.',
+    ],
+    nota: { lbl: 'Não faça', txt: 'Cobrir o preço do concorrente. Você entra numa disputa que só termina no fundo do poço, e o cliente já entendeu que o seu número é negociável.' },
+  },
+  {
+    n: '04',
+    quote: '"Consegue fazer por R$ X?"',
+    leitura: 'A regra é simples e não tem exceção: desconto sempre vem acompanhado de contrapartida. Preço menor por escopo menor, prazo maior ou pagamento à vista.',
+    corpo: [
+      'Consigo chegar nesse valor sim, ajustando o escopo: em vez de <v>[entrega completa]</v>, a gente fecha <v>[versão enxuta]</v> e o restante fica pra uma segunda fase.',
+      'Outra opção, se você quiser manter tudo: pagamento à vista, com <v>[X%]</v> de desconto. Qual das duas funciona melhor pra vocês?',
+    ],
+    nota: { lbl: 'Regra de ouro', txt: 'Nunca entregue o mesmo escopo por menos. Isso desvaloriza o seu trabalho com esse cliente e com todos os próximos que ele indicar.' },
+  },
+  {
+    n: '05',
+    quote: '"Adorei, mas agora não é o momento."',
+    leitura: 'Pode ser verdade, pode ser saída elegante. Nos dois casos a resposta é a mesma: marque a data do reencontro agora, enquanto você ainda está fresco na memória dele.',
+    corpo: [
+      'Tranquilo, timing conta muito nesse tipo de projeto. Deixa eu te perguntar: o que precisa acontecer aí pra virar o momento certo? <v>[fim da temporada, entrada de caixa, contratação]</v>?',
+      'Perfeito. Vou te procurar em <v>[mês]</v> então, com os valores da época. E se antes disso abrir uma janela na minha agenda, eu te aviso primeiro. Combinado?',
+    ],
+    nota: { lbl: 'Depois de mandar', txt: 'Crie o lembrete na hora, com o nome do cliente e o contexto. Follow-up que acontece seis meses depois fecha projeto, e quase ninguém faz.' },
+  },
+];
+
+const fechamento = [
+  {
+    nome: '6. Resposta ao aceite',
+    quando: 'No mesmo dia',
+    corpo: [
+      'Que ótimo, <v>[Nome]</v>, vai ser muito bom trabalhar nisso com você.',
+      'Pra deixar tudo certo, te mando agora duas coisas: o contrato pra assinatura digital e o link da primeira parcela (<v>[X%]</v>). Assim que os dois estiverem confirmados, reservo a semana de <v>[data]</v> na agenda pro nosso kickoff.',
+      'Já te adianto a lista de materiais que vou precisar pra começar, pra você ir separando aí.',
+    ],
+    nota: { lbl: 'Por que funciona', txt: 'Contrato e pagamento vão juntos, sem etapa intermediária, e a agenda só é reservada depois. Isso protege o seu mês.' },
+  },
+  {
+    nome: '7. Kickoff',
+    quando: 'Após confirmação',
+    corpo: [
+      'Contrato assinado e pagamento confirmado, <v>[Nome]</v>. Projeto oficialmente na agenda.',
+      'Nosso cronograma: <v>[etapa 1 até data]</v>, <v>[etapa 2 até data]</v>, entrega final em <v>[data]</v>. Pra manter essas datas, preciso de <v>[textos, imagens, acessos]</v> até <v>[data]</v>.',
+      'Vou te atualizar toda <v>[dia da semana]</v>, mesmo quando não tiver novidade. Bora?',
+    ],
+    nota: { lbl: 'Detalhe que fideliza', txt: 'Prometer atualização em dia fixo, e cumprir. É o hábito que mais gera indicação, porque cliente odeia silêncio.' },
+  },
+];
+
+// <v> marca os campos a preencher e <b>/<i>/<br> a formatação da mensagem:
+// texto de script é conteúdo meu, não entrada de usuário
+const marcar = (linha: string) => linha.replace(/<v>/g, '<span class="var">').replace(/<\/v>/g, '</span>');
+---
+
+<PackProBonus
+  title="Scripts de Fechamento e Objeções — Bônus PackPro"
+  description="11 mensagens prontas pra copiar e colar: envio, follow-up, objeções e aceite."
+  eyebrow="Bônus 03 · Scripts de Fechamento"
+  heroTitle="Da proposta enviada ao contrato assinado"
+  heroSub="Mensagens prontas pra copiar e colar: envio, follow-up, resposta às 5 objeções mais comuns e o aceite. Sem parecer vendedor, sem sumir no visto."
+  meta={[
+    { k: 'Conteúdo', v: '7 scripts · 5 objeções' },
+    { k: 'Canal', v: 'WhatsApp e e-mail' },
+    { k: 'Usa junto com', v: 'Template de Proposta' },
+  ]}
+  pdf="/packpro/packpro-scripts-de-fechamento.pdf"
+  atual="scripts"
+>
+
+  <div class="wrap">
+
+    <section class="bloco">
+      <div class="bloco-head">
+        <span class="bloco-n">Antes de mandar</span>
+        <h2 class="bloco-t">4 regras que valem mais que o script</h2>
+      </div>
+      <p class="bloco-intro">Proposta não se manda, se apresenta. A mensagem é só o transporte. Estas quatro regras mudam mais a sua taxa de fechamento do que qualquer palavra escolhida.</p>
+
+      {regras.map((r, i) => (
+        <div class="regra">
+          <span class="regra-n">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <div class="regra-t">{r.t}</div>
+            <div class="regra-d">{r.d}</div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    {[
+      { n: 'Parte 1', t: 'Envio da proposta', itens: envio },
+      { n: 'Parte 2', t: 'Follow-up', itens: followup },
+    ].map((secao) => (
+      <section class="bloco">
+        <div class="bloco-head">
+          <span class="bloco-n">{secao.n}</span>
+          <h2 class="bloco-t">{secao.t}</h2>
+        </div>
+
+        {secao.itens.map((s) => (
+          <article class="script">
+            <div class="script-head">
+              <span class="script-nome">{s.nome}</span>
+              <span class="script-head-right">
+                <span class="script-quando">{s.quando}</span>
+                <button type="button" class="copiar"><i class="ph ph-copy"></i><span>Copiar</span></button>
+              </span>
+            </div>
+            <div class="script-body">
+              {s.corpo.map((linha) => <p set:html={marcar(linha)} />)}
+            </div>
+            <div class="script-nota"><span class="nota-lbl">{s.nota.lbl}</span>{s.nota.txt}</div>
+          </article>
+        ))}
+      </section>
+    ))}
+
+    <section class="bloco">
+      <div class="bloco-head">
+        <span class="bloco-n">Parte 3</span>
+        <h2 class="bloco-t">As 5 objeções</h2>
+      </div>
+
+      {objecoes.map((o) => (
+        <article class="obj">
+          <h3 class="obj-quote"><span class="obj-n">{o.n}</span>{o.quote}</h3>
+          <p class="obj-leitura">{o.leitura}</p>
+          <div class="script">
+            <div class="script-head">
+              <span class="script-nome">Resposta</span>
+              <button type="button" class="copiar"><i class="ph ph-copy"></i><span>Copiar</span></button>
+            </div>
+            <div class="script-body">
+              {o.corpo.map((linha) => <p set:html={marcar(linha)} />)}
+            </div>
+            <div class="script-nota"><span class="nota-lbl">{o.nota.lbl}</span>{o.nota.txt}</div>
+          </div>
+        </article>
+      ))}
+
+      <div class="clause">
+        <span class="clause-lbl">O teste das três perguntas</span>
+        <p class="clause-txt">Antes de aceitar qualquer negociação, responda: (1) o escopo diminuiu junto com o preço? (2) esse projeto ainda paga o seu custo/hora? (3) você aceitaria esse mesmo valor de um cliente novo, sem contexto? Se alguma resposta for não, você não está negociando, está cedendo.</p>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-head">
+        <span class="bloco-n">Parte 4</span>
+        <h2 class="bloco-t">O "sim" chegou</h2>
+      </div>
+      <p class="bloco-intro">O intervalo entre o aceite e a assinatura é onde mais projeto esfria. Responda no mesmo dia, com contrato e link de pagamento juntos.</p>
+
+      {fechamento.map((s) => (
+        <article class="script">
+          <div class="script-head">
+            <span class="script-nome">{s.nome}</span>
+            <span class="script-head-right">
+              <span class="script-quando">{s.quando}</span>
+              <button type="button" class="copiar"><i class="ph ph-copy"></i><span>Copiar</span></button>
+            </span>
+          </div>
+          <div class="script-body">
+            {s.corpo.map((linha) => <p set:html={marcar(linha)} />)}
+          </div>
+          <div class="script-nota"><span class="nota-lbl">{s.nota.lbl}</span>{s.nota.txt}</div>
+        </article>
+      ))}
+    </section>
+
+    <div class="proximo">
+      <span class="proximo-lbl">Fecha o ciclo</span>
+      <p>Use junto com o <a href="/packpro/bonus/checklist">Checklist de Briefing</a> pra chegar na proposta com o escopo fechado, e a <a href="/packpro/calculadora">Calculadora</a> pra saber qual número escrever nela.</p>
+    </div>
+
+  </div>
+
+  <script>
+    // copia o texto do script sem a formatação, mantendo os [campos] pra
+    // pessoa trocar no WhatsApp: é o gesto principal desta página
+    document.querySelectorAll<HTMLButtonElement>('.copiar').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const corpo = btn.closest('.script')?.querySelector('.script-body');
+        if (!corpo) return;
+        const texto = [...corpo.querySelectorAll('p')]
+          .map((p) => (p.textContent ?? '').trim())
+          .filter(Boolean)
+          .join('\n\n');
+        const rotulo = btn.querySelector('span');
+        try {
+          await navigator.clipboard.writeText(texto);
+          btn.classList.add('copiado');
+          if (rotulo) rotulo.textContent = 'Copiado';
+        } catch {
+          if (rotulo) rotulo.textContent = 'Selecione e copie';
+        }
+        setTimeout(() => {
+          btn.classList.remove('copiado');
+          if (rotulo) rotulo.textContent = 'Copiar';
+        }, 1800);
+      });
+    });
+  </script>
+
+</PackProBonus>
+
+<style is:global>
+  .regra { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+  .regra:last-child { border-bottom: 0; padding-bottom: 0; }
+  .regra-n { flex: none; width: 24px; font-family: var(--font-mono); font-size: 11px; color: var(--accent); padding-top: 3px; }
+  .regra-t { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .regra-d { font-size: 14.5px; color: var(--muted); }
+
+  /* SCRIPTS */
+  .script { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 16px; }
+  .script-head {
+    background: var(--bg-alt); border-bottom: 1px solid var(--border);
+    padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .script-nome { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+  .script-quando { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); white-space: nowrap; }
+  .script-body { padding: 20px; font-size: 15px; line-height: 1.65; }
+  .script-body p + p { margin-top: 12px; }
+  .script-body .var { color: var(--accent); font-weight: 600; }
+  .script-nota {
+    border-top: 1px dashed var(--border); background: var(--bg-alt);
+    padding: 12px 20px; font-size: 13.5px; color: var(--muted);
+  }
+  .script-head-right { display: flex; align-items: center; gap: 14px; }
+  .copiar {
+    display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+    font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--muted);
+    background: var(--bg); border: 1px solid var(--border-strong); border-radius: 999px;
+    padding: 5px 11px; transition: all .15s ease; white-space: nowrap;
+  }
+  .copiar i { font-size: 13px; color: var(--muted-light); transition: color .15s ease; }
+  .copiar:hover { border-color: var(--text); color: var(--text); }
+  .copiar:hover i { color: var(--accent); }
+  .copiar.copiado { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); }
+  .copiar.copiado i { color: var(--accent); }
+
+  .nota-lbl {
+    font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--muted-light); margin-right: 8px;
+  }
+
+  /* OBJEÇÕES */
+  .obj { margin-bottom: 32px; }
+  .obj-quote { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; display: flex; align-items: baseline; gap: 10px; line-height: 1.25; }
+  .obj-n { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--accent); letter-spacing: 0.06em; }
+  .obj-leitura { font-size: 14.5px; color: var(--muted); margin-bottom: 14px; padding-left: 12px; border-left: 2px solid var(--border-strong); }
+
+  .clause { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px 18px; }
+  .clause-lbl { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); display: block; margin-bottom: 6px; }
+  .clause-txt { font-size: 14.5px; line-height: 1.55; }
+
+  .proximo { border-top: 1px solid var(--border); padding-top: 24px; }
+  .proximo-lbl { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); display: block; margin-bottom: 8px; }
+  .proximo p { font-size: 15.5px; color: var(--muted); }
+  .proximo a { color: var(--text); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid var(--accent); }
+  .proximo a:hover { color: var(--accent); }
+
+  @media (max-width: 700px) {
+    .script-body { padding: 16px; font-size: 14.5px; }
+    .script-head { padding: 12px 16px; }
+    .script-nota { padding: 12px 16px; }
+    .obj-quote { font-size: 18px; }
+  }
+</style>

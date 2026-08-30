@@ -1,7 +1,8 @@
 ---
 import { Font } from 'astro:assets';
 
-const packpro = '/packpro';
+// quem chega aqui já comprou: a navegação volta pro hub de bônus, nunca pra LP
+const hub = '/packpro/bonus';
 ---
 
 <!doctype html>
@@ -23,7 +24,7 @@ const packpro = '/packpro';
 
 <header class="topbar">
   <div class="container topbar-inner">
-    <a href={packpro} class="back"><i class="ph ph-arrow-left"></i> PackPro</a>
+    <a href={hub} class="back"><i class="ph ph-arrow-left"></i> Bônus PackPro</a>
     <span class="tag">Bônus 02 · Calculadora de Precificação</span>
   </div>
 </header>
@@ -198,7 +199,10 @@ const packpro = '/packpro';
 <footer class="foot">
   <div class="container foot-inner">
     <span>PackPro · Bônus 02 · Calculadora de Precificação</span>
-    <a href={packpro}>Voltar pro PackPro</a>
+    <span class="foot-links">
+      <a href="/packpro/bonus/checklist">Checklist de Briefing</a>
+      <a href="/packpro/bonus/scripts">Scripts de Fechamento</a>
+    </span>
   </div>
 </footer>
 
@@ -488,6 +492,7 @@ const packpro = '/packpro';
   /* RODAPÉ */
   .foot { border-top: 1px solid var(--border); padding: 24px 0; }
   .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); }
+  .foot-links { display: inline-flex; gap: 20px; }
   .foot a { color: var(--accent); text-decoration: none; }
   .foot a:hover { text-decoration: underline; }
 
@@ -505,6 +510,7 @@ const packpro = '/packpro';
     .live { display: none; }
     .section-title { font-size: 25px; }
     .foot-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .foot-links { flex-direction: column; gap: 6px; }
   }
 </style>
 

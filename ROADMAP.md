@@ -28,6 +28,9 @@
 
 ### 2026-08-29
 - Bônus 2 do PackPro: página `/packpro/calculadora` (`src/pages/packpro/calculadora.astro`), calculadora de precificação freelancer com custo/hora a partir de custos fixos, meta de pró-labore, horas faturáveis, impostos e reserva, orçamento por projeto com presets de horas e tabela de faixas de mercado
+- Área de bônus do PackPro: hub em `/packpro/bonus` e os bônus 1 e 3 viraram página web (`/packpro/bonus/checklist` e `/packpro/bonus/scripts`) via layout `PackProBonus.astro`, com PDF pra download em `public/packpro/`. Motivo: PDF A4 é ruim de ler no celular, e o link deixa o conteúdo atualizável depois da compra
+- Navegação dos bônus volta pro hub, nunca pra LP (quem está ali já comprou e não precisa ver o preço de novo); `filter` do sitemap agora tira toda sub-rota de `/packpro/`
+- Página de scripts tem botão de copiar por mensagem, que é o gesto principal dela
 - Cartão do resultado da calculadora virou peça única e passou a de fato acompanhar a rolagem: o `align-items: start` do grid encolhia a coluna e o `position: sticky` não tinha trilho. Memória de cálculo recolhida em `<details>` dentro do próprio cartão, valor de tabela em laranja com `tabular-nums` e transição do número a cada tecla
 - Calculadora fica fora do índice: `noindex, nofollow` na página e `filter` no `@astrojs/sitemap` tirando a rota do sitemap, já que é bônus entregue por link após a compra
 - PackPro LP (`src/pages/packpro.astro`): Redesign completo para Full White Mode com estética inspirada no Notion (fundo `#ffffff`, lavagens em cinza claro, bordas limpas `#e5e5e8`, cartões estilo callout e sombras de elevação sutis)

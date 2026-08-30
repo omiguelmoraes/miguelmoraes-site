@@ -1,0 +1,205 @@
+---
+import { Font } from 'astro:assets';
+
+const bonus = [
+  {
+    n: '01',
+    icone: 'ph-list-checks',
+    nome: 'Checklist de Briefing Anti-Refação',
+    desc: 'As 15 perguntas que fecham o escopo na reunião inicial, com o sinal de alerta de cada uma e 6 cláusulas prontas pra colar na proposta.',
+    href: '/packpro/bonus/checklist',
+    badge: 'Página + PDF',
+    pdf: '/packpro/packpro-checklist-de-briefing.pdf',
+  },
+  {
+    n: '02',
+    icone: 'ph-calculator',
+    nome: 'Calculadora de Precificação',
+    desc: 'Seus custos e a sua meta viram o valor real da sua hora, e as horas de um projeto viram o número que vai no campo Investimento da proposta.',
+    href: '/packpro/calculadora',
+    badge: 'Ferramenta',
+    pdf: null,
+  },
+  {
+    n: '03',
+    icone: 'ph-chats-teardrop',
+    nome: 'Scripts de Fechamento & Objeções',
+    desc: '7 mensagens prontas pra WhatsApp e e-mail, do envio da proposta ao kickoff, e a resposta pras 5 objeções que mais derrubam venda.',
+    href: '/packpro/bonus/scripts',
+    badge: 'Página + PDF',
+    pdf: '/packpro/packpro-scripts-de-fechamento.pdf',
+  },
+];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Seus bônus do PackPro</title>
+  <meta name="description" content="Área de acesso aos 3 bônus do PackPro." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <Font cssVariable="--font-inter-tight" preload />
+  <Font cssVariable="--font-geist-mono" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <span class="marca">Pack<span class="dot">.</span>Pro</span>
+    <span class="tag">Área de bônus</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="pulse"></span>Acesso liberado</span>
+    <h1>Seus bônus do PackPro</h1>
+    <p class="hero-sub">Os três materiais que acompanham os templates. Guarde este link: as páginas são atualizadas por aqui, então você sempre pega a versão mais recente.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="lista">
+    {bonus.map((b) => (
+      <article class="item">
+        <a href={b.href} class="item-main">
+          <span class="item-icone"><i class={`ph ${b.icone}`}></i></span>
+          <span class="item-txt">
+            <span class="item-top">
+              <span class="item-n">Bônus {b.n}</span>
+              <span class="item-badge">{b.badge}</span>
+            </span>
+            <span class="item-nome">{b.nome}</span>
+            <span class="item-desc">{b.desc}</span>
+          </span>
+          <span class="item-abrir">Abrir <i class="ph ph-arrow-right"></i></span>
+        </a>
+        {b.pdf && (
+          <a href={b.pdf} download class="item-pdf"><i class="ph ph-download-simple"></i> Baixar em PDF</a>
+        )}
+      </article>
+    ))}
+  </div>
+
+  <div class="aviso">
+    <span class="aviso-lbl">E os 3 templates no Figma?</span>
+    <p>Os links dos arquivos foram enviados no e-mail da compra, junto com o link desta página. É só duplicar cada arquivo pra sua conta do Figma e começar a editar.</p>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span>PackPro · Miguel Moraes · acesso vitalício</span>
+    <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener">Dúvida? me chama no Instagram</a>
+  </div>
+</footer>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FFFFFF;
+    --bg-alt: #F8F8FA;
+    --border: #E5E5E8;
+    --border-strong: #D1D1D6;
+    --text: #111111;
+    --muted: #666666;
+    --muted-light: #888888;
+    --accent: #E84820;
+    --accent-wash: rgba(232, 72, 32, 0.07);
+    --font: var(--font-inter-tight);
+    --font-mono: var(--font-geist-mono), monospace;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+  .topbar { border-bottom: 1px solid var(--border); }
+  .topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .marca { font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
+  .marca .dot { color: var(--accent); }
+  .tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+  .hero { padding: 64px 0 40px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent); background: var(--accent-wash);
+    border: 1px solid rgba(232,72,32,.2); border-radius: 999px; padding: 5px 12px; margin-bottom: 20px;
+  }
+  .pulse { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); animation: pulse 2.4s ease-out infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(232,72,32,.5); } 70%, 100% { box-shadow: 0 0 0 6px rgba(232,72,32,0); } }
+  .hero h1 { font-size: 42px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; margin-bottom: 16px; }
+  .hero-sub { font-size: 17px; color: var(--muted); }
+
+  main { padding-bottom: 72px; }
+  .lista { display: flex; flex-direction: column; gap: 14px; }
+
+  .item { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: border-color .15s ease, box-shadow .15s ease; }
+  .item:hover { border-color: var(--border-strong); box-shadow: 0 2px 10px rgba(0,0,0,.04); }
+  .item-main { display: flex; gap: 16px; align-items: flex-start; padding: 22px 24px; text-decoration: none; color: var(--text); }
+  .item-icone { flex: none; font-size: 22px; color: var(--accent); display: flex; padding-top: 2px; }
+  .item-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .item-top { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .item-n { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); }
+  .item-badge {
+    font-family: var(--font-mono); font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--accent); background: var(--accent-wash); border: 1px solid rgba(232,72,32,.2);
+    border-radius: 4px; padding: 2px 6px;
+  }
+  .item-nome { font-size: 18px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 6px; }
+  .item-desc { font-size: 14.5px; color: var(--muted); }
+  .item-abrir {
+    flex: none; display: inline-flex; align-items: center; gap: 6px; align-self: center;
+    font-size: 13px; font-weight: 600; color: var(--muted); white-space: nowrap;
+  }
+  .item-main:hover .item-abrir { color: var(--accent); }
+  .item-abrir i { font-size: 14px; transition: transform .15s ease; }
+  .item-main:hover .item-abrir i { transform: translateX(2px); }
+
+  .item-pdf {
+    display: flex; align-items: center; gap: 7px;
+    border-top: 1px dashed var(--border); background: var(--bg-alt);
+    padding: 11px 24px; font-family: var(--font-mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted);
+    text-decoration: none; transition: color .15s ease, background .15s ease;
+  }
+  .item-pdf i { font-size: 13px; color: var(--accent); }
+  .item-pdf:hover { color: var(--text); background: #F3F3F6; }
+
+  .aviso { margin-top: 32px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 20px; }
+  .aviso-lbl { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); display: block; margin-bottom: 6px; }
+  .aviso p { font-size: 14.5px; color: var(--muted); }
+
+  .foot { border-top: 1px solid var(--border); padding: 24px 0; }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); }
+  .foot a { color: var(--accent); text-decoration: none; }
+  .foot a:hover { text-decoration: underline; }
+
+  @media (max-width: 700px) {
+    .hero { padding: 44px 0 28px; }
+    .hero h1 { font-size: 32px; }
+    .item-main { flex-wrap: wrap; padding: 18px; gap: 12px; }
+    .item-abrir { align-self: flex-start; }
+    .item-pdf { padding: 11px 18px; }
+    .foot-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+
+</body>
+</html>

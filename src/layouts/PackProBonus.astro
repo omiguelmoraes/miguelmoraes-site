@@ -1,0 +1,182 @@
+---
+// Layout das páginas de bônus do PackPro. São páginas de acesso pós-compra:
+// vivem fora do índice, fora do sitemap e navegam entre si pelo hub, nunca
+// de volta pra landing page (quem está aqui já comprou).
+import { Font } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  heroTitle: string;
+  heroSub: string;
+  meta?: { k: string; v: string }[];
+  pdf?: string;
+  atual: 'checklist' | 'calculadora' | 'scripts';
+}
+
+const { title, description, eyebrow, heroTitle, heroSub, meta = [], pdf, atual } = Astro.props;
+
+const bonus = [
+  { id: 'checklist', n: '01', nome: 'Checklist de Briefing', href: '/packpro/bonus/checklist', icone: 'ph-list-checks' },
+  { id: 'calculadora', n: '02', nome: 'Calculadora de Precificação', href: '/packpro/calculadora', icone: 'ph-calculator' },
+  { id: 'scripts', n: '03', nome: 'Scripts de Fechamento', href: '/packpro/bonus/scripts', icone: 'ph-chats-teardrop' },
+];
+const outros = bonus.filter((b) => b.id !== atual);
+---
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <Font cssVariable="--font-inter-tight" preload />
+  <Font cssVariable="--font-geist-mono" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="/packpro/bonus" class="back"><i class="ph ph-arrow-left"></i> Bônus PackPro</a>
+    <div class="topbar-right">
+      <span class="tag">{eyebrow}</span>
+      {pdf && <a href={pdf} download class="dl"><i class="ph ph-download-simple"></i> Baixar PDF</a>}
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>{heroTitle}</h1>
+    <p class="hero-sub">{heroSub}</p>
+    {meta.length > 0 && (
+      <div class="hero-meta">
+        {meta.map((m) => (
+          <div><span class="k">{m.k}</span><span class="v">{m.v}</span></div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<main>
+  <slot />
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span class="foot-label">Seus outros bônus</span>
+    <div class="foot-grid">
+      {outros.map((b) => (
+        <a href={b.href} class="foot-card">
+          <span class="fc-icon"><i class={`ph ${b.icone}`}></i></span>
+          <span class="fc-txt"><span class="fc-n">Bônus {b.n}</span><span class="fc-nome">{b.nome}</span></span>
+          <i class="ph ph-arrow-right fc-arrow"></i>
+        </a>
+      ))}
+    </div>
+    <p class="foot-note">PackPro · Miguel Moraes · acesso vitalício. Guarde este link, o conteúdo é atualizado por aqui.</p>
+  </div>
+</footer>
+
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FFFFFF;
+    --bg-alt: #F8F8FA;
+    --bg-wash: #F3F3F6;
+    --border: #E5E5E8;
+    --border-strong: #D1D1D6;
+    --text: #111111;
+    --muted: #666666;
+    --muted-light: #888888;
+    --accent: #E84820;
+    --accent-hover: #D43C16;
+    --accent-wash: rgba(232, 72, 32, 0.07);
+    --font: var(--font-inter-tight);
+    --font-mono: var(--font-geist-mono), monospace;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+  /* TOPO */
+  .topbar { border-bottom: 1px solid var(--border); background: rgba(255,255,255,.86); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 20; }
+  .topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .back { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; color: var(--text); font-weight: 600; font-size: 14px; white-space: nowrap; }
+  .back i { color: var(--accent); font-size: 16px; }
+  .back:hover { color: var(--accent); }
+  .tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); white-space: nowrap; }
+  .dl {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    font-size: 12.5px; font-weight: 600; color: var(--text);
+    border: 1px solid var(--border-strong); border-radius: 999px; padding: 6px 13px;
+    transition: all .15s ease; white-space: nowrap;
+  }
+  .dl i { font-size: 14px; color: var(--accent); }
+  .dl:hover { border-color: var(--text); background: var(--bg-alt); }
+
+  /* HERO */
+  .hero { padding: 56px 0 8px; }
+  .hero h1 { font-size: 42px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; margin-bottom: 16px; }
+  .hero-sub { font-size: 17px; color: var(--muted); }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 32px; border-top: 1px solid var(--border); margin-top: 32px; padding-top: 20px; }
+  .hero-meta .k { display: block; font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-light); margin-bottom: 2px; }
+  .hero-meta .v { font-size: 14px; font-weight: 600; }
+
+  /* BLOCOS DE CONTEÚDO */
+  main { padding: 40px 0 72px; }
+  .bloco { margin-bottom: 56px; scroll-margin-top: 72px; }
+  .bloco-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .bloco-n { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+  .bloco-t { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+  .bloco-intro { font-size: 15.5px; color: var(--muted); margin: -12px 0 24px; }
+
+  /* RODAPÉ */
+  .foot { border-top: 1px solid var(--border); background: var(--bg-alt); padding: 40px 0 48px; }
+  .foot-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 16px; }
+  .foot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .foot-card {
+    display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text);
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 14px 16px; transition: all .15s ease;
+  }
+  .foot-card:hover { border-color: var(--border-strong); transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+  .fc-icon { color: var(--accent); font-size: 20px; display: flex; }
+  .fc-txt { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .fc-n { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); }
+  .fc-nome { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+  .fc-arrow { color: var(--muted-light); font-size: 15px; }
+  .foot-card:hover .fc-arrow { color: var(--accent); }
+  .foot-note { font-size: 12.5px; color: var(--muted-light); margin-top: 20px; }
+
+  @media (max-width: 700px) {
+    .hero { padding: 40px 0 4px; }
+    .hero h1 { font-size: 32px; }
+    .tag { display: none; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .bloco { margin-bottom: 44px; }
+  }
+</style>
+
+</body>
+</html>

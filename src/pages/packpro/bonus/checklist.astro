@@ -1,0 +1,298 @@
+---
+import PackProBonus from '../../../layouts/PackProBonus.astro';
+
+const regras = [
+  {
+    t: 'Pergunte antes de orçar, sempre',
+    d: 'Nunca mande valor no mesmo dia do primeiro contato. Marque 30 minutos, rode o checklist e só depois abra o template de proposta. Orçamento no escuro é desconto garantido depois.',
+  },
+  {
+    t: 'Anote a resposta com as palavras do cliente',
+    d: 'O que ele falou vira o texto do escopo. Quando a proposta usa o vocabulário dele, a aprovação vem mais rápido e a discussão sobre o que estava combinado simplesmente não acontece.',
+  },
+  {
+    t: 'Devolva o resumo por escrito em 24h',
+    d: 'Mande um resumo curto do que você entendeu e peça um "confirmo". Esse aceite informal é a sua primeira camada de proteção, e ele chega antes do contrato.',
+  },
+  {
+    t: 'Pergunta sem resposta vira premissa na proposta',
+    d: 'Se o cliente não sabe algo (quem escreve os textos, qual a data limite), escreva na proposta como premissa assumida. Premissa registrada é escopo protegido.',
+  },
+  {
+    t: 'Feche a call com a próxima data marcada',
+    d: 'Saia da reunião com dia e hora do envio da proposta e do retorno dele. Proposta sem data de resposta combinada é proposta que morre no visto.',
+  },
+];
+
+const blocos = [
+  {
+    n: 'Bloco 1',
+    t: 'Objetivo e negócio',
+    perguntas: [
+      {
+        q: 'O que precisa acontecer pra você considerar esse projeto um sucesso daqui a 90 dias?',
+        why: 'Ancora o projeto num resultado de negócio, não em gosto pessoal. Na hora da aprovação, você defende a entrega pelo objetivo que ele mesmo definiu.',
+        flag: '"Quero que fique bonito" sem nenhuma métrica. Insista: mais orçamentos? mais vendas? parecer maior do que é?',
+      },
+      {
+        q: 'Quem é o cliente do seu cliente, e o que ele precisa entender nos primeiros 10 segundos?',
+        why: 'Define hierarquia, tom e copy. Também mostra pro cliente que você pensa no negócio dele, o que já te tira da comparação por preço.',
+        flag: '"É pra todo mundo." Público indefinido vira briefing que muda toda semana.',
+      },
+      {
+        q: 'O que existe hoje e o que exatamente te incomoda nisso?',
+        why: 'Separa o problema real do sintoma. Muita gente pede site novo quando o que trava é a oferta ou a falta de prova social.',
+        flag: 'Ele culpa o fornecedor anterior por tudo, sem nenhum ponto concreto. Pergunte como foi o processo antes de assumir a vaga.',
+      },
+    ],
+  },
+  {
+    n: 'Bloco 2',
+    t: 'Escopo e conteúdo',
+    perguntas: [
+      {
+        q: 'Quantas páginas ou peças você imagina? Me diga o nome de cada uma.',
+        why: 'Número solto é elástico, lista nomeada não é. "Home, Sobre, Serviços, Contato" vira linha de escopo e vira preço.',
+        flag: '"Umas quatro ou cinco, depois a gente vê." Feche em quatro e escreva que a quinta é adicional orçado à parte.',
+      },
+      {
+        q: 'Quem escreve os textos e quem entrega as imagens?',
+        why: 'É a causa número um de atraso em projeto de site. Se a redação for sua, é serviço adicional. Se for dele, o prazo depende de uma entrega que não está na sua mão.',
+        flag: '"Você pode dar uma ajeitada nos textos." Isso é copywriting, e copywriting tem preço.',
+      },
+      {
+        q: 'O que NÃO faz parte deste projeto?',
+        why: 'A pergunta que mais economiza noite mal dormida. Dita em voz alta, ela desarma o "ah, achei que o blog estava incluso" três semanas depois.',
+        flag: 'Silêncio ou risada. Se ele não souber responder, você responde: liste em voz alta o que está fora e confirme item por item.',
+      },
+    ],
+  },
+  {
+    n: 'Bloco 3',
+    t: 'Marca, gosto e decisão',
+    perguntas: [
+      {
+        q: 'Existe manual de marca, logo em vetor e fontes licenciadas?',
+        why: 'Sem vetor e sem fonte, alguém vai ter que redesenhar ou comprar licença. Esse alguém precisa estar orçado antes, não descoberto no meio do projeto.',
+        flag: '"Tenho o logo em PNG, serve?" Não serve. Ou entra vetorização no escopo, ou entra como premissa na proposta.',
+      },
+      {
+        q: 'Me mostre três referências que você ama e uma que você odeia. E por quê?',
+        why: 'O "por quê" vale mais que a referência. Ele revela se o cliente reage a cor, a estrutura ou a sensação, e te dá o critério de julgamento antes do primeiro layout.',
+        flag: 'Referências que se contradizem (minimalista e cheia de elementos). Nomeie a contradição na call, não na apresentação.',
+      },
+      {
+        q: 'Quem mais vai opinar no projeto, e quem dá a palavra final?',
+        why: 'Aprovação por comitê é o assassino silencioso do prazo. Saber que existe um sócio invisível muda a quantidade de rodadas que você orça.',
+        flag: '"Vou mostrar pra equipe e te falo." Peça um nome. Feedback consolidado por uma pessoa só vira cláusula na proposta.',
+      },
+    ],
+  },
+  {
+    n: 'Bloco 4',
+    t: 'Técnico e pós-entrega',
+    perguntas: [
+      {
+        q: 'Onde isso vai morar? Domínio, hospedagem e plataforma já existem, e quem paga as assinaturas?',
+        why: 'Assinatura de plataforma no seu cartão é prejuízo recorrente. Deixe claro no orçamento que custos de terceiros são por conta do cliente.',
+        flag: 'Ninguém sabe quem tem acesso ao domínio. Resolva isso antes de começar, não na véspera do lançamento.',
+      },
+      {
+        q: 'Precisa integrar com o quê? Checkout, CRM, e-mail, agenda, WhatsApp, analytics?',
+        why: 'Cada integração é trabalho técnico e risco de suporte. Uma linha "integração com o checkout X" no escopo evita virar o técnico de plantão da ferramenta dele.',
+        flag: '"É só plugar." Nunca é só plugar. Orce as horas de integração e teste separadamente.',
+      },
+      {
+        q: 'Depois de entregue, quem atualiza? Você quer conseguir editar sozinho?',
+        why: 'Autonomia muda a arquitetura, o prazo e o preço. E abre a porta pro seu produto mais rentável: treinamento na entrega e manutenção mensal.',
+        flag: '"Qualquer coisa eu te chamo." Isso é suporte vitalício de graça. Ofereça um plano de manutenção com preço e escopo definidos.',
+      },
+    ],
+  },
+  {
+    n: 'Bloco 5',
+    t: 'Prazo, dinheiro e processo',
+    perguntas: [
+      {
+        q: 'Existe uma data inegociável? O que acontece nela?',
+        why: 'Prazo apertado é serviço diferente, com preço diferente. E saber que existe um evento por trás te dá argumento pra cobrar urgência sem parecer oportunista.',
+        flag: '"Pra ontem", sem motivo real. Traduza em datas: se o material chegar dia X, entrego dia Y.',
+      },
+      {
+        q: 'Qual faixa de investimento vocês reservaram pra isso?',
+        why: 'Não é falta de educação, é qualificação. A faixa define o tamanho do escopo que faz sentido apresentar, e evita você desenhar três dias de proposta pra um orçamento de trezentos reais.',
+        flag: '"Me manda sua tabela." Devolva com uma faixa sua: "projetos assim costumam ficar entre X e Y, faz sentido pra vocês?"',
+      },
+      {
+        q: 'Como funciona a aprovação e o pagamento aí dentro? Quem assina, tem nota fiscal, qual o prazo?',
+        why: 'Empresa com pagamento em 30 ou 45 dias muda o seu fluxo de caixa. Melhor descobrir agora do que depois de entregar.',
+        flag: 'Fugir da pergunta de nota fiscal ou de contrato. Quem não quer registrar o começo costuma discutir o fim.',
+      },
+    ],
+  },
+];
+
+const clausulas = [
+  {
+    lbl: 'Rodadas de revisão',
+    txt: 'Este projeto inclui até 2 rodadas de ajustes por etapa, com o feedback consolidado em uma única devolutiva. Rodadas adicionais são orçadas à parte, ao valor de R$ ___ por rodada.',
+  },
+  {
+    lbl: 'Escopo fechado',
+    txt: 'Estão inclusas as entregas listadas acima. Itens não descritos nesta proposta (novas páginas, novas peças, novos idiomas, integrações não citadas) não fazem parte do escopo e serão orçados separadamente.',
+  },
+  {
+    lbl: 'Dependência de conteúdo',
+    txt: 'O cronograma considera o recebimento de textos, imagens e acessos até a data de kickoff. Atrasos na entrega desses materiais deslocam o prazo final na mesma proporção, sem alteração de valor.',
+  },
+  {
+    lbl: 'Mudança de direção',
+    txt: 'Alterações de rumo após a aprovação de uma etapa (troca de conceito, novo posicionamento, mudança de plataforma) são consideradas novo escopo e geram orçamento complementar.',
+  },
+  {
+    lbl: 'Custos de terceiros',
+    txt: 'Licenças de fontes, imagens de banco, domínio, hospedagem e assinaturas de plataformas não estão inclusas e são contratadas e pagas diretamente pelo cliente.',
+  },
+  {
+    lbl: 'Validade e início',
+    txt: 'Esta proposta é válida por 15 dias. O projeto entra na agenda mediante aceite formal e pagamento da primeira parcela, respeitando a ordem de confirmação dos projetos.',
+  },
+];
+
+let contador = 0;
+---
+
+<PackProBonus
+  title="Checklist de Briefing Anti-Refação — Bônus PackPro"
+  description="As 15 perguntas que fecham o escopo antes de você mandar o orçamento."
+  eyebrow="Bônus 01 · Checklist de Briefing"
+  heroTitle="As 15 perguntas que evitam a refação"
+  heroSub="O roteiro da reunião inicial que fecha o escopo antes de você mandar o orçamento. Se a resposta não está aqui, não está na proposta."
+  meta={[
+    { k: 'Formato', v: '15 perguntas · 5 blocos' },
+    { k: 'Tempo de call', v: '30 a 40 minutos' },
+    { k: 'Usa junto com', v: 'Template de Proposta' },
+  ]}
+  pdf="/packpro/packpro-checklist-de-briefing.pdf"
+  atual="checklist"
+>
+
+  <div class="wrap">
+
+    <section class="bloco">
+      <div class="bloco-head">
+        <span class="bloco-n">Antes de começar</span>
+        <h2 class="bloco-t">Como usar este checklist</h2>
+      </div>
+      <p class="bloco-intro">Refação quase nunca nasce de um design ruim. Nasce de uma pergunta que ninguém fez na primeira reunião. Este roteiro existe pra transformar a call inicial em escopo escrito.</p>
+
+      {regras.map((r, i) => (
+        <div class="regra">
+          <span class="regra-n">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <div class="regra-t">{r.t}</div>
+            <div class="regra-d">{r.d}</div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    {blocos.map((b) => (
+      <section class="bloco">
+        <div class="bloco-head">
+          <span class="bloco-n">{b.n}</span>
+          <h2 class="bloco-t">{b.t}</h2>
+        </div>
+
+        {b.perguntas.map((p) => {
+          contador += 1;
+          return (
+            <article class="q">
+              <div class="q-head">
+                <span class="q-num">{String(contador).padStart(2, '0')}</span>
+                <h3 class="q-text">{p.q}</h3>
+              </div>
+              <div class="q-body">
+                <p class="q-why"><span class="q-lbl">Por que</span>{p.why}</p>
+                <p class="q-flag"><span class="q-lbl q-lbl--flag">Alerta</span>{p.flag}</p>
+              </div>
+            </article>
+          );
+        })}
+      </section>
+    ))}
+
+    <section class="bloco">
+      <div class="bloco-head">
+        <span class="bloco-n">Blindagem</span>
+        <h2 class="bloco-t">6 cláusulas prontas pra colar</h2>
+      </div>
+      <p class="bloco-intro">O checklist levanta a informação. Estas frases transformam a informação em proteção. Copie direto pro campo de escopo e condições do template de proposta.</p>
+
+      {clausulas.map((c) => (
+        <div class="clause">
+          <span class="clause-lbl">{c.lbl}</span>
+          <p class="clause-txt">{c.txt}</p>
+        </div>
+      ))}
+    </section>
+
+    <div class="proximo">
+      <span class="proximo-lbl">Próximo passo</span>
+      <p>Briefing feito, agora é preço. Abra a <a href="/packpro/calculadora">Calculadora de Precificação</a> pra chegar no número, e os <a href="/packpro/bonus/scripts">Scripts de Fechamento</a> pra enviar a proposta sem sumir no visto.</p>
+    </div>
+
+  </div>
+
+</PackProBonus>
+
+<style is:global>
+  /* REGRAS */
+  .regra { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+  .regra:last-child { border-bottom: 0; padding-bottom: 0; }
+  .regra-n { flex: none; width: 24px; font-family: var(--font-mono); font-size: 11px; color: var(--accent); padding-top: 3px; }
+  .regra-t { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .regra-d { font-size: 14.5px; color: var(--muted); }
+
+  /* PERGUNTAS */
+  .q { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px 24px; margin-bottom: 14px; transition: border-color .15s ease; }
+  .q:hover { border-color: var(--border-strong); }
+  .q-head { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; }
+  .q-num {
+    flex: none; width: 28px; height: 28px; border-radius: 8px;
+    background: var(--accent); color: #fff;
+    font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
+  }
+  .q-text { font-size: 18px; font-weight: 600; line-height: 1.3; letter-spacing: -0.015em; }
+  .q-body { padding-left: 42px; }
+  .q-why { font-size: 14.5px; color: var(--muted); margin-bottom: 12px; }
+  .q-flag {
+    font-size: 14px; color: #8a3a22; background: var(--accent-wash);
+    border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 10px 14px;
+  }
+  .q-lbl {
+    font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--muted-light); margin-right: 8px;
+  }
+  .q-lbl--flag { color: var(--accent); }
+
+  /* CLÁUSULAS */
+  .clause { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 10px; }
+  .clause-lbl { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); display: block; margin-bottom: 6px; }
+  .clause-txt { font-size: 14.5px; line-height: 1.55; }
+
+  /* PRÓXIMO PASSO */
+  .proximo { border-top: 1px solid var(--border); padding-top: 24px; }
+  .proximo-lbl { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); display: block; margin-bottom: 8px; }
+  .proximo p { font-size: 15.5px; color: var(--muted); }
+  .proximo a { color: var(--text); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid var(--accent); }
+  .proximo a:hover { color: var(--accent); }
+
+  @media (max-width: 700px) {
+    .q { padding: 18px; }
+    .q-text { font-size: 16.5px; }
+    .q-body { padding-left: 0; }
+  }
+</style>
