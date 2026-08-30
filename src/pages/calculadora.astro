@@ -1,0 +1,32 @@
+---
+import { Font } from 'astro:assets';
+import Calculadora from '../components/Calculadora.astro';
+
+const titulo = 'Calculadora de Preço Freelancer — quanto vale a sua hora';
+const descricao = 'Ferramenta gratuita: calcule o valor real da sua hora a partir dos seus custos, da sua meta mensal, dos impostos e das horas que você realmente fatura.';
+const url = 'https://miguelmoraes.pro/calculadora';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>{titulo}</title>
+  <meta name="description" content={descricao} />
+  <link rel="canonical" href={url} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={titulo} />
+  <meta property="og:description" content={descricao} />
+  <meta property="og:url" content={url} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <Font cssVariable="--font-inter-tight" preload />
+  <Font cssVariable="--font-geist-mono" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+</head>
+<body>
+  <Calculadora variante="publico" />
+</body>
+</html>
