@@ -3,49 +3,49 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import Filters from '../components/Filters.astro';
 
 const hardware = [
-  { name: 'Mac Mini M4', logo: 'apple.png', note: "Apple's most capable compact desktop. Fast, silent, small.", href: 'https://www.apple.com/mac-mini/' },
-  { name: 'Arzopa 16" Portable', logo: 'arzopa.png', note: 'Second screen anywhere. More room to spread work out and keep it organised.', href: 'https://www.arzopa.com/' },
-  { name: 'AOC 27" QHD', note: 'Sharp, spacious monitor for everyday design and dev work.', href: '' },
-  { name: 'Aula F75', note: 'Compact 75% mechanical keyboard. Great value.', href: '' },
-  { name: 'MX Master 3', logo: 'logitech.png', note: 'Best productivity mouse I\'ve used. Comfortable for long sessions.', href: 'https://www.logitech.com/products/mice/mx-master-3s.html' },
-  { name: 'Edifier W820NB', logo: 'edifier.png', note: 'Wireless headphones with decent noise cancellation.', href: '' },
+  { name: 'Mac Mini M4', logo: 'apple.png', note: 'O desktop compacto mais potente da Apple. Rápido, silencioso e pequeno.', href: 'https://www.apple.com/mac-mini/' },
+  { name: 'Arzopa 16" Portable', logo: 'arzopa.png', note: 'Segunda tela em qualquer lugar. Mais espaço para organizar o fluxo de trabalho.', href: 'https://www.arzopa.com/' },
+  { name: 'AOC 27" QHD', note: 'Monitor amplo e nítido para o trabalho diário de design e dev.', href: '' },
+  { name: 'Aula F75', note: 'Teclado mecânico compacto 75%. Excelente custo-benefício.', href: '' },
+  { name: 'MX Master 3', logo: 'logitech.png', note: 'O melhor mouse de produtividade que já usei. Confortável para sessões longas.', href: 'https://www.logitech.com/products/mice/mx-master-3s.html' },
+  { name: 'Edifier W820NB', logo: 'edifier.png', note: 'Fone de ouvido sem fio com bom cancelamento de ruído.', href: '' },
 ];
 
 const design = [
-  { name: 'Figma', logo: 'figma.png', note: 'Design, prototyping, and brand work.', href: 'https://figma.com' },
-  { name: 'Framer', logo: 'framer.png', note: 'Where the client sites I build go live.', href: 'https://framer.com' },
-  { name: 'Eagle', logo: 'eagle.png', note: 'Visual references, all in one local library.', href: 'https://eagle.cool' },
-  { name: 'Clarity', logo: 'clarity.png', note: 'Heatmaps and session data. How I know if a page actually works.', href: 'https://clarity.microsoft.com' },
+  { name: 'Figma', logo: 'figma.png', note: 'Design de interfaces, prototipagem e sistemas de marca.', href: 'https://figma.com' },
+  { name: 'Framer', logo: 'framer.png', note: 'Onde os sites de clientes que construo entram no ar.', href: 'https://framer.com' },
+  { name: 'Eagle', logo: 'eagle.png', note: 'Referências visuais organizadas em uma biblioteca local.', href: 'https://eagle.cool' },
+  { name: 'Clarity', logo: 'clarity.png', note: 'Mapas de calor e gravação de sessões. Como sei se uma página realmente funciona.', href: 'https://clarity.microsoft.com' },
 ];
 
 const dev = [
-  { name: 'Zed', logo: 'zed.png', note: 'Fast, minimal code editor. Claude Code runs inside it.', href: 'https://zed.dev' },
-  { name: 'Claude', logo: 'claude.png', note: 'AI for coding, content creation, and thinking through problems.', href: 'https://claude.ai' },
-  { name: 'Ghostty', logo: 'ghostty.png', note: 'Fast and minimal terminal.', href: 'https://ghostty.org' },
-  { name: 'GitHub', logo: 'github.svg', note: 'Where the code lives. Every project I build has a repo here.', href: 'https://github.com' },
-  { name: 'Vercel', logo: 'vercel.png', note: 'Hosting and deploys. Push to main and it is live.', href: 'https://vercel.com' },
-  { name: 'Astro', logo: 'astro.svg', note: 'The framework behind this site and most of what I build.', href: 'https://astro.build' },
-  { name: 'Linear', logo: 'linear.svg', note: 'Issues and roadmap for everything that is code.', href: 'https://linear.app' },
+  { name: 'Zed', logo: 'zed.png', note: 'Editor de código ultrarrápido e minimalista. O Claude Code roda dentro dele.', href: 'https://zed.dev' },
+  { name: 'Claude', logo: 'claude.png', note: 'IA para código, criação de conteúdo e resolução de problemas.', href: 'https://claude.ai' },
+  { name: 'Ghostty', logo: 'ghostty.png', note: 'Terminal rápido e minimalista.', href: 'https://ghostty.org' },
+  { name: 'GitHub', logo: 'github.svg', note: 'Onde o código mora. Todo projeto que construo tem um repositório aqui.', href: 'https://github.com' },
+  { name: 'Vercel', logo: 'vercel.png', note: 'Hospedagem e deploys. Push para a main e o site entra no ar.', href: 'https://vercel.com' },
+  { name: 'Astro', logo: 'astro.svg', note: 'O framework por trás deste site e da maioria das coisas que construo.', href: 'https://astro.build' },
+  { name: 'Linear', logo: 'linear.svg', note: 'Gestão de tarefas e roadmap para projetos de código.', href: 'https://linear.app' },
 ];
 
 const productivity = [
-  { name: 'Obsidian', logo: 'obsidian.png', note: 'Second brain and note-taking. All my notes live here.', href: 'https://obsidian.md' },
-  { name: 'Things 3', logo: 'things.png', note: 'Tasks and habits. Everything with a deadline lives here.', href: 'https://culturedcode.com/things/' },
-  { name: 'Apple Calendar', logo: 'apple.png', note: 'Simple. Does the job.', href: '' },
-  { name: 'CleanShot X', logo: 'cleanshot.png', note: 'Screenshots and screen recordings, annotated in seconds.', href: 'https://cleanshot.com' },
-  { name: 'Safari', logo: 'apple.png', note: 'Went back to it for speed and battery. Simple wins.', href: '' },
-  { name: 'Slack', logo: 'slack.png', note: 'Where the team talks. Squads, briefs and quick calls.', href: 'https://slack.com' },
-  { name: 'WhatsApp', logo: 'whatsapp.svg', note: 'Client conversations that never made it to email.', href: '' },
-  { name: 'ClickUp', logo: 'clickup.png', note: 'Task tracking on the agency side of the work.', href: 'https://clickup.com' },
+  { name: 'Obsidian', logo: 'obsidian.png', note: 'Segundo cérebro e gestão de notas. Todas as minhas anotações vivem aqui.', href: 'https://obsidian.md' },
+  { name: 'Things 3', logo: 'things.png', note: 'Tarefas e hábitos. Tudo que tem prazo mora aqui.', href: 'https://culturedcode.com/things/' },
+  { name: 'Apple Calendar', logo: 'apple.png', note: 'Simples e eficiente. Cumpre o papel.', href: '' },
+  { name: 'CleanShot X', logo: 'cleanshot.png', note: 'Capturas e gravações de tela anotadas em segundos.', href: 'https://cleanshot.com' },
+  { name: 'Safari', logo: 'apple.png', note: 'Voltei a usar pela velocidade e bateria. O simples vence.', href: '' },
+  { name: 'Slack', logo: 'slack.png', note: 'Onde o time se comunica. Squads, alinhamentos e reuniões rápidas.', href: 'https://slack.com' },
+  { name: 'WhatsApp', logo: 'whatsapp.svg', note: 'Conversas com clientes que nunca viraram e-mail.', href: '' },
+  { name: 'ClickUp', logo: 'clickup.png', note: 'Acompanhamento de tarefas nas demandas de agência.', href: 'https://clickup.com' },
 ];
 
 const books = [
-  { name: "Don't Make Me Think", note: 'Steve Krug. The classic on web usability. Essential for anyone in design.', href: '' },
-  { name: 'Win Without Pitching Manifesto', note: 'Blair Enns. How to position yourself and stop competing on price.', href: '' },
-  { name: 'Rework', note: 'Jason Fried & DHH. A different way to think about work and building things.', href: '' },
-  { name: 'The Art of Thinking in Graphs', note: 'Visual thinking and structured problem-solving.', href: '' },
-  { name: 'Princípio de UX', note: 'Daniel Furtado. UX in Portuguese, well-grounded and practical.', href: '' },
-  { name: 'Fall in Love with the Problem, Not the Solution', note: 'Uri Levine. On building products that solve real problems.', href: '' },
+  { name: "Don't Make Me Think", note: 'Steve Krug. O clássico sobre usabilidade web. Essencial para qualquer designer.', href: '' },
+  { name: 'Win Without Pitching Manifesto', note: 'Blair Enns. Como se posicionar e parar de competir por preço.', href: '' },
+  { name: 'Rework', note: 'Jason Fried & DHH. Uma forma diferente de pensar sobre trabalho e construção de produtos.', href: '' },
+  { name: 'The Art of Thinking in Graphs', note: 'Pensamento visual e resolução estruturada de problemas.', href: '' },
+  { name: 'Princípio de UX', note: 'Daniel Furtado. UX em português, com pé no chão e aplicação prática.', href: '' },
+  { name: 'Fall in Love with the Problem, Not the Solution', note: 'Uri Levine. Sobre construir produtos que resolvem problemas reais.', href: '' },
 ];
 const total = hardware.length + design.length + dev.length + productivity.length + books.length;
 ---
