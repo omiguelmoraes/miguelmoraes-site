@@ -125,6 +125,9 @@ const bonus = [
     font-size: 15px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
@@ -133,12 +136,12 @@ const bonus = [
   .topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; }
   .marca { font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
   .marca .dot { color: var(--accent); }
-  .tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .tag { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 
   .hero { padding: 64px 0 40px; }
   .eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--accent); background: var(--accent-wash);
     border: 1px solid rgba(232,72,32,.2); border-radius: 999px; padding: 5px 12px; margin-bottom: 20px;
   }
@@ -147,7 +150,7 @@ const bonus = [
   .hero h1 { font-size: 42px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; margin-bottom: 16px; }
   .hero-sub { font-size: 17px; color: var(--muted); }
 
-  main { padding-bottom: 72px; }
+  main { padding-bottom: 96px; flex: 1; }
   .lista { display: flex; flex-direction: column; gap: 14px; }
 
   .item { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: border-color .15s ease, box-shadow .15s ease; }
@@ -156,9 +159,9 @@ const bonus = [
   .item-icone { flex: none; font-size: 22px; color: var(--accent); display: flex; padding-top: 2px; }
   .item-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; }
   .item-top { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-  .item-n { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); }
+  .item-n { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); }
   .item-badge {
-    font-family: var(--font-mono); font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.06em;
+    font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.06em;
     color: var(--accent); background: var(--accent-wash); border: 1px solid rgba(232,72,32,.2);
     border-radius: 4px; padding: 2px 6px;
   }
@@ -175,7 +178,7 @@ const bonus = [
   .item-pdf {
     display: flex; align-items: center; gap: 7px;
     border-top: 1px dashed var(--border); background: var(--bg-alt);
-    padding: 11px 24px; font-family: var(--font-mono); font-size: 10px;
+    padding: 12px 24px; font-family: var(--font-mono); font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted);
     text-decoration: none; transition: color .15s ease, background .15s ease;
   }
@@ -183,11 +186,11 @@ const bonus = [
   .item-pdf:hover { color: var(--text); background: #F3F3F6; }
 
   .aviso { margin-top: 32px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 20px; }
-  .aviso-lbl { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); display: block; margin-bottom: 6px; }
+  .aviso-lbl { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); display: block; margin-bottom: 6px; }
   .aviso p { font-size: 14.5px; color: var(--muted); }
 
-  .foot { border-top: 1px solid var(--border); padding: 24px 0; }
-  .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); }
+  .foot { border-top: 1px solid var(--border); padding: 24px 0; margin-top: auto; }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); }
   .foot a { color: var(--accent); text-decoration: none; }
   .foot a:hover { text-decoration: underline; }
 
