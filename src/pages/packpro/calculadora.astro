@@ -133,6 +133,7 @@ const packpro = '/packpro';
         <div class="card card--dark">
           <div class="card-head card-head--dark">
             <span class="card-tag card-tag--dark">Sua hora</span>
+            <span class="live"><span class="live-dot"></span>atualiza enquanto você digita</span>
           </div>
           <div class="card-body">
             <span class="big-label">Valor de tabela</span>
@@ -151,17 +152,16 @@ const packpro = '/packpro';
                 <span class="m-help">Valor de tabela</span>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-head"><span class="card-tag">Como chegamos lá</span></div>
-          <div class="card-body">
-            <div class="calc-line"><span>Custos + o que você quer receber</span><b id="metaLiq">R$ 0</b></div>
-            <div class="calc-line"><span>Faturamento necessário no mês</span><b id="faturamento">R$ 0</b></div>
-            <div class="calc-line"><span>Horas faturáveis no mês</span><b id="horasMes">0 h</b></div>
-            <div class="calc-line calc-line--last"><span>Faturamento ÷ horas</span><b id="horaMin2">R$ 0</b></div>
             <p class="calc-note" id="alerta"></p>
+
+            <details class="memo">
+              <summary>Ver a conta <i class="ph ph-caret-down"></i></summary>
+              <div class="calc-line"><span>Custos + o que você quer receber</span><b id="metaLiq">R$ 0</b></div>
+              <div class="calc-line"><span>Faturamento necessário no mês</span><b id="faturamento">R$ 0</b></div>
+              <div class="calc-line"><span>Horas faturáveis no mês</span><b id="horasMes">0 h</b></div>
+              <div class="calc-line calc-line--last"><span>Faturamento ÷ horas</span><b id="horaMin2">R$ 0</b></div>
+            </details>
           </div>
         </div>
       </div>
@@ -240,6 +240,32 @@ const packpro = '/packpro';
     }
   }
 
+  const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ultimo = new Map<HTMLElement, number>();
+
+  // os valores caminham até o número novo em vez de saltar: é o que faz o olho
+  // voltar pro cartão a cada tecla digitada no formulário
+  function anima(id: string, valor: number, fmt: Intl.NumberFormat) {
+    const alvo = out(id);
+    const de = ultimo.get(alvo);
+    ultimo.set(alvo, valor);
+    if (de === undefined || semMovimento || Math.abs(valor - de) < 0.005) {
+      alvo.textContent = fmt.format(valor);
+      return;
+    }
+    const inicio = performance.now();
+    const passe = String((Number(alvo.dataset.passe) || 0) + 1);
+    alvo.dataset.passe = passe;
+    const quadro = (agora: number) => {
+      if (alvo.dataset.passe !== passe) return;
+      const t = Math.min((agora - inicio) / 260, 1);
+      const suave = 1 - Math.pow(1 - t, 3);
+      alvo.textContent = fmt.format(de + (valor - de) * suave);
+      if (t < 1) requestAnimationFrame(quadro);
+    };
+    requestAnimationFrame(quadro);
+  }
+
   function calcular() {
     const metaLiquida = num('custos') + num('prolabore');
     const descontos = (num('impostos') + num('reserva')) / 100;
@@ -253,18 +279,18 @@ const packpro = '/packpro';
     // 25% acima do piso: permite dar desconto de até 20% sem furar o mínimo
     const horaTabela = horaMin * 1.25;
 
-    out('metaLiq').textContent = brl.format(metaLiquida);
-    out('faturamento').textContent = brl.format(faturamento);
+    anima('metaLiq', metaLiquida, brl);
+    anima('faturamento', faturamento, brl);
     out('horasMes').textContent = `${horasMes.toLocaleString('pt-BR')} h`;
-    out('horaMin2').textContent = brl2.format(horaMin);
-    out('horaMin').textContent = brl2.format(horaMin);
-    out('horaTabela').textContent = brl2.format(horaTabela);
-    out('valorDia').textContent = brl.format(horaTabela * num('horas'));
+    anima('horaMin2', horaMin, brl2);
+    anima('horaMin', horaMin, brl2);
+    anima('horaTabela', horaTabela, brl2);
+    anima('valorDia', horaTabela * num('horas'), brl);
 
     const projHoras = num('projHoras');
     const buffer = 1 + num('buffer') / 100;
-    out('projMin').textContent = brl.format(horaMin * projHoras);
-    out('projPreco').textContent = brl.format(horaTabela * projHoras * buffer);
+    anima('projMin', horaMin * projHoras, brl);
+    anima('projPreco', horaTabela * projHoras * buffer, brl);
 
     const alerta = out('alerta');
     if (num('horas') > 6) {
@@ -351,6 +377,9 @@ const packpro = '/packpro';
   .main--wash { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 64px 0 72px; }
   .grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; align-items: start; }
   .col-form { display: flex; flex-direction: column; gap: 24px; }
+  /* a coluna precisa ocupar a altura toda da linha, senão o filho sticky
+     não tem trilho por onde deslizar e o position: sticky vira enfeite */
+  .col-out { align-self: stretch; height: 100%; }
   .out-sticky { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 24px; }
 
   /* CARD */
@@ -360,7 +389,10 @@ const packpro = '/packpro';
   .card-body { padding: 24px 20px; }
 
   .card--dark { background: #0F0F0F; border-color: #1F1F1F; color: #fff; }
-  .card-head--dark { background: #161616; border-bottom-color: #262626; }
+  .card-head--dark { background: #161616; border-bottom-color: #262626; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .live { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #6E6E6E; }
+  .live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); animation: pulse 2.4s ease-out infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(232,72,32,.5); } 70%, 100% { box-shadow: 0 0 0 6px rgba(232,72,32,0); } }
   .card-tag--dark { color: #8A8A8A; }
 
   /* CAMPOS */
@@ -382,6 +414,10 @@ const packpro = '/packpro';
     flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
     padding: 11px 12px; font-family: var(--font-mono); font-size: 15px; color: var(--text);
   }
+  /* o stepper nativo polui o campo em repouso: some, e volta quando a mão chega */
+  .f-input input::-webkit-inner-spin-button { opacity: 0; transition: opacity .15s ease; }
+  .f-input:hover input::-webkit-inner-spin-button,
+  .f-input:focus-within input::-webkit-inner-spin-button { opacity: 1; }
 
   /* PRESETS */
   .presets { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
@@ -397,30 +433,40 @@ const packpro = '/packpro';
   .proj-out { border-top: 1px solid var(--border); padding-top: 18px; }
   .proj-line { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 7px 0; }
   .pl-label { font-size: 13.5px; color: var(--muted); }
-  .pl-val { font-family: var(--font-mono); font-size: 16px; font-weight: 500; }
+  .pl-val { font-family: var(--font-mono); font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; }
   .proj-line--main .pl-label { color: var(--text); font-weight: 600; font-size: 14.5px; }
-  .proj-line--main .pl-val { font-size: 30px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
+  .proj-line--main .pl-val { font-size: 30px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
   .proj-note { font-size: 12.5px; color: var(--muted-light); line-height: 1.55; margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 12px; }
   .proj-note b { color: var(--muted); font-weight: 600; }
 
   /* RESULTADO PRINCIPAL */
   .big-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #8A8A8A; display: block; margin-bottom: 6px; }
-  .big-val { font-size: 46px; line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; color: #fff; margin-bottom: 12px; }
+  .big-val { font-size: 54px; line-height: 1.02; font-weight: 700; letter-spacing: -0.035em; color: var(--accent); margin-bottom: 12px; font-variant-numeric: tabular-nums; }
   .big-note { font-size: 13px; color: #A0A0A0; line-height: 1.55; }
   .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #262626; }
   .mini { display: flex; flex-direction: column; gap: 2px; }
   .m-label { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: #7A7A7A; }
-  .m-val { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: #fff; }
+  .m-val { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: #fff; font-variant-numeric: tabular-nums; }
   .m-help { font-size: 11.5px; color: #6E6E6E; }
 
-  /* MEMÓRIA DE CÁLCULO */
-  .calc-line { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: var(--muted); }
-  .calc-line--last { border-bottom: 0; }
-  .calc-line b { font-family: var(--font-mono); font-size: 14px; color: var(--text); font-weight: 500; white-space: nowrap; }
+  /* MEMÓRIA DE CÁLCULO (dentro do cartão escuro, recolhida) */
+  .memo { margin-top: 20px; border-top: 1px solid #262626; padding-top: 6px; }
+  .memo summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em;
+    color: #7A7A7A; padding: 8px 0; transition: color .15s ease;
+  }
+  .memo summary::-webkit-details-marker { display: none; }
+  .memo summary:hover { color: #C4C4C4; }
+  .memo summary i { font-size: 13px; transition: transform .2s ease; }
+  .memo[open] summary i { transform: rotate(180deg); }
+  .calc-line { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid #1F1F1F; font-size: 13px; color: #8A8A8A; }
+  .calc-line--last { border-bottom: 0; padding-bottom: 2px; }
+  .calc-line b { font-family: var(--font-mono); font-size: 13.5px; color: #fff; font-weight: 500; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .calc-note { display: none; }
   .calc-note.visible {
-    display: block; margin-top: 14px; font-size: 12.5px; line-height: 1.55;
-    color: #8a3a22; background: var(--accent-wash);
+    display: block; margin-top: 20px; font-size: 12.5px; line-height: 1.55;
+    color: #FFB7A1; background: rgba(232, 72, 32, 0.12);
     border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     padding: 10px 12px;
   }
@@ -455,7 +501,8 @@ const packpro = '/packpro';
     .col-form > .card:last-child { order: 3; }
     .hero { padding: 44px 0 28px; }
     .hero h1 { font-size: 34px; }
-    .big-val { font-size: 40px; }
+    .big-val { font-size: 42px; }
+    .live { display: none; }
     .section-title { font-size: 25px; }
     .foot-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
