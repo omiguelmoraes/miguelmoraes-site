@@ -6,7 +6,9 @@ import rehypeExternalLinks from 'rehype-external-links';
 export default defineConfig({
   site: 'https://miguelmoraes.pro',
   trailingSlash: 'never',
-  integrations: [sitemap()],
+  // a calculadora é bônus entregue por link depois da compra: fica fora do
+  // sitemap (e com noindex na própria página) pra não virar página pública
+  integrations: [sitemap({ filter: (page) => !page.includes('/packpro/calculadora') })],
   // Astro baixa e serve as fontes junto do site: mata os dois handshakes com
   // o Google e o round-trip bloqueante do CSS deles antes do texto pintar.
   // subsets latin só — o conteúdo é português e inglês

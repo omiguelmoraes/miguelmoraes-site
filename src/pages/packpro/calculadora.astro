@@ -1,0 +1,465 @@
+---
+import { Font } from 'astro:assets';
+
+const packpro = '/packpro';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Calculadora de Precificação Freelancer — Bônus PackPro</title>
+  <meta name="description" content="Descubra o valor real da sua hora a partir dos seus custos, da sua meta mensal e das horas que você realmente fatura." />
+  <!-- página de bônus: entregue por link após a compra, fora do índice e do sitemap -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <Font cssVariable="--font-inter-tight" preload />
+  <Font cssVariable="--font-geist-mono" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href={packpro} class="back"><i class="ph ph-arrow-left"></i> PackPro</a>
+    <span class="tag">Bônus 02 · Calculadora de Precificação</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Quanto vale a sua hora?</h1>
+    <p class="sub">Preço não se adivinha, se calcula. Preencha os seis campos com a sua realidade e veja o piso abaixo do qual nenhum projeto deveria passar.</p>
+  </div>
+</section>
+
+<section class="main">
+  <div class="container grid">
+
+    <!-- ENTRADAS -->
+    <div class="col-form">
+      <div class="card">
+        <div class="card-head">
+          <span class="card-tag">Passo 1 · Seus números</span>
+        </div>
+        <div class="card-body">
+
+          <label class="field">
+            <span class="f-label">Custos fixos do mês</span>
+            <span class="f-help">Internet, softwares, contador, coworking, celular. Só o que sai todo mês pra você trabalhar.</span>
+            <span class="f-input"><span class="prefix">R$</span><input type="number" id="custos" value="800" min="0" step="50" /></span>
+          </label>
+
+          <label class="field">
+            <span class="f-label">Quanto você quer receber por mês</span>
+            <span class="f-help">O que precisa cair na sua conta, limpo. Não é faturamento, é o seu salário.</span>
+            <span class="f-input"><span class="prefix">R$</span><input type="number" id="prolabore" value="5000" min="0" step="100" /></span>
+          </label>
+
+          <label class="field">
+            <span class="f-label">Dias que você trabalha por mês</span>
+            <span class="f-help">Em geral 20 a 22 dias úteis.</span>
+            <span class="f-input"><input type="number" id="dias" value="20" min="1" max="31" step="1" /><span class="suffix">dias</span></span>
+          </label>
+
+          <label class="field">
+            <span class="f-label">Horas faturáveis por dia</span>
+            <span class="f-help">Não são 8. Prospecção, proposta, reunião, e-mail e financeiro não entram aqui. Para a maioria dos freelancers o número real fica entre 4 e 6.</span>
+            <span class="f-input"><input type="number" id="horas" value="5" min="1" max="12" step="0.5" /><span class="suffix">horas</span></span>
+          </label>
+
+          <label class="field">
+            <span class="f-label">Impostos e taxas</span>
+            <span class="f-help">Simples Nacional, taxa de plataforma, tarifa bancária. Se você é MEI, use algo entre 5 e 8%.</span>
+            <span class="f-input"><input type="number" id="impostos" value="10" min="0" max="60" step="1" /><span class="suffix">%</span></span>
+          </label>
+
+          <label class="field">
+            <span class="f-label">Reserva de férias e imprevistos</span>
+            <span class="f-help">Freelancer não tem 13º, férias nem licença. Essa fatia é o que compra o seu direito de parar.</span>
+            <span class="f-input"><input type="number" id="reserva" value="15" min="0" max="60" step="1" /><span class="suffix">%</span></span>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- ORÇAMENTO DE PROJETO -->
+      <div class="card">
+        <div class="card-head">
+          <span class="card-tag">Passo 2 · Orçamento de um projeto</span>
+        </div>
+        <div class="card-body">
+          <span class="f-label">Escolha um ponto de partida</span>
+          <div class="presets" id="presets">
+            <button type="button" class="preset is-active" data-h="25">Landing page · 25h</button>
+            <button type="button" class="preset" data-h="60">Site institucional · 60h</button>
+            <button type="button" class="preset" data-h="35">Identidade visual · 35h</button>
+            <button type="button" class="preset" data-h="100">Marca + site · 100h</button>
+            <button type="button" class="preset" data-h="10">Manutenção mensal · 10h</button>
+          </div>
+
+          <label class="field field--tight">
+            <span class="f-label">Horas estimadas do projeto</span>
+            <span class="f-help">Some tudo: briefing, pesquisa, execução, rodadas de ajuste, reuniões e entrega.</span>
+            <span class="f-input"><input type="number" id="projHoras" value="25" min="1" step="1" /><span class="suffix">horas</span></span>
+          </label>
+
+          <label class="field field--tight">
+            <span class="f-label">Margem de segurança</span>
+            <span class="f-help">Todo projeto estoura um pouco. Entre 15 e 25% é o padrão de quem não perde dinheiro no fim.</span>
+            <span class="f-input"><input type="number" id="buffer" value="20" min="0" max="100" step="5" /><span class="suffix">%</span></span>
+          </label>
+
+          <div class="proj-out">
+            <div class="proj-line">
+              <span class="pl-label">Preço mínimo aceitável</span>
+              <span class="pl-val" id="projMin">R$ 0</span>
+            </div>
+            <div class="proj-line proj-line--main">
+              <span class="pl-label">Valor a cobrar neste projeto</span>
+              <span class="pl-val" id="projPreco">R$ 0</span>
+            </div>
+            <p class="proj-note">Leve o número de cima para o campo <b>Investimento</b> do template de proposta. O de baixo é o limite: abaixo dele, você está pagando pra trabalhar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="col-out">
+      <div class="out-sticky">
+        <div class="card card--dark">
+          <div class="card-head card-head--dark">
+            <span class="card-tag card-tag--dark">Sua hora</span>
+          </div>
+          <div class="card-body">
+            <span class="big-label">Valor de tabela</span>
+            <div class="big-val" id="horaTabela">R$ 0</div>
+            <p class="big-note">É este número que você usa pra montar orçamento. Ele já embute uma folga pra negociar sem entrar no vermelho.</p>
+
+            <div class="mini-grid">
+              <div class="mini">
+                <span class="m-label">Hora mínima</span>
+                <span class="m-val" id="horaMin">R$ 0</span>
+                <span class="m-help">Seu piso absoluto</span>
+              </div>
+              <div class="mini">
+                <span class="m-label">Diária</span>
+                <span class="m-val" id="valorDia">R$ 0</span>
+                <span class="m-help">Valor de tabela</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><span class="card-tag">Como chegamos lá</span></div>
+          <div class="card-body">
+            <div class="calc-line"><span>Custos + o que você quer receber</span><b id="metaLiq">R$ 0</b></div>
+            <div class="calc-line"><span>Faturamento necessário no mês</span><b id="faturamento">R$ 0</b></div>
+            <div class="calc-line"><span>Horas faturáveis no mês</span><b id="horasMes">0 h</b></div>
+            <div class="calc-line calc-line--last"><span>Faturamento ÷ horas</span><b id="horaMin2">R$ 0</b></div>
+            <p class="calc-note" id="alerta"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REFERÊNCIA DE MERCADO -->
+<section class="main main--wash">
+  <div class="container">
+    <span class="section-tag">Sanity check</span>
+    <h2 class="section-title">Faixas praticadas no mercado brasileiro</h2>
+    <p class="section-sub">Use como conferência, nunca como tabela. Se o seu cálculo deu muito abaixo da coluna iniciante, o problema costuma estar nas horas faturáveis ou na reserva que você não está cobrando.</p>
+
+    <div class="table-wrap">
+      <table class="ref">
+        <thead>
+          <tr><th>Tipo de projeto</th><th>Começando</th><th>Com portfólio</th><th>Especialista</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Landing page (1 página)</td><td>R$ 800 a 2.000</td><td>R$ 2.000 a 5.000</td><td>R$ 5.000 a 15.000</td></tr>
+          <tr><td>Site institucional (4 a 6 páginas)</td><td>R$ 1.500 a 3.500</td><td>R$ 3.500 a 9.000</td><td>R$ 9.000 a 25.000</td></tr>
+          <tr><td>Identidade visual</td><td>R$ 1.200 a 2.500</td><td>R$ 2.500 a 7.000</td><td>R$ 7.000 a 20.000</td></tr>
+          <tr><td>Social media (12 peças/mês)</td><td>R$ 600 a 1.200</td><td>R$ 1.200 a 2.500</td><td>R$ 2.500 a 6.000</td></tr>
+          <tr><td>Manutenção de site (mensal)</td><td>R$ 300 a 600</td><td>R$ 600 a 1.500</td><td>R$ 1.500 a 4.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ref-note">Referência de 2026 para o mercado brasileiro, considerando projetos de agência pequena e freelancer independente. Região, nicho e urgência mudam bastante esses números.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="container foot-inner">
+    <span>PackPro · Bônus 02 · Calculadora de Precificação</span>
+    <a href={packpro}>Voltar pro PackPro</a>
+  </div>
+</footer>
+
+<script>
+  const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+  const brl2 = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const ids = ['custos', 'prolabore', 'dias', 'horas', 'impostos', 'reserva', 'projHoras', 'buffer'];
+  const el = (id: string) => document.getElementById(id) as HTMLInputElement;
+  const out = (id: string) => document.getElementById(id) as HTMLElement;
+
+  const num = (id: string) => {
+    const v = parseFloat(el(id).value);
+    return isNaN(v) ? 0 : v;
+  };
+
+  const STORAGE = 'packpro-calc';
+
+  function restore() {
+    try {
+      const raw = localStorage.getItem(STORAGE);
+      if (!raw) return;
+      const saved = JSON.parse(raw) as Record<string, number>;
+      ids.forEach((id) => {
+        if (typeof saved[id] === 'number') el(id).value = String(saved[id]);
+      });
+    } catch {
+      // storage bloqueado ou json inválido: segue com os defaults
+    }
+  }
+
+  function persist() {
+    try {
+      const data: Record<string, number> = {};
+      ids.forEach((id) => { data[id] = num(id); });
+      localStorage.setItem(STORAGE, JSON.stringify(data));
+    } catch {
+      // sem persistência, a conta continua funcionando
+    }
+  }
+
+  function calcular() {
+    const metaLiquida = num('custos') + num('prolabore');
+    const descontos = (num('impostos') + num('reserva')) / 100;
+    // impostos e reserva saem de cima do faturamento, então entram no divisor:
+    // faturar X para sobrar a meta líquida depois que essa fatia é retirada
+    const fator = Math.max(1 - descontos, 0.05);
+    const faturamento = metaLiquida / fator;
+
+    const horasMes = Math.max(num('dias') * num('horas'), 1);
+    const horaMin = faturamento / horasMes;
+    // 25% acima do piso: permite dar desconto de até 20% sem furar o mínimo
+    const horaTabela = horaMin * 1.25;
+
+    out('metaLiq').textContent = brl.format(metaLiquida);
+    out('faturamento').textContent = brl.format(faturamento);
+    out('horasMes').textContent = `${horasMes.toLocaleString('pt-BR')} h`;
+    out('horaMin2').textContent = brl2.format(horaMin);
+    out('horaMin').textContent = brl2.format(horaMin);
+    out('horaTabela').textContent = brl2.format(horaTabela);
+    out('valorDia').textContent = brl.format(horaTabela * num('horas'));
+
+    const projHoras = num('projHoras');
+    const buffer = 1 + num('buffer') / 100;
+    out('projMin').textContent = brl.format(horaMin * projHoras);
+    out('projPreco').textContent = brl.format(horaTabela * projHoras * buffer);
+
+    const alerta = out('alerta');
+    if (num('horas') > 6) {
+      alerta.textContent = 'Mais de 6 horas faturáveis por dia é raro de sustentar. Prospecção, proposta, reunião e financeiro comem o resto da agenda, e quando esse número está inflado a hora sai barata demais.';
+      alerta.classList.add('visible');
+    } else if (num('reserva') < 10) {
+      alerta.textContent = 'Reserva abaixo de 10% costuma significar férias não remuneradas. Freelancer sem 13º e sem licença precisa embutir isso no preço.';
+      alerta.classList.add('visible');
+    } else {
+      alerta.textContent = '';
+      alerta.classList.remove('visible');
+    }
+
+    persist();
+  }
+
+  ids.forEach((id) => el(id).addEventListener('input', calcular));
+
+  document.querySelectorAll<HTMLButtonElement>('.preset').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.preset').forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      el('projHoras').value = btn.dataset.h ?? '25';
+      calcular();
+    });
+  });
+
+  el('projHoras').addEventListener('input', () => {
+    document.querySelectorAll('.preset').forEach((b) => b.classList.remove('is-active'));
+  });
+
+  restore();
+  calcular();
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FFFFFF;
+    --bg-alt: #F8F8FA;
+    --bg-wash: #F3F3F6;
+    --border: #E5E5E8;
+    --border-strong: #D1D1D6;
+    --text: #111111;
+    --muted: #666666;
+    --muted-light: #888888;
+    --accent: #E84820;
+    --accent-hover: #D43C16;
+    --accent-wash: rgba(232, 72, 32, 0.08);
+    --font: var(--font-inter-tight);
+    --font-mono: var(--font-geist-mono), monospace;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* TOPBAR */
+  .topbar { border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 20; }
+  .topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+  .back { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; color: var(--text); font-weight: 600; font-size: 14px; }
+  .back i { color: var(--accent); font-size: 16px; }
+  .back:hover { color: var(--accent); }
+  .tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+  /* HERO */
+  .hero { padding: 64px 0 40px; }
+  .hero h1 { font-size: 44px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; margin-bottom: 16px; }
+  .hero .sub { font-size: 17px; color: var(--muted); max-width: 620px; }
+
+  /* GRID */
+  .main { padding: 24px 0 72px; }
+  .main--wash { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 64px 0 72px; }
+  .grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; align-items: start; }
+  .col-form { display: flex; flex-direction: column; gap: 24px; }
+  .out-sticky { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 24px; }
+
+  /* CARD */
+  .card { border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg); overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .card-head { background: var(--bg-alt); border-bottom: 1px solid var(--border); padding: 12px 20px; }
+  .card-tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .card-body { padding: 24px 20px; }
+
+  .card--dark { background: #0F0F0F; border-color: #1F1F1F; color: #fff; }
+  .card-head--dark { background: #161616; border-bottom-color: #262626; }
+  .card-tag--dark { color: #8A8A8A; }
+
+  /* CAMPOS */
+  .field { display: block; margin-bottom: 22px; }
+  .field:last-child { margin-bottom: 0; }
+  .field--tight { margin-top: 20px; margin-bottom: 20px; }
+  .f-label { display: block; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .f-help { display: block; font-size: 12.5px; color: var(--muted-light); line-height: 1.5; margin-bottom: 10px; }
+  .f-input { display: flex; align-items: stretch; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); overflow: hidden; background: var(--bg); transition: border-color .15s ease, box-shadow .15s ease; }
+  .f-input:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-wash); }
+  .f-input .prefix, .f-input .suffix {
+    display: flex; align-items: center; padding: 0 12px;
+    background: var(--bg-alt); color: var(--muted);
+    font-family: var(--font-mono); font-size: 12px;
+  }
+  .f-input .prefix { border-right: 1px solid var(--border); }
+  .f-input .suffix { border-left: 1px solid var(--border); }
+  .f-input input {
+    flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
+    padding: 11px 12px; font-family: var(--font-mono); font-size: 15px; color: var(--text);
+  }
+
+  /* PRESETS */
+  .presets { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+  .preset {
+    font-family: var(--font); font-size: 12.5px; font-weight: 500;
+    border: 1px solid var(--border-strong); background: var(--bg); color: var(--muted);
+    border-radius: 999px; padding: 7px 13px; cursor: pointer; transition: all .15s ease;
+  }
+  .preset:hover { border-color: var(--text); color: var(--text); }
+  .preset.is-active { background: var(--accent-wash); border-color: rgba(232,72,32,.35); color: var(--accent); }
+
+  /* SAÍDA DO PROJETO */
+  .proj-out { border-top: 1px solid var(--border); padding-top: 18px; }
+  .proj-line { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 7px 0; }
+  .pl-label { font-size: 13.5px; color: var(--muted); }
+  .pl-val { font-family: var(--font-mono); font-size: 16px; font-weight: 500; }
+  .proj-line--main .pl-label { color: var(--text); font-weight: 600; font-size: 14.5px; }
+  .proj-line--main .pl-val { font-size: 30px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
+  .proj-note { font-size: 12.5px; color: var(--muted-light); line-height: 1.55; margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 12px; }
+  .proj-note b { color: var(--muted); font-weight: 600; }
+
+  /* RESULTADO PRINCIPAL */
+  .big-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #8A8A8A; display: block; margin-bottom: 6px; }
+  .big-val { font-size: 46px; line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; color: #fff; margin-bottom: 12px; }
+  .big-note { font-size: 13px; color: #A0A0A0; line-height: 1.55; }
+  .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #262626; }
+  .mini { display: flex; flex-direction: column; gap: 2px; }
+  .m-label { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em; color: #7A7A7A; }
+  .m-val { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: #fff; }
+  .m-help { font-size: 11.5px; color: #6E6E6E; }
+
+  /* MEMÓRIA DE CÁLCULO */
+  .calc-line { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: var(--muted); }
+  .calc-line--last { border-bottom: 0; }
+  .calc-line b { font-family: var(--font-mono); font-size: 14px; color: var(--text); font-weight: 500; white-space: nowrap; }
+  .calc-note { display: none; }
+  .calc-note.visible {
+    display: block; margin-top: 14px; font-size: 12.5px; line-height: 1.55;
+    color: #8a3a22; background: var(--accent-wash);
+    border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 10px 12px;
+  }
+
+  /* TABELA DE REFERÊNCIA */
+  .section-tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); display: block; margin-bottom: 12px; }
+  .section-title { font-size: 30px; line-height: 1.15; letter-spacing: -0.025em; font-weight: 700; margin-bottom: 12px; }
+  .section-sub { font-size: 15px; color: var(--muted); max-width: 640px; margin-bottom: 28px; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg); }
+  table.ref { width: 100%; border-collapse: collapse; min-width: 620px; }
+  table.ref th, table.ref td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+  table.ref th { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); background: var(--bg-alt); font-weight: 400; }
+  table.ref td { font-size: 14px; }
+  table.ref td:first-child { font-weight: 600; }
+  table.ref td:not(:first-child) { font-family: var(--font-mono); font-size: 13px; color: var(--muted); white-space: nowrap; }
+  table.ref tbody tr:last-child td { border-bottom: 0; }
+  .ref-note { font-size: 12.5px; color: var(--muted-light); margin-top: 14px; max-width: 640px; }
+
+  /* RODAPÉ */
+  .foot { border-top: 1px solid var(--border); padding: 24px 0; }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-light); }
+  .foot a { color: var(--accent); text-decoration: none; }
+  .foot a:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    /* as colunas somem como caixa (display: contents) pros cartões virarem
+       itens do grid e a ordem ficar: seus números → sua hora → projeto */
+    .grid { grid-template-columns: 1fr; }
+    .col-form, .col-out { display: contents; }
+    .col-form > .card:first-child { order: 1; }
+    .out-sticky { order: 2; position: static; }
+    .col-form > .card:last-child { order: 3; }
+    .hero { padding: 44px 0 28px; }
+    .hero h1 { font-size: 34px; }
+    .big-val { font-size: 40px; }
+    .section-title { font-size: 25px; }
+    .foot-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+
+</body>
+</html>

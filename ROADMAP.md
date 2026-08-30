@@ -27,6 +27,8 @@
 ## Changelog
 
 ### 2026-08-29
+- Bônus 2 do PackPro: página `/packpro/calculadora` (`src/pages/packpro/calculadora.astro`), calculadora de precificação freelancer com custo/hora a partir de custos fixos, meta de pró-labore, horas faturáveis, impostos e reserva, orçamento por projeto com presets de horas e tabela de faixas de mercado
+- Calculadora fica fora do índice: `noindex, nofollow` na página e `filter` no `@astrojs/sitemap` tirando a rota do sitemap, já que é bônus entregue por link após a compra
 - PackPro LP (`src/pages/packpro.astro`): Redesign completo para Full White Mode com estética inspirada no Notion (fundo `#ffffff`, lavagens em cinza claro, bordas limpas `#e5e5e8`, cartões estilo callout e sombras de elevação sutis)
 - Reescrita estratégica de copy focada em alta conversão: autoridade instantânea, blindagem de escopo, 5 minutos de setup e retorno no primeiro cliente
 - Seção de Templates Showcase: remoção do elemento sintético de mockup da Hero e inclusão de uma seção dedicada "3 documentos essenciais", apresentando Proposta Comercial, Contrato e Orçamento Rápido em um grid de 3 colunas (desktop) e slider horizontal nativo swipeable (`scroll-snap`) no mobile
