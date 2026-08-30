@@ -1,10 +1,10 @@
 {
   "flouds-branding": {
     "title": "Flouds Performance Digital",
-    "description": "Visual identity for Flouds Performance Digital, a paid media and automation agency from Porto Alegre.",
+    "description": "Identidade visual para a Flouds Performance Digital, agência de mídia paga e automação de Porto Alegre.",
     "year": "2025",
     "category": "Branding",
-    "location": "Porto Alegre, Brazil",
+    "location": "Porto Alegre, Brasil",
     "industry": "Marketing",
     "cover": "/projects/flouds-branding/flouds-branding-01.webp",
     "thumbnail": "/projects/flouds-branding/flouds-branding-01.webp",
@@ -24,19 +24,19 @@
         "url": null
       },
       {
-        "role": "Client",
+        "role": "Cliente",
         "name": "Flouds Performance",
         "url": null
       }
     ],
     "sections": [
       {
-        "label": "Challenge",
-        "heading": "Building a bold visual identity for a data-driven performance agency",
+        "label": "Desafio",
+        "heading": "Criando uma identidade visual marcante para uma agência de performance guiada por dados",
         "body": [
           {
             "type": "p",
-            "html": "Flouds is a paid media and automation agency focused on scaling business results through traffic, conversion strategy, and intelligent workflows. The goal was to build a strong, modern visual identity that reflects the agency's tech-driven approach, communicates trust and authority, and positions Flouds as a strategic growth partner for its clients."
+            "html": "A Flouds é uma agência de mídia paga e automação focada em escalar resultados através de tráfego, estratégia de conversão e fluxos inteligentes. O objetivo foi construir uma identidade visual forte e moderna que refletisse a abordagem tecnológica da agência, transmitisse autoridade e posicionasse a Flouds como uma parceira estratégica de crescimento."
           }
         ],
         "images": [
@@ -46,12 +46,12 @@
         ]
       },
       {
-        "label": "Result",
-        "heading": "A cohesive identity connecting data, technology, and creativity",
+        "label": "Resultado",
+        "heading": "Uma identidade coesa conectando dados, tecnologia e criatividade",
         "body": [
           {
             "type": "p",
-            "html": "The final identity combines a bold and minimal aesthetic with a high-impact color palette centered on purple, black, and white, symbolizing performance, innovation, and precision. The geometric logotype brings a sense of movement and direction, representing the agency's mission: to connect data, technology, and creativity into scalable, measurable results."
+            "html": "A identidade final combina uma estética minimalista de alto impacto com uma paleta centrada em roxo, preto e branco, simbolizando performance e precisão. O logotipo geométrico traz movimento e direção, representando a missão da agência: conectar dados, tecnologia e criatividade em resultados mensuráveis."
           }
         ],
         "images": [
@@ -64,10 +64,10 @@
   },
   "yoursbank": {
     "title": "Yours Bank",
-    "description": "Website redesign for Yours Bank, a fintech focused on trust, conversion, and a more human digital experience.",
+    "description": "Redesign do site do Yours Bank, fintech focada em confiança, conversão e uma experiência digital humana.",
     "year": "2025",
     "category": "Web Design",
-    "location": "Porto Alegre, Brazil",
+    "location": "Porto Alegre, Brasil",
     "industry": "Fintech",
     "url": "https://yoursbank.com.br/",
     "cover": "/projects/yoursbank/yoursbank-01.webp",
@@ -76,7 +76,7 @@
     "tags": [
       "Web Design"
     ],
-    "role": "Designer & Developer",
+    "role": "Designer & Desenvolvedor",
     "stack": [
       "Figma",
       "Astro",
@@ -85,12 +85,12 @@
     ],
     "sections": [
       {
-        "label": "Challenge",
-        "heading": "Translating Yours Bank's innovative proposition into a platform that builds trust and drives action",
+        "label": "Desafio",
+        "heading": "Traduzindo a proposta inovadora do Yours Bank em uma plataforma que gera confiança e ação",
         "body": [
           {
             "type": "p",
-            "html": "The previous site didn't reflect the fintech's value proposition or meet the expectations of users who needed to understand and trust the product. More than a visual redesign, the goal was to communicate security in a sector full of distrust, with a lightweight, conversion-focused structure."
+            "html": "O site anterior não refletia a proposta de valor da fintech nem atendia às expectativas dos usuários que precisavam entender e confiar no produto. Mais do que um redesign visual, o objetivo era comunicar segurança em um setor com alta desconfiança, através de uma estrutura leve e focada em conversão."
           }
         ],
         "images": [
@@ -99,12 +99,12 @@
         ]
       },
       {
-        "label": "Result",
-        "heading": "A more human, intuitive platform that simplifies communication and accelerates conversion",
+        "label": "Resultado",
+        "heading": "Uma plataforma intuitiva e humana que simplifica a comunicação e acelera a conversão",
         "body": [
           {
             "type": "p",
-            "html": "The result was a site that highlights Yours Bank's differentiators without noise. Content was simplified and the tone of voice reinforced approachability. The solution brought a reusable, scalable structure, making the experience more intuitive, building greater trust and increasing engagement at every conversion point."
+            "html": "O resultado foi um site que destaca os diferenciais do Yours Bank sem ruídos. O conteúdo foi simplificado e o tom de voz reforçou a proximidade. A solução trouxe uma estrutura reutilizável e escalável, tornando a experiência mais intuitiva e aumentando o engajamento a cada ponto de conversão."
           }
         ],
         "images": [
@@ -117,10 +117,10 @@
   },
   "flouds": {
     "title": "Flouds Performance Digital",
-    "description": "Website for Flouds Performance Digital, a conversion-focused site that works as a strategic acquisition channel for a paid media agency.",
+    "description": "Website para a Flouds Performance Digital, focado em conversão e atuando como canal estratégico de aquisição para agência de mídia paga.",
     "year": "2025",
     "category": "Web Design",
-    "location": "Porto Alegre, Brazil",
+    "location": "Porto Alegre, Brasil",
     "industry": "Marketing",
     "url": "https://flouds.com.br",
     "cover": "/projects/flouds/flouds-01.webp",
@@ -128,7 +128,7 @@
     "tags": [
       "Web Design"
     ],
-    "role": "Designer & Developer",
+    "role": "Designer & Desenvolvedor",
     "stack": [
       "Figma",
       "Astro",
@@ -136,12 +136,12 @@
     ],
     "sections": [
       {
-        "label": "Challenge",
-        "heading": "Turning a data-driven brand into a high-performance digital presence",
+        "label": "Desafio",
+        "heading": "Transformando uma marca orientada a dados em uma presença digital de alta performance",
         "body": [
           {
             "type": "p",
-            "html": "After building Flouds' visual identity, the next step was to transform their positioning into a digital presence that went beyond a simple showcase. The site needed to communicate authority, explain the value proposition clearly, and work as a strategic acquisition channel, converting visitors into qualified leads directly and effectively."
+            "html": "Após criar a identidade visual da Flouds, o passo seguinte foi transformar o posicionamento em uma presença digital que fosse além de uma simples vitrine. O site precisava comunicar autoridade, explicar a proposta de valor com clareza e funcionar como um canal estratégico de aquisição, convertendo visitantes em leads qualificados."
           }
         ],
         "images": [
@@ -150,12 +150,12 @@
         ]
       },
       {
-        "label": "Result",
-        "heading": "A modern, strategic, conversion-focused website",
+        "label": "Resultado",
+        "heading": "Um website moderno, estratégico e focado em conversão",
         "body": [
           {
             "type": "p",
-            "html": "The result was a solid and impactful site, with well-structured architecture, fluid navigation, and persuasive copy. The modern, objective design reflects the brand's technological DNA and guides users through a clear journey to conversion, making the site one of Flouds' main growth drivers."
+            "html": "O resultado foi um site sólido e de alto impacto, com arquitetura bem estruturada, navegação fluida e copy persuasiva. O design objetivo reflete o DNA tecnológico da marca e guia o usuário em uma jornada clara até a conversão, tornando o site um dos principais motores de crescimento da Flouds."
           }
         ],
         "images": [
@@ -168,18 +168,18 @@
   },
   "msk": {
     "title": "MSK Perfuradora de Metais",
-    "description": "Website for MSK Perfuradora de Metais, converting 26 years of industry expertise into a modern, lead-generating digital presence.",
+    "description": "Website para a MSK Perfuradora de Metais, convertendo 26 anos de experiência industrial em uma presença digital moderna e geradora de negócios.",
     "year": "2025",
     "category": "Web Design",
-    "location": "São Leopoldo, Brazil",
-    "industry": "Industry",
+    "location": "São Leopoldo, Brasil",
+    "industry": "Indústria",
     "url": "https://msk.ind.br/",
     "cover": "/projects/msk/msk-01.webp",
     "thumbnail": "/projects/msk/msk-01.webp",
     "tags": [
       "Web Design"
     ],
-    "role": "Designer & Developer",
+    "role": "Designer & Desenvolvedor",
     "stack": [
       "Figma",
       "Astro",
@@ -187,12 +187,12 @@
     ],
     "sections": [
       {
-        "label": "Challenge",
-        "heading": "Converting 26 years of expertise into a modern digital presence built to generate business",
+        "label": "Desafio",
+        "heading": "Convertendo 26 anos de experiência em uma presença digital moderna feita para gerar negócios",
         "body": [
           {
             "type": "p",
-            "html": "MSK is a reference in its sector, but their digital positioning didn't match that strength. The goal was to create a site that not only modernized their image, but functioned as a sales tool, making their vast product catalog easy to navigate and optimizing qualified lead capture."
+            "html": "A MSK é referência no seu setor, mas seu posicionamento digital não acompanhava essa força. O objetivo foi criar um site que não apenas modernizasse a imagem da empresa, mas funcionasse como ferramenta de vendas, facilitando a navegação pelo catálogo de produtos e otimizando a captação de leads qualificados."
           }
         ],
         "images": [
@@ -201,12 +201,12 @@
         ]
       },
       {
-        "label": "Result",
-        "heading": "A UX-focused platform with a bold identity, built to turn visitors into clients",
+        "label": "Resultado",
+        "heading": "Uma plataforma focada em UX com identidade marcante, feita para transformar visitantes em clientes",
         "body": [
           {
             "type": "p",
-            "html": "The result is a robust, intuitive platform that positions MSK as a market leader both online and offline. With a clear product catalog and multiple lead generation touchpoints, the new site became a central asset in the company's growth strategy, attracting new clients and reinforcing their authority."
+            "html": "O resultado é uma plataforma robusta e intuitiva que posiciona a MSK como líder de mercado tanto online quanto offline. Com catálogo claro e múltiplos pontos de contato para geração de leads, o novo site tornou-se um ativo central na estratégia de crescimento da empresa."
           }
         ],
         "images": [
@@ -219,18 +219,18 @@
   },
   "sant": {
     "title": "Sant Saúde",
-    "description": "Website for Sant Saúde, a performance-focused redesign that simplified content and improved navigation for a healthcare platform.",
+    "description": "Website para a Sant Saúde, redesign focado em performance que simplificou o conteúdo e a navegação da plataforma de saúde.",
     "year": "2025",
     "category": "Web Design",
-    "location": "Brazil",
-    "industry": "Health",
+    "location": "Brasil",
+    "industry": "Saúde",
     "url": "https://santsaude.com.br/",
     "cover": "/projects/sant/sant-01.webp",
     "thumbnail": "/projects/sant/sant-01.webp",
     "tags": [
       "Web Design"
     ],
-    "role": "Designer & Developer",
+    "role": "Designer & Desenvolvedor",
     "stack": [
       "Figma",
       "Astro",
@@ -238,12 +238,12 @@
     ],
     "sections": [
       {
-        "label": "Challenge",
-        "heading": "Aligning a healthcare platform with its mission through usability and scalability",
+        "label": "Desafio",
+        "heading": "Alinhando uma plataforma de saúde à sua missão através de usabilidade e escalabilidade",
         "body": [
           {
             "type": "p",
-            "html": "The previous site was overloaded. Excessive animations and a dense information architecture created a confusing and frustrating user experience. Slow loading times were a direct barrier for users seeking essential health information, compromising both performance and the effectiveness of the channel."
+            "html": "O site antigo estava sobrecarregado. Animações excessivas e uma arquitetura de informação densa criavam uma experiência confusa e frustrante. A lentidão no carregamento era uma barreira direta para os usuários em busca de informações essenciais de saúde."
           }
         ],
         "images": [
@@ -252,12 +252,12 @@
         ]
       },
       {
-        "label": "Result",
-        "heading": "A performance-focused design system that simplified content and navigation",
+        "label": "Resultado",
+        "heading": "Um design system focado em performance que simplificou o conteúdo e a navegação",
         "body": [
           {
             "type": "p",
-            "html": "By optimizing animations and organizing information logically, we delivered a visibly faster, scalable site that improves user engagement. The result is a platform that not only looks clean, but actually works, allowing users to find what they need quickly and effortlessly."
+            "html": "Otimizando animações e organizando as informações de forma lógica, entregamos um site visivelmente mais rápido e escalável que melhora o engajamento do usuário. O resultado é uma plataforma que permite encontrar o que se precisa de forma rápida e intuitiva."
           }
         ],
         "images": [
@@ -270,11 +270,11 @@
   },
   "rmaq": {
     "title": "RMAQ Assessoria",
-    "description": "Visual identity for RMAQ Assessoria, a business consultancy built on tradition, strategy, and professional clarity.",
+    "description": "Identidade visual para a RMAQ Assessoria, consultoria empresarial construída sobre tradição, estratégia e clareza profissional.",
     "year": "2024",
     "category": "Branding",
-    "location": "Brazil",
-    "industry": "Consulting",
+    "location": "Brasil",
+    "industry": "Consultoria",
     "cover": "/projects/rmaq/rmaq-cover.webp",
     "thumbnail": "/projects/rmaq/rmaq-cover.webp",
     "tags": [
@@ -287,12 +287,12 @@
     ],
     "sections": [
       {
-        "label": "Challenge",
-        "heading": "Capturing the essence of a consultancy that blends tradition and strategic growth",
+        "label": "Desafio",
+        "heading": "Traduzindo a essência de uma consultoria que une tradição e crescimento estratégico",
         "body": [
           {
             "type": "p",
-            "html": "RMAQ needed a visual identity that reflected its mission: helping businesses overcome challenges and optimize processes. The goal was to translate that authority into a cohesive brand, one that resonated with its audience while standing out in a competitive consulting market. Market research guided the direction, ensuring every decision was rooted in what the target audience actually values."
+            "html": "A RMAQ precisava de uma identidade visual que refletisse sua missão: ajudar empresas a superar desafios e otimizar processos. O objetivo foi traduzir essa autoridade em uma marca coesa, que ressoasse com seu público e se destacasse em um mercado competitivo."
           }
         ],
         "images": [
@@ -302,12 +302,12 @@
         ]
       },
       {
-        "label": "Result",
-        "heading": "A confident, professional identity built for consistency across every platform",
+        "label": "Resultado",
+        "heading": "Uma identidade confiante e profissional feita para manter consistência em qualquer plataforma",
         "body": [
           {
             "type": "p",
-            "html": "The final identity pairs modern typography with a symbol representing growth and strategy, balancing authenticity with innovation. The color palette conveys trust and professionalism, while the typographic system ensures clarity at every touchpoint. All brand applications were designed for adaptability, maintaining visual consistency whether on digital or print platforms."
+            "html": "A identidade final combina tipografia moderna com um símbolo que representa crescimento e estratégia, equilibrando autenticidade e inovação. A paleta de cores transmite confiança e profissionalismo, enquanto o sistema tipográfico garante clareza em todos os pontos de contato."
           }
         ],
         "images": [
