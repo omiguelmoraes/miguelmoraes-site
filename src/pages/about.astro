@@ -22,28 +22,28 @@ const photos = await Promise.all(
 ---
 
 <SiteLayout
-  title="About — Miguel Moraes"
-  description="Designer from Porto Alegre, Brazil. Side projects, and how to reach me."
+  title="Sobre — Miguel Moraes"
+  description="Designer de Porto Alegre, Brasil. Projetos paralelos e formas de contato."
 >
   <div class="content">
 
     <header class="page-header">
-      <h1 class="page-title">Hi, I'm Miguel 👋🏽</h1>
+      <h1 class="page-title">Olá, sou o Miguel 👋🏽</h1>
       <p class="page-intro">
-        I'm 26, from Porto Alegre. I design and build websites: at <a href="https://barca.cc/" target="_blank" rel="noopener">Barca</a> during the week, and at <a href="https://www.korbi.studio" target="_blank" rel="noopener">Korbi</a>, my own studio, on the&nbsp;side.
+        Tenho 26 anos e moro em Porto Alegre. Desenvolvo e construo sites: na <a href="https://barca.cc/" target="_blank" rel="noopener">Barca</a> durante a semana, e na <a href="https://www.korbi.studio" target="_blank" rel="noopener">Korbi</a>, meu próprio estúdio, no tempo livre.
       </p>
       <p class="page-intro">
-        I came in from the visual side and kept going until I could ship the thing myself. Handing a file over and watching the details disappear got old fast. That's also why I'm studying Systems Analysis and Development: I wanted to understand what happens after the&nbsp;design.
+        Vim do lado visual e fui aprofundando até conseguir colocar os projetos no ar sozinho. Entregar um arquivo no Figma e ver os detalhes se perderem no desenvolvimento cansou rápido. É por isso também que estudo Análise e Desenvolvimento de Sistemas: queria entender exatamente o que acontece depois do design.
       </p>
       <p class="page-intro">
-        The question I keep coming back to is why some things get noticed and others don't. Same product, same price, completely different outcome. I write about that in <a href="/blog">Portuguese</a>, and I train every day, which is the only routine I've actually managed to&nbsp;keep.
+        A pergunta que sempre me faço é por que algumas coisas chamam atenção e outras não. Mesmo produto, mesmo preço, resultado totalmente diferente. Escrevo sobre isso no meu <a href="/blog">blog</a>, e treinar todo dia é a única rotina que realmente consegui manter.
       </p>
     </header>
 
     {photos.length > 0 && (
       <section class="section">
-        <h2 class="section-title">Life Recently</h2>
-        <p class="section-body">Desk, city, gym, work in progress. Whatever the last few weeks looked&nbsp;like.</p>
+        <h2 class="section-title">Vida Recente</h2>
+        <p class="section-body">Mesa de trabalho, cidade, treino e projetos em andamento. Um recorte das últimas semanas.</p>
         <div class="photo-grid">
           {photos.map(photo => (
             <div class="row-image">
@@ -64,8 +64,8 @@ const photos = await Promise.all(
 
     <!-- Side Projects -->
     <section class="section">
-      <h2 class="section-title">Side Projects</h2>
-      <p class="section-body">Things I build outside of work: a studio, a product, and whatever comes next.</p>
+      <h2 class="section-title">Projetos Paralelos</h2>
+      <p class="section-body">Coisas que construo fora do trabalho: um estúdio, produtos e o que vier a seguir.</p>
       <div class="rows rows--tight">
 
         <div class="row">
@@ -76,15 +76,15 @@ const photos = await Promise.all(
             </a>
             <span class="date">2026</span>
           </div>
-          <span class="row-sub">Strategic design studio</span>
+          <span class="row-sub">Estúdio de design estratégico</span>
         </div>
 
         <div class="row">
           <div class="row-head">
-            <span class="row-link">Mentorship & Consulting</span>
+            <span class="row-link">Mentoria &amp; Consultoria</span>
             <span class="date">2026</span>
           </div>
-          <span class="row-sub">One-on-one for visual designers & freelancers · Coming soon</span>
+          <span class="row-sub">Individual para designers visuais &amp; freelancers · Em breve</span>
         </div>
 
         <div class="row">
@@ -95,7 +95,7 @@ const photos = await Promise.all(
             </a>
             <span class="date">2024</span>
           </div>
-          <span class="row-sub">Templates for freelancers</span>
+          <span class="row-sub">Templates e recursos para freelancers</span>
         </div>
 
       </div>
@@ -104,8 +104,8 @@ const photos = await Promise.all(
 
     <!-- Contact -->
     <section class="section">
-      <h2 class="section-title">Contact</h2>
-      <p class="section-body">WhatsApp is the fastest way to reach me.</p>
+      <h2 class="section-title">Contato</h2>
+      <p class="section-body">O WhatsApp é o caminho mais rápido para falar comigo.</p>
       <ContactLinks />
 
     </section>

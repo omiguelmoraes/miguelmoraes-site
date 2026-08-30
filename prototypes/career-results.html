@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Results — tratamentos</title>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.2/src/regular/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-title:#111;--color-body:#555;--color-muted:#6d6d6d;--color-bg:#fff;
+  --color-border:#e5e5e5;--color-wash:#f2f2f2;--color-pill-bg:#f6f6f6;
+  --font-family:'Rethink Sans',system-ui,sans-serif;--font-mono:'Geist Mono',ui-monospace,monospace;
+  --font-size-title:20px;--font-size-body:15px;--font-size-small:14px;--font-size-xs:12px;
+  --line-height-title:26px;--line-height-body:1.8;
+  --layout-max-width:1000px;--layout-padding-x:24px;--layout-padding-y:80px;
+  --section-gap:56px;--sidebar-width:180px;--shell-gap:56px;
+  --prose-max-width:680px;--row-text-max-width:60ch;
+}
+@media (prefers-color-scheme:dark){:root{
+  --color-title:#eee;--color-body:#aaa;--color-muted:#888;--color-bg:#111;
+  --color-border:#2a2a2a;--color-wash:#1a1a1a;--color-pill-bg:#1e1e1e;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-family:var(--font-family);font-size:var(--font-size-body);color:var(--color-title);background:var(--color-bg);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+
+
+body{max-width:760px;margin:0 auto;padding:48px 24px 120px}
+.demo{padding:36px 0;border-top:1px dashed var(--color-border)}
+.demo h2{font-size:var(--font-size-title);font-weight:500;line-height:var(--line-height-title)}
+.note{font-size:var(--font-size-small);color:var(--color-muted);line-height:var(--line-height-body);margin:4px 0 24px}
+.dd{display:flex;flex-direction:column;gap:24px;padding-left:18px;border-left:1px solid var(--color-border)}
+.dd-label{font-size:11px;font-family:var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--color-muted);padding-bottom:8px;border-bottom:1px solid var(--color-border);margin-bottom:14px}
+.dd-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.dd-list li{position:relative;padding-left:22px;font-size:var(--font-size-body);color:var(--color-body);line-height:var(--line-height-body)}
+.dd-list li::before{content:'—';position:absolute;left:0;color:var(--color-muted)}
+.dd-list b{color:var(--color-title);font-weight:500}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:11px;font-family:var(--font-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--color-muted);border:1px solid var(--color-border);border-radius:6px;padding:4px 8px}
+
+/* A — atual: ícone + número sobre rótulo */
+.stats--icon{display:flex;flex-wrap:wrap;gap:18px 36px}
+.stats--icon .stat{display:flex;align-items:center;gap:10px}
+.stats--icon i{font-size:18px;color:var(--color-muted)}
+.stats--icon .stat-text{display:flex;flex-direction:column;gap:1px}
+.stats--icon b{font-size:17px;font-weight:500;font-family:var(--font-mono);color:var(--color-title);line-height:1.25}
+.stats--icon .stat-text span{font-size:var(--font-size-xs);color:var(--color-muted);line-height:1.4}
+
+/* B — frase: número em mono, rótulo do lado, uma por linha */
+.stats--line{display:flex;flex-direction:column;gap:8px}
+.stats--line .stat{display:flex;align-items:baseline;gap:8px}
+.stats--line b{font-family:var(--font-mono);font-weight:500;font-size:var(--font-size-body);color:var(--color-title);min-width:74px}
+.stats--line span{font-size:var(--font-size-body);color:var(--color-body);line-height:var(--line-height-body)}
+
+/* C — mesma família das pills: caixa com borda */
+.stats--card{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.stats--card .stat{border:1px solid var(--color-border);border-radius:8px;padding:14px 16px;font-size:var(--font-size-small);color:var(--color-body);line-height:1.6}
+.stats--card b{font-family:var(--font-mono);font-weight:500;color:var(--color-title)}
+
+/* D — corrido, como um travessão a mais da lista */
+.stats--inline{display:flex;flex-wrap:wrap;gap:6px 0}
+.stats--inline .stat{display:flex;align-items:baseline;gap:6px;font-size:var(--font-size-body);color:var(--color-body)}
+.stats--inline .stat:not(:last-child)::after{content:'·';color:var(--color-muted);margin:0 10px}
+.stats--inline b{font-family:var(--font-mono);font-weight:500;color:var(--color-title)}
+</style></head>
+<body>
+<h1 style="font-size:20px;font-weight:500">Results — quatro tratamentos</h1>
+<p class="note">Mesmo painel, mesmo conteúdo. A pergunta é qual convive melhor com os travessões da lista e as pills de skill que estão logo acima e abaixo.</p>
+  <section class="demo">
+    <h2>A · Ícone + número + rótulo</h2>
+    <p class="note">O de agora. Três elementos por item; o ícone é uma quarta linguagem visual dentro do painel.</p>
+    <div class="dd">
+      <div>
+        <div class="dd-label">What I do</div>
+        <ul class="dd-list">
+          <li>Own the launch landing page of each club, from prototype to live site.</li>
+          <li>Built a <b>design system per club</b> in Framer.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="dd-label">Results</div>
+        <div class="stats stats--icon">
+        <div class="stat"><i class="ph ph-buildings"></i><span class="stat-text"><b>3</b><span>brands under my care</span></span></div>
+        <div class="stat"><i class="ph ph-browsers"></i><span class="stat-text"><b>15</b><span>pages shipped</span></span></div>
+        <div class="stat"><i class="ph ph-repeat"></i><span class="stat-text"><b>Monthly</b><span>launch cadence</span></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="dd-label">Skills I sharpened here</div>
+        <div class="pills"><span class="pill">Framer</span><span class="pill">Design systems</span><span class="pill">Figma</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="demo">
+    <h2>B · Número e rótulo em uma frase</h2>
+    <p class="note">Sem ícone. O número em mono alinhado numa coluna faz a varredura vertical, e o texto lê como frase.</p>
+    <div class="dd">
+      <div>
+        <div class="dd-label">What I do</div>
+        <ul class="dd-list">
+          <li>Own the launch landing page of each club, from prototype to live site.</li>
+          <li>Built a <b>design system per club</b> in Framer.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="dd-label">Results</div>
+        <div class="stats stats--line">
+        <div class="stat"><b>3</b><span>brands under my care</span></div>
+        <div class="stat"><b>15</b><span>pages shipped</span></div>
+        <div class="stat"><b>Monthly</b><span>launch cadence</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="dd-label">Skills I sharpened here</div>
+        <div class="pills"><span class="pill">Framer</span><span class="pill">Design systems</span><span class="pill">Figma</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="demo">
+    <h2>C · Caixas com borda</h2>
+    <p class="note">Reaproveita a borda das pills. Mais peso e mais "dashboard"; funciona melhor com resultado em texto longo.</p>
+    <div class="dd">
+      <div>
+        <div class="dd-label">What I do</div>
+        <ul class="dd-list">
+          <li>Own the launch landing page of each club, from prototype to live site.</li>
+          <li>Built a <b>design system per club</b> in Framer.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="dd-label">Results</div>
+        <div class="stats stats--card">
+        <div class="stat"><b>3</b> brands under my care</div>
+        <div class="stat"><b>15</b> pages shipped</div>
+        <div class="stat"><b>Monthly</b> launch cadence</div>
+        </div>
+      </div>
+      <div>
+        <div class="dd-label">Skills I sharpened here</div>
+        <div class="pills"><span class="pill">Framer</span><span class="pill">Design systems</span><span class="pill">Figma</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="demo">
+    <h2>D · Corrido, separado por ponto</h2>
+    <p class="note">O mais discreto: quase um travessão a mais da lista acima. Some como bloco autônomo.</p>
+    <div class="dd">
+      <div>
+        <div class="dd-label">What I do</div>
+        <ul class="dd-list">
+          <li>Own the launch landing page of each club, from prototype to live site.</li>
+          <li>Built a <b>design system per club</b> in Framer.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="dd-label">Results</div>
+        <div class="stats stats--inline">
+        <div class="stat"><b>3</b><span>brands under my care</span></div>
+        <div class="stat"><b>15</b><span>pages shipped</span></div>
+        <div class="stat"><b>Monthly</b><span>launch cadence</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="dd-label">Skills I sharpened here</div>
+        <div class="pills"><span class="pill">Framer</span><span class="pill">Design systems</span><span class="pill">Figma</span></div>
+      </div>
+    </div>
+  </section>
+</body></html>

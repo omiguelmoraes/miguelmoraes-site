@@ -21,7 +21,7 @@ const otherProjects = [prevProject, nextProject];
   <div class="page">
 
     <nav class="nav">
-      <a href="/projects" class="back">← All projects</a>
+      <a href="/projects" class="back">← Todos os projetos</a>
     </nav>
 
     <header class="header">
@@ -32,20 +32,20 @@ const otherProjects = [prevProject, nextProject];
 
       <div class="meta-grid">
         <div class="meta-col">
-          <span class="meta-label">Role</span>
+          <span class="meta-label">Função</span>
           <span class="meta-value">{project.role || project.category}</span>
         </div>
         <div class="meta-col">
-          <span class="meta-label">Year</span>
+          <span class="meta-label">Ano</span>
           <span class="meta-value">{project.year}</span>
         </div>
         <div class="meta-col">
-          <span class="meta-label">Location</span>
+          <span class="meta-label">Localização</span>
           <span class="meta-value">{project.location}</span>
         </div>
         {project.industry && (
           <div class="meta-col">
-            <span class="meta-label">Industry</span>
+            <span class="meta-label">Setor</span>
             <span class="meta-value">{project.industry}</span>
           </div>
         )}
@@ -69,7 +69,7 @@ const otherProjects = [prevProject, nextProject];
           ))}
           {si === project.sections.length - 1 && project.url && (
             <a href={project.url} target="_blank" rel="noopener" class="visit-link">
-              View project
+              Ver projeto
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
             </a>
           )}
@@ -79,7 +79,7 @@ const otherProjects = [prevProject, nextProject];
               return (
                 <figure class="image-item">
                   <div class="image-frame">
-                    <img src={src} alt={caption || project.title + ": " + (section.heading || section.label) + ", image " + (i + 1)} data-caption={caption} class="lightbox-trigger" loading="lazy" width="800" height="600" />
+                    <img src={src} alt={caption || project.title + ": " + (section.heading || section.label) + ", imagem " + (i + 1)} data-caption={caption} class="lightbox-trigger" loading="lazy" width="800" height="600" />
                   </div>
                   {caption && <figcaption class="image-caption">{caption}</figcaption>}
                 </figure>
@@ -91,14 +91,14 @@ const otherProjects = [prevProject, nextProject];
 
       {project.stack && project.stack.length > 0 && (
         <section class="section">
-          <span class="section-label">Tools & Stack</span>
+          <span class="section-label">Ferramentas &amp; Tecnologias</span>
           <TechStack stack={project.stack} />
         </section>
       )}
 
       {project.results && (
         <section class="section">
-          <span class="section-label">In numbers</span>
+          <span class="section-label">Em números</span>
           <div class="results">
             {project.results.map((r) => (
               <div class="result">
@@ -114,7 +114,7 @@ const otherProjects = [prevProject, nextProject];
 
     <footer class="project-footer">
       <div class="footer-top">
-        <span class="section-label">More projects</span>
+        <span class="section-label">Outros projetos</span>
         <div class="footer-projects">
           {otherProjects.map(([s, p]) => (
             <a href={"/projects/" + s} class="footer-project">
@@ -127,7 +127,7 @@ const otherProjects = [prevProject, nextProject];
         </div>
       </div>
       <div class="footer-links">
-        <a href="/projects" class="home-link">See all projects →</a>
+        <a href="/projects" class="home-link">Ver todos os projetos →</a>
       </div>
     </footer>
 

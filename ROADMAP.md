@@ -27,6 +27,7 @@
 ## Changelog
 
 ### 2026-08-29
+- Tradução do site para Português (PT-BR): migração completa da navegação (`Início`, `Projetos`, `Blog`, `Carreira`, `Sobre`, `Stack`), páginas principais, metadados, filtros, rótulos de cases e página 404 para português casual e direto.
 - Carreira (`src/pages/career.astro`): Redesign da seção Work Experience substituindo os accordions (`<details>`, `View full experience`, listas de responsabilidades e badges) por um layout limpo de linhas (`.row`), alinhado com Education e Speaking. Cada experiência agora é apresentada em um parágrafo conciso com os principais destaques, mantendo as imagens de OpServices e Gama Marketing diretamente visíveis e integradas ao Lightbox.
 - Bônus 2 do PackPro: página `/packpro/calculadora` (`src/pages/packpro/calculadora.astro`), calculadora de precificação freelancer com custo/hora a partir de custos fixos, meta de pró-labore, horas faturáveis, impostos e reserva, orçamento por projeto com presets de horas e tabela de faixas de mercado
 - Área de bônus do PackPro: hub em `/packpro/bonus` e os bônus 1 e 3 viraram página web (`/packpro/bonus/checklist` e `/packpro/bonus/scripts`) via layout `PackProBonus.astro`, com PDF pra download em `public/packpro/`. Motivo: PDF A4 é ruim de ler no celular, e o link deixa o conteúdo atualizável depois da compra

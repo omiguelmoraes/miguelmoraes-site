@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Career — hierarquia v3</title>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.2/src/regular/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-title:#111;--color-body:#555;--color-muted:#6d6d6d;--color-bg:#fff;
+  --color-border:#e5e5e5;--color-wash:#f2f2f2;--color-pill-bg:#f6f6f6;
+  --font-family:'Rethink Sans',system-ui,sans-serif;--font-mono:'Geist Mono',ui-monospace,monospace;
+  --font-size-title:20px;--font-size-body:15px;--font-size-small:14px;--font-size-xs:12px;
+  --line-height-title:26px;--line-height-body:1.8;
+  --layout-max-width:1000px;--layout-padding-x:24px;--layout-padding-y:80px;
+  --section-gap:56px;--sidebar-width:180px;--shell-gap:56px;
+  --prose-max-width:680px;--row-text-max-width:60ch;
+}
+@media (prefers-color-scheme:dark){:root{
+  --color-title:#eee;--color-body:#aaa;--color-muted:#888;--color-bg:#111;
+  --color-border:#2a2a2a;--color-wash:#1a1a1a;--color-pill-bg:#1e1e1e;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-family:var(--font-family);font-size:var(--font-size-body);color:var(--color-title);background:var(--color-bg);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+
+
+/* ---------- chrome ---------- */
+.proto-bar{max-width:var(--layout-max-width);margin:0 auto;padding:40px var(--layout-padding-x) 24px;border-bottom:1px dashed var(--color-border)}
+.proto-bar h1{font-size:var(--font-size-title);font-weight:500;line-height:var(--line-height-title)}
+.proto-bar p{font-size:var(--font-size-small);color:var(--color-muted);line-height:var(--line-height-body);margin-top:6px;max-width:var(--prose-max-width)}
+.tabs{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.tabs button{font:500 var(--font-size-small)/1 var(--font-family);color:var(--color-body);background:var(--color-pill-bg);border:1px solid transparent;padding:8px 14px;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected=true]{color:var(--color-bg);background:var(--color-title)}
+
+/* ---------- shell ---------- */
+.shell{max-width:var(--layout-max-width);margin:0 auto;padding:56px var(--layout-padding-x) 120px;
+  display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);gap:var(--shell-gap)}
+.sidebar{font-size:var(--font-size-small);color:var(--color-muted);line-height:2.2}
+.sidebar .me{color:var(--color-title);font-weight:500;margin-bottom:12px}
+@media (max-width:900px){.shell{grid-template-columns:minmax(0,1fr)}.sidebar{display:none}}
+
+.page-title{font-size:var(--font-size-title);font-weight:500;line-height:var(--line-height-title)}
+.page-intro{font-size:var(--font-size-body);color:var(--color-body);line-height:var(--line-height-body);margin-top:8px;max-width:var(--prose-max-width)}
+/* a coluna de texto para onde o olho para: sem vão morto até a direita */
+.rows{display:flex;flex-direction:column;gap:52px;margin-top:40px;max-width:600px}
+.acc{display:flex;flex-direction:column;min-width:0}
+.acc summary{list-style:none;cursor:pointer;display:flex;flex-direction:column}
+.acc summary::-webkit-details-marker{display:none}
+.row-desc{font-size:var(--font-size-body);color:var(--color-body);line-height:var(--line-height-body);margin-top:12px}
+
+/* ===== A · empresa é a âncora ===== */
+[data-dir=company] .hd{display:flex;flex-direction:column;gap:2px}
+[data-dir=company] .co{font-size:22px;font-weight:600;letter-spacing:-.01em;color:var(--color-title);line-height:1.25}
+[data-dir=company] .meta{font-size:var(--font-size-small);color:var(--color-muted)}
+[data-dir=company] .dt{font-family:var(--font-mono);font-size:var(--font-size-xs)}
+[data-dir=company] .sep{opacity:.5;margin:0 2px}
+[data-dir=company] .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:20px;
+  border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)}
+[data-dir=company] .stat{display:flex;flex-direction:column;gap:2px;padding:12px 16px 12px 0}
+[data-dir=company] .stat i{display:none}
+[data-dir=company] .stat b{font-size:17px;font-weight:500;font-family:var(--font-mono);color:var(--color-title);line-height:1.2}
+[data-dir=company] .stat span{font-size:var(--font-size-xs);color:var(--color-muted);line-height:1.4}
+
+/* ===== B · o número é a âncora ===== */
+[data-dir=number] .hd{display:flex;flex-direction:column;gap:2px}
+[data-dir=number] .co{font-size:var(--font-size-body);font-weight:500;color:var(--color-title);line-height:var(--line-height-body)}
+[data-dir=number] .meta{font-size:var(--font-size-small);color:var(--color-muted)}
+[data-dir=number] .dt{font-family:var(--font-mono);font-size:var(--font-size-xs)}
+[data-dir=number] .sep{opacity:.5;margin:0 2px}
+[data-dir=number] .stats{display:flex;flex-wrap:wrap;gap:28px 40px;margin-top:22px}
+[data-dir=number] .stat{display:flex;flex-direction:column;gap:1px}
+[data-dir=number] .stat i{display:none}
+[data-dir=number] .stat b{font-size:30px;font-weight:500;font-family:var(--font-mono);letter-spacing:-.02em;color:var(--color-title);line-height:1.1}
+[data-dir=number] .stat span{font-size:var(--font-size-xs);color:var(--color-muted);line-height:1.4;max-width:16ch}
+
+.acc-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:var(--font-size-small);color:var(--color-muted);transition:color .18s ease}
+.acc summary:hover .acc-cta{color:var(--color-title)}
+.acc summary:hover .co{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.acc-cta .chev{font-size:12px;opacity:.6;transition:transform .22s cubic-bezier(.2,0,0,1)}
+.acc[open] .acc-cta .chev{transform:rotate(90deg)}
+.acc .more{display:inline}.acc[open] .more{display:none}
+.acc .less{display:none}.acc[open] .less{display:inline}
+
+.dd{display:flex;flex-direction:column;gap:24px;margin-top:26px;padding-left:18px;border-left:1px solid var(--color-border)}
+.dd-label{font-size:11px;font-family:var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--color-muted);padding-bottom:8px;border-bottom:1px solid var(--color-border);margin-bottom:14px}
+.dd-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.dd-list li{position:relative;padding-left:22px;font-size:var(--font-size-body);color:var(--color-body);line-height:var(--line-height-body)}
+.dd-list li::before{content:'—';position:absolute;left:0;color:var(--color-muted)}
+.dd-list b{color:var(--color-title);font-weight:500}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:11px;font-family:var(--font-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--color-muted);border:1px solid var(--color-border);border-radius:6px;padding:4px 8px}
+
+@media (max-width:600px){
+  .rows{gap:40px}
+  [data-dir=company] .co{font-size:20px}
+  [data-dir=company] .stats{grid-template-columns:1fr 1fr}
+  [data-dir=number] .stat b{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<div class="proto-bar">
+  <h1>Career — hierarquia v3</h1>
+  <p>Duas formas de resolver o "nada se destaca". Nas duas, a coluna de conteúdo para em 600px e a data sai do canto direito — some o vão morto que separava o badge do título.</p>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-dir="company">A · Empresa é a âncora</button>
+    <button role="tab" aria-selected="false" data-dir="number">B · O número é a âncora</button>
+  </div>
+</div>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="me">Miguel Moraes</div>
+    <div>Home</div><div>Projects</div><div>Writing</div><div>Career</div><div>About</div><div>Toolkit</div>
+  </aside>
+  <main>
+    <h1 class="page-title">Career</h1>
+    <p class="page-intro">Where I've worked, what I studied, and the times I've been on a stage or a&nbsp;mic.</p>
+    <div class="rows">
+        <details class="acc" open>
+          <summary>
+            <div class="hd">
+              <span class="co">Barca</span>
+              <span class="meta">Web Designer <span class="sep">·</span> <span class="dt">2026 — Now</span></span>
+            </div>
+            <p class="row-desc">I design and build the websites of three subscription book clubs in Framer, from prototype to live&nbsp;page.</p>
+            <div class="stats">
+            <div class="stat"><i class="ph ph-buildings"></i><b>3</b><span>brands under my care</span></div>
+            <div class="stat"><i class="ph ph-browsers"></i><b>15</b><span>pages shipped</span></div>
+            <div class="stat"><i class="ph ph-repeat"></i><b>Monthly</b><span>launch cadence</span></div>
+            </div>
+            <span class="acc-cta"><span class="more">Read more</span><span class="less">Close</span><i class="ph ph-caret-right chev"></i></span>
+          </summary>
+          <div class="dd">
+            <div>
+              <div class="dd-label">What I did</div>
+              <ul class="dd-list">
+                <li>Placeholder — o conteúdo do painel é o mesmo que já está no <b>career.astro</b>.</li>
+                <li>O que muda aqui é só a hierarquia do card fechado.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="dd-label">Skills I sharpened here</div>
+              <div class="pills"><span class="pill">Framer</span><span class="pill">Design systems</span><span class="pill">Figma</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="hd">
+              <span class="co">OpServices</span>
+              <span class="meta">UX/UI &amp; Marketing Designer <span class="sep">·</span> <span class="dt">2025 — 2026</span></span>
+            </div>
+            <p class="row-desc">Marketing design and product UI at a B2B observability company — campaigns, dashboards and a brand&nbsp;refresh.</p>
+            <div class="stats">
+            <div class="stat"><i class="ph ph-squares-four"></i><b>20+</b><span>interfaces designed</span></div>
+            <div class="stat"><i class="ph ph-paint-brush"></i><b>1</b><span>brand refresh led</span></div>
+            <div class="stat"><i class="ph ph-stack"></i><b>1</b><span>design system shipped</span></div>
+            </div>
+            <span class="acc-cta"><span class="more">Read more</span><span class="less">Close</span><i class="ph ph-caret-right chev"></i></span>
+          </summary>
+          <div class="dd">
+            <div>
+              <div class="dd-label">What I did</div>
+              <ul class="dd-list">
+                <li>Placeholder — o conteúdo do painel é o mesmo que já está no <b>career.astro</b>.</li>
+                <li>O que muda aqui é só a hierarquia do card fechado.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="dd-label">Skills I sharpened here</div>
+              <div class="pills"><span class="pill">Framer</span><span class="pill">Design systems</span><span class="pill">Figma</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="hd">
+              <span class="co">Korbi · Independent</span>
+              <span class="meta">Designer <span class="sep">·</span> <span class="dt">2022 — Now</span></span>
+            </div>
+            <p class="row-desc">Remote work for clients across Brazil, now under my own studio — visual identity, branding and UX/UI for digital&nbsp;products.</p>
+            <div class="stats">
+            <div class="stat"><i class="ph ph-briefcase"></i><b>50+</b><span>projects delivered</span></div>
+            <div class="stat"><i class="ph ph-hourglass"></i><b>4</b><span>years running</span></div>
+            </div>
+            <span class="acc-cta"><span class="more">Read more</span><span class="less">Close</span><i class="ph ph-caret-right chev"></i></span>
+          </summary>
+          <div class="dd">
+            <div>
+              <div class="dd-label">What I did</div>
+              <ul class="dd-list">
+                <li>Placeholder — o conteúdo do painel é o mesmo que já está no <b>career.astro</b>.</li>
+                <li>O que muda aqui é só a hierarquia do card fechado.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="dd-label">Skills I sharpened here</div>
+              <div class="pills"><span class="pill">Framer</span><span class="pill">Design systems</span><span class="pill">Figma</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="hd">
+              <span class="co">Gama Marketing</span>
+              <span class="meta">Visual &amp; Web Designer <span class="sep">·</span> <span class="dt">2023 — 2024</span></span>
+            </div>
+            <p class="row-desc">Logos, visual materials and websites for small businesses in the&nbsp;region.</p>
+            <div class="stats">
+            <div class="stat"><i class="ph ph-fingerprint"></i><b>30+</b><span>identities delivered</span></div>
+            <div class="stat"><i class="ph ph-microphone-stage"></i><b>1</b><span>talk at Instituto Caldeira</span></div>
+            </div>
+            <span class="acc-cta"><span class="more">Read more</span><span class="less">Close</span><i class="ph ph-caret-right chev"></i></span>
+          </summary>
+          <div class="dd">
+            <div>
+              <div class="dd-label">What I did</div>
+              <ul class="dd-list">
+                <li>Placeholder — o conteúdo do painel é o mesmo que já está no <b>career.astro</b>.</li>
+                <li>O que muda aqui é só a hierarquia do card fechado.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="dd-label">Skills I sharpened here</div>
+              <div class="pills"><span class="pill">Framer</span><span class="pill">Design systems</span><span class="pill">Figma</span></div>
+            </div>
+          </div>
+        </details>
+    </div>
+  </main>
+</div>
+
+<script>
+document.documentElement.dataset.dir = 'company';
+document.querySelectorAll('.tabs [data-dir]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.tabs [data-dir]').forEach(function(b){ b.setAttribute('aria-selected', String(b===btn)); });
+    document.documentElement.dataset.dir = btn.dataset.dir;
+  });
+});
+</script>
+</body>
+</html>

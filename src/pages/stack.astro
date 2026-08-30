@@ -50,13 +50,13 @@ const books = [
 const total = hardware.length + design.length + dev.length + productivity.length + books.length;
 ---
 
-<SiteLayout title="Stack — Miguel Moraes" description="The hardware, software and books I actually use.">
+<SiteLayout title="Stack — Miguel Moraes" description="Hardwares, softwares e livros que realmente uso no dia a dia.">
   <div class="page">
 
 
     <header class="page-header">
       <h1 class="page-title">Stack</h1>
-      <p class="page-intro">The hardware, software and books I actually use — not a wish&nbsp;list.</p>
+      <p class="page-intro">Hardwares, softwares e livros que realmente uso no dia a dia — sem lista de desejos.</p>
     </header>
 
     <Filters
@@ -65,8 +65,8 @@ const total = hardware.length + design.length + dev.length + productivity.length
         { label: 'Hardware', value: 'hardware', count: hardware.length },
         { label: 'Design', value: 'design', count: design.length },
         { label: 'Dev', value: 'dev', count: dev.length },
-        { label: 'Productivity', value: 'productivity', count: productivity.length },
-        { label: 'Books', value: 'books', count: books.length },
+        { label: 'Produtividade', value: 'productivity', count: productivity.length },
+        { label: 'Livros', value: 'books', count: books.length },
       ]}
     />
 
@@ -83,7 +83,7 @@ const total = hardware.length + design.length + dev.length + productivity.length
               <span class="item-note">{item.note}</span>
             </div>
             {item.href && (
-              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`Ver ${item.name}`}>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               </a>
             )}
@@ -105,7 +105,7 @@ const total = hardware.length + design.length + dev.length + productivity.length
               <span class="item-note">{item.note}</span>
             </div>
             {item.href && (
-              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`Ver ${item.name}`}>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               </a>
             )}
@@ -127,7 +127,7 @@ const total = hardware.length + design.length + dev.length + productivity.length
               <span class="item-note">{item.note}</span>
             </div>
             {item.href && (
-              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`Ver ${item.name}`}>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               </a>
             )}
@@ -137,7 +137,7 @@ const total = hardware.length + design.length + dev.length + productivity.length
     </section>
 
     <section class="section" data-tags="productivity">
-      <h2 class="section-title">Productivity</h2>
+      <h2 class="section-title">Produtividade</h2>
       <ul class="list">
         {productivity.map(item => (
           <li class="item">
@@ -149,7 +149,7 @@ const total = hardware.length + design.length + dev.length + productivity.length
               <span class="item-note">{item.note}</span>
             </div>
             {item.href && (
-              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`Ver ${item.name}`}>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               </a>
             )}
@@ -159,7 +159,7 @@ const total = hardware.length + design.length + dev.length + productivity.length
     </section>
 
     <section class="section" data-tags="books">
-      <h2 class="section-title">Books</h2>
+      <h2 class="section-title">Livros</h2>
       <ul class="list">
         {books.map(item => (
           <li class="item">
@@ -171,7 +171,7 @@ const total = hardware.length + design.length + dev.length + productivity.length
               <span class="item-note">{item.note}</span>
             </div>
             {item.href && (
-              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`View ${item.name}`}>
+              <a href={item.href} target="_blank" rel="noopener" class="item-link" aria-label={`Ver ${item.name}`}>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               </a>
             )}
