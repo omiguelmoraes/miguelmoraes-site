@@ -26,6 +26,10 @@
 
 ## Changelog
 
+### 2026-08-31
+- Refino dos textos em Português (PT-BR) de todo o site (`index.astro`, `about.astro`, `career.astro`, `stack.astro`): remoção de construções com tom de tradução literal do inglês (ex: "coisas que parecem boas e realmente significam algo") e alinhamento total com as diretrizes de voz do vault (`Content/Estratégia/Voz — Escrita Longa (Blog).md`).
+- Reequilíbrio de posicionamento (Barca x Korbi Studio): remoção de jargões como "no tempo livre", "durante a semana" e "projetos paralelos", apresentando Miguel como Web Designer na Barca e fundador da Korbi Studio com o mesmo peso e autoridade profissional.
+
 ### 2026-08-29
 - Tradução do site para Português (PT-BR): migração completa da navegação (`Início`, `Projetos`, `Blog`, `Carreira`, `Sobre`, `Stack`), páginas principais, metadados, filtros, rótulos de cases e página 404 para português casual e direto.
 - Carreira (`src/pages/career.astro`): Redesign da seção Work Experience substituindo os accordions (`<details>`, `View full experience`, listas de responsabilidades e badges) por um layout limpo de linhas (`.row`), alinhado com Education e Speaking. Cada experiência agora é apresentada em um parágrafo conciso com os principais destaques, mantendo as imagens de OpServices e Gama Marketing diretamente visíveis e integradas ao Lightbox.
