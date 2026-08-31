@@ -1,0 +1,201 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Mentoria Individual — Miguel Moraes"
+  description="Acompanhamento individual para designers visuais e freelancers. Posicionamento, processos, precificação e técnica."
+>
+  <div class="content">
+
+    <header class="page-header">
+      <h1 class="page-title">Mentoria Individual</h1>
+      <p class="page-intro">
+        Acompanhamento direto para designers visuais e freelancers que querem organizar processos, evoluir a qualidade do trabalho e cobrar mais caro.
+      </p>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title">Como funciona</h2>
+      <p class="section-body">
+        Conversas individuais focadas na sua realidade. Analisamos seus arquivos, propostas, portfólio e rotina de vendas para traçar um plano de ação prático e direto.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">O que trabalhamos juntos</h2>
+      <div class="rows rows--tight">
+
+        <div class="row">
+          <div class="row-head">
+            <span class="row-link">Posicionamento e Marca Pessoal</span>
+          </div>
+          <p class="row-desc">Como parar de competir por preço e se apresentar com a segurança de uma agência para atrair clientes de maior valor.</p>
+        </div>
+
+        <div class="row">
+          <div class="row-head">
+            <span class="row-link">Processos e Entregáveis</span>
+          </div>
+          <p class="row-desc">Estruturação de propostas comerciais, contratos, apresentações e fluxos de trabalho do Figma ao site no ar.</p>
+        </div>
+
+        <div class="row">
+          <div class="row-head">
+            <span class="row-link">Técnica Visual e Web Design</span>
+          </div>
+          <p class="row-desc">Refino visual, hierarquia tipográfica, prototipagem e desenvolvimento prático em Framer e Astro.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Tenho interesse</h2>
+      <p class="section-body">
+        As vagas são reduzidas para manter o acompanhamento próximo. Preencha os campos abaixo para entender se a mentoria faz sentido para o seu momento.
+      </p>
+
+      <form class="interest-form" id="mentoria-form">
+        <div class="form-field">
+          <label for="name" class="form-label">Seu nome</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Como você se chama?" required />
+        </div>
+
+        <div class="form-field">
+          <label for="contact" class="form-label">WhatsApp ou E-mail</label>
+          <input type="text" id="contact" name="contact" class="form-input" placeholder="Seu contato principal" required />
+        </div>
+
+        <div class="form-field">
+          <label for="stage" class="form-label">Momento atual</label>
+          <select id="stage" name="stage" class="form-input form-select" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Freelancer buscando subir ticket">Freelancer buscando subir ticket</option>
+            <option value="Designer em empresa querendo migrar pra solo">Designer em empresa querendo migrar pra solo</option>
+            <option value="Fundador de estúdio ou agência">Fundador de estúdio ou agência</option>
+            <option value="Iniciante estruturando carreira">Iniciante estruturando carreira</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="goal" class="form-label">Qual seu maior objetivo ou desafio hoje?</label>
+          <textarea id="goal" name="goal" class="form-input form-textarea" rows="3" placeholder="Conte brevemente o que você quer resolver ou onde quer chegar" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="ph ph-whatsapp-logo"></i>
+          Enviar interesse via WhatsApp
+        </button>
+      </form>
+    </section>
+
+  </div>
+</SiteLayout>
+
+<script>
+  const form = document.getElementById('mentoria-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = (document.getElementById('name') as HTMLInputElement).value;
+    const contact = (document.getElementById('contact') as HTMLInputElement).value;
+    const stage = (document.getElementById('stage') as HTMLSelectElement).value;
+    const goal = (document.getElementById('goal') as HTMLTextAreaElement).value;
+
+    const text = `Olá Miguel! Tenho interesse na mentoria.
+
+*Nome:* ${name}
+*Contato:* ${contact}
+*Momento:* ${stage}
+*Objetivo/Desafio:* ${goal}`;
+
+    const url = `https://api.whatsapp.com/send?phone=5551998734305&text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  });
+</script>
+
+<style>
+  .interest-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+    max-width: 520px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    color: var(--color-title);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--color-pill-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-title);
+    font-size: var(--font-size-body);
+    font-family: inherit;
+    transition: border-color 0.15s, background 0.15s;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .form-input:focus {
+    border-color: var(--color-title);
+    background: var(--color-wash);
+  }
+
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 256 256'%3E%3Cpath fill='%23666666' d='M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    cursor: pointer;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--color-title);
+    color: var(--color-bg);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    width: fit-content;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+
+  @media (hover: hover) {
+    .submit-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .submit-btn {
+      width: 100%;
+    }
+  }
+</style>

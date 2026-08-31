@@ -1,20 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Lightbox from '../components/Lightbox.astro';
-import { Image, getImage } from 'astro:assets';
-
-const photoModules = import.meta.glob<{ default: ImageMetadata }>(
-  '../assets/about/*.{jpg,jpeg,png,webp}',
-  { eager: true }
-);
-const photos = await Promise.all(
-  Object.entries(photoModules)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(async ([, mod]) => ({
-      src: mod.default,
-      full: (await getImage({ src: mod.default, width: 1400, format: 'webp' })).src,
-    }))
-);
 
 const links = [
   {
@@ -52,23 +37,20 @@ const links = [
   },
 ];
 
-const featuredProduct = {
-  label: 'Produto em destaque',
-  title: 'PackPro',
-  sub: 'Templates no Figma de proposta, contrato e orçamento para freelancers',
-  image: '/og-packpro.png',
-  href: '/packpro',
-  sameTab: true,
-};
-
 const products = [
   {
     label: 'Mentoria',
-    sub: 'Individual para designers visuais',
-    href: '#',
+    sub: 'Acompanhamento individual para designers visuais',
+    href: '/mentoria',
     icon: 'ph-users',
-    status: 'Em breve',
-    disabled: true,
+    sameTab: true,
+  },
+  {
+    label: 'PackPro',
+    sub: 'Templates no Figma para freelancers',
+    href: '/packpro',
+    icon: 'ph-package',
+    sameTab: true,
   },
   {
     label: 'Calculadora de preço',
@@ -111,65 +93,25 @@ const products = [
       ))}
     </nav>
 
-    <!-- Destaque de Produto -->
-    <section class="section">
-      <span class="section-label">Produto em destaque</span>
-      <a href={featuredProduct.href} target={featuredProduct.sameTab ? '_self' : '_blank'} class="featured">
-        <div class="featured-image">
-          <img src={featuredProduct.image} alt={featuredProduct.title} width="400" height="225" loading="lazy" />
-        </div>
-        <div class="featured-content">
-          <span class="featured-title">{featuredProduct.title}</span>
-          <span class="featured-sub">{featuredProduct.sub}</span>
-        </div>
-      </a>
-    </section>
-
-    <!-- Outros Produtos -->
+    <!-- Produtos -->
     {products.length > 0 && (
       <section class="section">
-        <span class="section-label">Mais produtos</span>
+        <span class="section-label">Produtos</span>
         <div class="list">
           {products.map(link => (
             <a
-              href={link.disabled ? undefined : link.href}
+              href={link.href}
               rel="noopener"
-              class:list={['item', { 'item--disabled': link.disabled }]}
-              target={link.disabled ? undefined : (link.sameTab ? '_self' : '_blank')}
-              data-tooltip={link.status ?? undefined}
+              class="item"
+              target={link.sameTab ? '_self' : '_blank'}
             >
               <i class={'ph ' + link.icon + ' item-icon'}></i>
               <div class="item-text">
-                <div class="item-header">
-                  <span class="item-label">{link.label}</span>
-                  {link.status && <span class="item-status">{link.status}</span>}
-                </div>
+                <span class="item-label">{link.label}</span>
                 <span class="item-sub">{link.sub}</span>
               </div>
-              {!link.disabled && <i class="ph ph-arrow-right item-arrow"></i>}
+              <i class="ph ph-arrow-right item-arrow"></i>
             </a>
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- Vida Recente -->
-    {photos.length > 0 && (
-      <section class="section">
-        <span class="section-label">Vida recente</span>
-        <div class="photo-grid">
-          {photos.map(photo => (
-            <div class="row-image">
-              <Image
-                src={photo.src}
-                alt=""
-                widths={[400, 800]}
-                sizes="(max-width: 400px) 45vw, 170px"
-                class="lightbox-trigger"
-                data-full={photo.full}
-                loading="lazy"
-              />
-            </div>
           ))}
         </div>
       </section>
@@ -182,8 +124,6 @@ const products = [
     </footer>
 
   </div>
-
-  <Lightbox />
 </BaseLayout>
 
 <script>
@@ -331,42 +271,6 @@ const products = [
     }
   }
 
-  .item--disabled {
-    opacity: 0.4;
-    cursor: default;
-    position: relative;
-  }
-
-  @media (hover: hover) {
-    .item--disabled:hover {
-      background: var(--color-pill-bg);
-      border-color: var(--color-border);
-      transform: none;
-    }
-  }
-
-  @media (hover: hover) {
-    .item-status {
-      display: none;
-    }
-
-    .item--disabled[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      top: 50%;
-      right: 14px;
-      transform: translateY(-50%);
-      background: var(--color-title);
-      color: var(--color-bg);
-      font-size: var(--font-size-xs);
-      font-weight: 500;
-      padding: 4px 9px;
-      border-radius: 4px;
-      white-space: nowrap;
-      pointer-events: none;
-    }
-  }
-
   .item-icon {
     font-size: 18px;
     color: var(--color-muted);
@@ -381,27 +285,10 @@ const products = [
     min-width: 0;
   }
 
-  .item-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
   .item-label {
     font-size: var(--font-size-body);
     color: var(--color-title);
     line-height: 1.4;
-  }
-
-  .item-status {
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    background: var(--color-wash);
-    padding: 2px 6px;
-    border-radius: 4px;
-    color: var(--color-muted);
   }
 
   .item-sub {
@@ -431,24 +318,6 @@ const products = [
     color: var(--color-title);
   }
 
-  /* Photo grid (Vida Recente) */
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  .photo-grid :global(img) {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
-    cursor: zoom-in;
-  }
-
   .links-footer {
     margin-top: 16px;
     display: flex;
@@ -462,73 +331,5 @@ const products = [
     color: var(--color-muted);
     opacity: 0.6;
     letter-spacing: 0.02em;
-  }
-
-  /* Featured product card */
-  .featured {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    overflow: hidden;
-    text-decoration: none;
-    transition: border-color 0.15s, transform 0.15s;
-  }
-
-  @media (hover: hover) {
-    .featured:hover {
-      border-color: #ccc;
-      transform: translateY(-1px);
-      text-decoration: none;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    @media (hover: hover) {
-      .featured:hover {
-        border-color: #444;
-      }
-    }
-  }
-
-  .featured-image {
-    width: 100%;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-    background: var(--color-wash);
-  }
-
-  .featured-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-
-  @media (hover: hover) {
-    .featured:hover .featured-image img {
-      transform: scale(1.02);
-    }
-  }
-
-  .featured-content {
-    padding: 12px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    background: var(--color-pill-bg);
-  }
-
-  .featured-title {
-    font-size: var(--font-size-body);
-    color: var(--color-title);
-    line-height: 1.4;
-  }
-
-  .featured-sub {
-    font-size: var(--font-size-small);
-    color: var(--color-muted);
-    line-height: 1.4;
   }
 </style>
