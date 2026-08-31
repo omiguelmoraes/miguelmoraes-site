@@ -5,7 +5,7 @@ title: Se você entrega o arquivo, você virou a ferramenta
 description: "A Sequoia separou inteligência de julgamento pra explicar o que a IA automatiza primeiro. Aplicado no design, a conta muda o que a gente vende e o que escreve na proposta."
 date: 2026-08-31
 category: Design
-draft: false
+draft: true
 ---
 A [Sequoia](https://www.sequoiacap.com/article/services-the-new-software/) publicou um artigo dizendo que a próxima empresa de um trilhão de dólares não vai vender software. Vai vender o serviço pronto, com software rodando por dentro.
 
