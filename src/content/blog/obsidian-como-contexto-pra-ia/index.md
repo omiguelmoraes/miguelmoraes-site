@@ -5,9 +5,10 @@ date: 2026-08-14
 category: Processo
 draft: false
 created: 2026-08-14 14:00
-updated: 2026-08-19T10:27
+updated: 2026-08-19T22:34
 ---
 ![](./IMG_1092.jpg)
+caption: meu obsidian um tempo atrás, hoje em dia usando com IA mais frequentemente, já ta bem maior...
 
 Por meses eu abri conversa nova com IA e gastei o começo dela explicando sempre a mesma coisa. Quem eu sou, no que estou trabalhando, como gosto que as coisas sejam feitas. Aí a conversa acabava e na seguinte eu explicava tudo de novo.
 
