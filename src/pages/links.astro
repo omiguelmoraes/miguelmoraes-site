@@ -1,5 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { Image, getImage } from 'astro:assets';
+
+const photoModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/about/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+const photos = await Promise.all(
+  Object.entries(photoModules)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(async ([, mod]) => ({
+      src: mod.default,
+      full: (await getImage({ src: mod.default, width: 1400, format: 'webp' })).src,
+    }))
+);
 
 const links = [
   {
@@ -37,6 +52,15 @@ const links = [
   },
 ];
 
+const featuredProduct = {
+  label: 'Produto em destaque',
+  title: 'PackPro',
+  sub: 'Templates no Figma de proposta, contrato e orçamento para freelancers',
+  image: '/og-packpro.png',
+  href: '/packpro',
+  sameTab: true,
+};
+
 const products = [
   {
     label: 'Mentoria',
@@ -47,143 +71,119 @@ const products = [
     disabled: true,
   },
   {
-    label: 'PackPro',
-    sub: 'Templates para freelancers',
-    href: '/packpro',
-    icon: 'ph-package',
-  },
-  {
     label: 'Calculadora de preço',
-    sub: 'Gratuita — quanto vale a sua hora',
+    sub: 'Gratuita, descubra quanto vale a sua hora',
     href: '/calculadora',
     icon: 'ph-calculator',
+    sameTab: true,
   },
 ];
-
-const readingList = [
-  { title: "Don't Make Me Think", author: 'Steve Krug', cover: 'https://books.google.com/books/content?vid=ISBN:9780321965516&printsec=frontcover&img=1&zoom=1' },
-  { title: 'Rework', author: 'Jason Fried & DHH', cover: 'https://books.google.com/books/content?vid=ISBN:9780307463746&printsec=frontcover&img=1&zoom=1' },
-  { title: 'Fall in Love with the Problem', author: 'Uri Levine', cover: 'https://books.google.com/books/content?vid=ISBN:9781637741986&printsec=frontcover&img=1&zoom=1' },
-];
-
-const free = [];
-
-const featured = {
-  label: 'Web Design',
-  title: 'Flouds Performance Digital',
-  sub: 'Website para agência de mídia paga',
-  image: '/projects/webp/flouds-cover.webp',
-  href: '/projects/flouds',
-};
 ---
 
-<BaseLayout title='Miguel Moraes — Links' description='Web Designer na Barca e fundador da Korbi Studio. Baseado em Porto Alegre.'>
-  <div class='page'>
+<BaseLayout title="Miguel Moraes — Links" description="Web Designer na Barca e fundador da Korbi Studio. Baseado em Porto Alegre.">
+  <div class="page">
 
-    <div class='profile'>
-      <div class='avatar'>
-        <img src='/webp/avatar.webp' alt='Miguel Moraes' width='72' height='72' />
+    <div class="profile">
+      <div class="avatar">
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="72" height="72" />
       </div>
-      <h1 class='name'>Miguel Moraes</h1>
-      <p class='sub'>Designer · Porto Alegre, Brasil 🇧🇷</p>
-      <div class='socials'>
-        <a href='https://instagram.com/omiguelmoraes' target='_blank' rel='noopener' aria-label='Instagram'><i class='ph ph-instagram-logo'></i></a>
-        <a href='https://linkedin.com/in/omiguelmoraes' target='_blank' rel='noopener' aria-label='LinkedIn'><i class='ph ph-linkedin-logo'></i></a>
-        <a href='https://www.youtube.com/@omiguelmoraesx' target='_blank' rel='noopener' aria-label='YouTube'><i class='ph ph-youtube-logo'></i></a>
-        <a href='https://x.com/omiguelmoraes' target='_blank' rel='noopener' aria-label='X'><i class='ph ph-x-logo'></i></a>
+      <h1 class="name">Miguel Moraes</h1>
+      <p class="sub">Designer · Porto Alegre, Brasil 🇧🇷</p>
+      <div class="socials">
+        <a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        <a href="https://linkedin.com/in/omiguelmoraes" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+        <a href="https://www.youtube.com/@omiguelmoraesx" target="_blank" rel="noopener" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
+        <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="X"><i class="ph ph-x-logo"></i></a>
       </div>
-      <span class='status'><span class='status-dot'></span>Disponível para projetos</span>
+      <span class="status"><span class="status-dot"></span>Disponível para projetos</span>
     </div>
 
-    <nav class='list'>
+    <nav class="list">
       {links.map(link => (
-        <a href={link.href} target={link.sameTab ? '_self' : '_blank'} rel='noopener' class='item'>
+        <a href={link.href} target={link.sameTab ? '_self' : '_blank'} rel="noopener" class="item">
           <i class={'ph ' + link.icon + ' item-icon'}></i>
-          <div class='item-text'>
-            <span class='item-label'>{link.label}</span>
-            <span class='item-sub'>{link.sub}</span>
+          <div class="item-text">
+            <span class="item-label">{link.label}</span>
+            <span class="item-sub">{link.sub}</span>
           </div>
-          <i class='ph ph-arrow-right item-arrow'></i>
+          <i class="ph ph-arrow-right item-arrow"></i>
         </a>
       ))}
     </nav>
 
-    <section class='section'>
-      <span class='section-label'>Projeto em destaque</span>
-      <a href={featured.href} class='featured'>
-        <div class='featured-image'>
-          <img src={featured.image} alt={featured.title} width='400' height='225' loading='lazy' />
+    <!-- Destaque de Produto -->
+    <section class="section">
+      <span class="section-label">Produto em destaque</span>
+      <a href={featuredProduct.href} target={featuredProduct.sameTab ? '_self' : '_blank'} class="featured">
+        <div class="featured-image">
+          <img src={featuredProduct.image} alt={featuredProduct.title} width="400" height="225" loading="lazy" />
         </div>
-        <div class='featured-content'>
-          <span class='featured-title'>{featured.title}</span>
-          <span class='featured-sub'>{featured.sub}</span>
+        <div class="featured-content">
+          <span class="featured-title">{featuredProduct.title}</span>
+          <span class="featured-sub">{featuredProduct.sub}</span>
         </div>
       </a>
     </section>
 
+    <!-- Outros Produtos -->
     {products.length > 0 && (
-      <section class='section'>
-        <span class='section-label'>Produtos</span>
-        <div class='list'>
+      <section class="section">
+        <span class="section-label">Mais produtos</span>
+        <div class="list">
           {products.map(link => (
             <a
               href={link.disabled ? undefined : link.href}
-              rel='noopener'
+              rel="noopener"
               class:list={['item', { 'item--disabled': link.disabled }]}
               target={link.disabled ? undefined : (link.sameTab ? '_self' : '_blank')}
               data-tooltip={link.status ?? undefined}
             >
               <i class={'ph ' + link.icon + ' item-icon'}></i>
-              <div class='item-text'>
-                <div class='item-header'>
-                  <span class='item-label'>{link.label}</span>
-                  {link.status && <span class='item-status'>{link.status}</span>}
+              <div class="item-text">
+                <div class="item-header">
+                  <span class="item-label">{link.label}</span>
+                  {link.status && <span class="item-status">{link.status}</span>}
                 </div>
-                <span class='item-sub'>{link.sub}</span>
+                <span class="item-sub">{link.sub}</span>
               </div>
-              {!link.disabled && <i class='ph ph-arrow-right item-arrow'></i>}
+              {!link.disabled && <i class="ph ph-arrow-right item-arrow"></i>}
             </a>
           ))}
         </div>
       </section>
     )}
 
-    <section class='section'>
-      <span class='section-label'>Leituras Recentes</span>
-      <div class='reading-grid'>
-        {readingList.map(book => (
-          <div class='book-card' title={book.title + ' by ' + book.author}>
-            <img src={book.cover} alt={book.title} />
-          </div>
-        ))}
-      </div>
-    </section>
-
-    {free.length > 0 && (
-      <section class='section'>
-        <span class='section-label'>Resources</span>
-        <div class='list'>
-          {free.map(link => (
-            <a href={link.href} target='_blank' rel='noopener' class='item'>
-              <i class={'ph ' + link.icon + ' item-icon'}></i>
-              <div class='item-text'>
-                <span class='item-label'>{link.label}</span>
-                <span class='item-sub'>{link.sub}</span>
-              </div>
-              <i class='ph ph-arrow-right item-arrow'></i>
-            </a>
+    <!-- Vida Recente -->
+    {photos.length > 0 && (
+      <section class="section">
+        <span class="section-label">Vida recente</span>
+        <div class="photo-grid">
+          {photos.map(photo => (
+            <div class="row-image">
+              <Image
+                src={photo.src}
+                alt=""
+                widths={[400, 800]}
+                sizes="(max-width: 400px) 45vw, 170px"
+                class="lightbox-trigger"
+                data-full={photo.full}
+                loading="lazy"
+              />
+            </div>
           ))}
         </div>
       </section>
     )}
 
-    <footer class='links-footer'>
-      <div class='location-text'>
-        <span id='local-time'>00:00:00 AM</span> · Porto Alegre, Brazil
+    <footer class="links-footer">
+      <div class="location-text">
+        <span id="local-time">00:00:00 AM</span> · Porto Alegre, Brazil
       </div>
     </footer>
 
   </div>
+
+  <Lightbox />
 </BaseLayout>
 
 <script>
@@ -404,8 +404,6 @@ const featured = {
     color: var(--color-muted);
   }
 
-  /* Uma linha sempre: texto longo corta com reticências em vez de esticar o
-     botão e desalinhar a lista */
   .item-sub {
     white-space: nowrap;
     overflow: hidden;
@@ -427,57 +425,28 @@ const featured = {
     gap: 12px;
   }
 
-  /* Alinhado ao resto do site, que abandonou o mono caixa-alta como rótulo */
   .section-label {
     font-size: var(--font-size-small);
     font-weight: 500;
     color: var(--color-title);
   }
 
-  .reading-grid {
+  /* Photo grid (Vida Recente) */
+  .photo-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
   }
 
-  .book-card {
-    aspect-ratio: 2/3;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    background: linear-gradient(135deg, var(--color-wash) 0%, var(--color-border) 100%);
-    transition: transform 0.2s;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-  }
-  
-  .book-card::before {
-    content: attr(title);
-    font-size: var(--font-size-xs);
-    color: var(--color-muted);
-    font-weight: 500;
-    line-height: 1.2;
-    z-index: 0;
-  }
-
-  @media (hover: hover) {
-    .book-card:hover {
-      transform: translateY(-4px) rotate(2deg);
-    }
-  }
-
-  .book-card img {
+  .photo-grid :global(img) {
+    display: block;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
     object-fit: cover;
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: var(--color-wash);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    cursor: zoom-in;
   }
 
   .links-footer {
@@ -495,7 +464,7 @@ const featured = {
     letter-spacing: 0.02em;
   }
 
-  /* Featured project card */
+  /* Featured product card */
   .featured {
     display: flex;
     flex-direction: column;
@@ -550,7 +519,6 @@ const featured = {
     gap: 2px;
     background: var(--color-pill-bg);
   }
-
 
   .featured-title {
     font-size: var(--font-size-body);

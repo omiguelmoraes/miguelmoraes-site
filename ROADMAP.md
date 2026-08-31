@@ -27,8 +27,9 @@
 ## Changelog
 
 ### 2026-08-31
-- Refino dos textos em Português (PT-BR) de todo o site (`index.astro`, `about.astro`, `career.astro`, `stack.astro`): remoção de construções com tom de tradução literal do inglês (ex: "coisas que parecem boas e realmente significam algo") e alinhamento total com as diretrizes de voz do vault (`Content/Estratégia/Voz — Escrita Longa (Blog).md`).
+- Refino dos textos em Português (PT-BR) de todo o site (`index.astro`, `about.astro`, `career.astro`, `stack.astro`): remoção de construções com tom de tradução literal do inglês (ex: "coisas que parecem boas e realmente significam algo"), eliminação de pontuações de travessão (`—`) e dois pontos (`:`) em frases de apresentação, e alinhamento total com as diretrizes de voz do vault (`Content/Estratégia/Voz — Escrita Longa (Blog).md`).
 - Reequilíbrio de posicionamento (Barca x Korbi Studio): remoção de jargões como "no tempo livre", "durante a semana" e "projetos paralelos", apresentando Miguel como Web Designer na Barca e fundador da Korbi Studio com o mesmo peso e autoridade profissional.
+- Redesign da página `/links` (`src/pages/links.astro`): substituição do destaque de case (Flouds) por **Produto em destaque** (PackPro com imagem `/og-packpro.png`), remoção da seção "Leituras Recentes" e adição da seção **"Vida recente"** no rodapé (grade de 4 fotos do dia a dia integradas ao Lightbox).
 
 ### 2026-08-29
 - Tradução do site para Português (PT-BR): migração completa da navegação (`Início`, `Projetos`, `Blog`, `Carreira`, `Sobre`, `Stack`), páginas principais, metadados, filtros, rótulos de cases e página 404 para português casual e direto.
