@@ -44,6 +44,7 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
 >
   <div class="page">
 
+    <div class="head">
     <header class="page-header">
       <h1 class="page-title">Acervo</h1>
       <p class="page-intro">
@@ -69,7 +70,7 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
           <span class="dd-label">Todos</span>
           <i class="ph ph-caret-down" aria-hidden="true"></i>
         </button>
-        <div class="dd-menu" role="listbox">
+        <div class="dd-menu" data-owner="cat" role="listbox">
           <button class="dd-opt active" type="button" data-cat="all" role="option" aria-selected="true">
             Todos <span class="dd-count">{items.length}</span>
           </button>
@@ -87,7 +88,7 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
           <span class="dd-label">Todas as tags</span>
           <i class="ph ph-caret-down" aria-hidden="true"></i>
         </button>
-        <div class="dd-menu" role="listbox">
+        <div class="dd-menu" data-owner="tag" role="listbox">
           <button class="dd-opt active" type="button" data-tag="" role="option" aria-selected="true">
             Todas as tags <span class="dd-count">{items.length}</span>
           </button>
@@ -98,6 +99,8 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
           ))}
         </div>
       </div>
+    </div>
+
     </div>
 
     <div class="dd-backdrop"></div>
@@ -238,9 +241,14 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
     });
 
     function closeAll() {
-      document.querySelectorAll('.dd.open').forEach(d => {
-        d.classList.remove('open');
-        d.querySelector('.dd-trigger')?.setAttribute('aria-expanded', 'false');
+      document.querySelectorAll<HTMLElement>('.dd').forEach(dd => {
+        dd.classList.remove('open');
+        dd.querySelector('.dd-trigger')?.setAttribute('aria-expanded', 'false');
+        const menu = document.querySelector<HTMLElement>(`.dd-menu[data-owner="${dd.dataset.dd}"]`);
+        if (!menu) return;
+        menu.classList.remove('open');
+        // devolve a folha pro dropdown, senão o desktop perde a âncora do menu
+        if (menu.parentElement !== dd) dd.appendChild(menu);
       });
       backdrop?.classList.remove('visible');
       document.body.style.overflow = '';
@@ -250,12 +258,21 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
       const willOpen = !dd.classList.contains('open');
       closeAll();
       if (!willOpen) return;
+
       dd.classList.add('open');
       dd.querySelector('.dd-trigger')?.setAttribute('aria-expanded', 'true');
-      // A folha de baixo do mobile precisa do fundo escuro; no desktop ele fica
-      // transparente e serve só pra capturar o clique fora
+      const menu = dd.querySelector<HTMLElement>('.dd-menu');
+      menu?.classList.add('open');
+
+      // No mobile o menu vira folha de baixo. Ele precisa sair dos controles: o
+      // sticky de lá cria contexto de empilhamento e prenderia a folha atrás do
+      // escurecido, como se ela não tivesse aberto
+      if (menu && window.matchMedia('(max-width: 700px)').matches) {
+        document.body.appendChild(menu);
+        document.body.style.overflow = 'hidden';
+      }
+
       backdrop?.classList.add('visible');
-      if (window.matchMedia('(max-width: 700px)').matches) document.body.style.overflow = 'hidden';
     }
 
     function select(dd: HTMLElement, btn: HTMLElement) {
@@ -292,6 +309,23 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeAll();
     });
+
+    // A barra de identidade é fixa no mobile e muda de altura quando fonte e
+    // avatar carregam: observar é mais confiável do que medir uma vez só
+    function syncSticky() {
+      const bar = document.querySelector<HTMLElement>('.sidebar');
+      const stacked = window.matchMedia('(max-width: 900px)').matches;
+      const h = stacked && bar && !bar.classList.contains('nav-open')
+        ? bar.getBoundingClientRect().height
+        : 0;
+      document.documentElement.style.setProperty('--acv-sticky-top', `${Math.round(h)}px`);
+    }
+
+    syncSticky();
+    window.addEventListener('resize', syncSticky);
+
+    const bar = document.querySelector('.sidebar');
+    if (bar && 'ResizeObserver' in window) new ResizeObserver(syncSticky).observe(bar);
 
     search?.addEventListener('input', render);
     modal?.querySelector('.modal-close')?.addEventListener('click', () => modal.close());
@@ -348,11 +382,59 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
     max-width: var(--prose-max-width);
   }
 
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--color-bg);
+  }
+
   .controls {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-top: calc(var(--block-gap) - 28px);
+    background: var(--color-bg);
+  }
+
+  /* Desktop: o bloco inteiro gruda na mesma altura em que a sidebar para, senão
+     ele encosta no topo da janela e desalinha da coluna da esquerda. Quando gruda,
+     a introdução sai — ela já foi lida, e o que precisa continuar à mão é o filtro */
+  /* Desktop: título, introdução e filtros grudam juntos na mesma altura em que a
+     sidebar para, então o bloco fica alinhado com o topo da foto */
+  @media (min-width: 901px) {
+    .head {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding-top: var(--layout-padding-y);
+      padding-bottom: 16px;
+      margin-top: calc(var(--layout-padding-y) * -1);
+    }
+  }
+
+  /* Mobile: a barra de identidade já ocupa o topo, então só busca e filtros
+     acompanham a rolagem, parando logo abaixo dela */
+  @media (max-width: 900px) {
+    /* display: contents dissolve o wrapper e devolve header e controles como
+       filhos diretos do .page — sem isso o sticky dos controles morreria no fim
+       do .head, uns 150px abaixo do topo */
+    .head {
+      display: contents;
+    }
+
+    /* Para logo abaixo da barra de identidade, que continua fixa no topo. O
+       fallback cobre o intervalo antes de o JS medir a altura real. z-index baixo
+       de propósito: assim o escurecido cobre a busca também, como nas outras
+       páginas — a folha sai daqui quando abre, então não fica presa atrás */
+    .controls {
+      position: sticky;
+      top: var(--acv-sticky-top, 81px);
+      z-index: 15;
+      padding: 12px 0;
+      margin: 0 calc(var(--layout-padding-x) * -1);
+      padding-left: var(--layout-padding-x);
+      padding-right: var(--layout-padding-x);
+    }
   }
 
   .search {
@@ -463,7 +545,7 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
   }
 
-  .dd.open .dd-menu {
+  .dd-menu.open {
     display: flex;
   }
 
