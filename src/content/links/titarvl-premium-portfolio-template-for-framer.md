@@ -4,7 +4,6 @@ url: https://titarvldesign.framer.website/
 category: reference
 tags:
   - template
-  - portfolio
   - design
 description: "Discover a premium Framer website template built for designers, freelancers, and creatives. Fully responsive, easy to customize, and ideal for personal sites, portfolios, or…"
 thumb: /acervo/thumbs/47045f66325b.jpg
