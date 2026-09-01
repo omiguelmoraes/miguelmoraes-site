@@ -11,6 +11,7 @@ const savedIcons = new Set(
 const CATEGORIES = [
   { value: 'tool', label: 'Ferramentas' },
   { value: 'reference', label: 'Referências' },
+  { value: 'portfolio', label: 'Portfólios' },
   { value: 'content', label: 'Conteúdos' },
   { value: 'article', label: 'Artigos' },
   { value: 'course', label: 'Cursos' },
@@ -482,6 +483,7 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
   [data-c='content'] { --c: #ef4444; }
   [data-c='course'] { --c: #10b981; }
   [data-c='article'] { --c: #f59e0b; }
+  [data-c='portfolio'] { --c: #ec4899; }
 
   .dd {
     position: relative;
