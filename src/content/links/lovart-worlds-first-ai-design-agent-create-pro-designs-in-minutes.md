@@ -1,6 +1,6 @@
 ---
 title: "Lovart – World's First AI Design Agent | Create Pro Designs in Minutes"
-url: https://lovart.ai/?AHA_ORDER_ID=684eebb0fab687055e5478c5
+url: https://lovart.ai/
 category: reference
 tags:
   - ai
