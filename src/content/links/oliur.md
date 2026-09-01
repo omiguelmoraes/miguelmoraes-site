@@ -1,7 +1,7 @@
 ---
 title: "Oliur"
 url: https://oliur.com/
-category: reference
+category: portfolio
 tags:
   - design
   - dev

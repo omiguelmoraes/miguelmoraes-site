@@ -1,7 +1,7 @@
 ---
 title: "Peter Konti - Product, Web Design, Framer"
 url: https://peterkonti.com/
-category: reference
+category: portfolio
 tags:
   - ai
   - design

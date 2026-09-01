@@ -1,7 +1,7 @@
 ---
 title: "Fractional Design Partner for Early-Stage Teams"
 url: https://gabrielvaldivia.com/
-category: reference
+category: portfolio
 tags:
   - design
 description: "Fractional Design Partner for Early-Stage Teams"

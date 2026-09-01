@@ -1,7 +1,7 @@
 ---
 title: "Things I use"
 url: https://ped.ro/writing/things-i-use
-category: reference
+category: portfolio
 tags:
   - design
   - dev

@@ -1,7 +1,7 @@
 ---
 title: "Design Engineering | Marcelo Chaman"
 url: https://marcelochaman.ca/s/design-engineering
-category: reference
+category: portfolio
 tags:
   - design
   - dev

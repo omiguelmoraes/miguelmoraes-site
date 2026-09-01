@@ -1,7 +1,7 @@
 ---
 title: "Joabel Kasper - Especialista em Growth Marketing"
 url: https://joabelkasper.com/academia-roi
-category: reference
+category: portfolio
 tags:
   - marketing
 description: "Especialista em impulsionar o crescimento da empresa e treinar equipes de alto desempenho"

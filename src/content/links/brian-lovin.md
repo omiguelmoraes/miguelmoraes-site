@@ -1,9 +1,8 @@
 ---
 title: "Brian Lovin"
 url: https://brianlovin.com/
-category: reference
+category: portfolio
 tags:
-  - portfolio
   - design
 description: "Brian Lovin is a designer and software engineer living in San Francisco, currently designing AI products at Notion."
 thumb: /acervo/thumbs/6834351aebf0.jpg

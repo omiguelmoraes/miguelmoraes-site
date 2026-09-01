@@ -1,6 +1,6 @@
 ---
 title: "rexan wong"
 url: https://rexanwong.com/
-category: reference
+category: portfolio
 origin: browser
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Cole Caccamise"
 url: https://colecaccamise.com/
-category: reference
+category: portfolio
 tags:
   - dev
 description: "Cole Caccamise is a game developer creating atmospheric narrative experiences and sharing them on the internet."

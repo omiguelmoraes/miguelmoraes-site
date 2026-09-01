@@ -1,7 +1,7 @@
 ---
 title: "Basis Theory: Built to Keep Customers Transacting"
 url: https://basistheory.com/
-category: tool
+category: reference
 tags:
   - design
   - financas

@@ -1,7 +1,7 @@
 ---
 title: "Chris Raroque"
 url: https://chrisraroque.com/
-category: reference
+category: portfolio
 tags:
   - produtividade
   - dev

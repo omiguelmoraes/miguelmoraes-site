@@ -1,9 +1,8 @@
 ---
 title: "Portfolio of Sahil Vhora | Product Designer"
 url: https://iamsahilvhora.com/
-category: reference
+category: portfolio
 tags:
-  - portfolio
   - design
   - dev
 description: "Senior freelance product designer helping SaaS founders design clearer products, better UX flows, clean interfaces, and developer-ready experiences."

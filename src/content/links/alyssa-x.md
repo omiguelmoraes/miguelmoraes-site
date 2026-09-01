@@ -1,9 +1,8 @@
 ---
 title: "Alyssa X"
 url: https://alyssax.com/
-category: reference
+category: portfolio
 tags:
-  - portfolio
   - design
   - dev
 added: 2026-08-03

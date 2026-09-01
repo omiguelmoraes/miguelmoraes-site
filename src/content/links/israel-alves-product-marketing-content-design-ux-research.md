@@ -1,9 +1,8 @@
 ---
 title: "Israel Alves — Product Marketing, Content Design & UX Research"
 url: https://israel-alves.com/
-category: reference
+category: portfolio
 tags:
-  - portfolio
   - design
   - marketing
 added: 2026-08-10

@@ -1,9 +1,8 @@
 ---
 title: "Radilson Gomes - Portfolio 2023"
 url: https://radilson.com/
-category: reference
+category: portfolio
 tags:
-  - portfolio
   - design
   - dev
 description: "Product designer who codes polished experiences for AI platforms, developer tools, and early-stage teams."
