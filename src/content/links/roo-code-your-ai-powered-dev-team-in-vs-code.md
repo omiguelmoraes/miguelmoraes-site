@@ -1,6 +1,6 @@
 ---
 title: "Roo Code – Your AI-Powered Dev Team in VS Code"
-url: https://roocode.com/
+url: https://roomote.dev/
 category: tool
 tags:
   - ai

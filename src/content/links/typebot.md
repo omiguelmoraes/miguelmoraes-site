@@ -1,6 +1,6 @@
 ---
 title: "Typebot"
-url: https://typebot.io/
+url: https://typebot.com/
 category: tool
 origin: browser
 ---

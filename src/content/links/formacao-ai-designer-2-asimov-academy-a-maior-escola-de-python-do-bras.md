@@ -1,6 +1,6 @@
 ---
 title: "Formação AI Designer 2  Asimov Academy  A maior escola de Python do Brasil"
-url: https://asimov.academy/ai_designer-formacao-2
+url: https://asimov.academy/
 category: course
 tags:
   - ai

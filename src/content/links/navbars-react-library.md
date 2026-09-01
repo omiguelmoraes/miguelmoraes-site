@@ -1,6 +1,6 @@
 ---
 title: "Navbars | React Library"
-url: https://relume.io/react-categories/navbars
+url: https://www.relume.ai/
 category: tool
 tags:
   - dev

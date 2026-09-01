@@ -1,6 +1,6 @@
 ---
 title: "Kling AI Next-Gen AI Video & AI Image Generator"
-url: https://klingai.com/
+url: https://kling.ai/
 category: tool
 tags:
   - ai

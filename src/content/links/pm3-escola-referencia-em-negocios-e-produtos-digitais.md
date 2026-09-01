@@ -1,6 +1,6 @@
 ---
 title: "PM3 - Escola referência em negócios e produtos digitais"
-url: https://conteudo.cursospm3.com.br/products/lovable-workshop
+url: https://www.cursospm3.com.br/
 category: course
 tags:
   - ai
