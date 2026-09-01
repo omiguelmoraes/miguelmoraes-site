@@ -1,6 +1,6 @@
 ---
 title: "The state of AI in 2025: Agents, innovation, and transformation"
-url: https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai?
+url: https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai
 category: article
 tags:
   - ai
