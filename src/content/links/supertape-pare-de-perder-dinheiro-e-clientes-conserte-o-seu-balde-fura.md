@@ -1,5 +1,5 @@
 ---
-title: "SUPERTAPE - Pare de perder dinheiro e clientes. Conserte o seu balde furado agora!"
+title: "SUPERTAPE - Pare de perder dinheiro e clientes. Conserte o seu balde furado…"
 url: https://thesupertape.com/
 category: reference
 tags:

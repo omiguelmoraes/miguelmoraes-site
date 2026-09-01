@@ -1,5 +1,5 @@
 ---
-title: "O que Front-end Developers precisam saber | Felipe Fialho - Front-end Developer"
+title: "O que Front-end Developers precisam saber"
 url: https://felipefialho.com/blog/o-que-front-end-developers-precisam-saber
 category: article
 tags:

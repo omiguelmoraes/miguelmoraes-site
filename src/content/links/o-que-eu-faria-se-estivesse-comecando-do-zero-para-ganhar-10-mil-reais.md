@@ -1,5 +1,5 @@
 ---
-title: "O que eu faria se estivesse começando do ZERO para ganhar 10 mil reais como Designer"
+title: "O que eu faria se estivesse começando do ZERO para ganhar 10 mil reais como…"
 url: https://kaciofilipe.substack.com/p/o-que-eu-faria-se-estivesse-comecando
 category: article
 tags:

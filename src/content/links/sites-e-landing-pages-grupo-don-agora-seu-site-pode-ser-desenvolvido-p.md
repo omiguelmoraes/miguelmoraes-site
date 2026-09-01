@@ -1,5 +1,5 @@
 ---
-title: "Sites e Landing Pages · Grupo Don – Agora seu site pode ser desenvolvido por quem está há 10 anos girando o ponteiro de empresas no digital. Não fazemos código, geramos oportunidades."
+title: "Sites e Landing Pages · Grupo Don – Agora seu site pode ser desenvolvido…"
 url: https://sites.dondigital.com.br/
 category: reference
 tags:

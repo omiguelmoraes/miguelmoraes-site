@@ -884,8 +884,14 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
       display: none;
     }
 
+    /* Título longo (às vezes o meta title inteiro do site) vira parágrafo e
+       engole a linha: duas linhas e corta */
     .row-title {
       white-space: normal;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 </style>

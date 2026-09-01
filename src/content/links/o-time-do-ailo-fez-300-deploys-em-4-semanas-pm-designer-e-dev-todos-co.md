@@ -1,5 +1,5 @@
 ---
-title: "O time do AILO fez 300 deploys em 4 semanas. PM, designer e dev todos commitando ao mesmo tempo."
+title: "O time do AILO fez 300 deploys em 4 semanas. PM, designer e dev todos…"
 url: https://youtube.com/watch?v=N2cZZI7YNSk
 category: content
 tags:

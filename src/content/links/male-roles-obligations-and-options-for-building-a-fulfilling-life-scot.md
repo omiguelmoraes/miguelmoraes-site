@@ -1,5 +1,5 @@
 ---
-title: "Male Roles, Obligations and Options for Building a Fulfilling Life | Scott Galloway"
+title: "Male Roles, Obligations and Options for Building a Fulfilling Life"
 url: https://youtube.com/watch?v=sQcS6f2qYoQ
 category: content
 tags:

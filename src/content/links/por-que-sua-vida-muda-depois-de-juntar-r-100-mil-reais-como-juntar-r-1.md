@@ -1,5 +1,5 @@
 ---
-title: "POR QUE SUA VIDA MUDA DEPOIS DE JUNTAR R$ 100 MIL REAIS? | Como juntar R$ 100 mil de forma rápida?"
+title: "POR QUE SUA VIDA MUDA DEPOIS DE JUNTAR R$ 100 MIL REAIS?"
 url: https://youtube.com/watch?v=_bJQDjRdYD8
 category: content
 tags:

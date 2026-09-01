@@ -1,5 +1,5 @@
 ---
-title: "GitHub - obra/superpowers: An agentic skills framework & software development methodology that works."
+title: "superpowers — An agentic skills framework & software development…"
 url: https://github.com/obra/superpowers
 category: tool
 tags:

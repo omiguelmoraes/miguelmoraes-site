@@ -1,5 +1,5 @@
 ---
-title: "The first CMS that installs directly into any Next.js app — Payload 3.0 has arrived"
+title: "The first CMS that installs directly into any Next.js app"
 url: https://youtube.com/watch?v=5E9ZDXOk0_8
 category: content
 tags:

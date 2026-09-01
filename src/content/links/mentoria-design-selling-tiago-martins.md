@@ -6,6 +6,7 @@ tags:
   - ai
   - design
   - curso
+description: "Atrair clientes, fechar bons contratos cobrando 2 a 3x mais e ser um designer bem pago - Mentoria Design Selling"
 thumb: /acervo/thumbs/ba10455ac625.jpg
 origin: browser
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Cursor AI Beginner's Guide To AI Coding in 28 min (Claude AI, ChatGPT, GitHub, Firebase)"
+title: "Cursor AI Beginner's Guide To AI Coding in 28 min (Claude AI, ChatGPT…"
 url: https://youtube.com/watch?v=2WnxKCFAXAM
 category: content
 tags:

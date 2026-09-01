@@ -1,5 +1,5 @@
 ---
-title: "Victor Berbel — Independent Product Designer | Websites, SaaS and Mobile Apps"
+title: "Victor Berbel — Independent Product Designer"
 url: https://victorberbel.work/
 category: reference
 tags:

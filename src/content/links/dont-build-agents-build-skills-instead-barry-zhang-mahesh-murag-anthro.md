@@ -1,5 +1,5 @@
 ---
-title: "Don't Build Agents, Build Skills Instead – Barry Zhang & Mahesh Murag, Anthropic"
+title: "Don't Build Agents, Build Skills Instead"
 url: https://youtube.com/watch?v=CEvIs9y1uog
 category: content
 tags:

@@ -1,5 +1,5 @@
 ---
-title: "Breno Oak | Marketing Humanizado | OPB on Instagram: 'A perspectiva molda sua realidade'"
+title: "Breno Oak | Marketing Humanizado | OPB no Instagram"
 url: https://instagram.com/p/DbRaZKKH7jS
 category: content
 tags:

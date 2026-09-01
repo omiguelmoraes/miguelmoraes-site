@@ -1,5 +1,5 @@
 ---
-title: "Milan Design Studio | Websites e presença digital (@milandesignstudio.cc) • Instagram photos and videos"
+title: "Milan Design Studio | Websites e presença digital"
 url: https://instagram.com/milandesignstudio.cc
 category: content
 tags:

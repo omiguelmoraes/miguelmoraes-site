@@ -1,5 +1,5 @@
 ---
-title: "Como levei o G4 para 1 milhão de seguidores e R$14 milhões de receita orgânica"
+title: "Como levei o G4 para 1 milhão de seguidores e R$14 milhões de receita…"
 url: https://crasto.substack.com/p/como-levei-o-g4-para-1-milhao-de
 category: article
 tags:

@@ -1,5 +1,5 @@
 ---
-title: "A ROTINA DO Nº 1 EM VENDAS E NETWORKING DO BRASIL | 24 HORAS COM ALFREDO SOARES"
+title: "A ROTINA DO Nº 1 EM VENDAS E NETWORKING DO BRASIL | 24 HORAS COM ALFREDO…"
 url: https://youtube.com/watch?v=bXYnTmjo5AU
 category: content
 tags:
