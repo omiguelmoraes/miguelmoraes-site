@@ -118,7 +118,7 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
         >
           <span class="row-icon">
             {item.icon
-              ? <img src={item.icon} alt="" width="16" height="16" loading="lazy" />
+              ? <img src={item.icon} alt="" width="16" height="16" loading="lazy" decoding="async" fetchpriority="low" />
               : <span class="row-monogram">{item.domain[0].toUpperCase()}</span>}
           </span>
           <span class="row-main">
@@ -625,6 +625,10 @@ const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b
     font-family: inherit;
     padding: 12px 0;
     cursor: pointer;
+    /* com 231 linhas o paint inicial pesa: o navegador pula o layout das que
+       estão fora da tela e reserva a altura pra barra de rolagem não pular */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 54px;
     /* mesma curva e distância do .item no global.css, que é o que dá o toque de
        vida nas linhas do /stack */
     transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
