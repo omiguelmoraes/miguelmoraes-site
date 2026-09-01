@@ -1,6 +1,6 @@
 ---
 title: "🎙️ MacWhisper"
-url: https://goodsnooze.gumroad.com/l/macwhisper?layout=profile
+url: https://goodsnooze.gumroad.com/l/macwhisper
 category: tool
 tags:
   - produtividade

@@ -1,6 +1,6 @@
 ---
 title: "Make"
-url: https://us2.make.com/1131702/scenarios?folder=all&tab=all&type=scenario
+url: https://www.make.com/
 category: tool
 tags:
   - produtividade

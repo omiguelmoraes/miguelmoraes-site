@@ -1,6 +1,6 @@
 ---
 title: "Plaud Web"
-url: https://web.plaud.ai/file-list?categoryId=note
+url: https://www.plaud.ai/
 category: tool
 tags:
   - produtividade

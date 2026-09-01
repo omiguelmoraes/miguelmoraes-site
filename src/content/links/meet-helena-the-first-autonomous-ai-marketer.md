@@ -1,6 +1,6 @@
 ---
 title: "Meet Helena, the First Autonomous AI Marketer"
-url: https://agent.enrichlabs.ai/marketing/register
+url: https://www.enrichlabs.ai/
 category: tool
 tags:
   - ai

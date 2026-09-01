@@ -1,6 +1,6 @@
 ---
 title: "Projects - Recraft AI"
-url: https://recraft.ai/projects
+url: https://www.recraft.ai/
 category: tool
 tags:
   - ai
