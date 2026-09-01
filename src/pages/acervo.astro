@@ -1,0 +1,809 @@
+---
+import fs from 'node:fs';
+import { getCollection } from 'astro:content';
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const ICON_DIR = 'public/acervo/icons';
+const savedIcons = new Set(
+  fs.existsSync(ICON_DIR) ? fs.readdirSync(ICON_DIR).map(f => f.replace(/\.png$/, '')) : []
+);
+
+const CATEGORIES = [
+  { value: 'tool', label: 'Ferramentas' },
+  { value: 'reference', label: 'Referências' },
+  { value: 'content', label: 'Conteúdos' },
+  { value: 'article', label: 'Artigos' },
+  { value: 'course', label: 'Cursos' },
+];
+
+const LABEL = Object.fromEntries(CATEGORIES.map(c => [c.value, c.label]));
+
+const entries = await getCollection('links');
+
+const items = entries
+  .map(e => ({
+    ...e.data,
+    domain: new URL(e.data.url).hostname.replace(/^www\./, ''),
+    time: e.data.added ? new Date(e.data.added).getTime() : 0,
+  }))
+  .map(i => ({ ...i, icon: savedIcons.has(i.domain) ? `/acervo/icons/${i.domain}.png` : '' }))
+  .sort((a, b) => b.time - a.time || a.title.localeCompare(b.title));
+
+const counts = Object.fromEntries(
+  CATEGORIES.map(c => [c.value, items.filter(i => i.category === c.value).length])
+);
+
+const tagCounts = new Map<string, number>();
+items.forEach(i => i.tags.forEach(tag => tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1)));
+const tags = [...tagCounts.entries()].filter(([, n]) => n >= 3).sort((a, b) => b[1] - a[1]);
+---
+
+<SiteLayout
+  title="Acervo — Miguel Moraes"
+  description="Ferramentas, referências e conteúdos que venho salvando ao longo dos anos. Tudo em um lugar só, com filtro."
+>
+  <div class="page">
+
+    <header class="page-header">
+      <h1 class="page-title">Acervo</h1>
+      <p class="page-intro">
+        Tudo que eu salvo em um lugar só — ferramenta que uso, site que me inspira, vídeo que
+        valeu o tempo. Sai direto das minhas notas, então cresce toda semana.
+      </p>
+    </header>
+
+    <div class="controls">
+      <div class="search">
+        <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+        <input
+          type="search"
+          id="acv-search"
+          placeholder={`Buscar em ${items.length} links`}
+          autocomplete="off"
+          aria-label="Buscar no acervo"
+        />
+      </div>
+
+      <div class="dd" data-dd="cat">
+        <button class="dd-trigger" type="button" aria-expanded="false" aria-haspopup="listbox">
+          <span class="dd-label">Todos</span>
+          <i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="dd-menu" role="listbox">
+          <button class="dd-opt active" type="button" data-cat="all" role="option" aria-selected="true">
+            Todos <span class="dd-count">{items.length}</span>
+          </button>
+          {CATEGORIES.map(c => (
+            <button class="dd-opt" type="button" data-cat={c.value} role="option" aria-selected="false">
+              <span class="dot" data-c={c.value}></span>
+              {c.label} <span class="dd-count">{counts[c.value]}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div class="dd" data-dd="tag">
+        <button class="dd-trigger" type="button" aria-expanded="false" aria-haspopup="listbox">
+          <span class="dd-label">Todas as tags</span>
+          <i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="dd-menu" role="listbox">
+          <button class="dd-opt active" type="button" data-tag="" role="option" aria-selected="true">
+            Todas as tags <span class="dd-count">{items.length}</span>
+          </button>
+          {tags.map(([tag, n]) => (
+            <button class="dd-opt" type="button" data-tag={tag} role="option" aria-selected="false">
+              {tag} <span class="dd-count">{n}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="dd-backdrop"></div>
+
+    <div class="table">
+      {items.map((item, i) => (
+        <button
+          class="row"
+          type="button"
+          data-i={i}
+          data-cat={item.category}
+          data-tags={item.tags.join(',')}
+          data-search={`${item.title} ${item.description} ${item.domain} ${item.tags.join(' ')}`.toLowerCase()}
+        >
+          <span class="row-icon">
+            {item.icon
+              ? <img src={item.icon} alt="" width="16" height="16" loading="lazy" />
+              : <span class="row-monogram">{item.domain[0].toUpperCase()}</span>}
+          </span>
+          <span class="row-main">
+            <span class="row-title">{item.title}</span>
+            <span class="row-domain">{item.domain}</span>
+          </span>
+          <span class="row-cat" data-c={item.category}>{LABEL[item.category]}</span>
+        </button>
+      ))}
+    </div>
+
+    <p class="empty" id="acv-empty" hidden>Nada com esse filtro. Tenta outra combinação.</p>
+
+    <!-- Os dados de cada item viajam como JSON: o modal é um só e se repinta no clique,
+         em vez de eu renderizar 226 modais escondidos no HTML -->
+    <script type="application/json" id="acv-data" set:html={JSON.stringify(items.map(i => ({
+      title: i.title, url: i.url, domain: i.domain, description: i.description,
+      thumb: i.thumb ?? '', tags: i.tags, category: LABEL[i.category], icon: i.icon,
+    })))} />
+
+    <dialog id="acv-modal" class="modal">
+      <div class="modal-inner">
+        <button class="modal-close" type="button" aria-label="Fechar">
+          <i class="ph ph-x" aria-hidden="true"></i>
+        </button>
+        <img class="modal-thumb" alt="" hidden />
+        <span class="modal-cat"></span>
+        <h2 class="modal-title"></h2>
+        <p class="modal-desc"></p>
+        <div class="modal-tags"></div>
+        <a class="modal-link" target="_blank" rel="noopener">
+          <span class="modal-domain"></span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </dialog>
+
+  </div>
+</SiteLayout>
+
+<script>
+  interface Item {
+    title: string; url: string; domain: string; description: string;
+    thumb: string; tags: string[]; category: string;
+  }
+
+  function setup() {
+    // O módulo roda no load e o ClientRouter dispara astro:page-load logo depois:
+    // sem essa trava cada elemento fica com dois listeners, e no gatilho o segundo
+    // fecha o menu que o primeiro acabou de abrir
+    const table = document.querySelector<HTMLElement>('.table');
+    if (!table || table.dataset.ready === '1') return;
+    table.dataset.ready = '1';
+
+    const rows = [...document.querySelectorAll<HTMLElement>('.row')];
+    if (!rows.length) return;
+
+    const data: Item[] = JSON.parse(document.getElementById('acv-data')?.textContent ?? '[]');
+    const search = document.getElementById('acv-search') as HTMLInputElement | null;
+    const empty = document.getElementById('acv-empty');
+    const modal = document.getElementById('acv-modal') as HTMLDialogElement | null;
+
+    const backdrop = document.querySelector<HTMLElement>('.dd-backdrop');
+
+    let cat = 'all';
+    let tag: string | null = null;
+
+    function render() {
+      const q = (search?.value ?? '').trim().toLowerCase();
+      let visible = 0;
+
+      rows.forEach(row => {
+        const okCat = cat === 'all' || row.dataset.cat === cat;
+        const okTag = !tag || (row.dataset.tags ?? '').split(',').includes(tag);
+        const okQ = !q || (row.dataset.search ?? '').includes(q);
+        const show = okCat && okTag && okQ;
+        row.hidden = !show;
+        if (show) visible++;
+      });
+
+      if (empty) empty.hidden = visible > 0;
+
+      // Reflete o estado na URL pra que um post possa linkar o recorte pronto
+      const url = new URL(window.location.href);
+      cat === 'all' ? url.searchParams.delete('cat') : url.searchParams.set('cat', cat);
+      tag ? url.searchParams.set('tag', tag) : url.searchParams.delete('tag');
+      history.replaceState(null, '', url.pathname + url.search);
+    }
+
+    function open(item: Item) {
+      if (!modal) return;
+      const q = <T extends Element>(s: string) => modal.querySelector<T>(s)!;
+
+      const img = q<HTMLImageElement>('.modal-thumb');
+      img.hidden = !item.thumb;
+      if (item.thumb) img.src = item.thumb;
+
+      q('.modal-cat').textContent = item.category;
+      q('.modal-title').textContent = item.title;
+
+      const desc = q<HTMLElement>('.modal-desc');
+      desc.textContent = item.description;
+      desc.hidden = !item.description;
+
+      const tagsBox = q<HTMLElement>('.modal-tags');
+      tagsBox.replaceChildren(...item.tags.map(name => {
+        const el = document.createElement('span');
+        el.className = 'modal-tag';
+        el.textContent = name;
+        return el;
+      }));
+      tagsBox.hidden = !item.tags.length;
+
+      q<HTMLAnchorElement>('.modal-link').href = item.url;
+      q('.modal-domain').textContent = item.domain;
+      modal.showModal();
+    }
+
+    rows.forEach(row => {
+      row.addEventListener('click', () => open(data[Number(row.dataset.i)]));
+    });
+
+    function closeAll() {
+      document.querySelectorAll('.dd.open').forEach(d => {
+        d.classList.remove('open');
+        d.querySelector('.dd-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+      backdrop?.classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+
+    function toggle(dd: HTMLElement) {
+      const willOpen = !dd.classList.contains('open');
+      closeAll();
+      if (!willOpen) return;
+      dd.classList.add('open');
+      dd.querySelector('.dd-trigger')?.setAttribute('aria-expanded', 'true');
+      // A folha de baixo do mobile precisa do fundo escuro; no desktop ele fica
+      // transparente e serve só pra capturar o clique fora
+      backdrop?.classList.add('visible');
+      if (window.matchMedia('(max-width: 700px)').matches) document.body.style.overflow = 'hidden';
+    }
+
+    function select(dd: HTMLElement, btn: HTMLElement) {
+      dd.querySelectorAll<HTMLElement>('.dd-opt').forEach(o => {
+        o.classList.toggle('active', o === btn);
+        o.setAttribute('aria-selected', String(o === btn));
+      });
+      const label = dd.querySelector('.dd-label');
+      if (label) label.textContent = btn.textContent?.replace(/\s*\d+\s*$/, '').trim() ?? '';
+      dd.classList.toggle('filtered', !(btn.dataset.cat === 'all' || btn.dataset.tag === ''));
+    }
+
+    document.querySelectorAll<HTMLElement>('.dd').forEach(dd => {
+      dd.querySelector('.dd-trigger')?.addEventListener('click', e => {
+        e.stopPropagation();
+        toggle(dd);
+      });
+
+      dd.querySelectorAll<HTMLElement>('.dd-opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (dd.dataset.dd === 'cat') cat = btn.dataset.cat!;
+          else tag = btn.dataset.tag || null;
+          select(dd, btn);
+          closeAll();
+          render();
+        });
+      });
+    });
+
+    backdrop?.addEventListener('click', closeAll);
+    document.addEventListener('click', e => {
+      if (!(e.target as HTMLElement).closest('.dd')) closeAll();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeAll();
+    });
+
+    search?.addEventListener('input', render);
+    modal?.querySelector('.modal-close')?.addEventListener('click', () => modal.close());
+
+    // Clique no backdrop: o alvo é o próprio <dialog>, o conteúdo fica no .modal-inner
+    modal?.addEventListener('click', e => {
+      if (e.target === modal) modal.close();
+    });
+
+    // Estado inicial vindo da URL: /acervo?cat=tool&tag=ai
+    const params = new URLSearchParams(window.location.search);
+
+    const catDD = document.querySelector<HTMLElement>('.dd[data-dd="cat"]');
+    const initCat = params.get('cat');
+    if (catDD && initCat) {
+      const opt = catDD.querySelector<HTMLElement>(`.dd-opt[data-cat="${CSS.escape(initCat)}"]`);
+      if (opt) {
+        cat = initCat;
+        select(catDD, opt);
+      }
+    }
+
+    const tagDD = document.querySelector<HTMLElement>('.dd[data-dd="tag"]');
+    const initTag = params.get('tag');
+    if (tagDD && initTag) {
+      const opt = tagDD.querySelector<HTMLElement>(`.dd-opt[data-tag="${CSS.escape(initTag)}"]`);
+      if (opt) {
+        tag = initTag;
+        select(tagDD, opt);
+      }
+    }
+
+    render();
+  }
+
+  setup();
+  document.addEventListener('astro:page-load', setup);
+</script>
+
+<style>
+  /* .row é grid e .modal-thumb é block: sem isso o atributo hidden não esconde
+     nada, e tanto o filtro quanto a moldura vazia da thumb ficam quebrados */
+  [hidden] {
+    display: none !important;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .page-header {
+    max-width: var(--prose-max-width);
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: calc(var(--block-gap) - 28px);
+  }
+
+  .search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .search i {
+    position: absolute;
+    left: 12px;
+    font-size: 15px;
+    color: var(--color-muted);
+    pointer-events: none;
+  }
+
+  .search input {
+    width: 100%;
+    font-family: inherit;
+    font-size: var(--font-size-small);
+    color: var(--color-title);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 8px 14px 8px 34px;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+
+  .search input:focus {
+    outline: none;
+    border-color: var(--color-muted);
+  }
+
+  .search input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+
+  /* Uma cor por categoria. O mix com o fundo resolve claro e escuro na mesma
+     declaração, então a pílula não precisa de bloco separado no dark */
+  [data-c='tool'] { --c: #3b82f6; }
+  [data-c='reference'] { --c: #8b5cf6; }
+  [data-c='content'] { --c: #ef4444; }
+  [data-c='course'] { --c: #10b981; }
+  [data-c='article'] { --c: #f59e0b; }
+
+  .dd {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .dd-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: var(--font-size-small);
+    padding: 7px 12px;
+    cursor: pointer;
+    line-height: 1.5;
+    white-space: nowrap;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  @media (hover: hover) {
+    .dd-trigger:hover {
+      color: var(--color-title);
+      border-color: var(--color-muted);
+    }
+  }
+
+  /* Filtro ativo fica escuro: dá pra ver que a lista está cortada sem ler */
+  .dd.filtered .dd-trigger {
+    background: var(--color-title);
+    border-color: var(--color-title);
+    color: var(--color-bg);
+  }
+
+  .dd-trigger i {
+    font-size: 13px;
+    transition: transform 0.2s;
+  }
+
+  .dd.open .dd-trigger i {
+    transform: rotate(180deg);
+  }
+
+  .dd-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 50;
+    min-width: 200px;
+    max-height: 320px;
+    overflow-y: auto;
+    flex-direction: column;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  .dd.open .dd-menu {
+    display: flex;
+  }
+
+  .dd-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: var(--font-size-small);
+    color: var(--color-body);
+    text-align: left;
+    padding: 7px 10px;
+    cursor: pointer;
+    line-height: 1.5;
+  }
+
+  @media (hover: hover) {
+    .dd-opt:hover {
+      background: var(--color-wash);
+    }
+  }
+
+  .dd-opt.active {
+    color: var(--color-title);
+    font-weight: 500;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--c, var(--color-muted));
+    flex-shrink: 0;
+  }
+
+  .dd-count {
+    margin-left: auto;
+    color: var(--color-muted);
+    opacity: 0.5;
+    font-size: 0.9em;
+  }
+
+  .dd-backdrop {
+    display: none;
+  }
+
+  /* A tabela: linha inteira é botão, então o alvo de toque cobre tudo e o
+     teclado navega item a item sem eu inventar roving tabindex */
+  .table {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    font-family: inherit;
+    padding: 11px 8px 11px 0;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+
+  @media (hover: hover) {
+    .row:hover {
+      background: var(--color-border);
+    }
+
+    .row:hover .row-title {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  .row:focus-visible {
+    outline: 2px solid var(--color-title);
+    outline-offset: -2px;
+  }
+
+  /* O favicon é o que deixa a origem legível na varredura: YouTube, X e site
+     próprio se distinguem antes de o olho chegar no texto */
+  .row-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+  }
+
+  .row-icon img {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    object-fit: contain;
+  }
+
+  /* Fallback pros 17 domínios sem favicon: a inicial no mesmo espaço */
+  .row-monogram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    font-size: 9px;
+    color: var(--color-muted);
+    line-height: 1;
+  }
+
+  .row-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+  }
+
+  .row-title {
+    font-size: var(--font-size-body);
+    color: var(--color-title);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .row-domain {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: calc(var(--font-size-small) * 0.8);
+    color: var(--color-muted);
+    opacity: 0.6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .row-cat {
+    font-size: calc(var(--font-size-small) * 0.85);
+    color: color-mix(in oklab, var(--c) 65%, var(--color-title));
+    background: color-mix(in oklab, var(--c) 14%, var(--color-bg));
+    border-radius: 20px;
+    padding: 2px 9px;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .empty {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+  }
+
+  /* Modal */
+  .modal {
+    margin: auto;
+    border: none;
+    border-radius: 16px;
+    padding: 0;
+    max-width: 440px;
+    width: calc(100% - 32px);
+    background: var(--color-bg);
+    color: var(--color-text);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+  }
+
+  .modal::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+  }
+
+  .modal-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    background: var(--color-bg);
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+    z-index: 1;
+  }
+
+  @media (hover: hover) {
+    .modal-close:hover {
+      color: var(--color-title);
+    }
+  }
+
+  .modal-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    display: block;
+  }
+
+  .modal-cat {
+    font-size: calc(var(--font-size-small) * 0.85);
+    color: var(--color-muted);
+    text-transform: lowercase;
+  }
+
+  .modal-title {
+    font-size: var(--font-size-h3, 1.15rem);
+    color: var(--color-title);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .modal-desc {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .modal-tags :global(.modal-tag) {
+    font-size: calc(var(--font-size-small) * 0.85);
+    color: var(--color-muted);
+    background: var(--color-border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    line-height: 1.5;
+  }
+
+  .modal-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    padding: 7px 14px;
+    border-radius: 12px;
+    background: var(--color-title);
+    color: var(--color-bg);
+    text-decoration: none;
+    font-family: var(--font-geist-mono), monospace;
+    font-size: calc(var(--font-size-small) * 0.9);
+  }
+
+  @media (hover: hover) {
+    .modal-link:hover {
+      opacity: 0.85;
+    }
+  }
+
+  /* Mobile: o menu ancorado não cabe, então o mesmo dropdown abre como folha
+     de baixo. A busca vai pra primeira linha e os dois filtros dividem a segunda */
+  @media (max-width: 700px) {
+    .controls {
+      flex-wrap: wrap;
+    }
+
+    .search {
+      flex: 1 0 100%;
+    }
+
+    .dd {
+      flex: 1;
+    }
+
+    .dd-trigger {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .dd-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 40;
+    }
+
+    .dd-backdrop.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .dd-menu {
+      position: fixed;
+      top: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-width: 0;
+      max-height: 70dvh;
+      border: none;
+      border-top: 1px solid var(--color-border);
+      border-radius: 16px 16px 0 0;
+      padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+      box-shadow: none;
+    }
+
+    .dd-opt {
+      border-radius: 0;
+      padding: 13px 24px;
+      font-size: var(--font-size-body);
+    }
+
+    .row-cat {
+      display: none;
+    }
+
+    .row-title {
+      white-space: normal;
+    }
+  }
+</style>

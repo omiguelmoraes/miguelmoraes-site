@@ -1,0 +1,10 @@
+---
+title: "Frontend Developer Roadmap: What is Frontend Development?"
+url: https://roadmap.sh/frontend
+category: reference
+tags:
+  - dev
+  - curso
+description: "Step by step guide to becoming a modern frontend developer in 2026"
+origin: browser
+---
