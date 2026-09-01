@@ -1,10 +1,10 @@
 ---
 title: "Como Escalar uma Empresa de Serviços de Verdade"
-url: https://youtube.com/watch?v=vxeiVHFKof4
+url: https://www.youtube.com/watch?v=vxeiVHFKof4
 category: content
 tags:
   - video
-description: "Como levar uma empresa de serviços de R$ 10 milhões para R$ 20, R$ 30 milhões, sem transformar crescimento em mais complexidade, mais custos e menos lucro?Neste episódio do…"
+description: "Alfredo Soares abre o negócio do Rodrigão (Stint, ~R$ 10 mi/ano em serviço de marca pessoal) e descobre que o gargalo não é venda: é arquitetura financeira. A mania de antecipar todos os recebíveis a 10% estava entregando metade do lucro."
 thumb: /acervo/thumbs/vxeiVHFKof4.jpg
 added: 2026-08-08
 origin: clippings

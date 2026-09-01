@@ -1,6 +1,6 @@
 ---
 title: "How To Build A Company With AI From The Ground Up"
-url: https://youtube.com/watch?v=EN7frwQIbKc
+url: https://www.youtube.com/watch?v=EN7frwQIbKc
 category: content
 tags:
   - ai

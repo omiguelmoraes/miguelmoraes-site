@@ -1,6 +1,6 @@
 ---
 title: "Claude Mythos, o destruidor de mundos?"
-url: https://youtube.com/watch?v=RJXpQHQa-zI
+url: https://www.youtube.com/watch?v=RJXpQHQa-zI
 category: content
 tags:
   - ai

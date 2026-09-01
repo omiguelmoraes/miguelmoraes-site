@@ -1,11 +1,11 @@
 ---
 title: "How I Use Buffer with Claude (Full MCP Setup)"
-url: https://youtube.com/watch?v=43lXX5aiVMQ
+url: https://www.youtube.com/watch?v=43lXX5aiVMQ
 category: content
 tags:
   - ai
   - video
-description: "Get Buffer free ► ✨Buffer's MCP lets you connect your Buffer account directly to Claude (or other AI agents like ChatGPT) so ..."
+description: "O vídeo mostra como usar o Buffer integrado ao Claude via MCP para gerenciar redes sociais sem sair do chat. Em poucos prompts dá para verificar o calendário, redigir posts adaptados por plataforma, editar posts já agendados e salvar ideias brutas na…"
 thumb: /acervo/thumbs/43lXX5aiVMQ.jpg
 added: 2026-05-27
 origin: clippings

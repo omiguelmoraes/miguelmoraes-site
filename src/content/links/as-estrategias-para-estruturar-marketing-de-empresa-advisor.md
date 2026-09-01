@@ -1,13 +1,13 @@
 ---
 title: "As Estratégias Para ESTRUTURAR MARKETING de EMPRESA | ADVISOR"
-url: https://youtube.com/watch?v=CsivxdkrABQ
+url: https://www.youtube.com/watch?v=CsivxdkrABQ
 category: content
 tags:
   - ai
   - design
   - marketing
   - video
-description: "Fala, turma! Sejam muito bem-vindos a mais um episódio aqui no canal. Hoje o Advisor é em Goiânia, dentro da BC Energia, para um intercâmbio intelectual sinistro com o Alê, que é…"
+description: "Alfredo Soares faz uma mentoria de marketing na BC Energia (energia por assinatura, cresce 7% ao mês) e destrincha dois modelos: o filtro de priorização de público — vender pra quem é **fácil, rápido, barato e escalável**, porque "todo mundo pode te comprar,…"
 thumb: /acervo/thumbs/CsivxdkrABQ.jpg
 added: 2026-08-20
 origin: clippings

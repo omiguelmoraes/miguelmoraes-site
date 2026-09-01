@@ -1,6 +1,6 @@
 ---
 title: "What Surprised Us Most In 2025"
-url: https://youtube.com/watch?v=cqrJzG03ENE
+url: https://www.youtube.com/watch?v=cqrJzG03ENE
 category: content
 tags:
   - ai

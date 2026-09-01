@@ -1,6 +1,6 @@
 ---
 title: "how I reduced subscriptions and feeds by 80%"
-url: https://youtube.com/watch?v=aghRgs7KoyI
+url: https://www.youtube.com/watch?v=aghRgs7KoyI
 category: content
 tags:
   - design
