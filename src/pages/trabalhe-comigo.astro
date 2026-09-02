@@ -1,0 +1,1048 @@
+---
+// LP de tráfego pago. Sem navegação: a única saída é o formulário, que cai no
+// WhatsApp igual ao fluxo da /mentoria. Usa BaseLayout direto (sem sidebar) e
+// trava o tema em claro, porque a página é peça de anúncio e não segue o
+// dark mode do sistema como o resto do site.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const logos = [
+  { src: '/logos/unimed.svg', nome: 'Unimed', h: 30 },
+  { src: '/logos/sicoob.svg', nome: 'Sicoob', h: 24 },
+  { src: '/logos/farroupilha.svg', nome: 'Colégio Farroupilha', h: 28 },
+  { src: '/logos/yoursbank.svg', nome: 'Yours Bank', h: 24 },
+  { src: '/logos/msk.svg', nome: 'MSK Perfuradora', h: 22 },
+  { src: '/logos/flouds.svg', nome: 'Flouds', h: 24 },
+  { src: '/work/logos/barca.png', nome: 'Barca', h: 44 },
+  { src: '/logos/gama.svg', nome: 'Gama Academy', h: 22 },
+  { src: '/logos/startup-academy.svg', nome: 'Startup Academy', h: 32 },
+  { src: '/logos/rmaq.svg', nome: 'RMAQ Assessoria', h: 30 },
+  { src: '/logos/ayga.svg', nome: 'Ayga', h: 20 },
+  { src: '/logos/cnex.svg', nome: 'Cnex', h: 22 },
+];
+
+const projetos = [
+  { img: '/projects/yoursbank/yoursbank-01.webp', nome: 'Yours Bank', logo: '/logos/yoursbank.svg' },
+  { img: '/projects/flouds/flouds-01.webp', nome: 'Flouds', logo: '/logos/flouds.svg' },
+  { img: '/projects/msk/msk-01.webp', nome: 'MSK Perfuradora', logo: '/logos/msk.svg' },
+  { img: '/projects/rmaq/rmaq-cover.webp', nome: 'RMAQ Assessoria', logo: '/logos/rmaq.svg' },
+  { img: '/projects/sant/sant-01.webp', nome: 'Sant Saúde', logo: null },
+];
+const esteira = [...projetos, ...projetos];
+---
+
+<BaseLayout
+  title="Miguel Moraes — Sites de Alta Conversão & Produtos Digitais | Orçamento em 24h"
+  description="Seu site atrai visitantes mas não converte? Transformo acessos em clientes pagantes com SEO, respostas de IA, copywriting e design de alta conversão. Orçamento em 24h."
+>
+<div class="lp">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="me-pill">
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="28" height="28" />
+        <span>Miguel Moraes</span>
+        <span class="status-tag"><span class="dot"></span> Agenda aberta</span>
+      </div>
+      <h1>Seu site atrai visitantes e deixa dinheiro na mesa.</h1>
+      <p class="sub">
+        Transformo acessos em clientes pagantes. Estrutura otimizada para ser achado no Google, citado em pesquisas de IA e converter no celular e desktop.
+      </p>
+      <div class="cta">
+        <a class="btn" href="#orcamento">Solicitar orçamento</a>
+        <a class="btn btn-ghost" href="#trabalho">Ver projetos</a>
+      </div>
+      <p class="micro">Formulário de 1 minuto · Proposta sob medida em até 24h no WhatsApp</p>
+    </div>
+  </header>
+
+  <!-- LOGOS -->
+  <section class="sec sec-tight">
+    <div class="wrap">
+      <p class="kicker">Empresas com quem já trabalhei</p>
+      <div class="logos">
+        {logos.map((l) => (
+          <div class="logo"><img src={l.src} alt={l.nome} style={`height:${l.h}px`} loading="lazy" /></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ONDE VAZA -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">O problema</span>
+        <h2>O vazamento raramente está onde você acha que está.</h2>
+        <p>Quase todo negócio já tem visita chegando no site. O que falta é ela virar contato.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="ill">
+            <svg viewBox="0 0 220 130" fill="none" aria-hidden="true">
+              <rect x="18" y="22" width="120" height="13" rx="6.5" class="s-fill"/>
+              <rect x="18" y="47" width="150" height="13" rx="6.5" class="s-fill"/>
+              <rect x="18" y="72" width="104" height="13" rx="6.5" class="s-fill"/>
+              <rect x="18" y="97" width="86" height="13" rx="6.5" class="s-accent-dash"/>
+              <circle cx="168" cy="52" r="26" class="s-line"/>
+              <path d="M187 71l15 14" class="s-line"/>
+            </svg>
+          </div>
+          <h3>Ninguém acha você</h3>
+          <p>Você aparece só pra quem já sabe o seu nome. Quem está procurando agora encontra o concorrente.</p>
+        </div>
+
+        <div class="card">
+          <div class="ill">
+            <svg viewBox="0 0 220 130" fill="none" aria-hidden="true">
+              <path d="M50 24h120L128 74v34l-36 16V74L50 24Z" class="s-line"/>
+              <path d="M50 24h120L128 74h-36L50 24Z" class="s-accent-fill"/>
+              <circle cx="44" cy="60" r="5" class="s-accent-fill2"/>
+              <circle cx="30" cy="86" r="4" class="s-accent-fill2"/>
+              <circle cx="20" cy="110" r="3" class="s-accent-fill2"/>
+              <circle cx="176" cy="60" r="5" class="s-accent-fill2"/>
+              <circle cx="190" cy="86" r="4" class="s-accent-fill2"/>
+              <circle cx="200" cy="110" r="3" class="s-accent-fill2"/>
+            </svg>
+          </div>
+          <h3>Quem chega não fecha</h3>
+          <p>A pessoa entra, não entende a oferta, não acha o preço e volta pro Google. Você nem sabe que ela passou.</p>
+        </div>
+
+        <div class="card">
+          <div class="ill">
+            <svg viewBox="0 0 220 130" fill="none" aria-hidden="true">
+              <rect x="34" y="16" width="76" height="98" rx="8" class="s-fill"/>
+              <rect x="46" y="24" width="76" height="98" rx="8" class="s-line" fill="#fff"/>
+              <path d="M60 48h48M60 64h48M60 80h30" class="s-line"/>
+              <circle cx="162" cy="72" r="28" class="s-line" fill="#fff"/>
+              <path d="M162 56v16l11 7" class="s-accent"/>
+            </svg>
+          </div>
+          <h3>Cada ajuste vira semana de espera</h3>
+          <p>Toda mudança depende de terceiro e demora. Aí o site envelhece parado enquanto o negócio muda.</p>
+        </div>
+
+        <div class="card">
+          <div class="ill">
+            <svg viewBox="0 0 220 130" fill="none" aria-hidden="true">
+              <path d="M28 114V22M28 114h164" class="s-line"/>
+              <path d="M44 92l30-22 26 16 24-30" class="s-line"/>
+              <path d="M124 56l26 14 30-34" class="s-dash"/>
+              <circle cx="124" cy="56" r="5" class="s-accent-fill"/>
+              <path d="M168 30c0-6 5-10 11-10s11 4 11 10c0 5-4 7-7 9-2 2-4 3-4 6" class="s-accent"/>
+              <circle cx="179" cy="56" r="2.6" class="s-accent-fill"/>
+            </svg>
+          </div>
+          <h3>Você decide no achismo</h3>
+          <p>Sem número na mão, toda decisão vira aposta e todo investimento vira torcida.</p>
+        </div>
+      </div>
+
+      <p class="verdict">Nada disso se resolve trocando o site por um mais bonito. Se resolve descobrindo onde a pessoa desiste e consertando aquilo primeiro.</p>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="sec sec-wash">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Achar, construir, medir.</h2>
+        <p>A primeira etapa é a que quase ninguém faz, e é ela que decide se o resto vale o investimento.</p>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <span class="k">01</span>
+          <h3>Achar</h3>
+          <p>Uma conversa sobre quem é o seu cliente e como ele decide comprar. Saio dela sabendo o que a sua página precisa provar, e em que ordem.</p>
+        </li>
+        <li>
+          <span class="k">02</span>
+          <h3>Construir</h3>
+          <p>Eu escrevo, desenho e construo a página. Você aprova a estrutura e o texto antes de virar design, e acompanha o link ao vivo durante o processo.</p>
+        </li>
+        <li>
+          <span class="k">03</span>
+          <h3>Medir</h3>
+          <p>Vai pro ar com medição instalada e 30 dias de ajuste inclusos. Dá pra ver onde a pessoa trava e corrigir com número na mão, não no achismo.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CALCULADORA -->
+  <section class="sec" id="conta">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">A conta</span>
+        <h2>Quanto o seu site deixa na mesa por mês</h2>
+        <p>A visita já está entrando. A conta abaixo é só do que ela deixaria se virasse contato.</p>
+      </div>
+
+      <div class="calc">
+        <div class="inputs">
+          <div class="field">
+            <label for="vis">Visitantes por mês</label>
+            <input id="vis" type="number" value="1500" min="0" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="tic">Ticket médio (R$)</label>
+            <input id="tic" type="number" value="900" min="0" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="cnv">Conversão atual (%)</label>
+            <input id="cnv" type="number" value="1" min="0" max="100" step="0.1" inputmode="decimal" />
+          </div>
+          <div class="field">
+            <label for="gan">Ganho de conversão (pontos)</label>
+            <input id="gan" type="number" value="1" min="0" max="20" step="0.1" inputmode="decimal" />
+          </div>
+        </div>
+
+        <div class="out">
+          <div class="out-badge"><span class="dot-live"></span> Simulação em tempo real</div>
+          <span class="lbl">Receita adicional por ano</span>
+          <strong class="big" id="oAno">R$ 162.000</strong>
+          <div class="row"><span>Clientes a mais por mês</span><b id="oCli">15</b></div>
+          <div class="row"><span>Receita adicional por mês</span><b id="oMes">R$ 13.500</b></div>
+          <div class="row"><span>O que você já faz hoje</span><b id="oHoje">R$ 13.500</b></div>
+          <p class="note">Estimativa simples, visitantes × ganho de conversão × ticket. Serve pra dimensionar a ordem de grandeza, não pra prometer número.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRABALHO -->
+  <section class="sec sec-trabalho" id="trabalho">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Trabalho recente</span>
+        <h2>Alguns projetos.</h2>
+      </div>
+    </div>
+
+    <div class="esteira">
+      <div class="trilho">
+        {esteira.map((p) => (
+          <figure class="shot">
+            <img src={p.img} alt={p.nome} loading="lazy" decoding="async" />
+            <figcaption>{p.nome}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM FAZ -->
+  <section class="sec sec-wash">
+    <div class="wrap">
+      <div class="about">
+        <img class="avatar" src="/webp/avatar.webp" alt="Miguel Moraes" loading="lazy" />
+        <span class="eyebrow">Quem executa</span>
+        <h2>Você fala e negocia direto com quem faz.</h2>
+        <p>
+          Sou o Miguel Moraes, designer em Porto Alegre. Desenvolvo a experiência visual e a estrutura de sites, produtos digitais e dashboards de alta conversão. Você fala e executa direto comigo, sem intermediários ou gerentes de conta no meio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+  <section class="sec sec-wash">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">O investimento</span>
+        <h2>Entrega pontual ou crescimento contínuo.</h2>
+        <p>Preço fechado e escopo claro. Você escolhe se quer apenas a construção ou o acompanhamento mensal.</p>
+      </div>
+
+      <div class="oferta-grid">
+        <!-- CARD 1: CONSTRUÇÃO -->
+        <div class="oferta-card">
+          <div>
+            <div class="oferta-badge">
+              <i class="ph-bold ph-lightning"></i>
+              <span>Projeto Inicial · Entrega Pontual</span>
+            </div>
+
+            <div class="oferta-top">
+              <div>
+                <h3>Construção de Site ou LP</h3>
+              </div>
+              <div class="valor">
+                <span class="de">a partir de</span>
+                <strong>R$ 2.000</strong>
+              </div>
+            </div>
+
+            <ul class="inclui">
+              <li><span class="chk"><i class="ph-bold ph-check"></i></span> Estratégia comercial, copywriting e design de alta conversão</li>
+              <li><span class="chk"><i class="ph-bold ph-check"></i></span> Estrutura otimizada para busca no Google e citações em IAs (SEO/GEO)</li>
+              <li><span class="chk"><i class="ph-bold ph-check"></i></span> Site rápido, seguro e 100% resolvido para telas de celular</li>
+              <li><span class="chk"><i class="ph-bold ph-check"></i></span> Medição instalada e 30 dias de acompanhamento inclusos</li>
+              <li><span class="chk"><i class="ph-bold ph-check"></i></span> Código moderno, seguro e sem dependência de plugins pesados</li>
+            </ul>
+          </div>
+
+          <div class="oferta-cta">
+            <a class="btn" href="#orcamento">Solicitar orçamento</a>
+            <span class="micro">Entrega em 2 a 4 semanas</span>
+          </div>
+        </div>
+
+        <!-- CARD 2: MOTOR DE CRESCIMENTO -->
+        <div class="oferta-card oferta-motor">
+          <div>
+            <div class="oferta-badge badge-accent">
+              <i class="ph-bold ph-trend-up"></i>
+              <span>Motor de Crescimento · Opcional</span>
+            </div>
+
+            <div class="oferta-top">
+              <div>
+                <h3>Evolução & Otimização Mensal</h3>
+              </div>
+              <div class="valor">
+                <span class="de">a partir de</span>
+                <strong>R$ 1.000 <small>/mês</small></strong>
+              </div>
+            </div>
+
+            <ul class="inclui">
+              <li><span class="chk"><i class="ph-bold ph-check"></i></span> Análise mensal de métricas de conversão e comportamento</li>
+              <li><span class="chk"><i class="ph-bold ph-check"></i></span> Otimização contínua de copy e layout com base em dados reais</li>
+              <li><span class="chk"><i class="ph-bold ph-check"></i></span> Criação e gestão de conteúdo estratégico focado em busca (SEO e IA)</li>
+              <li><span class="chk"><i class="ph-bold ph-check"></i></span> Sem fidelidade: cancele ou pause a qualquer momento</li>
+            </ul>
+          </div>
+
+          <div class="oferta-cta">
+            <a class="btn btn-ghost" href="#orcamento">Incluir Motor</a>
+            <span class="micro">Para quem busca crescimento recorrente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Dúvidas</span>
+        <h2>Perguntas frequentes</h2>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>Que tipo de site você faz?</summary>
+          <p>Site institucional e landing page, que é o foco aqui. Também faço identidade visual, interface de produto digital e dashboard, e automação de processo, quando o projeto pede. Se o seu caso for um desses, manda mesmo assim que eu digo se faz sentido.</p>
+        </details>
+        <details>
+          <summary>Qual é o investimento?</summary>
+          <p>A construção do site começa em R$ 2.000 e sobe conforme o tamanho do escopo. Se quiser manter o site em evolução contínua com otimizações e novos conteúdos mensais, o Motor de Crescimento opcional começa em R$ 1.000/mês (sem fidelidade). Envio uma proposta fechada e transparente em até 24h.</p>
+        </details>
+        <details>
+          <summary>Qual é o prazo de entrega?</summary>
+          <p>De 2 a 4 semanas na maioria dos casos, contando da aprovação da estrutura. Se o projeto for maior que isso, eu digo o prazo antes de começar, não no meio.</p>
+        </details>
+        <details>
+          <summary>Como a inteligência artificial é utilizada?</summary>
+          <p>Uso IA todo dia pra construir mais rápido e automatizar o que é repetitivo, e é isso que faz o prazo caber. O que ela não faz é decidir o que entra na página, defender uma escolha e responder pelo resultado. Isso continua sendo trabalho de gente.</p>
+        </details>
+        <details>
+          <summary>Eu já tenho site. Vale a pena refazer?</summary>
+          <p>Costuma ser o caso mais barato, porque a visita já existe e o que falta é convertê-la. Na primeira conversa eu te digo se vale corrigir o que está lá ou refazer, e não é sempre que a resposta é refazer.</p>
+        </details>
+        <details>
+          <summary>Como funciona a estrutura de execução do projeto?</summary>
+          <p>Eu lidero pessoalmente a estratégia, a arquitetura e o design de cada projeto. Para frentes específicas ou demandas de maior escala (como campanhas ou produção de conteúdo), mobilizo parceiros seniores de extrema confiança. Você fala direto com quem responde pela entrega, garantindo agilidade e nível máximo de execução.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULÁRIO -->
+  <section class="sec final" id="orcamento">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Orçamento</span>
+        <h2>Me conta do seu negócio.</h2>
+        <p>Seis campos. Ao enviar, abre o WhatsApp com tudo preenchido. Eu respondo em até 24h.</p>
+      </div>
+
+      <form class="form" id="orcamento-form">
+        <div class="f2">
+          <div class="field">
+            <label for="nome">Seu nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Como você se chama" required />
+          </div>
+          <div class="field">
+            <label for="empresa">Empresa e segmento</label>
+            <input id="empresa" name="empresa" type="text" placeholder="Nome e área de atuação" required />
+          </div>
+        </div>
+
+        <div class="f2">
+          <div class="field">
+            <label for="tipo">O que te trouxe aqui</label>
+            <select id="tipo" name="tipo" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option>Tenho site, mas não traz resultado</option>
+              <option>Quero refazer o site que já tenho</option>
+              <option>Preciso de um novo site ou landing page</option>
+              <option>Quero melhorar um produto digital ou dashboard</option>
+              <option>Ainda não sei, quero conversar</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="prazo">Quando quer começar</label>
+            <select id="prazo" name="prazo" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option>O quanto antes</option>
+              <option>Nas próximas semanas</option>
+              <option>Só pesquisando por enquanto</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="orcamento-valor">Investimento previsto</label>
+          <select id="orcamento-valor" name="orcamento-valor" required>
+            <option value="" disabled selected>Selecione uma faixa</option>
+            <option>Até R$ 3.000</option>
+            <option>Entre R$ 3.000 e R$ 7.000</option>
+            <option>Entre R$ 7.000 e R$ 15.000</option>
+            <option>Acima de R$ 15.000</option>
+            <option>Ainda não defini</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="contexto">Me conta um pouco do negócio</label>
+          <textarea id="contexto" name="contexto" rows="3" placeholder="Ex: clínica em POA, chega gente pelo Google mas quase ninguém liga pra marcar" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-lg">
+          <i class="ph-bold ph-whatsapp-logo"></i>
+          Enviar e continuar no WhatsApp
+        </button>
+        <p class="micro">Seus dados vão direto pra mim. Sem cadastro, sem lista de e-mail.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <div class="foot-me">
+            <img src="/webp/avatar.webp" alt="Miguel Moraes" width="32" height="32" />
+            <div>
+              <strong>Miguel Moraes</strong>
+              <span>Designer & Especialista Digital</span>
+            </div>
+          </div>
+          <p class="foot-bio">
+            Desenvolvo a experiência visual e a estrutura comercial de sites, landing pages e produtos digitais de alta conversão.
+          </p>
+          <div class="foot-status">
+            <span class="dot-live"></span>
+            <span>Atendendo novos projetos · Porto Alegre, RS</span>
+          </div>
+        </div>
+
+        <div class="foot-col">
+          <span class="foot-label">Contato direto</span>
+          <ul class="foot-list">
+            <li>
+              <a href="https://wa.me/5551998734305" target="_blank" rel="noopener">
+                <i class="ph-bold ph-whatsapp-logo"></i> (51) 99873-4305
+              </a>
+            </li>
+            <li>
+              <a href="mailto:omiguelmoraes@outlook.com">
+                <i class="ph-bold ph-envelope-simple"></i> omiguelmoraes@outlook.com
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <span class="foot-label">Redes</span>
+          <ul class="foot-list">
+            <li><a href="https://instagram.com/omiguelmoraes" target="_blank" rel="noopener"><i class="ph-bold ph-instagram-logo"></i> Instagram</a></li>
+            <li><a href="https://linkedin.com/in/miguelmoraes/" target="_blank" rel="noopener"><i class="ph-bold ph-linkedin-logo"></i> LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span>© {new Date().getFullYear()} Miguel Moraes. Todos os direitos reservados.</span>
+        <span>Menos slop. Mais design.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="dock" id="dock">
+    <div class="dock-in">
+      <div class="dock-info">
+        <strong>Precisa de um projeto sob medida?</strong>
+        <span>Resposta no WhatsApp em até 24h</span>
+      </div>
+      <a class="btn" href="#orcamento">Solicitar orçamento</a>
+    </div>
+  </div>
+
+</div>
+</BaseLayout>
+
+<script>
+  // Form -> WhatsApp, mesmo fluxo da /mentoria
+  const form = document.getElementById('orcamento-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = (id: string) =>
+      (document.getElementById(id) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement).value;
+
+    const text = `Olá Miguel! Vim pela landing page e quero um orçamento.
+
+*Nome:* ${v('nome')}
+*Empresa:* ${v('empresa')}
+*Situação:* ${v('tipo')}
+*Quando:* ${v('prazo')}
+*Investimento previsto:* ${v('orcamento-valor')}
+*Negócio:* ${v('contexto')}`;
+
+    // Evento de lead. O Umami já está no BaseLayout; o fbq é no-op enquanto o
+    // pixel do Meta não estiver na página, e é ele que a campanha precisa pra
+    // otimizar por lead em vez de por clique
+    (window as any).umami?.track?.('lead-orcamento');
+    (window as any).fbq?.('track', 'Lead');
+
+    window.open(
+      `https://api.whatsapp.com/send?phone=5551998734305&text=${encodeURIComponent(text)}`,
+      '_blank'
+    );
+  });
+
+  // Calculadora
+  const brl = (n: number) =>
+    'R$ ' + Math.round(n).toLocaleString('pt-BR');
+  const num = (id: string) =>
+    parseFloat((document.getElementById(id) as HTMLInputElement)?.value || '0') || 0;
+
+  const calcular = () => {
+    const alvo = document.getElementById('oAno');
+    if (!alvo) return;
+    const clientes = (num('vis') * num('gan')) / 100;
+    const mes = clientes * num('tic');
+    alvo.textContent = brl(mes * 12);
+    document.getElementById('oCli')!.textContent = Math.round(clientes).toLocaleString('pt-BR');
+    document.getElementById('oMes')!.textContent = brl(mes);
+    document.getElementById('oHoje')!.textContent = brl(((num('vis') * num('cnv')) / 100) * num('tic'));
+  };
+  ['vis', 'tic', 'cnv', 'gan'].forEach((id) =>
+    document.getElementById(id)?.addEventListener('input', calcular)
+  );
+  calcular();
+
+  // Dock entra depois da primeira dobra e some na seção do formulário
+  const dock = document.getElementById('dock');
+  const alvo = document.getElementById('orcamento');
+  const onScroll = () => {
+    if (!dock) return;
+    const passouDobra = window.scrollY > window.innerHeight * 0.7;
+    const chegouNoForm = alvo ? alvo.getBoundingClientRect().top < window.innerHeight : false;
+    dock.classList.toggle('on', passouDobra && !chegouNoForm);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
+<style is:global>
+  /* A LP é peça de anúncio, não acompanha o dark mode do sistema */
+  html, body { background: #ffffff !important; color-scheme: light; }
+</style>
+
+<style>
+  .lp {
+    --ink: #111111;
+    --body: #4a4a4a;
+    --dim: #888888;
+    --line: #e2e2e2;
+    --bg: #ffffff;
+    --wash: #f7f7f7;
+    --wash-subtle: #fafafa;
+    --accent: #111111;
+    --maxw: 1040px;
+
+    background: var(--bg);
+    color: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .lp :global(h1),
+  .lp :global(h2),
+  .lp :global(h3),
+  .lp h1,
+  .lp h2,
+  .lp h3 {
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  .lp p {
+    text-wrap: pretty;
+  }
+
+  .sec-head h2,
+  .sec-head p,
+  .hero h1,
+  .hero .sub,
+  .verdict,
+  .card h3,
+  .deliver h3,
+  .about h2 {
+    text-wrap: balance;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow {
+    display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--dim); font-weight: 600; margin-bottom: 16px;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--ink); color: #fff; border: 1px solid var(--ink); border-radius: 999px;
+    padding: 14px 26px; font-size: 15px; font-weight: 500; letter-spacing: -0.01em;
+    font-family: inherit; cursor: pointer;
+    transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.16s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.16s, border-color 0.16s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-lg { padding: 15px 28px; font-size: 16px; border-radius: 12px; }
+  .btn-ghost { background: #ffffff; color: var(--ink); border-color: var(--line); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  @media (hover: hover) {
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.18);
+      opacity: 0.96;
+      text-decoration: none;
+    }
+    .btn-ghost:hover {
+      background: #ffffff;
+      border-color: #bbbbbb;
+      box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.08);
+    }
+  }
+  .btn:active {
+    transform: translateY(1px) scale(0.97) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+    transition-duration: 0.05s !important;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 80px 0 72px; text-align: center;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    background-image: 
+      linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,1)),
+      linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 100% 100%, 32px 32px, 32px 32px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,1) 80%);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .me-pill {
+    display: inline-flex; align-items: center; gap: 10px; padding: 5px 14px 5px 5px;
+    background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 999px;
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02); margin-bottom: 32px;
+  }
+  .me-pill img { width: 26px; height: 26px; border-radius: 999px; object-fit: cover; }
+  .me-pill span { font-size: 14px; color: var(--ink); font-weight: 500; }
+  .me-pill .status-tag {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #047857;
+    background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2);
+    padding: 3px 10px; border-radius: 999px; font-weight: 500;
+  }
+  .me-pill .dot {
+    width: 6px; height: 6px; border-radius: 999px; background: #10b981; display: inline-block;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    animation: pulse-green 2s infinite;
+  }
+  @keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+  .hero h1 { font-size: clamp(38px, 5.4vw, 60px); max-width: 18ch; margin: 0 auto; letter-spacing: -0.04em; line-height: 1.1; }
+  .hero .sub { margin: 24px auto 0; max-width: 48ch; font-size: 18px; color: var(--body); line-height: 1.6; }
+  .hero .sub b { color: var(--ink); font-weight: 500; }
+  .hero .cta { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .micro { margin-top: 18px; font-size: 14px; color: var(--dim); }
+
+  /* SEÇÕES */
+  .sec { padding: 72px 0; text-align: center; }
+  .sec-tight { padding: 48px 0; }
+  .sec-wash { background: var(--wash); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .sec.final { padding: 48px 0 80px; }
+  .sec-head { margin: 0 auto 44px; max-width: 44ch; }
+  .sec-head h2 { font-size: clamp(30px, 3.8vw, 42px); letter-spacing: -0.035em; }
+  .sec-head p { margin-top: 14px; font-size: 17px; color: var(--body); }
+
+  /* LOGOS */
+  .kicker { font-size: 12px; color: var(--dim); margin-bottom: 32px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+  .logos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+  }
+  .logo {
+    display: flex; align-items: center; justify-content: center; padding: 18px 14px; min-height: 72px;
+    background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.07); border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  @media (hover: hover) {
+    .logo:hover { border-color: rgba(0, 0, 0, 0.2); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .logo:hover img { opacity: 0.95; }
+  }
+  .logo img {
+    width: auto; max-width: 100%; max-height: 28px; object-fit: contain;
+    filter: grayscale(1); opacity: 0.55; transition: opacity 0.2s ease;
+  }
+
+  /* CARDS COM ILUSTRAÇÃO */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+  .card {
+    border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 18px; padding: 0 28px 28px; background: #ffffff; overflow: hidden;
+    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.03);
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s, box-shadow 0.24s;
+  }
+  @media (hover: hover) {
+    .card:hover {
+      border-color: rgba(0, 0, 0, 0.22);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.08);
+      transform: translateY(-3px);
+    }
+  }
+  .ill { margin: 0 -28px 24px; background: var(--wash-subtle); border-bottom: 1px solid var(--line); padding: 22px 28px; }
+  .ill svg { width: 100%; max-width: 260px; height: auto; display: block; margin: 0 auto; }
+  .s-line { stroke: #111111; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+  .s-dash { stroke: #888888; stroke-width: 2.2; stroke-dasharray: 5 7; stroke-linecap: round; fill: none; }
+  .s-fill { fill: #e5e5e5; }
+  .s-accent { stroke: #111111; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+  .s-accent-fill { fill: #111111; }
+  .s-accent-fill2 { fill: #111111; opacity: 0.35; }
+  .s-accent-dash { fill: none; stroke: #111111; stroke-width: 2.2; stroke-dasharray: 5 7; }
+  .card h3 { font-size: 19px; margin-bottom: 10px; letter-spacing: -0.02em; }
+  .card p { font-size: 15px; color: var(--body); }
+
+  .verdict {
+    margin: 56px auto 0;
+    font-size: clamp(20px, 2.6vw, 26px); color: var(--ink);
+    letter-spacing: -0.025em; line-height: 1.35; max-width: 34ch; font-weight: 400;
+  }
+
+  /* SOLUÇÕES */
+  .deliver-grid .n { font-family: var(--font-mono); font-size: 12px; color: var(--dim); display: block; margin-bottom: 6px; font-weight: 600; }
+
+  /* PROCESSO */
+  .steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+  .steps li {
+    background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 18px; padding: 30px 26px;
+    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.03);
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s, box-shadow 0.24s;
+  }
+  @media (hover: hover) {
+    .steps li:hover {
+      border-color: rgba(0, 0, 0, 0.22);
+      box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.07);
+      transform: translateY(-3px);
+    }
+  }
+  .steps .k {
+    display: inline-block; font-family: var(--font-mono); font-size: 12px; color: var(--ink);
+    background: var(--wash); border: 1px solid var(--line); padding: 3px 10px; border-radius: 999px;
+    margin-bottom: 18px; font-weight: 600;
+  }
+  .steps h3 { font-size: 19px; margin-bottom: 10px; letter-spacing: -0.02em; }
+  .steps p { font-size: 15px; color: var(--body); line-height: 1.55; }
+
+  /* OFERTA */
+  .preco { color: var(--ink); }
+  .oferta-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    max-width: 940px; margin: 0 auto; text-align: left;
+  }
+  .oferta-card {
+    background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.09); border-radius: 24px; padding: 36px 30px;
+    box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s, box-shadow 0.24s;
+  }
+  @media (hover: hover) {
+    .oferta-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 44px -12px rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 0, 0, 0.22);
+    }
+  }
+  .oferta-card.oferta-motor {
+    border: 2px solid var(--ink);
+  }
+  .oferta-badge {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600;
+    color: var(--ink); background: var(--wash); border: 1px solid var(--line);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .oferta-badge.badge-accent {
+    background: var(--ink); color: #ffffff; border-color: var(--ink);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  .oferta-badge.badge-accent i { color: #ffffff; }
+  .oferta-badge i { font-size: 13px; }
+  .oferta-top {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+    padding-bottom: 22px; border-bottom: 1px solid var(--line);
+  }
+  .oferta-top h3 { font-size: 20px; margin-bottom: 0; letter-spacing: -0.02em; }
+  .valor { text-align: right; flex-shrink: 0; }
+  .valor .de { display: block; font-size: 12px; color: var(--dim); margin-bottom: 2px; }
+  .valor strong {
+    display: block; font-size: clamp(28px, 3.2vw, 34px); color: var(--ink);
+    font-weight: 500; letter-spacing: -0.035em; line-height: 1.05;
+  }
+  .valor strong small { font-size: 14px; font-weight: 400; color: var(--dim); }
+  .inclui { list-style: none; display: flex; flex-direction: column; gap: 14px; padding: 24px 0; }
+  .inclui li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: var(--ink); }
+  .inclui .chk {
+    width: 18px; height: 18px; border-radius: 50%; background: var(--ink); color: #ffffff;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-size: 10px; margin-top: 2px;
+  }
+  .oferta-cta { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; text-align: center; }
+  .oferta-cta .btn { width: 100%; text-align: center; }
+  .oferta-cta .micro { margin-top: 0; text-align: center; font-size: 13px; }
+
+  /* CALCULADORA */
+  .sec-dark { background: var(--bg); }
+  .sec-dark :global(h2) { color: var(--ink); }
+  .sec-dark .sec-head p { color: var(--body); }
+  .sec-dark .eyebrow { color: var(--dim); }
+  .calc {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    max-width: 860px; margin: 0 auto; text-align: left;
+    background: var(--wash-subtle); border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 8px 30px -10px rgba(0,0,0,0.05);
+  }
+  .calc .inputs { padding: 32px; display: grid; gap: 18px; background: #ffffff; }
+  .calc .field label { color: var(--ink); font-weight: 500; }
+  .lp .calc .field input {
+    background: var(--wash-subtle); border: 1px solid var(--line); color: var(--ink);
+  }
+  .lp .calc .field input:focus { border-color: var(--ink); background: #ffffff; box-shadow: 0 0 0 3px rgba(17,17,17,0.06); }
+  .calc .out { padding: 32px; background: var(--wash); border-left: 1px solid var(--line); }
+  .out-badge {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; font-weight: 600; color: var(--dim); margin-bottom: 14px;
+  }
+  .dot-live {
+    width: 6px; height: 6px; border-radius: 999px; background: #10b981; display: inline-block;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+  }
+  .calc .lbl { font-size: 13px; color: var(--dim); display: block; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; }
+  .calc .big { display: block; font-size: clamp(32px, 4vw, 44px); color: var(--ink); font-weight: 600; letter-spacing: -0.03em; margin: 8px 0 22px; }
+  .calc .row { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 14px; color: var(--body); }
+  .calc .row b { color: var(--ink); font-weight: 500; }
+  .calc .note { margin-top: 18px; font-size: 12px; color: var(--dim); line-height: 1.55; }
+
+  /* ESTEIRA DE PROJETOS */
+  .sec-trabalho { padding: 48px 0 72px; }
+  .sec-trabalho .sec-head { margin-bottom: 52px; }
+  .esteira { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+  .trilho { display: flex; gap: 20px; width: max-content; animation: correr 65s linear infinite; }
+  @media (hover: hover) {
+    .esteira:hover .trilho { animation-play-state: paused; }
+  }
+  @keyframes correr { to { transform: translateX(-50%); } }
+  .shot { margin: 0; width: 460px; flex-shrink: 0; text-align: center; }
+  .shot img {
+    width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center;
+    border-radius: 14px; border: 1px solid var(--line); background: #fff;
+    box-shadow: 0 4px 16px -4px rgba(0,0,0,0.04);
+  }
+  .shot figcaption {
+    margin-top: 14px; font-size: 13px; color: var(--body); font-weight: 500; text-align: center;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trilho { animation: none; }
+    .esteira { overflow-x: auto; }
+  }
+
+  /* QUEM FAZ */
+  .about { max-width: 60ch; margin: 0 auto; }
+  .avatar { width: 84px; height: 84px; border-radius: 16px; object-fit: cover; margin: 0 auto 26px; border: 1px solid var(--line); }
+  .about h2 { font-size: clamp(26px, 3.2vw, 34px); margin-bottom: 22px; }
+  .about p { font-size: 16px; color: var(--body); }
+  .about p + p { margin-top: 16px; }
+
+  /* FAQ */
+  .faq { max-width: 720px; margin: 0 auto; text-align: left; border-top: 1px solid var(--line); }
+  .faq details { border-bottom: 1px solid var(--line); padding: 20px 0; }
+  .faq summary {
+    cursor: pointer; list-style: none; font-size: 17px; color: var(--ink); font-weight: 500;
+    letter-spacing: -0.01em; display: flex; justify-content: space-between; gap: 16px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-size: 20px; color: var(--ink); line-height: 1; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq details p { margin-top: 12px; font-size: 15px; color: var(--body); }
+
+  /* FORMULÁRIO */
+  .form { display: flex; flex-direction: column; gap: 18px; max-width: 620px; margin: 0 auto; text-align: left; }
+  .f2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field label { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 12px 14px; background: var(--wash-subtle);
+    border: 1px solid var(--line); border-radius: 10px; color: var(--ink);
+    font-size: 15px; font-family: inherit; outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--ink); background: #ffffff; }
+  .field textarea { resize: vertical; min-height: 88px; }
+  .field select {
+    appearance: none; cursor: pointer; padding-right: 34px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 256 256'%3E%3Cpath fill='%238c8c8c' d='M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+  }
+  .form .btn-lg { width: 100%; }
+  .form .micro { margin-top: 0; text-align: center; }
+
+  /* FOOTER HIGH-END SAAS */
+  .foot {
+    border-top: 1px solid var(--line); padding: 48px 0;
+    background: var(--wash-subtle); text-align: left;
+  }
+  .foot-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
+    padding-bottom: 32px; border-bottom: 1px solid var(--line);
+  }
+  .foot-me { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .foot-me img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+  .foot-me strong { display: block; font-size: 16px; color: var(--ink); font-weight: 600; line-height: 1.2; }
+  .foot-me span { font-size: 13px; color: var(--dim); }
+  .foot-bio { font-size: 14px; color: var(--body); max-width: 38ch; line-height: 1.55; margin-bottom: 16px; }
+  .foot-status { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--dim); font-weight: 500; }
+
+  .foot-label {
+    display: block; font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--dim); margin-bottom: 16px;
+  }
+  .foot-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .foot-list a {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--body);
+    transition: color 0.15s ease;
+  }
+  .foot-list a:hover { color: var(--ink); text-decoration: underline; }
+  .foot-list a i { font-size: 16px; color: var(--ink); }
+
+  .foot-bottom {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding-top: 32px; font-size: 13px; color: var(--dim); flex-wrap: wrap;
+  }
+
+  /* DOCK */
+  .dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 0 20px 18px;
+    pointer-events: none; transform: translateY(140%); transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .dock.on { transform: translateY(0); }
+  .dock-in {
+    pointer-events: auto; max-width: 490px; margin: 0 auto;
+    background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(180%) blur(16px);
+    border: 1px solid var(--line); border-radius: 999px;
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.14);
+    padding: 8px 10px 8px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .dock-info { display: flex; flex-direction: column; text-align: left; }
+  .dock-info strong { font-size: 14px; color: var(--ink); font-weight: 500; white-space: nowrap; }
+  .dock-info span { font-size: 12px; color: var(--dim); white-space: nowrap; }
+  .dock-in .btn { padding: 10px 22px; font-size: 14px; flex-shrink: 0; }
+
+  @media (max-width: 900px) {
+    .logos { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .shot { width: 340px; }
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 56px 0 48px; }
+    .sec { padding: 60px 0; }
+    .grid-2, .f2, .calc, .oferta-grid { grid-template-columns: 1fr; }
+    .logos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .logo:nth-child(n+7) { display: none; }
+    .logo { padding: 14px 10px; min-height: 60px; border-radius: 12px; }
+    .logo img { max-height: 24px; }
+    .calc .out { border-left: 0; border-top: 1px solid var(--line); }
+    .hero .cta .btn, .form .btn-lg { width: 100%; }
+    .shot { width: 78vw; }
+    .dock { padding: 0 16px 14px; }
+    .dock-info { display: none; }
+    .dock-in { padding: 6px; justify-content: center; background: #ffffff; }
+    .dock-in .btn { width: 100%; padding: 13px; font-size: 15px; }
+    .foot { padding: 48px 0 96px; }
+    .foot-top { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
+    .foot-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+
+<style>
+  @media (max-width: 900px) {
+    .lp .steps { grid-template-columns: 1fr 1fr; }
+    .lp .oferta-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .lp .steps { grid-template-columns: 1fr; }
+    .lp .stat-bar { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px 18px; border-radius: 18px; }
+    .lp .stat-bar-text { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .lp .stat-badge { width: 100%; display: flex; align-items: center; justify-content: space-between; text-align: left; padding: 10px 16px; }
+    .lp .stat-badge span { margin-top: 0; }
+    .lp .oferta-grid { grid-template-columns: 1fr; gap: 20px; }
+    .lp .oferta-card { padding: 26px 20px; border-radius: 20px; text-align: left; }
+    .lp .oferta-badge { margin: 0 0 16px; display: inline-flex; font-size: 11px; padding: 3px 10px; }
+    .lp .oferta-top { flex-direction: row; justify-content: space-between; align-items: flex-start; text-align: left; gap: 12px; padding-bottom: 20px; }
+    .lp .oferta-top h3 { font-size: 18px; text-align: left; }
+    .lp .valor { text-align: right; margin-top: 0; }
+    .lp .valor .de { font-size: 12px; }
+    .lp .valor strong { font-size: 28px; }
+    .lp .inclui { gap: 12px; padding: 20px 0; text-align: left; }
+    .lp .inclui li { font-size: 14px; gap: 10px; }
+    .lp .inclui .chk { width: 18px; height: 18px; font-size: 10px; }
+    .lp .garantia { padding: 16px 14px; margin-top: 18px; border-radius: 14px; text-align: left; }
+    .lp .garantia b { font-size: 14px; }
+    .lp .garantia p { font-size: 13px; line-height: 1.5; }
+    .lp .oferta-cta { text-align: center; margin-top: 20px; }
+    .lp .oferta-cta .btn { width: 100%; }
+  }
+</style>
