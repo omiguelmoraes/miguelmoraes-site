@@ -9,6 +9,9 @@ import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import { Font } from 'astro:assets';
 
+// Meta Pixel. Sem PUBLIC_META_PIXEL_ID no env, nada é injetado.
+const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID ?? '';
+
 interface Props {
   title?: string;
   description?: string;
@@ -66,6 +69,27 @@ const ogImage = new URL(image, Astro.site);
     <Font cssVariable="--font-rethink-sans" preload />
     <Font cssVariable="--font-geist-mono" />
   <script defer src="https://umami-blond-ten.vercel.app/script.js" data-website-id="b1833d27-7a87-4710-83aa-b7b587f9d7b5"></script>
+    {metaPixelId && (
+      <>
+        <script is:inline define:vars={{ metaPixelId }}>
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window,document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', metaPixelId);
+          // O ClientRouter troca a página sem reload, entao o PageView vai no evento do Astro
+          document.addEventListener('astro:page-load', function () { fbq('track', 'PageView'); });
+        </script>
+        <noscript>
+          <img height="1" width="1" style="display:none"
+            src={`https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1`} />
+        </noscript>
+      </>
+    )}
   </head>
   <body>
     <slot />
