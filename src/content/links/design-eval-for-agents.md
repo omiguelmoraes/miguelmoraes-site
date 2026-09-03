@@ -7,6 +7,7 @@ tags:
   - ai
   - dev
 description: "Agents write UI. Rams judges it. Every change scored 0–100 against 313 design rules, fixes handed back as patches your agents apply."
+thumb: /acervo/thumbs/128440cc1a94.jpg
 added: 2026-09-02
 origin: clippings
 ---

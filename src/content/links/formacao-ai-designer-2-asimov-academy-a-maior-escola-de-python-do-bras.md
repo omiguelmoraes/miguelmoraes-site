@@ -6,6 +6,7 @@ tags:
   - ai
   - design
   - curso
+description: "Cursos de Python, Inteligência Artificial e Dados com ensino baseado em projetos. Assine e tenha acesso ilimitado à plataforma, comunidade e certificados."
 added: 2026-09-01
 origin: chrome
 ---

@@ -7,5 +7,6 @@ tags:
   - dev
   - curso
 description: "Já estuda com a gente?"
+thumb: /acervo/thumbs/83670e1b956d.jpg
 origin: browser
 ---

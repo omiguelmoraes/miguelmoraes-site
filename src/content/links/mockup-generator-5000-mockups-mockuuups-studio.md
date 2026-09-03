@@ -5,6 +5,7 @@ category: tool
 tags:
   - design
 description: "Create iPhone, MacBook, and print mockups in seconds. Free online mockup generator with 5,200+ templates. Drag, drop, download."
+thumb: /acervo/thumbs/572a9994f1e4.jpg
 added: 2026-09-01
 origin: chrome
 ---
