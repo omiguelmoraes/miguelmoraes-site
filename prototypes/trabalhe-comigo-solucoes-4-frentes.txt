@@ -1,0 +1,96 @@
+// Seção de 4 frentes (sites, produtos digitais, automações, métricas) tirada da
+// LP em 01/09/2026 quando a página foi estreitada pra vender só site. As
+// ilustrações estão aqui caso volte a fazer sentido.
+
+  <!-- SOLUÇÕES -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Soluções</span>
+        <h2>O que entra no projeto depende do que está travando.</h2>
+        <p>Essas são as frentes. Qual delas entra sai da primeira conversa, não de um pacote pronto.</p>
+      </div>
+
+      <div class="grid-2 deliver-grid">
+        <div class="card">
+          <div class="ill">
+            <svg viewBox="0 0 220 120" fill="none" aria-hidden="true">
+              <rect x="20" y="16" width="180" height="88" rx="8" class="s-line" fill="#ffffff"/>
+              <line x1="20" y1="36" x2="200" y2="36" class="s-line"/>
+              <circle cx="34" cy="26" r="3" class="s-accent-fill"/>
+              <circle cx="44" cy="26" r="3" class="s-fill"/>
+              <circle cx="54" cy="26" r="3" class="s-fill"/>
+              <rect x="36" y="48" width="70" height="10" rx="5" class="s-accent-fill"/>
+              <rect x="36" y="64" width="90" height="7" rx="3.5" class="s-fill"/>
+              <rect x="36" y="75" width="60" height="7" rx="3.5" class="s-fill"/>
+              <rect x="140" y="48" width="44" height="34" rx="6" class="s-fill"/>
+              <rect x="36" y="88" width="36" height="8" rx="4" class="s-accent"/>
+            </svg>
+          </div>
+          <span class="n">01</span>
+          <h3>Sites & Landing Pages</h3>
+          <p>Páginas rápidas e estratégicas desenhadas pra transformar visitantes em clientes reais.</p>
+        </div>
+
+        <div class="card">
+          <div class="ill">
+            <svg viewBox="0 0 220 120" fill="none" aria-hidden="true">
+              <rect x="20" y="16" width="180" height="88" rx="8" class="s-line" fill="#ffffff"/>
+              <line x1="60" y1="16" x2="60" y2="104" class="s-line"/>
+              <rect x="28" y="26" width="24" height="6" rx="3" class="s-accent-fill"/>
+              <rect x="28" y="38" width="20" height="5" rx="2.5" class="s-fill"/>
+              <rect x="28" y="48" width="22" height="5" rx="2.5" class="s-fill"/>
+              <rect x="70" y="26" width="56" height="32" rx="6" class="s-fill"/>
+              <rect x="76" y="32" width="28" height="5" rx="2.5" class="s-accent-fill"/>
+              <rect x="76" y="42" width="38" height="8" rx="4" class="s-accent"/>
+              <rect x="134" y="26" width="56" height="32" rx="6" class="s-fill"/>
+              <rect x="140" y="32" width="28" height="5" rx="2.5" class="s-accent-fill"/>
+              <path d="M72 88 L96 74 L124 82 L152 64 L182 70" class="s-accent"/>
+              <circle cx="152" cy="64" r="3.5" class="s-accent-fill"/>
+            </svg>
+          </div>
+          <span class="n">02</span>
+          <h3>Produtos Digitais & Dashboards</h3>
+          <p>Interface para sistemas web e ferramentas internas — transformando telas brutas ou geradas por IA em produtos profissionais.</p>
+        </div>
+
+        <div class="card">
+          <div class="ill">
+            <svg viewBox="0 0 220 120" fill="none" aria-hidden="true">
+              <rect x="22" y="44" width="42" height="32" rx="6" class="s-line" fill="#ffffff"/>
+              <path d="M30 56h26M30 64h16" class="s-line"/>
+              <path d="M64 60h26" class="s-accent-dash"/>
+              <path d="M86 57l5 3-5 3" class="s-accent"/>
+              <rect x="91" y="40" width="40" height="40" rx="8" class="s-line" fill="#111111"/>
+              <circle cx="111" cy="60" r="5" fill="#ffffff"/>
+              <path d="M131 60h26" class="s-accent-dash"/>
+              <path d="M153 57l5 3-5 3" class="s-accent"/>
+              <rect x="158" y="44" width="42" height="32" rx="6" class="s-line" fill="#ffffff"/>
+              <circle cx="179" cy="60" r="7" class="s-accent"/>
+              <path d="M176 60l2 2 4-4" class="s-accent"/>
+            </svg>
+          </div>
+          <span class="n">03</span>
+          <h3>Automações com IA</h3>
+          <p>Rotinas automáticas conectando formulários, WhatsApp e CRM pra sua equipe não perder tempo.</p>
+        </div>
+
+        <div class="card">
+          <div class="ill">
+            <svg viewBox="0 0 220 120" fill="none" aria-hidden="true">
+              <path d="M28 100V20M28 100h164" class="s-line"/>
+              <path d="M40 84 L78 68 L114 74 L152 38 L184 44" class="s-accent"/>
+              <path d="M40 84 L78 68 L114 74 L152 38 L184 44 L184 100 L40 100 Z" fill="#111111" opacity="0.06"/>
+              <circle cx="152" cy="38" r="4.5" class="s-accent-fill"/>
+              <rect x="130" y="16" width="44" height="16" rx="4" class="s-line" fill="#ffffff"/>
+              <path d="M136 24h32" class="s-accent"/>
+            </svg>
+          </div>
+          <span class="n">04</span>
+          <h3>Métricas & Rastreamento</h3>
+          <p>Não é um serviço à parte, vem instalado em qualquer projeto que eu entrego. É o que te deixa ver qual canal traz cliente em vez de decidir no achismo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
