@@ -81,8 +81,9 @@ const ogImage = new URL(image, Astro.site);
           s.parentNode.insertBefore(t,s)}(window,document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', metaPixelId);
-          // O ClientRouter troca a página sem reload, entao o PageView vai no evento do Astro
-          document.addEventListener('astro:page-load', function () { fbq('track', 'PageView'); });
+          fbq('track', 'PageView');
+          // O ClientRouter troca a página sem reload, entao cada navegação conta um PageView novo
+          document.addEventListener('astro:after-swap', function () { fbq('track', 'PageView'); });
         </script>
         <noscript>
           <img height="1" width="1" style="display:none"
