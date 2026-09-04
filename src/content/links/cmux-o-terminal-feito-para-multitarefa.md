@@ -1,6 +1,6 @@
 ---
 title: "cmux — O terminal feito para multitarefa"
-url: https://cmux.com/pt-BR
+url: https://cmux.com
 category: tool
 tags:
   - design

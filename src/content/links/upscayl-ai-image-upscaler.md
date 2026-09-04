@@ -1,6 +1,6 @@
 ---
 title: "Upscayl - AI Image Upscaler"
-url: https://upscayl.org/pricing
+url: https://upscayl.org
 category: tool
 tags:
   - ai
