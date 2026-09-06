@@ -5,5 +5,6 @@ category: tool
 tags:
   - ai
   - design
+added: 2026-09-01
 origin: browser
 ---

@@ -7,5 +7,6 @@ tags:
   - design
   - video
 thumb: /acervo/thumbs/lux-HN8mzig.jpg
+added: 2026-09-01
 origin: browser
 ---

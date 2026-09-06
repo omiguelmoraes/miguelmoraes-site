@@ -6,5 +6,6 @@ tags:
   - dev
 description: "Browse 22 Navbars components available in the Relume React/Tailwind UI kit."
 thumb: /acervo/thumbs/2cee85537f90.jpg
+added: 2026-09-01
 origin: browser
 ---

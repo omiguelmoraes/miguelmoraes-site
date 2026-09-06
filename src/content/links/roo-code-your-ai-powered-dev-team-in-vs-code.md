@@ -6,5 +6,6 @@ tags:
   - ai
   - dev
 description: "Roomote is an AI engineering teammate that ships reviewable PRs — hosted by us in about two minutes, or self-hosted on your own infra."
+added: 2026-09-01
 origin: browser
 ---

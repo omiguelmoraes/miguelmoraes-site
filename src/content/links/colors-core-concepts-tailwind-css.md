@@ -7,5 +7,6 @@ tags:
   - dev
 description: "Using and customizing the color palette in Tailwind CSS projects."
 thumb: /acervo/thumbs/491a3211c882.jpg
+added: 2026-09-01
 origin: browser
 ---

@@ -4,5 +4,6 @@ url: https://rogueamoeba.com/loopback
 category: tool
 description: "Get all the power of a high-end studio mixing board, right inside your Mac!"
 thumb: /acervo/thumbs/d11cf8481d4e.jpg
+added: 2026-09-01
 origin: browser
 ---

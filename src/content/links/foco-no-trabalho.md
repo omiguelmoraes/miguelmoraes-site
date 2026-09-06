@@ -6,5 +6,6 @@ tags:
   - produtividade
   - video
 thumb: /acervo/thumbs/bDdmfrLgLaw.jpg
+added: 2026-09-01
 origin: browser
 ---

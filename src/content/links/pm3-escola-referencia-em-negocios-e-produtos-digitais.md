@@ -8,5 +8,6 @@ tags:
   - curso
 description: "Já estuda com a gente?"
 thumb: /acervo/thumbs/83670e1b956d.jpg
+added: 2026-09-01
 origin: browser
 ---

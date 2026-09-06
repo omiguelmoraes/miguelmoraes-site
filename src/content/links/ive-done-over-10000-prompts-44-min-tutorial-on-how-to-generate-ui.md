@@ -8,5 +8,6 @@ tags:
   - curso
   - video
 thumb: /acervo/thumbs/M-uUFLU9IFU.jpg
+added: 2026-09-01
 origin: browser
 ---

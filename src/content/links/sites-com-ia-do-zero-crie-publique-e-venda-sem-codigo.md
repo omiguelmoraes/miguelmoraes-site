@@ -7,5 +7,6 @@ tags:
   - dev
 description: "Aprenda a criar e publicar sites com inteligência artificial, sem programar, e encontrar clientes locais. Um curso para buscar renda extra vendendo sites."
 thumb: /acervo/thumbs/5c90bdbec31c.jpg
+added: 2026-09-01
 origin: safari
 ---

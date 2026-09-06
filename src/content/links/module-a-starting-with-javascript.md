@@ -6,5 +6,6 @@ tags:
   - dev
   - video
 thumb: /acervo/thumbs/uzEhd3Lugik.jpg
+added: 2026-09-01
 origin: browser
 ---

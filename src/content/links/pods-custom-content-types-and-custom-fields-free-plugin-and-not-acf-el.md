@@ -6,5 +6,6 @@ tags:
   - curso
   - video
 thumb: /acervo/thumbs/vkdRqUEMX6s.jpg
+added: 2026-09-01
 origin: browser
 ---

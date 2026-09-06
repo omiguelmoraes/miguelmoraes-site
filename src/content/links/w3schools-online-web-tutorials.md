@@ -6,5 +6,6 @@ tags:
   - curso
 description: "W3Schools offers free online tutorials, references and exercises in all the major languages of the web."
 thumb: /acervo/thumbs/e91be57e51e0.jpg
+added: 2026-09-01
 origin: browser
 ---

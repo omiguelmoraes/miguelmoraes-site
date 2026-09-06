@@ -8,5 +8,6 @@ tags:
   - curso
 description: "Descubra como o Cursor transforma a programação com inteligência artificial e interface semelhante ao VS Code."
 thumb: /acervo/thumbs/3e1f37834676.jpg
+added: 2026-09-01
 origin: browser
 ---

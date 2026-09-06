@@ -6,5 +6,6 @@ tags:
   - ai
   - video
 thumb: /acervo/thumbs/ynMxybgj_iE.jpg
+added: 2026-09-01
 origin: browser
 ---

@@ -6,5 +6,6 @@ tags:
   - design
   - video
 thumb: /acervo/thumbs/qhiCXvbkb7Y.jpg
+added: 2026-09-01
 origin: browser
 ---

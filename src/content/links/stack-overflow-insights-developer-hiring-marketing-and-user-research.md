@@ -8,5 +8,6 @@ tags:
   - dev
 description: "Every year we ask developers about the tools they use, how they learn, and how they work. Explore the results of the largest survey of people who code."
 thumb: /acervo/thumbs/f189ebe2773a.jpg
+added: 2026-09-01
 origin: browser
 ---

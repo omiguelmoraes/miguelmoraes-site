@@ -6,5 +6,6 @@ tags:
   - financas
   - video
 thumb: /acervo/thumbs/R-G-ERIYdQA.jpg
+added: 2026-09-01
 origin: browser
 ---

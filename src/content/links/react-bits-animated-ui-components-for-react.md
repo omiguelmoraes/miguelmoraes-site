@@ -7,5 +7,6 @@ tags:
   - dev
 description: "An open source collection of high quality, animated, interactive & fully customizable React components for building stunning, memorable user interfaces."
 thumb: /acervo/thumbs/10f11f1fe067.jpg
+added: 2026-09-01
 origin: safari
 ---

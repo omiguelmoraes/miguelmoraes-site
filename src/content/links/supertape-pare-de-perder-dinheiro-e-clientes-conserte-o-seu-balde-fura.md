@@ -7,5 +7,6 @@ tags:
   - marketing
 description: "Tapamos os furos do seu balde e aumentamos sua retenção de clientes e conversões com design."
 thumb: /acervo/thumbs/84a9b11e2536.jpg
+added: 2026-09-01
 origin: safari
 ---

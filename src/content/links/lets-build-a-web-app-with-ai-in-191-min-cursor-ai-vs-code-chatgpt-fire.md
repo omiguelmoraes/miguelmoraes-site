@@ -8,5 +8,6 @@ tags:
   - dev
   - video
 thumb: /acervo/thumbs/-tnPCI5RdNA.jpg
+added: 2026-09-01
 origin: browser
 ---

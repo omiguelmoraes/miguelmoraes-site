@@ -7,5 +7,6 @@ tags:
   - design
 description: "A verdade é que não existe uma única jornada para ganhar dinheiro com design. Neste artigo, eu conto o que eu faria hoje se tivesse começando do zero, sem portfólio, sem…"
 thumb: /acervo/thumbs/d545ee29146f.jpg
+added: 2026-09-01
 origin: browser
 ---
