@@ -1,6 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" fill="none">
+  <defs>
+    <filter id="shadow" x="300" y="78" width="600" height="634" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#1A1A18" flood-opacity=".07"/>
+    </filter>
+  </defs>
   <rect width="1200" height="760" fill="#F7F7F5"/>
-  <rect x="340" y="106" width="520" height="548" rx="18" fill="white" stroke="rgba(0,0,0,.06)"/>
+  <rect x="340" y="106" width="520" height="548" rx="18" fill="white" stroke="rgba(0,0,0,.06)" filter="url(#shadow)"/>
   <text x="388" y="167" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.1">PATRIMÔNIO</text>
   <text x="388" y="201" fill="#1A1A18" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="-0.4">Reserva</text>
   <text x="746" y="193" fill="#0E7A4A" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700">Gerir →</text>

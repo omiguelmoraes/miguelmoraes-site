@@ -46,12 +46,13 @@
             "items": [
               "Entradas e saídas de PJ e PF têm contextos diferentes, mas conversam na visão do mês",
               "Aportes não aparecem como gasto: viram movimento de patrimônio",
-              "O fluxo diário mostra o caixa sem esconder o que ainda está pendente"
+              "O fluxo diário mostra o caixa sem esconder o que ainda está pendente",
+              "Mensagens no Telegram viram lançamentos para conferir antes de entrar no fluxo"
             ]
           }
         ],
         "images": [
-          "/projects/lastro/lastro-03-lancamento.svg"
+          "/projects/lastro/lastro-03-telegram.svg"
         ]
       },
       {

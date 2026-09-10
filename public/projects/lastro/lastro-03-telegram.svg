@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" fill="none">
+  <defs>
+    <filter id="shadow" x="76" y="70" width="1048" height="570" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#1A1A18" flood-opacity=".07"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="680" fill="#F7F7F5"/>
+  <rect x="122" y="92" width="372" height="496" rx="18" fill="white" stroke="rgba(0,0,0,.06)" filter="url(#shadow)"/>
+  <rect x="122" y="92" width="372" height="70" rx="18" fill="#0E7A4A"/>
+  <path d="M122 144H494V162H122V144Z" fill="#0E7A4A"/>
+  <circle cx="164" cy="127" r="18" fill="rgba(255,255,255,.17)"/>
+  <path d="M155 127L164 133L173 127L164 121L155 127Z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+  <text x="195" y="124" fill="white" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Lastro</text>
+  <text x="195" y="143" fill="rgba(255,255,255,.75)" font-family="Inter, Arial, sans-serif" font-size="11">bot de lançamentos</text>
+  <rect x="151" y="205" width="244" height="64" rx="12" fill="#F1F1EE"/>
+  <text x="170" y="232" fill="#1A1A18" font-family="Inter, Arial, sans-serif" font-size="14">Paguei R$ 38 no almoço</text>
+  <text x="170" y="253" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="11">12:42</text>
+  <rect x="226" y="292" width="230" height="88" rx="12" fill="#E5F1E7"/>
+  <text x="246" y="322" fill="#1A1A18" font-family="Inter, Arial, sans-serif" font-size="13">Registrei como Diário</text>
+  <text x="246" y="347" fill="#0E7A4A" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">R$ 38,00 · PF</text>
+  <text x="246" y="368" fill="#6F6E69" font-family="Inter, Arial, sans-serif" font-size="11">Hoje, 12:42</text>
+  <rect x="151" y="480" width="314" height="42" rx="12" fill="#F7F7F5" stroke="rgba(0,0,0,.06)"/>
+  <text x="172" y="507" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="13">Escreva um lançamento…</text>
+  <rect x="540" y="168" width="538" height="344" rx="18" fill="white" stroke="rgba(0,0,0,.06)" filter="url(#shadow)"/>
+  <text x="584" y="224" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1">PRONTO PARA CONFERIR</text>
+  <text x="584" y="264" fill="#1A1A18" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="-.5">Almoço</text>
+  <rect x="584" y="294" width="204" height="39" rx="9" fill="#F7F7F5"/>
+  <text x="602" y="319" fill="#6F6E69" font-family="Inter, Arial, sans-serif" font-size="13">Diário · PF</text>
+  <text x="584" y="391" fill="#1A1A18" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="-1">R$ 38,00</text>
+  <line x1="584" y1="428" x2="1034" y2="428" stroke="rgba(0,0,0,.08)"/>
+  <text x="584" y="464" fill="#6F6E69" font-family="Inter, Arial, sans-serif" font-size="13">Aguardando confirmação no fluxo</text>
+  <path d="M507 340H527" stroke="#B8B9B4" stroke-width="2" stroke-linecap="round"/>
+  <path d="M519 332L527 340L519 348" stroke="#B8B9B4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
