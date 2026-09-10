@@ -38,6 +38,7 @@
 - Lastro: case expandido com recortes de fluxo diário e assinaturas, além de dashboard e patrimônio; a tipografia das composições foi alinhada à família usada no produto.
 - Lastro: adicionadas legendas objetivas aos recortes visuais do case.
 - Lastro: os recortes ilustrados deram lugar a componentes renderizados do produto real, usando dados demonstrativos. Dashboard, fluxo, assinaturas e investimentos agora mostram tipografia, estados e proporções fiéis à interface.
+- Lastro: os recortes foram recompostos como peças editoriais a partir do design system do produto. Saíram controles flutuantes, formulários e ações de tela; entraram margens próprias, dados demonstrativos variados e uma leitura focada de custos recorrentes.
 
 ### 2026-09-01
 - Criação e refinamento da Landing Page de tráfego pago `/trabalhe-comigo` (`src/pages/trabalhe-comigo.astro`):
