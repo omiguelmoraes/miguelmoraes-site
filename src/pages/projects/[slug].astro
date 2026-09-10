@@ -27,7 +27,7 @@ const otherProjects = [prevProject, nextProject];
     <header class="header">
       <div class="header-main">
         <h1 class="title">{project.title}</h1>
-        {project.description && <p class="description">{project.description}</p>}
+        {(project.headline || project.description) && <p class="headline">{project.headline || project.description}</p>}
       </div>
 
       <div class="meta-grid">
@@ -156,7 +156,7 @@ const otherProjects = [prevProject, nextProject];
   .page {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 56px;
   }
 
   .nav { margin-bottom: 0; }
@@ -175,27 +175,22 @@ const otherProjects = [prevProject, nextProject];
   .header {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 28px;
   }
 
   .header-main {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-  }
-
-  .description {
-    font-size: var(--font-size-body);
-    color: var(--color-body);
-    line-height: var(--line-height-body);
-    max-width: 60ch;
+    gap: 16px;
   }
 
   .meta-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px 20px;
-    margin-top: 4px;
+    padding-block: 16px;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .meta-col {
@@ -226,14 +221,16 @@ const otherProjects = [prevProject, nextProject];
   }
 
   .title {
-    font-size: 28px;
+    font-size: clamp(36px, 5vw, 52px);
     font-weight: 400;
-    line-height: 1.25;
+    letter-spacing: -0.045em;
+    line-height: 1.04;
     color: var(--color-title);
+    text-wrap: balance;
   }
 
   .cover {
-    border-radius: 8px;
+    border-radius: 2px;
     overflow: hidden;
     border: 1px solid var(--color-border);
     background: var(--color-wash);
@@ -264,13 +261,14 @@ const otherProjects = [prevProject, nextProject];
   .body {
     display: flex;
     flex-direction: column;
-    gap: 88px;
+    gap: 128px;
   }
 
-  .section {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  .body > .section {
+    display: grid;
+    grid-template-columns: 132px minmax(0, 1fr);
+    column-gap: 48px;
+    row-gap: 16px;
   }
 
   .section-label {
@@ -279,45 +277,38 @@ const otherProjects = [prevProject, nextProject];
     color: var(--color-muted);
   }
 
-  /* O texto vive numa coluna estreita e a imagem ocupa a largura toda. Se a
-     coluna encosta na esquerda, a página fica torta — então ela é centralizada
-     na largura da imagem, com o texto continuando alinhado à esquerda dentro
-     dela, que é o que se lê bem */
-  /* Uma largura só, em px, pra todos os blocos de texto. Com `ch` cada elemento
-     tinha a largura do PRÓPRIO corpo de fonte, então rótulo, título e parágrafo
-     centralizavam em colunas diferentes e não alinhavam entre si */
-  .section-label,
-  .section-heading,
-  .section-body,
-  .section-list {
-    width: 100%;
-    max-width: var(--prose-max-width);
-    margin-inline: auto;
+  .body > .section .section-label {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 6px;
   }
 
-  /* Os números ocupam a largura toda, então o rótulo deles acompanha */
-  .resultados .section-label {
-    max-width: none;
+  .body > .section .section-heading,
+  .body > .section .section-body,
+  .body > .section .section-list,
+  .body > .section .visit-wrap {
+    grid-column: 2;
+    width: 100%;
+    max-width: 560px;
+    margin: 0;
   }
 
   .section-heading {
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 400;
-    line-height: 1.35;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
     color: var(--color-title);
+    text-wrap: balance;
   }
 
   .headline {
     font-size: 20px;
-    line-height: 1.45;
+    line-height: 1.5;
     color: var(--color-body);
-    max-width: 46ch;
-    margin-top: 4px;
+    max-width: 52ch;
   }
 
-  /* O texto do item alinha com o parágrafo e a bolinha fica pendurada na
-     margem. Com `padding-left` a lista inteira andava 20px pra direita e
-     desalinhava do bloco de texto logo acima */
   .section-list {
     display: block;
     padding-left: 0;
@@ -351,13 +342,13 @@ const otherProjects = [prevProject, nextProject];
     background: var(--color-muted);
   }
 
-  /* Colunas escolhidas pela quantidade, não por auto-fit: com 4 números o
-     auto-fit fazia 3 + 1, e o card sozinho na última linha lê como erro */
   .results {
     display: grid;
-    gap: 20px;
-    margin-top: 8px;
+    gap: 0;
+    margin-top: 16px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .results.n1 { grid-template-columns: minmax(0, 1fr); }
@@ -373,30 +364,31 @@ const otherProjects = [prevProject, nextProject];
   }
 
   .resultados {
-    margin-top: 40px;
+    margin-top: 8px;
   }
 
   .header-stack {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-top: 24px;
+    margin-top: 0;
   }
 
   .result {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 22px 24px;
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    background: var(--color-wash);
+    padding: 20px 18px;
+  }
+
+  .result + .result {
+    border-left: 1px solid var(--color-border);
   }
 
   .result-value {
-    font-size: 34px;
+    font-size: 38px;
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.045em;
     color: var(--color-title);
   }
 
@@ -427,14 +419,12 @@ const otherProjects = [prevProject, nextProject];
     line-height: 1.6;
   }
 
-  /* Largura total em tudo: imagem de projeto vale pelo detalhe, e meia largura
-     desperdiça isso. Duas colunas volta como exceção marcada, se algum par de
-     imagens pedir */
   .image-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
-    margin-top: 44px;
+    margin-top: 36px;
+    grid-column: 1 / -1;
   }
 
   @media (max-width: 700px) {
@@ -450,8 +440,6 @@ const otherProjects = [prevProject, nextProject];
     margin: 0;
   }
 
-  /* Centralizada: a foto ocupa a coluna inteira, então a legenda alinhada ao
-     centro dela se lê como legenda, e não como mais uma linha de texto corrido */
   .image-caption {
     font-size: var(--font-size-small);
     color: var(--color-muted);
@@ -475,12 +463,7 @@ const otherProjects = [prevProject, nextProject];
     display: block;
   }
 
-  /* Mesma coluna do texto: solto no container ele encostava na esquerda
-     enquanto o parágrafo acima estava centralizado */
   .visit-wrap {
-    width: 100%;
-    max-width: var(--prose-max-width);
-    margin-inline: auto;
     margin-top: 4px;
   }
 
@@ -503,7 +486,8 @@ const otherProjects = [prevProject, nextProject];
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding-top: var(--section-gap);
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
   }
 
   .footer-top {
@@ -526,7 +510,7 @@ const otherProjects = [prevProject, nextProject];
   }
 
   .footer-project-cover {
-    border-radius: 6px;
+    border-radius: 2px;
     overflow: hidden;
     border: 1px solid var(--color-border);
     background: var(--color-wash);
@@ -568,6 +552,66 @@ const otherProjects = [prevProject, nextProject];
   @media (hover: hover) {
     .home-link:hover {
       color: var(--color-title);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .body {
+      gap: 88px;
+    }
+
+    .body > .section {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .body > .section .section-label,
+    .body > .section .section-heading,
+    .body > .section .section-body,
+    .body > .section .section-list,
+    .body > .section .visit-wrap {
+      width: 100%;
+      max-width: var(--prose-max-width);
+      margin-inline: 0;
+    }
+
+    .image-grid {
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page {
+      gap: 40px;
+    }
+
+    .header {
+      gap: 24px;
+    }
+
+    .headline {
+      font-size: 18px;
+    }
+
+    .body {
+      gap: 72px;
+    }
+
+    .section-heading {
+      font-size: 23px;
+    }
+
+    .results {
+      margin-top: 12px;
+    }
+
+    .result {
+      padding: 16px 12px;
+    }
+
+    .result-value {
+      font-size: 31px;
     }
   }
 </style>

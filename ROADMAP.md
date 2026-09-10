@@ -26,6 +26,9 @@
 
 ## Changelog
 
+### 2026-09-10
+- Cases (`src/pages/projects/[slug].astro`): redesenho editorial do template, com hierarquia mais forte no título, narrativa de abertura do projeto, metadados com menos ruído visual, números tratados como faixa de dados e conteúdo em colunas no desktop. As imagens e o texto do Atlas foram preservados.
+
 ### 2026-09-01
 - Criação e refinamento da Landing Page de tráfego pago `/trabalhe-comigo` (`src/pages/trabalhe-comigo.astro`):
   - Redesign completo para estética full white-mode minimalista (substituição de cores beges/esmeralda por paleta neutra branca `#ffffff`, wash em cinza suave `#f7f7f7` e bordas finas `#e2e2e2`).
