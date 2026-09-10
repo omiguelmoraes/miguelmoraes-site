@@ -31,6 +31,7 @@
 - Atlas Jurídico: revisão do case na fonte do Obsidian, removendo bastidores internos e focando em contexto, decisões de design e resultado. O template voltou a usar os raios originais, preserva a proporção completa da capa, uniformiza o ritmo entre seções e deixa os cards de números com hover discreto.
 - Atlas Jurídico: enquadramentos visuais refinados a partir dos mockups existentes. A capa e o frame de planos agora têm respiro equilibrado, e a seção de processo passou a mostrar o painel dos documentos isoladamente, sem alterar nenhuma tela ou texto da interface original.
 - Atlas Jurídico: o detalhe de documentos foi reduzido a uma peça compacta e o frame de produto passou a mostrar somente o desktop, sem mockup móvel sobreposto.
+- Cases: os metadados de função, ano, localização e setor agora usam somente espaçamento, sem divisores, mantendo a leitura mais leve entre a abertura e as ferramentas.
 
 ### 2026-09-01
 - Criação e refinamento da Landing Page de tráfego pago `/trabalhe-comigo` (`src/pages/trabalhe-comigo.astro`):
