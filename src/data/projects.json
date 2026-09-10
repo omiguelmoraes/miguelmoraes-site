@@ -7,8 +7,8 @@
     "location": "Brasil",
     "industry": "Publishing",
     "url": "https://ocirculojuridico.com.br/atlas-juridico",
-    "cover": "/projects/atlas-juridico/atlas-juridico-01.webp",
-    "thumbnail": "/projects/atlas-juridico/atlas-juridico-01.webp",
+    "cover": "/projects/atlas-juridico/atlas-juridico-01-hero.webp",
+    "thumbnail": "/projects/atlas-juridico/atlas-juridico-01-hero.webp",
     "tags": [
       "Web Design"
     ],
@@ -109,8 +109,8 @@
         ],
         "images": [
           {
-            "src": "/projects/atlas-juridico/atlas-juridico-04.webp",
-            "caption": "A composição da página: produto, contexto e condições de compra."
+            "src": "/projects/atlas-juridico/atlas-juridico-04-documentos.webp",
+            "caption": "Os documentos que dão contexto histórico à edição."
           }
         ]
       },
@@ -129,8 +129,8 @@
         ],
         "images": [
           {
-            "src": "/projects/atlas-juridico/atlas-juridico-05.webp",
-            "caption": "A seção de planos, o bloco que mais mudou no dia do lançamento."
+            "src": "/projects/atlas-juridico/atlas-juridico-05-planos.webp",
+            "caption": "Produto e plano apresentados lado a lado."
           }
         ]
       },
