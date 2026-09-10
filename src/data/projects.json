@@ -1,4 +1,163 @@
 {
+  "atlas-juridico": {
+    "title": "Atlas Jurídico",
+    "description": "Launch landing page for Atlas Jurídico, a collector's edition sold by Círculo Jurídico, shipped on a fixed date with the offer still changing hours before go-live.",
+    "year": "2026",
+    "category": "Web Design",
+    "location": "Brazil",
+    "industry": "Publishing",
+    "url": "https://ocirculojuridico.com.br/atlas-juridico",
+    "cover": "/projects/atlas-juridico/atlas-juridico-01.webp",
+    "thumbnail": "/projects/atlas-juridico/atlas-juridico-01.webp",
+    "coverVideo": "/projects/atlas-juridico/atlas-juridico-showreel.mp4",
+    "tags": [
+      "Web Design"
+    ],
+    "headline": "A launch page built in my first week at Barca, that took around 50 sales in its first three hours online.",
+    "role": "Web design and build, in a squad with copy, social and commercial",
+    "stack": [
+      "Framer",
+      "Figma",
+      "Microsoft Clarity"
+    ],
+    "results": [
+      {
+        "value": "~50",
+        "label": "sales in the first three hours, before the page was public"
+      },
+      {
+        "value": "2.9K",
+        "label": "unique visitors on launch day"
+      },
+      {
+        "value": "4m16s",
+        "label": "average time on the page"
+      },
+      {
+        "value": "84%",
+        "label": "of the traffic came from mobile"
+      }
+    ],
+    "sections": [
+      {
+        "label": "A brief context",
+        "heading": "A collector's edition, a book club, and a date that was already announced",
+        "body": [
+          {
+            "type": "p",
+            "html": "Círculo Jurídico is a Brazilian law book club. Atlas Jurídico is its collector's edition: 153 documents that shaped legal history — constitutions, codes, charters and treaties — in a single hardcover volume, sold as an upsell to members and as a standalone purchase to everyone else."
+          },
+          {
+            "type": "p",
+            "html": "The launch date was set before the page existed. A VIP WhatsApp group would get 1,000 exclusive units at 3pm, and the page would open to the public at 7pm the same day. My job was the page that had to hold both."
+          },
+          {
+            "type": "p",
+            "html": "I had been at Barca for ten days when it went live, and it was the first launch for most of that squad."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-02.webp",
+            "caption": "The launch page as it went live: the club's own seal, navy and serif headings, reused instead of a new visual language."
+          }
+        ]
+      },
+      {
+        "label": "The real problem",
+        "heading": "The offer kept moving while the page was being built",
+        "body": [
+          {
+            "type": "p",
+            "html": "The hard part was never the layout. It was that almost every commercial decision was still open while the page was already being built, and each one changed something structural."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Two audiences, two checkouts: members upgrading with cashback for their remaining subscription time, and non-members buying outright",
+              "The upgrade form depended on an API integration that, the morning of the launch, was confirmed not to be ready",
+              "Prices and installments were corrected hours before go-live",
+              "Most of the club's audience reads on a phone, so mobile was the layout that decided whether the launch worked"
+            ]
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-03.webp",
+            "caption": "Two audiences on the same page: members upgrading with cashback, and non-members buying outright."
+          }
+        ]
+      },
+      {
+        "label": "How it went",
+        "heading": "Building for the version of the offer that would exist at 3pm, not the one agreed the week before",
+        "body": [
+          {
+            "type": "p",
+            "html": "I worked from the club's existing pages instead of inventing a visual language for the launch — the seal, the navy and gold, the serif headings were already doing brand work, and a launch page is a bad place to introduce anything new."
+          },
+          {
+            "type": "p",
+            "html": "From there the page was built in Framer, section by section, with each block kept independent enough to be reordered, corrected or hidden without touching the rest. That decision is what made the last hours survivable:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "The \"how the upgrade works\" section was hidden, not deleted, when the API form was dropped",
+              "Member upgrades were rerouted to a commercial WhatsApp number, added to the page as a manual path",
+              "The plan card was corrected and 12x installments were added, hours before the announcement",
+              "Plan order was inverted so members saw their own offer first"
+            ]
+          },
+          {
+            "type": "p",
+            "html": "Everything above happened on launch day, before 3pm. None of it required rebuilding a section."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-04.webp",
+            "caption": "Independent blocks: what the edition includes, the object itself, and the documents inside it — each one movable without touching the others."
+          },
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-05.webp",
+            "caption": "The plan section, the block that changed the most on launch day — prices, installments and plan order were all corrected here."
+          }
+        ]
+      },
+      {
+        "label": "Result",
+        "heading": "The page held, and the numbers came in the first hours",
+        "body": [
+          {
+            "type": "p",
+            "html": "The VIP announcement went out at 3pm and the page took around 50 sales in three hours, before it was ever public. Launch day brought 2.9K unique visitors, an average session of 4m16s, and 84% of that traffic on mobile — which is the argument for treating the phone layout as the real one, not the adaptation."
+          },
+          {
+            "type": "p",
+            "html": "The page is still online, and later launches for the club reused its structure."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-06.webp",
+            "caption": "The mobile layout, where 84% of the launch traffic actually read the offer."
+          }
+        ]
+      },
+      {
+        "label": "What I took from it",
+        "heading": "Sections that can be moved are worth more than sections that are finished",
+        "body": [
+          {
+            "type": "p",
+            "html": "A launch page is judged on one day. What made this one work was not the visual — it was that on the day, every change the offer needed was a local change. If the page had been built as one continuous composition, hiding a section at 2pm would have meant rebuilding the page at 2pm."
+          }
+        ],
+        "images": []
+      }
+    ]
+  },
   "flouds-branding": {
     "title": "Flouds Performance Digital",
     "description": "Identidade visual para a Flouds Performance Digital, agência de mídia paga e automação de Porto Alegre.",

@@ -52,8 +52,22 @@ const otherProjects = [prevProject, nextProject];
       </div>
     </header>
 
-    <div class="cover">
-      <img src={project.cover} alt={project.title} class="lightbox-trigger" width="1200" height="675" style={"view-transition-name: project-image-" + slug} />
+    <div class="cover" style={project.coverVideo ? "--cover-poster: url(" + project.cover + ")" : "cursor: zoom-in"}>
+      {project.coverVideo ? (
+        <video
+          src={project.coverVideo}
+          poster={project.cover}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label={project.title}
+          style={"view-transition-name: project-image-" + slug}
+        />
+      ) : (
+        <img src={project.cover} alt={project.title} class="lightbox-trigger" width="1200" height="675" style={"view-transition-name: project-image-" + slug} />
+      )}
     </div>
 
     <main class="body">
@@ -222,14 +236,27 @@ const otherProjects = [prevProject, nextProject];
     border: 1px solid var(--color-border);
     background: var(--color-wash);
     aspect-ratio: 16/9;
-    cursor: zoom-in;
   }
 
-  .cover img {
+  .cover img,
+  .cover video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  /* Vídeo no topo é ambiente, não conteúdo: quem pediu menos movimento no
+     sistema fica com o pôster, que é a própria capa */
+  @media (prefers-reduced-motion: reduce) {
+    .cover video {
+      display: none;
+    }
+    .cover {
+      background-image: var(--cover-poster);
+      background-size: cover;
+      background-position: center;
+    }
   }
 
   .body {

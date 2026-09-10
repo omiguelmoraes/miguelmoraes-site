@@ -29,6 +29,9 @@ export type Project = {
   url?: string;
   cover: string;
   thumbnail: string;
+  // Vídeo curto no topo do case, quando existe. A capa continua sendo imagem:
+  // é ela que vai pro og:image e pros cards da listagem
+  coverVideo?: string;
   coverPosition?: string;
   tags: string[];
   headline?: string;
