@@ -52,7 +52,22 @@
           }
         ],
         "images": [
-          "/projects/lastro/lastro-03-telegram.svg"
+          "/projects/lastro/lastro-03-telegram.svg",
+          "/projects/lastro/lastro-05-fluxo.svg"
+        ]
+      },
+      {
+        "label": "Sistema",
+        "heading": "Componentes para cada decisão que se repete",
+        "body": [
+          {
+            "type": "p",
+            "html": "O Lastro não tenta resolver tudo em uma única tela. O dashboard dá o retrato do mês; assinaturas deixam os custos recorrentes visíveis; patrimônio separa posição de movimentação. São recortes diferentes da mesma rotina, cada um com uma pergunta clara."
+          }
+        ],
+        "images": [
+          "/projects/lastro/lastro-04-visoes.svg",
+          "/projects/lastro/lastro-06-assinaturas.svg"
         ]
       },
       {

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <defs>
+    <filter id="shadow" x="78" y="76" width="1044" height="572" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1A1A18" flood-opacity=".06"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="720" fill="#F7F7F5"/>
+  <rect x="106" y="96" width="624" height="250" rx="18" fill="white" stroke="rgba(0,0,0,.06)" filter="url(#shadow)"/>
+  <text x="148" y="151" fill="#1A1A18" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="600" letter-spacing="-.4">Dashboard</text>
+  <text x="148" y="181" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="13">O mês, sem misturar empresa e pessoal.</text>
+  <rect x="148" y="216" width="166" height="86" rx="11" fill="#F7F7F5"/>
+  <text x="166" y="242" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">Faturamento</text>
+  <text x="166" y="276" fill="#4D7C0F" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="600">R$ 15.800</text>
+  <text x="166" y="295" fill="#4D7C0F" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600">+12%</text>
+  <rect x="332" y="216" width="166" height="86" rx="11" fill="#F7F7F5"/>
+  <text x="350" y="242" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">Saídas PJ</text>
+  <text x="350" y="276" fill="#D13438" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="600">R$ 3.240</text>
+  <rect x="516" y="216" width="166" height="86" rx="11" fill="#F7F7F5"/>
+  <text x="534" y="242" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">Resultado</text>
+  <text x="534" y="276" fill="#4D7C0F" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="600">R$ 12.560</text>
+  <rect x="758" y="96" width="336" height="250" rx="18" fill="white" stroke="rgba(0,0,0,.06)" filter="url(#shadow)"/>
+  <text x="798" y="151" fill="#1A1A18" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="600" letter-spacing="-.4">Assinaturas</text>
+  <text x="798" y="181" fill="#9B9A97" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" letter-spacing=".8">R$ 214,00 / MÊS</text>
+  <line x1="798" y1="207" x2="1054" y2="207" stroke="rgba(0,0,0,.08)"/>
+  <text x="798" y="239" fill="#1A1A18" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">Figma</text>
+  <text x="1007" y="239" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">R$ 39</text>
+  <text x="798" y="275" fill="#1A1A18" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">Notion</text>
+  <text x="1007" y="275" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">R$ 52</text>
+  <text x="798" y="311" fill="#1A1A18" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">Internet</text>
+  <text x="1000" y="311" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">R$ 123</text>
+  <rect x="106" y="378" width="988" height="246" rx="18" fill="white" stroke="rgba(0,0,0,.06)" filter="url(#shadow)"/>
+  <text x="148" y="433" fill="#1A1A18" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="600" letter-spacing="-.4">Patrimônio</text>
+  <text x="148" y="463" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="13">Posições, aportes e o que ainda está a alocar.</text>
+  <text x="148" y="531" fill="#4D7C0F" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="31" font-weight="600" letter-spacing="-1">R$ 18.420,00</text>
+  <text x="148" y="558" fill="#9B9A97" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="12">4 posições · R$ 1.250 aportados este mês</text>
+  <text x="572" y="475" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="13">Caixinha</text>
+  <text x="998" y="475" fill="#1A1A18" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600">62%</text>
+  <rect x="572" y="489" width="432" height="7" rx="3.5" fill="#F0F1ED"/>
+  <rect x="572" y="489" width="268" height="7" rx="3.5" fill="#2E7AB8"/>
+  <text x="572" y="535" fill="#6F6E69" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="13">Renda fixa</text>
+  <text x="998" y="535" fill="#1A1A18" font-family="Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600">28%</text>
+  <rect x="572" y="549" width="432" height="7" rx="3.5" fill="#F0F1ED"/>
+  <rect x="572" y="549" width="121" height="7" rx="3.5" fill="#2E7AB8"/>
+</svg>
