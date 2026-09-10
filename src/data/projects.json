@@ -6,8 +6,8 @@
     "category": "Experimentos",
     "location": "Projeto pessoal",
     "industry": "Finanças pessoais",
-    "cover": "/projects/lastro/lastro-01-reserva.svg",
-    "thumbnail": "/projects/lastro/lastro-01-reserva.svg",
+    "cover": "/projects/lastro/lastro-01-reserva.png",
+    "thumbnail": "/projects/lastro/lastro-01-reserva.png",
     "tags": [
       "Experimentos",
       "UI/UX"
@@ -31,8 +31,8 @@
         ],
         "images": [
           {
-            "src": "/projects/lastro/lastro-02-mural.svg",
-            "caption": "Três pontos de entrada da rotina: lançar, acompanhar o fluxo e ver o saldo."
+            "src": "/projects/lastro/lastro-02-mural.png",
+            "caption": "Três pontos de entrada da rotina: visão do mês, assinaturas e fluxo."
           }
         ]
       },
@@ -60,7 +60,7 @@
             "caption": "Pelo Telegram, uma mensagem vira lançamento para conferir antes de entrar no fluxo."
           },
           {
-            "src": "/projects/lastro/lastro-05-fluxo.svg",
+            "src": "/projects/lastro/lastro-05-fluxo.png",
             "caption": "O fluxo diário mostra movimento, compromisso e saldo sem esconder o que acontece no mês."
           }
         ]
@@ -76,12 +76,16 @@
         ],
         "images": [
           {
-            "src": "/projects/lastro/lastro-04-visoes.svg",
-            "caption": "Dashboard, assinaturas e patrimônio respondem a perguntas diferentes da mesma rotina."
+            "src": "/projects/lastro/lastro-04-dashboard.png",
+            "caption": "O dashboard separa resultado de empresa, rotina pessoal e investimentos."
           },
           {
-            "src": "/projects/lastro/lastro-06-assinaturas.svg",
+            "src": "/projects/lastro/lastro-06-assinaturas.png",
             "caption": "Custos recorrentes ficam separados do fluxo para facilitar ajuste e previsão."
+          },
+          {
+            "src": "/projects/lastro/lastro-07-investimentos.png",
+            "caption": "Na aba de investimentos, posição, distribuição e aportes seguem separados."
           }
         ]
       },
