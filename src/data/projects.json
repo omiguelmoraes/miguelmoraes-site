@@ -1,20 +1,19 @@
 {
   "atlas-juridico": {
     "title": "Atlas Jurídico",
-    "description": "Launch landing page for Atlas Jurídico, a collector's edition sold by Círculo Jurídico, shipped on a fixed date with the offer still changing hours before go-live.",
+    "description": "Landing page de lançamento do Atlas Jurídico, edição de colecionador vendida pelo Círculo Jurídico, com data fechada antes da página existir e a oferta ainda mudando horas antes de subir.",
     "year": "2026",
     "category": "Web Design",
-    "location": "Brazil",
+    "location": "Brasil",
     "industry": "Publishing",
     "url": "https://ocirculojuridico.com.br/atlas-juridico",
     "cover": "/projects/atlas-juridico/atlas-juridico-01.webp",
     "thumbnail": "/projects/atlas-juridico/atlas-juridico-01.webp",
-    "coverVideo": "/projects/atlas-juridico/atlas-juridico-showreel.mp4",
     "tags": [
       "Web Design"
     ],
-    "headline": "A launch page built in my first week at Barca, that took around 50 sales in its first three hours online.",
-    "role": "Web design and build, in a squad with copy, social and commercial",
+    "headline": "Uma página de lançamento feita na minha primeira semana de Barca, que fez cerca de 50 vendas nas três primeiras horas no ar.",
+    "role": "Web Design",
     "stack": [
       "Framer",
       "Figma",
@@ -23,138 +22,139 @@
     "results": [
       {
         "value": "~50",
-        "label": "sales in the first three hours, before the page was public"
+        "label": "vendas nas três primeiras horas, antes da página ser pública"
       },
       {
         "value": "2.9K",
-        "label": "unique visitors on launch day"
+        "label": "visitantes únicos no dia do lançamento"
       },
       {
         "value": "4m16s",
-        "label": "average time on the page"
+        "label": "tempo médio na página"
       },
       {
         "value": "84%",
-        "label": "of the traffic came from mobile"
+        "label": "do tráfego veio do celular"
       }
     ],
     "sections": [
       {
-        "label": "A brief context",
-        "heading": "A collector's edition, a book club, and a date that was already announced",
+        "label": "Contexto",
+        "heading": "Uma edição de colecionador, um clube de livro e uma data que já tinha sido anunciada",
         "body": [
           {
             "type": "p",
-            "html": "Círculo Jurídico is a Brazilian law book club. Atlas Jurídico is its collector's edition: 153 documents that shaped legal history — constitutions, codes, charters and treaties — in a single hardcover volume, sold as an upsell to members and as a standalone purchase to everyone else."
+            "html": "O Círculo Jurídico é um clube de livro de Direito. O Atlas Jurídico é a edição de colecionador dele: 153 documentos que marcaram a história do Direito — constituições, códigos, cartas e tratados — num volume único de capa dura, vendido como upsell para assinantes e como compra avulsa para todo mundo."
           },
           {
             "type": "p",
-            "html": "The launch date was set before the page existed. A VIP WhatsApp group would get 1,000 exclusive units at 3pm, and the page would open to the public at 7pm the same day. My job was the page that had to hold both."
+            "html": "A data do lançamento estava fechada antes da página existir. Um grupo VIP de WhatsApp receberia 1.000 unidades exclusivas às 15h, e a página abriria para o público às 19h do mesmo dia. Meu trabalho era a página que precisava segurar as duas coisas."
           },
           {
             "type": "p",
-            "html": "I had been at Barca for ten days when it went live, and it was the first launch for most of that squad."
+            "html": "Eu estava na Barca havia dez dias quando ela subiu, e era o primeiro lançamento da maior parte daquele squad."
           }
         ],
         "images": [
           {
             "src": "/projects/atlas-juridico/atlas-juridico-02.webp",
-            "caption": "The launch page as it went live: the club's own seal, navy and serif headings, reused instead of a new visual language."
+            "caption": "A página no ar, com o selo, o azul e as serifas que o clube já usava."
           }
         ]
       },
       {
-        "label": "The real problem",
-        "heading": "The offer kept moving while the page was being built",
+        "label": "O problema real",
+        "heading": "A oferta continuou mudando enquanto a página era construída",
         "body": [
           {
             "type": "p",
-            "html": "The hard part was never the layout. It was that almost every commercial decision was still open while the page was already being built, and each one changed something structural."
+            "html": "A parte difícil nunca foi o layout. Foi que quase toda decisão comercial ainda estava aberta com a página já sendo construída, e cada uma delas mudava alguma coisa estrutural."
           },
           {
             "type": "list",
             "items": [
-              "Two audiences, two checkouts: members upgrading with cashback for their remaining subscription time, and non-members buying outright",
-              "The upgrade form depended on an API integration that, the morning of the launch, was confirmed not to be ready",
-              "Prices and installments were corrected hours before go-live",
-              "Most of the club's audience reads on a phone, so mobile was the layout that decided whether the launch worked"
+              "Dois públicos e dois checkouts: assinante fazendo upgrade com cashback do tempo restante, e não assinante comprando avulso",
+              "O formulário de upgrade dependia de uma integração de API que, na manhã do lançamento, foi confirmada como não pronta",
+              "Preços e parcelas foram corrigidos horas antes de subir",
+              "A maior parte do público do clube lê pelo celular, então o mobile era o layout que decidia se o lançamento funcionava"
             ]
           }
         ],
         "images": [
           {
             "src": "/projects/atlas-juridico/atlas-juridico-03.webp",
-            "caption": "Two audiences on the same page: members upgrading with cashback, and non-members buying outright."
+            "caption": "Dois públicos e dois checkouts na mesma página."
           }
         ]
       },
       {
-        "label": "How it went",
-        "heading": "Building for the version of the offer that would exist at 3pm, not the one agreed the week before",
+        "label": "Como foi",
+        "heading": "Construir para a versão da oferta que existiria às 15h, não para a combinada na semana anterior",
         "body": [
           {
             "type": "p",
-            "html": "I worked from the club's existing pages instead of inventing a visual language for the launch — the seal, the navy and gold, the serif headings were already doing brand work, and a launch page is a bad place to introduce anything new."
+            "html": "Trabalhei em cima das páginas que o clube já tinha em vez de inventar uma linguagem visual para o lançamento. O selo, o azul e o dourado, os títulos em serifa já faziam trabalho de marca, e página de lançamento é um péssimo lugar para estrear qualquer coisa."
           },
           {
             "type": "p",
-            "html": "From there the page was built in Framer, section by section, with each block kept independent enough to be reordered, corrected or hidden without touching the rest. That decision is what made the last hours survivable:"
+            "html": "Dali em diante a página foi feita no Framer, seção por seção, com cada bloco independente o bastante para ser reordenado, corrigido ou escondido sem encostar no resto. Foi essa decisão que tornou as últimas horas sobrevivíveis:"
           },
           {
             "type": "list",
             "items": [
-              "The \"how the upgrade works\" section was hidden, not deleted, when the API form was dropped",
-              "Member upgrades were rerouted to a commercial WhatsApp number, added to the page as a manual path",
-              "The plan card was corrected and 12x installments were added, hours before the announcement",
-              "Plan order was inverted so members saw their own offer first"
+              "A seção de \"como funciona o upgrade\" foi escondida, não apagada, quando o formulário caiu",
+              "O upgrade de assinante foi redirecionado para um WhatsApp comercial, incluído na página como caminho manual",
+              "O card de planos foi corrigido e o 12x entrou, horas antes do anúncio",
+              "A ordem dos planos foi invertida para o assinante ver a oferta dele primeiro"
             ]
           },
           {
             "type": "p",
-            "html": "Everything above happened on launch day, before 3pm. None of it required rebuilding a section."
+            "html": "Tudo isso aconteceu no dia do lançamento, antes das 15h. Nada disso exigiu refazer uma seção."
           }
         ],
         "images": [
           {
             "src": "/projects/atlas-juridico/atlas-juridico-04.webp",
-            "caption": "Independent blocks: what the edition includes, the object itself, and the documents inside it — each one movable without touching the others."
-          },
-          {
-            "src": "/projects/atlas-juridico/atlas-juridico-05.webp",
-            "caption": "The plan section, the block that changed the most on launch day — prices, installments and plan order were all corrected here."
+            "caption": "Blocos independentes, cada um movível sem encostar no resto."
           }
         ]
       },
       {
-        "label": "Result",
-        "heading": "The page held, and the numbers came in the first hours",
+        "label": "Resultado",
+        "heading": "A página segurou, e os números vieram nas primeiras horas",
         "body": [
           {
             "type": "p",
-            "html": "The VIP announcement went out at 3pm and the page took around 50 sales in three hours, before it was ever public. Launch day brought 2.9K unique visitors, an average session of 4m16s, and 84% of that traffic on mobile — which is the argument for treating the phone layout as the real one, not the adaptation."
+            "html": "O anúncio VIP saiu às 15h e a página fez cerca de 50 vendas em três horas, antes de ser pública. O dia do lançamento trouxe 2.9K visitantes únicos, sessão média de 4m16s e 84% desse tráfego no celular, que é o argumento para tratar o layout de telefone como o layout de verdade, não como adaptação."
           },
           {
             "type": "p",
-            "html": "The page is still online, and later launches for the club reused its structure."
+            "html": "A página segue no ar, e lançamentos posteriores do clube reaproveitaram a estrutura dela."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-05.webp",
+            "caption": "A seção de planos, o bloco que mais mudou no dia do lançamento."
+          }
+        ]
+      },
+      {
+        "label": "O que ficou",
+        "heading": "Seção que se move vale mais do que seção pronta",
+        "body": [
+          {
+            "type": "p",
+            "html": "Página de lançamento é julgada em um dia. O que fez essa funcionar não foi o visual, foi que no dia toda mudança que a oferta pediu era uma mudança local. Se a página tivesse sido construída como uma composição contínua, esconder uma seção às 14h teria significado refazer a página às 14h."
           }
         ],
         "images": [
           {
             "src": "/projects/atlas-juridico/atlas-juridico-06.webp",
-            "caption": "The mobile layout, where 84% of the launch traffic actually read the offer."
+            "caption": "O layout de celular, onde 84% do tráfego do lançamento leu a oferta."
           }
         ]
-      },
-      {
-        "label": "What I took from it",
-        "heading": "Sections that can be moved are worth more than sections that are finished",
-        "body": [
-          {
-            "type": "p",
-            "html": "A launch page is judged on one day. What made this one work was not the visual — it was that on the day, every change the offer needed was a local change. If the page had been built as one continuous composition, hiding a section at 2pm would have meant rebuilding the page at 2pm."
-          }
-        ],
-        "images": []
       }
     ]
   },
