@@ -103,10 +103,12 @@ const otherProjects = [prevProject, nextProject];
               : <p class="section-body" set:html={bloco.html} />
           ))}
           {si === project.sections.length - 1 && project.url && (
-            <a href={project.url} target="_blank" rel="noopener" class="visit-link">
-              Ver projeto
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-            </a>
+            <div class="visit-wrap">
+              <a href={project.url} target="_blank" rel="noopener" class="visit-link">
+                Ver projeto
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </a>
+            </div>
           )}
           <div class="image-grid">
             {section.images.map((img, i) => {
@@ -313,18 +315,37 @@ const otherProjects = [prevProject, nextProject];
     margin-top: 4px;
   }
 
+  /* O texto do item alinha com o parágrafo e a bolinha fica pendurada na
+     margem. Com `padding-left` a lista inteira andava 20px pra direita e
+     desalinhava do bloco de texto logo acima */
   .section-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding-left: 20px;
-    max-width: 60ch;
+    display: block;
+    padding-left: 0;
+    list-style: none;
     font-size: var(--font-size-body);
     color: var(--color-body);
     line-height: var(--line-height-body);
   }
 
-  .section-list li::marker { color: var(--color-muted); }
+  .section-list li {
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .section-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-list li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 0.78em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-muted);
+  }
 
   /* Colunas escolhidas pela quantidade, não por auto-fit: com 4 números o
      auto-fit fazia 3 + 1, e o card sozinho na última linha lê como erro */
@@ -448,6 +469,15 @@ const otherProjects = [prevProject, nextProject];
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  /* Mesma coluna do texto: solto no container ele encostava na esquerda
+     enquanto o parágrafo acima estava centralizado */
+  .visit-wrap {
+    width: 100%;
+    max-width: var(--prose-max-width);
+    margin-inline: auto;
+    margin-top: 4px;
   }
 
   .visit-link {
