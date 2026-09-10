@@ -113,8 +113,9 @@ const otherProjects = [prevProject, nextProject];
           <div class="image-grid">
             {section.images.map((img, i) => {
               const { src, caption } = toImage(img);
+              const isDetail = src.includes("atlas-juridico-04-documentos");
               return (
-                <figure class="image-item">
+                <figure class:list={["image-item", { "image-detail": isDetail }]}>
                   <div class="image-frame">
                     <img src={src} alt={caption || project.title + ": " + (section.heading || section.label) + ", imagem " + (i + 1)} data-caption={caption} class="lightbox-trigger" loading="lazy" width="800" height="600" />
                   </div>
@@ -452,6 +453,11 @@ const otherProjects = [prevProject, nextProject];
     flex-direction: column;
     gap: 8px;
     margin: 0;
+  }
+
+  .image-detail {
+    max-width: 420px;
+    margin-inline: auto;
   }
 
   .image-caption {
