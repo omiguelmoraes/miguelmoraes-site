@@ -27,7 +27,8 @@
 ## Changelog
 
 ### 2026-09-10
-- Cases (`src/pages/projects/[slug].astro`): redesenho editorial do template, com hierarquia mais forte no título, narrativa de abertura do projeto, metadados com menos ruído visual, números tratados como faixa de dados e conteúdo em colunas no desktop. As imagens e o texto do Atlas foram preservados.
+- Cases (`src/pages/projects/[slug].astro`): redesenho editorial do template, com hierarquia mais forte no título, narrativa de abertura do projeto, metadados com menos ruído visual, números tratados como faixa de dados e conteúdo em colunas no desktop. As imagens de origem do Atlas foram preservadas.
+- Atlas Jurídico: revisão do case na fonte do Obsidian, removendo bastidores internos e focando em contexto, decisões de design e resultado. O template voltou a usar os raios originais, preserva a proporção completa da capa, uniformiza o ritmo entre seções e deixa os cards de números com hover discreto.
 
 ### 2026-09-01
 - Criação e refinamento da Landing Page de tráfego pago `/trabalhe-comigo` (`src/pages/trabalhe-comigo.astro`):

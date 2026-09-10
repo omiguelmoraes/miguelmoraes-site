@@ -1,7 +1,7 @@
 {
   "atlas-juridico": {
     "title": "Atlas Jurídico",
-    "description": "Landing page de lançamento do Atlas Jurídico, edição de colecionador vendida pelo Círculo Jurídico, com data fechada antes da página existir e a oferta ainda mudando horas antes de subir.",
+    "description": "Landing page para o lançamento do Atlas Jurídico, edição de colecionador do Círculo Jurídico.",
     "year": "2026",
     "category": "Web Design",
     "location": "Brasil",
@@ -12,7 +12,7 @@
     "tags": [
       "Web Design"
     ],
-    "headline": "Uma página de lançamento feita na minha primeira semana de Barca, que fez cerca de 50 vendas nas três primeiras horas no ar.",
+    "headline": "Uma página de lançamento para uma edição de colecionador que vendeu cerca de 50 unidades nas três primeiras horas.",
     "role": "Web Design",
     "stack": [
       "Framer",
@@ -40,19 +40,15 @@
     "sections": [
       {
         "label": "Contexto",
-        "heading": "Uma edição de colecionador, um clube de livro e uma data que já tinha sido anunciada",
+        "heading": "Uma edição de colecionador para o público do Círculo Jurídico",
         "body": [
           {
             "type": "p",
-            "html": "O Círculo Jurídico é um clube de livro de Direito. O Atlas Jurídico é a edição de colecionador dele: 153 documentos que marcaram a história do Direito — constituições, códigos, cartas e tratados — num volume único de capa dura, vendido como upsell para assinantes e como compra avulsa para todo mundo."
+            "html": "O Círculo Jurídico é um clube de livros de Direito. O Atlas Jurídico foi uma edição de colecionador com 153 documentos que marcaram a história do Direito, reunidos em um volume de capa dura."
           },
           {
             "type": "p",
-            "html": "A data do lançamento estava fechada antes da página existir. Um grupo VIP de WhatsApp receberia 1.000 unidades exclusivas às 15h, e a página abriria para o público às 19h do mesmo dia. Meu trabalho era a página que precisava segurar as duas coisas."
-          },
-          {
-            "type": "p",
-            "html": "Eu estava na Barca havia dez dias quando ela subiu, e era o primeiro lançamento da maior parte daquele squad."
+            "html": "O lançamento precisava apresentar a peça como objeto de coleção e, ao mesmo tempo, orientar dois caminhos de compra: uma condição para assinantes e outra para o público geral."
           }
         ],
         "images": [
@@ -64,19 +60,18 @@
       },
       {
         "label": "O problema real",
-        "heading": "A oferta continuou mudando enquanto a página era construída",
+        "heading": "Uma oferta para dois públicos, sem perder clareza",
         "body": [
           {
             "type": "p",
-            "html": "A parte difícil nunca foi o layout. Foi que quase toda decisão comercial ainda estava aberta com a página já sendo construída, e cada uma delas mudava alguma coisa estrutural."
+            "html": "A página precisava explicar o valor da edição e conduzir a compra sem misturar as condições de quem já era assinante com as de quem chegava pela primeira vez."
           },
           {
             "type": "list",
             "items": [
-              "Dois públicos e dois checkouts: assinante fazendo upgrade com cashback do tempo restante, e não assinante comprando avulso",
-              "O formulário de upgrade dependia de uma integração de API que, na manhã do lançamento, foi confirmada como não pronta",
-              "Preços e parcelas foram corrigidos horas antes de subir",
-              "A maior parte do público do clube lê pelo celular, então o mobile era o layout que decidia se o lançamento funcionava"
+              "Destacar o caráter colecionável do Atlas antes de falar de preço",
+              "Separar os dois caminhos de compra sem criar duas páginas diferentes",
+              "Manter condição, parcelamento e CTA legíveis no celular, de onde veio 84% do tráfego"
             ]
           }
         ],
@@ -89,48 +84,47 @@
       },
       {
         "label": "Como foi",
-        "heading": "Construir para a versão da oferta que existiria às 15h, não para a combinada na semana anterior",
+        "heading": "A linguagem do clube, organizada para a decisão de compra",
         "body": [
           {
             "type": "p",
-            "html": "Trabalhei em cima das páginas que o clube já tinha em vez de inventar uma linguagem visual para o lançamento. O selo, o azul e o dourado, os títulos em serifa já faziam trabalho de marca, e página de lançamento é um péssimo lugar para estrear qualquer coisa."
+            "html": "Em vez de criar uma linguagem visual nova, parti dos elementos que o Círculo Jurídico já usava. O azul, o dourado, o selo e os títulos em serifa já davam à edição a presença de objeto de coleção que o lançamento pedia."
           },
           {
             "type": "p",
-            "html": "Dali em diante a página foi feita no Framer, seção por seção, com cada bloco independente o bastante para ser reordenado, corrigido ou escondido sem encostar no resto. Foi essa decisão que tornou as últimas horas sobrevivíveis:"
+            "html": "A estrutura foi desenhada para tornar a oferta fácil de percorrer e comparar:"
           },
           {
             "type": "list",
             "items": [
-              "A seção de \"como funciona o upgrade\" foi escondida, não apagada, quando o formulário caiu",
-              "O upgrade de assinante foi redirecionado para um WhatsApp comercial, incluído na página como caminho manual",
-              "O card de planos foi corrigido e o 12x entrou, horas antes do anúncio",
-              "A ordem dos planos foi invertida para o assinante ver a oferta dele primeiro"
+              "O produto e o que vinha na edição aparecem antes das condições comerciais",
+              "Os dois caminhos de compra ficam lado a lado, com hierarquia própria",
+              "Benefícios, parcelamento e CTA permanecem visíveis em uma leitura curta no celular"
             ]
           },
           {
             "type": "p",
-            "html": "Tudo isso aconteceu no dia do lançamento, antes das 15h. Nada disso exigiu refazer uma seção."
+            "html": "O resultado é uma página que apresenta um produto denso sem transformar a decisão de compra em uma leitura cansativa."
           }
         ],
         "images": [
           {
             "src": "/projects/atlas-juridico/atlas-juridico-04.webp",
-            "caption": "Blocos independentes, cada um movível sem encostar no resto."
+            "caption": "A composição da página: produto, contexto e condições de compra."
           }
         ]
       },
       {
         "label": "Resultado",
-        "heading": "A página segurou, e os números vieram nas primeiras horas",
+        "heading": "Interesse concentrado nas primeiras horas",
         "body": [
           {
             "type": "p",
-            "html": "O anúncio VIP saiu às 15h e a página fez cerca de 50 vendas em três horas, antes de ser pública. O dia do lançamento trouxe 2.9K visitantes únicos, sessão média de 4m16s e 84% desse tráfego no celular, que é o argumento para tratar o layout de telefone como o layout de verdade, não como adaptação."
+            "html": "Nas três primeiras horas, a página registrou cerca de 50 vendas. No dia do lançamento, recebeu 2,9 mil visitantes únicos, com tempo médio de 4min16s e 84% do tráfego vindo do celular."
           },
           {
             "type": "p",
-            "html": "A página segue no ar, e lançamentos posteriores do clube reaproveitaram a estrutura dela."
+            "html": "Os dados reforçaram uma decisão central do projeto: no Atlas, a experiência de celular não era uma adaptação da página, era a página principal."
           }
         ],
         "images": [
@@ -142,17 +136,17 @@
       },
       {
         "label": "O que ficou",
-        "heading": "Seção que se move vale mais do que seção pronta",
+        "heading": "Clareza antes da conversão",
         "body": [
           {
             "type": "p",
-            "html": "Página de lançamento é julgada em um dia. O que fez essa funcionar não foi o visual, foi que no dia toda mudança que a oferta pediu era uma mudança local. Se a página tivesse sido construída como uma composição contínua, esconder uma seção às 14h teria significado refazer a página às 14h."
+            "html": "Em um lançamento com oferta, história e público diferentes no mesmo lugar, cada seção precisa ter uma função clara. No Atlas, o visual serviu para dar valor à edição e a estrutura serviu para tornar a escolha simples."
           }
         ],
         "images": [
           {
             "src": "/projects/atlas-juridico/atlas-juridico-06.webp",
-            "caption": "O layout de celular, onde 84% do tráfego do lançamento leu a oferta."
+            "caption": "A versão mobile da página, por onde veio 84% do tráfego."
           }
         ]
       }
