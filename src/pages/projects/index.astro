@@ -3,19 +3,19 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 import Filters from '../../components/Filters.astro';
 import { allProjects } from '../../data/projects';
 
-const filterTags = ['Branding', 'Web Design', 'UI/UX'];
+const filterTags = ['Branding', 'Web Design', 'UI/UX', 'Experimentos'];
 const tagCounts: Record<string, number> = Object.fromEntries(
   filterTags.map(tag => [tag, Object.values(allProjects).filter(p => p.tags.includes(tag)).length])
 );
 const totalCount = Object.values(allProjects).length;
 ---
 
-<SiteLayout title="Projetos — Miguel Moraes" description="Seleção de trabalhos em web design, UI/UX e branding.">
+<SiteLayout title="Projetos — Miguel Moraes" description="Seleção de trabalhos em web design, UI/UX, branding e experimentos.">
   <div class="page">
 
     <header class="page-header">
       <h1 class="page-title">Projetos</h1>
-      <p class="page-intro">Seleção de trabalhos em web design, UI/UX e branding.</p>
+      <p class="page-intro">Seleção de trabalhos em web design, UI/UX, branding e experimentos.</p>
     </header>
 
     <Filters

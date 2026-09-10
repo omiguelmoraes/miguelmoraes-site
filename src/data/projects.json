@@ -1,4 +1,98 @@
 {
+  "lastro": {
+    "title": "Lastro",
+    "description": "Um produto pessoal para acompanhar caixa, gastos e patrimônio sem transformar dinheiro em mais uma planilha.",
+    "year": "2026",
+    "category": "Experimentos",
+    "location": "Projeto pessoal",
+    "industry": "Finanças pessoais",
+    "cover": "/projects/lastro/lastro-01-reserva.svg",
+    "thumbnail": "/projects/lastro/lastro-01-reserva.svg",
+    "tags": [
+      "Experimentos",
+      "UI/UX"
+    ],
+    "role": "Produto e desenvolvimento",
+    "stack": [
+      "Figma",
+      "Next.js",
+      "React",
+      "Tailwind CSS"
+    ],
+    "sections": [
+      {
+        "label": "Contexto",
+        "heading": "Uma ferramenta para enxergar o dinheiro antes de decidir o próximo passo",
+        "body": [
+          {
+            "type": "p",
+            "html": "O Lastro começou como uma ferramenta pessoal para acompanhar caixa de trabalho, gastos do dia a dia e patrimônio no mesmo lugar. A intenção não era montar outro painel cheio de gráfico. Era responder perguntas simples com menos atrito: quanto entrou, quanto saiu, o que foi separado e o que ainda dá para decidir no mês."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/lastro/lastro-01-reserva.svg",
+            "caption": "Um recorte de patrimônio com dados demonstrativos."
+          }
+        ]
+      },
+      {
+        "label": "Como funciona",
+        "heading": "Cada registro entra uma vez e aparece no lugar certo",
+        "body": [
+          {
+            "type": "p",
+            "html": "O produto separa a rotina em três perspectivas que costumam se misturar: empresa, vida pessoal e patrimônio. O registro é curto; a consequência dele precisa ficar clara no fluxo e no saldo."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Entradas e saídas de PJ e PF têm contextos diferentes, mas conversam na visão do mês",
+              "Aportes não aparecem como gasto: viram movimento de patrimônio",
+              "O fluxo diário mostra o caixa sem esconder o que ainda está pendente"
+            ]
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/lastro/lastro-02-fluxo.svg",
+            "caption": "Um trecho do fluxo mensal, com valores apenas demonstrativos."
+          },
+          {
+            "src": "/projects/lastro/lastro-03-lancamento.svg",
+            "caption": "O lançamento rápido reduz o intervalo entre gastar e registrar."
+          }
+        ]
+      },
+      {
+        "label": "Estrutura",
+        "heading": "O dado não termina no registro",
+        "body": [
+          {
+            "type": "p",
+            "html": "O design system foi pensado para deixar cada etapa legível sem transformar a rotina em burocracia. Verde fala de caixa saudável; azul, de patrimônio; os estados de atenção aparecem só quando ajudam a decidir alguma coisa."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/lastro/lastro-04-fluxo.svg",
+            "caption": "A arquitetura da experiência: registrar, organizar, ler e decidir."
+          }
+        ]
+      },
+      {
+        "label": "O que ficou",
+        "heading": "Um experimento de produto que continua evoluindo junto com a rotina",
+        "body": [
+          {
+            "type": "p",
+            "html": "O Lastro é um projeto pessoal em desenvolvimento. Os dados mostrados neste case são demonstrativos e servem para explicar a interface, não para representar uma operação real. O projeto virou um campo de teste para fluxos financeiros, componentes densos e uma experiência que precisa funcionar tanto na mesa quanto no celular."
+          }
+        ],
+        "images": []
+      }
+    ]
+  },
   "atlas-juridico": {
     "title": "Atlas Jurídico",
     "description": "Landing page para o lançamento do Atlas Jurídico, edição de colecionador do Círculo Jurídico.",
