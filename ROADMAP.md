@@ -36,6 +36,7 @@
 - Lastro: composições visuais simplificadas, com capa limpa, mural de componentes no contexto e remoção do diagrama e dos recortes densos que não sustentavam a leitura em telas menores.
 - Lastro: refinadas as superfícies e a hierarquia dos componentes e adicionada uma representação do fluxo de lançamentos via bot do Telegram.
 - Lastro: case expandido com recortes de fluxo diário e assinaturas, além de dashboard e patrimônio; a tipografia das composições foi alinhada à família usada no produto.
+- Lastro: adicionadas legendas objetivas aos recortes visuais do case.
 
 ### 2026-09-01
 - Criação e refinamento da Landing Page de tráfego pago `/trabalhe-comigo` (`src/pages/trabalhe-comigo.astro`):

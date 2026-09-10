@@ -30,7 +30,10 @@
           }
         ],
         "images": [
-          "/projects/lastro/lastro-02-mural.svg"
+          {
+            "src": "/projects/lastro/lastro-02-mural.svg",
+            "caption": "Três pontos de entrada da rotina: lançar, acompanhar o fluxo e ver o saldo."
+          }
         ]
       },
       {
@@ -52,8 +55,14 @@
           }
         ],
         "images": [
-          "/projects/lastro/lastro-03-telegram.svg",
-          "/projects/lastro/lastro-05-fluxo.svg"
+          {
+            "src": "/projects/lastro/lastro-03-telegram.svg",
+            "caption": "Pelo Telegram, uma mensagem vira lançamento para conferir antes de entrar no fluxo."
+          },
+          {
+            "src": "/projects/lastro/lastro-05-fluxo.svg",
+            "caption": "O fluxo diário mostra movimento, compromisso e saldo sem esconder o que acontece no mês."
+          }
         ]
       },
       {
@@ -66,8 +75,14 @@
           }
         ],
         "images": [
-          "/projects/lastro/lastro-04-visoes.svg",
-          "/projects/lastro/lastro-06-assinaturas.svg"
+          {
+            "src": "/projects/lastro/lastro-04-visoes.svg",
+            "caption": "Dashboard, assinaturas e patrimônio respondem a perguntas diferentes da mesma rotina."
+          },
+          {
+            "src": "/projects/lastro/lastro-06-assinaturas.svg",
+            "caption": "Custos recorrentes ficam separados do fluxo para facilitar ajuste e previsão."
+          }
         ]
       },
       {
