@@ -1,29 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" fill="none">
   <rect width="1200" height="760" fill="#F7F7F5"/>
-  <circle cx="1030" cy="-30" r="270" fill="#E5F1E7"/>
-  <circle cx="130" cy="690" r="210" fill="#EEF1E6"/>
-  <text x="88" y="104" fill="#0E7A4A" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="-0.4">Lastro</text>
-  <text x="88" y="137" fill="#6F6E69" font-family="Inter, Arial, sans-serif" font-size="15">Dados demonstrativos</text>
-  <rect x="330" y="105" width="540" height="538" rx="18" fill="white" stroke="rgba(0,0,0,.06)"/>
-  <text x="378" y="166" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.1">PATRIMÔNIO</text>
-  <text x="378" y="200" fill="#1A1A18" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="-0.4">Reserva</text>
-  <text x="765" y="192" fill="#0E7A4A" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700">Gerir →</text>
-  <text x="378" y="276" fill="#4D7C0F" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="-1.4">R$ 18.420,00</text>
-  <text x="378" y="306" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="15">de R$ 25.000,00 · falta R$ 6.580,00 · 4 pos.</text>
-  <rect x="378" y="343" width="444" height="10" rx="5" fill="#F0F1ED"/>
-  <rect x="378" y="343" width="326" height="10" rx="5" fill="#4D7C0F"/>
-  <text x="378" y="382" fill="#6F6E69" font-family="Inter, Arial, sans-serif" font-size="13">74% da meta de reserva</text>
-  <line x1="378" y1="449" x2="822" y2="449" stroke="rgba(0,0,0,.08)"/>
-  <text x="378" y="498" fill="#6F6E69" font-family="Inter, Arial, sans-serif" font-size="15">Aportes no mês</text>
-  <text x="698" y="498" fill="#2E7AB8" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700">R$ 1.250,00</text>
-  <text x="378" y="526" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="13">meta mensal R$ 1.500,00</text>
-  <rect x="378" y="551" width="444" height="6" rx="3" fill="#F0F1ED"/>
-  <rect x="378" y="551" width="370" height="6" rx="3" fill="#2E7AB8"/>
-  <rect x="148" y="245" width="202" height="130" rx="14" fill="white" stroke="rgba(0,0,0,.06)"/>
-  <text x="170" y="279" fill="#6F6E69" font-family="Inter, Arial, sans-serif" font-size="12">Faturamento</text>
-  <text x="170" y="318" fill="#4D7C0F" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700">R$ 12.800</text>
-  <text x="170" y="348" fill="#4D7C0F" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700">+18% este mês</text>
-  <rect x="847" y="490" width="190" height="112" rx="14" fill="#0E7A4A"/>
-  <text x="869" y="528" fill="white" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing=".8">CAIXA</text>
-  <text x="869" y="566" fill="white" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">em ordem</text>
+  <rect x="340" y="106" width="520" height="548" rx="18" fill="white" stroke="rgba(0,0,0,.06)"/>
+  <text x="388" y="167" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.1">PATRIMÔNIO</text>
+  <text x="388" y="201" fill="#1A1A18" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="-0.4">Reserva</text>
+  <text x="746" y="193" fill="#0E7A4A" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700">Gerir →</text>
+  <text x="388" y="281" fill="#4D7C0F" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700" letter-spacing="-1.5">R$ 18.420,00</text>
+  <text x="388" y="312" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="15">de R$ 25.000,00 · falta R$ 6.580,00 · 4 pos.</text>
+  <rect x="388" y="350" width="424" height="10" rx="5" fill="#F0F1ED"/>
+  <rect x="388" y="350" width="312" height="10" rx="5" fill="#4D7C0F"/>
+  <text x="388" y="389" fill="#6F6E69" font-family="Inter, Arial, sans-serif" font-size="13">74% da meta de reserva</text>
+  <line x1="388" y1="459" x2="812" y2="459" stroke="rgba(0,0,0,.08)"/>
+  <text x="388" y="509" fill="#6F6E69" font-family="Inter, Arial, sans-serif" font-size="15">Aportes no mês</text>
+  <text x="666" y="509" fill="#2E7AB8" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700">R$ 1.250,00</text>
+  <text x="388" y="537" fill="#9B9A97" font-family="Inter, Arial, sans-serif" font-size="13">meta mensal R$ 1.500,00</text>
+  <rect x="388" y="562" width="424" height="6" rx="3" fill="#F0F1ED"/>
+  <rect x="388" y="562" width="353" height="6" rx="3" fill="#2E7AB8"/>
 </svg>

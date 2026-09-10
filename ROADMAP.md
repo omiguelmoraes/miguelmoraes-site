@@ -33,6 +33,7 @@
 - Atlas Jurídico: o detalhe de documentos foi reduzido a uma peça compacta e o frame de produto passou a mostrar somente o desktop, sem mockup móvel sobreposto.
 - Cases: os metadados de função, ano, localização e setor agora usam somente espaçamento, sem divisores, mantendo a leitura mais leve entre a abertura e as ferramentas.
 - Lastro: criado o primeiro case da categoria Experimentos, com recortes de componentes, valores demonstrativos e diagrama de fluxo para documentar um produto pessoal sem depender de telas inteiras.
+- Lastro: composições visuais simplificadas, com capa limpa, mural de componentes no contexto e remoção do diagrama e dos recortes densos que não sustentavam a leitura em telas menores.
 
 ### 2026-09-01
 - Criação e refinamento da Landing Page de tráfego pago `/trabalhe-comigo` (`src/pages/trabalhe-comigo.astro`):

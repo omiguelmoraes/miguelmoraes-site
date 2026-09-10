@@ -30,10 +30,7 @@
           }
         ],
         "images": [
-          {
-            "src": "/projects/lastro/lastro-01-reserva.svg",
-            "caption": "Um recorte de patrimônio com dados demonstrativos."
-          }
+          "/projects/lastro/lastro-02-mural.svg"
         ]
       },
       {
@@ -54,30 +51,7 @@
           }
         ],
         "images": [
-          {
-            "src": "/projects/lastro/lastro-02-fluxo.svg",
-            "caption": "Um trecho do fluxo mensal, com valores apenas demonstrativos."
-          },
-          {
-            "src": "/projects/lastro/lastro-03-lancamento.svg",
-            "caption": "O lançamento rápido reduz o intervalo entre gastar e registrar."
-          }
-        ]
-      },
-      {
-        "label": "Estrutura",
-        "heading": "O dado não termina no registro",
-        "body": [
-          {
-            "type": "p",
-            "html": "O design system foi pensado para deixar cada etapa legível sem transformar a rotina em burocracia. Verde fala de caixa saudável; azul, de patrimônio; os estados de atenção aparecem só quando ajudam a decidir alguma coisa."
-          }
-        ],
-        "images": [
-          {
-            "src": "/projects/lastro/lastro-04-fluxo.svg",
-            "caption": "A arquitetura da experiência: registrar, organizar, ler e decidir."
-          }
+          "/projects/lastro/lastro-03-lancamento.svg"
         ]
       },
       {
