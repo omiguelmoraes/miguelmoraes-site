@@ -1,5 +1,5 @@
 ---
-title: "🎧 Founders"
+title: "🎧 Founders 424 — Peter Thiel on How to Build a Creative Monopoly"
 url: https://podcasts.apple.com/br/podcast/founders/id1141877104?i=1000776309638
 category: content
 tags:
