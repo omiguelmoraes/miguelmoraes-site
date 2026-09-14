@@ -8,24 +8,24 @@ const cliente = 'Studio Pilates Helena Rubim';
 const validade = '21 de setembro de 2026';
 
 const entrega = [
-  'Site completo do studio, feito pra abrir rápido no celular',
-  'Página de planos com o que está incluso em cada um',
-  'Grade de horários, atualizável por você quando a turma mudar',
+  'Site completo do studio, rápido no celular',
+  'Planos, com o que está incluso em cada um',
+  'Grade de horários, que você mesma atualiza',
   'Aula experimental com pagamento na própria página',
-  'Suas 46 avaliações aparecendo no site, não só dentro do Google',
+  'Suas 46 avaliações aparecendo no site',
   'Botão de WhatsApp em todas as seções',
-  'Seu perfil do Google conectado ao site e com o link certo',
+  'Seu perfil do Google conectado ao site',
   'Endereço, mapa e como chegar',
-  'Preparado pra aparecer em quem busca pilates no seu bairro',
+  'Preparado pra aparecer em quem busca pilates no bairro',
   'Domínio no seu nome, por um ano',
   'Hospedagem por um ano',
-  'Certificado de segurança e site no ar sem custo extra',
+  'Certificado de segurança, sem custo extra',
 ];
 
 const etapas = [
-  { n: '01', t: 'Conversa de 30 minutos', d: 'Você me conta como funciona o studio, os planos e os horários. É a única reunião necessária.' },
-  { n: '02', t: 'Primeira versão em 7 dias', d: 'Você abre o link, vê o site pronto e me diz o que quer mudar.' },
-  { n: '03', t: 'Ajustes e publicação', d: 'Faço as mudanças e coloco no ar. Do começo ao fim, cerca de 15 dias.' },
+  { n: '01', t: 'Conversa de 30 minutos', d: 'Você me conta como funciona o studio. É a única reunião.' },
+  { n: '02', t: 'Primeira versão em 7 dias', d: 'Você abre o link e me diz o que quer mudar.' },
+  { n: '03', t: 'Ajustes e publicação', d: 'Faço os ajustes e coloco no ar. Cerca de 15 dias no total.' },
 ];
 ---
 
@@ -49,9 +49,7 @@ const etapas = [
       <h1>{cliente}</h1>
       <p class="sub">
         Você tem 5 estrelas com 46 avaliações e nenhum site. Hoje essa reputação
-        só aparece pra quem já procura o studio pelo nome. Quem está pesquisando
-        pilates no bairro não encontra você, e quem encontra precisa te chamar no
-        WhatsApp pra descobrir preço e horário.
+        só aparece pra quem já procura o studio pelo nome.
       </p>
     </div>
   </header>
@@ -62,7 +60,7 @@ const etapas = [
       <div class="muda">
         <div class="card">
           <p class="rot">Hoje</p>
-          <p>A pessoa vê o studio no Instagram, se interessa e te manda mensagem perguntando quanto custa. Você responde uma por uma. Boa parte não volta.</p>
+          <p>A pessoa vê o studio no Instagram e te manda mensagem perguntando o preço. Você responde uma por uma, e boa parte não volta.</p>
         </div>
         <div class="card destaque">
           <p class="rot">Com o site</p>
@@ -70,19 +68,19 @@ const etapas = [
         </div>
       </div>
       <p class="nota">
-        É o mesmo movimento que você já começou quando passou a cobrar a experimental.
-        O site faz esse filtro trabalhar sem você precisar responder nada.
+        É o mesmo filtro que você já começou quando passou a cobrar a experimental,
+        agora funcionando sem você.
       </p>
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec wash">
     <div class="wrap">
       <h2>O que está incluso</h2>
       <ul class="lista">
         {entrega.map((item) => <li>{item}</li>)}
       </ul>
-      <p class="nota">Tudo junto, sem cobrança separada. Você não precisa contratar nada por fora.</p>
+      <p class="nota">Tudo junto. Você não precisa contratar nada por fora.</p>
     </div>
   </section>
 
@@ -101,10 +99,10 @@ const etapas = [
     </div>
   </section>
 
-  <section class="sec precos">
+  <section class="sec wash precos">
     <div class="wrap">
       <h2>Investimento</h2>
-      <p class="sub-sec">Duas formas de fazer. O site entregue é o mesmo nos dois casos.</p>
+      <p class="sub-sec">Duas formas de fazer. O site é o mesmo nos dois casos.</p>
       <div class="planos">
         <div class="plano">
           <p class="rot">Você assume depois</p>
@@ -116,7 +114,7 @@ const etapas = [
             <li>Senhas e acessos entregues a você</li>
             <li>30 dias de ajustes inclusos</li>
           </ul>
-          <p class="obs">Depois do primeiro ano, a renovação fica por sua conta, algo perto de R$ 60 por ano.</p>
+          <p class="obs">Depois do primeiro ano a renovação fica por sua conta, perto de R$ 60 por ano.</p>
         </div>
         <div class="plano recomendado">
           <span class="tag">Mais tranquilo</span>
@@ -138,20 +136,18 @@ const etapas = [
   <section class="sec sobre">
     <div class="wrap">
       <h2>Quem faz</h2>
-      <p>
-        Sou o Miguel, designer em Porto Alegre. Trabalho com marca e site pra
-        negócio que precisa ser achado e escolhido antes da primeira conversa.
-        Atendo desde studio e consultório até empresa maior, e faço tudo
-        pessoalmente, do desenho à publicação.
-      </p>
-      <div class="sobre-links">
-        <a href="https://www.instagram.com/omiguelmoraes" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://miguelmoraes.pro" target="_blank" rel="noreferrer">miguelmoraes.pro</a>
+      <div class="sobre-bloco">
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="96" height="96" loading="lazy" />
+        <div>
+          <p>
+            Sou o Miguel, designer em Porto Alegre. Faço tudo pessoalmente,
+            do desenho à publicação.
+          </p>
+          <a class="ig" href="https://www.instagram.com/omiguelmoraes" target="_blank" rel="noreferrer">
+            Ver meu trabalho no Instagram
+          </a>
+        </div>
       </div>
-      <p class="nota">
-        Se não for a hora agora, me segue por lá. Sempre mostro trabalho em
-        andamento e o que aprendo fazendo.
-      </p>
     </div>
   </section>
 
@@ -159,8 +155,8 @@ const etapas = [
     <div class="wrap">
       <h2>Pra começar</h2>
       <p>
-        Me responde no WhatsApp qual das duas formas faz mais sentido e a gente
-        marca a conversa de 30 minutos. Se ficou alguma dúvida, é só perguntar por lá.
+        Me responde no WhatsApp qual das duas formas faz mais sentido, ou pergunta
+        o que ficou em aberto.
       </p>
       <a class="btn" href="https://wa.me/5551998734305?text=Oi%20Miguel%2C%20vi%20a%20proposta" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
       <p class="micro">Proposta válida até {validade}.</p>
@@ -212,6 +208,7 @@ const etapas = [
   .topo .sub { margin: 20px 0 0; font-size: 17px; }
 
   .sec { padding: 48px 0; border-bottom: 1px solid var(--line); }
+  .sec.wash { background: var(--wash); border-bottom-color: transparent; }
   .sec h2 { font-size: clamp(21px, 4vw, 26px); margin-bottom: 22px; }
   .sub-sec { margin: -14px 0 24px; color: var(--dim); }
   .nota { margin: 20px 0 0; color: var(--dim); font-size: 14.5px; }
@@ -251,26 +248,35 @@ const etapas = [
   .plano ul li::before { content: "·"; position: absolute; left: 4px; color: var(--dim); }
   .obs { margin: 18px 0 0; font-size: 13px; color: var(--dim); }
 
-  .sobre p { margin: 0; max-width: 560px; }
-  .sobre-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-  .sobre-links a {
-    border: 1px solid var(--line); border-radius: 8px; padding: 9px 16px;
-    color: var(--ink); text-decoration: none; font-size: 14.5px;
+  .sobre-bloco { display: flex; gap: 20px; align-items: flex-start; }
+  .sobre-bloco img { border-radius: 50%; flex-shrink: 0; }
+  .sobre-bloco p { margin: 0 0 16px; max-width: 460px; }
+  .ig {
+    display: inline-block; border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 18px; color: var(--ink); text-decoration: none; font-size: 14.5px;
   }
-  .sobre-links a:hover { border-color: var(--ink); }
+  .ig:hover { border-color: var(--ink); }
 
-  .fecho { border-bottom: 0; text-align: center; padding: 56px 0 80px; }
-  .fecho p { max-width: 460px; margin: 0 auto 26px; }
+  .fecho {
+    border-bottom: 0; text-align: center; padding: 60px 0 72px;
+    background: var(--ink); color: #b8b8b8;
+  }
+  .fecho h2 { color: #ffffff; }
+  .fecho p { max-width: 420px; margin: 0 auto 30px; }
   .btn {
-    display: inline-block; background: var(--ink); color: #fff; text-decoration: none;
-    padding: 14px 28px; border-radius: 10px; font-size: 15.5px;
+    display: inline-block; background: #ffffff; color: var(--ink); text-decoration: none;
+    padding: 15px 30px; border-radius: 10px; font-size: 15.5px;
   }
   .btn:hover { opacity: .88; }
-  .micro { margin: 22px auto 0; font-size: 13px; color: var(--dim); }
+  .micro { margin: 30px auto 0; font-size: 13px; color: #7d7d7d; }
 
   @media (max-width: 720px) {
     .muda, .planos, .etapas { grid-template-columns: 1fr; }
     .sec { padding: 38px 0; }
     .topo { padding: 40px 0 34px; }
+    .sobre-bloco { flex-direction: column; gap: 16px; }
+    .btn, .ig { display: block; width: 100%; text-align: center; }
+    .fecho { padding: 48px 0 60px; }
+    .micro { margin-top: 26px; }
   }
 </style>
