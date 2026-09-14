@@ -137,11 +137,11 @@ const etapas = [
     <div class="wrap">
       <h2>Quem faz</h2>
       <div class="sobre-bloco">
-        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="96" height="96" loading="lazy" />
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="84" height="84" loading="lazy" />
         <div>
           <p>
             Sou o Miguel, designer em Porto Alegre. Faço tudo pessoalmente,
-            do desenho à publicação.
+            do desenho à publicação, e sigo por perto depois que o site entra no ar.
           </p>
           <a class="ig" href="https://www.instagram.com/omiguelmoraes" target="_blank" rel="noreferrer">
             Ver meu trabalho no Instagram
@@ -154,10 +154,7 @@ const etapas = [
   <section class="sec fecho">
     <div class="wrap">
       <h2>Pra começar</h2>
-      <p>
-        Me responde no WhatsApp qual das duas formas faz mais sentido, ou pergunta
-        o que ficou em aberto.
-      </p>
+      <p>Me diz no WhatsApp qual das duas formas faz mais sentido pra você.</p>
       <a class="btn" href="https://wa.me/5551998734305?text=Oi%20Miguel%2C%20vi%20a%20proposta" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
       <p class="micro">Proposta válida até {validade}.</p>
     </div>
@@ -207,9 +204,9 @@ const etapas = [
   .topo h1 { font-size: clamp(28px, 6vw, 40px); }
   .topo .sub { margin: 20px 0 0; font-size: 17px; }
 
-  .sec { padding: 48px 0; border-bottom: 1px solid var(--line); }
+  .sec { padding: 56px 0; border-bottom: 1px solid var(--line); }
   .sec.wash { background: var(--wash); border-bottom-color: transparent; }
-  .sec h2 { font-size: clamp(21px, 4vw, 26px); margin-bottom: 22px; }
+  .sec h2 { font-size: clamp(21px, 4vw, 26px); margin-bottom: 26px; }
   .sub-sec { margin: -14px 0 24px; color: var(--dim); }
   .nota { margin: 20px 0 0; color: var(--dim); font-size: 14.5px; }
 
@@ -248,27 +245,27 @@ const etapas = [
   .plano ul li::before { content: "·"; position: absolute; left: 4px; color: var(--dim); }
   .obs { margin: 18px 0 0; font-size: 13px; color: var(--dim); }
 
-  .sobre-bloco { display: flex; gap: 20px; align-items: flex-start; }
+  .sobre-bloco { display: flex; gap: 22px; align-items: flex-start; }
   .sobre-bloco img { border-radius: 50%; flex-shrink: 0; }
-  .sobre-bloco p { margin: 0 0 16px; max-width: 460px; }
+  .sobre-bloco p { margin: 0 0 20px; max-width: 440px; }
   .ig {
     display: inline-block; border: 1px solid var(--line); border-radius: 8px;
-    padding: 10px 18px; color: var(--ink); text-decoration: none; font-size: 14.5px;
+    padding: 11px 20px; color: var(--ink); text-decoration: none; font-size: 14.5px;
   }
   .ig:hover { border-color: var(--ink); }
 
   .fecho {
-    border-bottom: 0; text-align: center; padding: 60px 0 72px;
+    border-bottom: 0; text-align: center; padding: 68px 0 60px;
     background: var(--ink); color: #b8b8b8;
   }
   .fecho h2 { color: #ffffff; }
-  .fecho p { max-width: 420px; margin: 0 auto 30px; }
+  .fecho p { max-width: 400px; margin: 0 auto 34px; font-size: 16.5px; }
   .btn {
     display: inline-block; background: #ffffff; color: var(--ink); text-decoration: none;
     padding: 15px 30px; border-radius: 10px; font-size: 15.5px;
   }
   .btn:hover { opacity: .88; }
-  .micro { margin: 30px auto 0; font-size: 13px; color: #7d7d7d; }
+  .micro { margin: 38px auto 0; font-size: 12.5px; color: #7d7d7d; }
 
   @media (max-width: 720px) {
     .muda, .planos, .etapas { grid-template-columns: 1fr; }
@@ -276,7 +273,7 @@ const etapas = [
     .topo { padding: 40px 0 34px; }
     .sobre-bloco { flex-direction: column; gap: 16px; }
     .btn, .ig { display: block; width: 100%; text-align: center; }
-    .fecho { padding: 48px 0 60px; }
-    .micro { margin-top: 26px; }
+    .fecho { padding: 52px 0 52px; }
+    .micro { margin-top: 30px; }
   }
 </style>
