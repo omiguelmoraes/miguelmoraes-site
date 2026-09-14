@@ -5,7 +5,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const cliente = 'Studio Pilates Helena Rubim';
-const validade = '21 de setembro de 2026';
+const validade = '21 de setembro';
 
 const entrega = [
   'Site completo do studio, rápido no celular',
@@ -136,18 +136,20 @@ const etapas = [
   <section class="sec sobre">
     <div class="wrap">
       <h2>Quem faz</h2>
-      <div class="sobre-bloco">
-        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="84" height="84" loading="lazy" />
+      <div class="sobre-eu">
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="56" height="56" loading="lazy" />
         <div>
-          <p>
-            Sou o Miguel, designer em Porto Alegre. Faço tudo pessoalmente,
-            do desenho à publicação, e sigo por perto depois que o site entra no ar.
-          </p>
-          <a class="ig" href="https://www.instagram.com/omiguelmoraes" target="_blank" rel="noreferrer">
-            Ver meu trabalho no Instagram
-          </a>
+          <strong>Miguel Moraes</strong>
+          <span>Designer · Porto Alegre</span>
         </div>
       </div>
+      <p class="sobre-txt">
+        Faço tudo pessoalmente, do desenho à publicação, e sigo por perto
+        depois que o site entra no ar.
+      </p>
+      <a class="ig" href="https://www.instagram.com/omiguelmoraes" target="_blank" rel="noreferrer">
+        Ver meu trabalho no Instagram
+      </a>
     </div>
   </section>
 
@@ -156,7 +158,7 @@ const etapas = [
       <h2>Pra começar</h2>
       <p>Me diz no WhatsApp qual das duas formas faz mais sentido pra você.</p>
       <a class="btn" href="https://wa.me/5551998734305?text=Oi%20Miguel%2C%20vi%20a%20proposta" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
-      <p class="micro">Proposta válida até {validade}.</p>
+      <p class="micro">Proposta válida até {validade}</p>
     </div>
   </section>
 
@@ -245,9 +247,12 @@ const etapas = [
   .plano ul li::before { content: "·"; position: absolute; left: 4px; color: var(--dim); }
   .obs { margin: 18px 0 0; font-size: 13px; color: var(--dim); }
 
-  .sobre-bloco { display: flex; gap: 22px; align-items: flex-start; }
-  .sobre-bloco img { border-radius: 50%; flex-shrink: 0; }
-  .sobre-bloco p { margin: 0 0 20px; max-width: 440px; }
+  .sobre-eu { display: flex; align-items: center; gap: 13px; margin-bottom: 18px; }
+  .sobre-eu img { border-radius: 50%; flex-shrink: 0; }
+  .sobre-eu div { display: flex; flex-direction: column; line-height: 1.35; }
+  .sobre-eu strong { color: var(--ink); font-weight: 500; font-size: 16px; }
+  .sobre-eu span { color: var(--dim); font-size: 13.5px; }
+  .sobre-txt { margin: 0 0 22px; max-width: 440px; }
   .ig {
     display: inline-block; border: 1px solid var(--line); border-radius: 8px;
     padding: 11px 20px; color: var(--ink); text-decoration: none; font-size: 14.5px;
@@ -255,7 +260,7 @@ const etapas = [
   .ig:hover { border-color: var(--ink); }
 
   .fecho {
-    border-bottom: 0; text-align: center; padding: 68px 0 60px;
+    border-bottom: 0; text-align: center; padding: 64px 0 52px;
     background: var(--ink); color: #b8b8b8;
   }
   .fecho h2 { color: #ffffff; }
@@ -265,15 +270,14 @@ const etapas = [
     padding: 15px 30px; border-radius: 10px; font-size: 15.5px;
   }
   .btn:hover { opacity: .88; }
-  .micro { margin: 38px auto 0; font-size: 12.5px; color: #7d7d7d; }
+  .micro { margin: 34px auto 0; font-size: 12.5px; color: #7d7d7d; letter-spacing: .01em; }
 
   @media (max-width: 720px) {
     .muda, .planos, .etapas { grid-template-columns: 1fr; }
     .sec { padding: 38px 0; }
     .topo { padding: 40px 0 34px; }
-    .sobre-bloco { flex-direction: column; gap: 16px; }
     .btn, .ig { display: block; width: 100%; text-align: center; }
-    .fecho { padding: 52px 0 52px; }
-    .micro { margin-top: 30px; }
+    .fecho { padding: 52px 0 44px; }
+    .micro { margin-top: 28px; }
   }
 </style>
