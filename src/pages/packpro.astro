@@ -1,5 +1,7 @@
 ---
 import { Font } from 'astro:assets';
+import '@phosphor-icons/web/regular';
+import '@phosphor-icons/web/bold';
 
 const kiwify = 'https://pay.kiwify.com.br/FNeJdk9';
 const instagram = 'https://instagram.com/omiguelmoraes';
@@ -15,15 +17,17 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   <meta name="description" content="3 templates profissionais no Figma para freelancers fecharem mais projetos. Contrato, proposta e orçamento prontos para personalizar e enviar em minutos." />
   <link rel="canonical" href="https://miguelmoraes.pro/packpro" />
   <meta property="og:title" content="PackPro — Pareça uma agência. Sendo só você." />
-  <meta property="og:description" content="Contrato, proposta e orçamento prontos no Figma. Personalize e envie em minutos — não em horas." />
+  <meta property="og:description" content="Contrato, proposta e orçamento prontos no Figma. Personalize e envie em minutos, não em horas." />
   <meta property="og:url" content="https://miguelmoraes.pro/packpro" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://miguelmoraes.pro/og-packpro.png" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PackPro — Pareça uma agência. Sendo só você." />
+  <meta name="twitter:description" content="Contrato, proposta e orçamento prontos no Figma. Personalize e envie em minutos, não em horas." />
+  <meta name="twitter:image" content="https://miguelmoraes.pro/og-packpro.png" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <Font cssVariable="--font-inter-tight" preload />
   <Font cssVariable="--font-geist-mono" />
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
   <script type="application/ld+json">
     {
@@ -563,7 +567,7 @@ const instagram = 'https://instagram.com/omiguelmoraes';
   <div class="container">
     <div class="about-grid">
       <div class="about-photo-wrap">
-        <img src="/webp/avatar.webp" alt="Miguel Moraes" class="about-photo" />
+        <img src="/webp/avatar.webp" alt="Miguel Moraes" width="400" height="533" loading="lazy" class="about-photo" />
       </div>
       <div class="about-content">
         <span class="about-eyebrow">Criador</span>

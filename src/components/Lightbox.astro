@@ -1,13 +1,13 @@
 <div id="lightbox" class="lightbox" aria-hidden="true">
-  <button class="lightbox-close" aria-label="Close">✕</button>
-  <button class="lightbox-prev" aria-label="Previous">
+  <button class="lightbox-close" aria-label="Fechar">✕</button>
+  <button class="lightbox-prev" aria-label="Anterior">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
   <figure class="lightbox-figure">
     <img id="lightbox-img" src="" alt="" />
     <figcaption id="lightbox-caption" class="lightbox-caption" hidden></figcaption>
   </figure>
-  <button class="lightbox-next" aria-label="Next">
+  <button class="lightbox-next" aria-label="Próxima">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 </div>
@@ -44,6 +44,7 @@
     const { lightbox } = getEls();
     if (!lightbox) return;
     show(trigger);
+    lightbox.setAttribute('aria-hidden', 'false');
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -51,6 +52,7 @@
   function close() {
     const { lightbox } = getEls();
     if (!lightbox) return;
+    lightbox.setAttribute('aria-hidden', 'true');
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
   }

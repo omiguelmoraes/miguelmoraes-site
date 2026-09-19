@@ -57,7 +57,7 @@ const featuredProjects = Object.entries(allProjects)
         {featuredProjects.map(([slug, project]) => (
           <a href={`/projects/${slug}`} class="project-preview">
             <div class="project-preview-image">
-              <img src={project.thumbnail} alt={project.title} width="480" height="360" loading="lazy" style={project.coverPosition ? `object-position: ${project.coverPosition}` : undefined} />
+              <img src={project.thumbnail} alt="" width="480" height="360" loading="lazy" style={project.coverPosition ? `object-position: ${project.coverPosition}` : undefined} />
             </div>
             <span class="project-preview-title">{project.title}</span>
             <span class="project-preview-year">{project.year}</span>

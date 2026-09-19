@@ -26,6 +26,19 @@
 
 ## Changelog
 
+### 2026-09-19
+- Performance: Phosphor Icons migrado de CDN externo (`unpkg.com`) para pacote empacotado localmente (`@phosphor-icons/web`) em `packpro.astro`, `calculadora.astro`, `packpro/calculadora.astro`, `packpro/bonus/index.astro` e `PackProBonus.astro`, eliminando dependências e latências externas de rede.
+- Safari Status Bar: `BaseLayout.astro` atualizado com `<meta name="theme-color">` adaptativo para modo claro (`#ffffff`) e escuro (`#111111`) via media query, eliminando a barra escura sobre fundo branco no iPhone e Mac.
+- Acessibilidade & Micro-copy:
+  - Sidebar: `Porto Alegre, Brazil` atualizado para `Porto Alegre, Brasil` e `aria-label`s traduzidos para português (`Início`, `Abrir menu`, `Fechar menu`, `Navegação principal`).
+  - Lightbox: botões traduzidos para português (`Fechar`, `Anterior`, `Próxima`) e sincronização dinâmica do atributo `aria-hidden` ao abrir e fechar.
+  - Home: thumbnail de projetos na home com `alt=""` decorativo para evitar anúncio duplicado do título em leitores de tela.
+- LCP & SEO:
+  - Cases de projetos: adicionados `loading="eager"` e `fetchpriority="high"` na imagem de capa principal.
+  - Calculadora pública (`/calculadora`): adicionadas tags `og:image`, Twitter Cards completos e scripts de analytics (Vercel Analytics, Speed Insights e Umami).
+  - Blog: adicionado `timeZone: 'UTC'` na data de artigos relacionados para evitar divergência de mês em fusos locais.
+  - PackPro LP: ajuste de travessão em `og:description`, tags completas do Twitter Card e dimensões explícitas na foto do autor.
+
 ### 2026-09-10
 - Cases (`src/pages/projects/[slug].astro`): redesenho editorial do template, com hierarquia mais forte no título, narrativa de abertura do projeto, metadados com menos ruído visual, números tratados como faixa de dados e conteúdo em colunas no desktop. As imagens de origem do Atlas foram preservadas.
 - Atlas Jurídico: revisão do case na fonte do Obsidian, removendo bastidores internos e focando em contexto, decisões de design e resultado. O template voltou a usar os raios originais, preserva a proporção completa da capa, uniformiza o ritmo entre seções e deixa os cards de números com hover discreto.

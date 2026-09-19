@@ -16,7 +16,7 @@ const isActive = (href: string) =>
 
 <aside class="sidebar">
   <div class="identity">
-    <a href="/" class="identity-link" aria-label="Home">
+    <a href="/" class="identity-link" aria-label="Início">
       <span class="avatar">
         <img src="/webp/avatar.webp" alt="Miguel Moraes" width="72" height="72" />
       </span>
@@ -27,7 +27,7 @@ const isActive = (href: string) =>
     </a>
     <button
       class="nav-toggle"
-      aria-label="Open menu"
+      aria-label="Abrir menu"
       aria-expanded="false"
       aria-controls="site-nav"
     >
@@ -36,7 +36,7 @@ const isActive = (href: string) =>
     </button>
   </div>
 
-  <nav class="nav" id="site-nav" aria-label="Main">
+  <nav class="nav" id="site-nav" aria-label="Navegação principal">
     {nav.map(item => (
       <a
         href={item.href}
@@ -54,7 +54,7 @@ const isActive = (href: string) =>
         <a href="https://www.behance.net/omiguelmoraes" target="_blank" rel="noopener" aria-label="Behance"><i class="ph ph-behance-logo"></i></a>
         <a href="https://x.com/omiguelmoraes" target="_blank" rel="noopener" aria-label="X"><i class="ph ph-x-logo"></i></a>
       </div>
-      <span class="nav-time"><span class="js-local-time">--:--</span> · Porto Alegre, Brazil</span>
+      <span class="nav-time"><span class="js-local-time">--:--</span> · Porto Alegre, Brasil</span>
     </div>
   </nav>
 </aside>
@@ -74,7 +74,7 @@ const isActive = (href: string) =>
     document.body.style.overflow = open ? 'hidden' : '';
     const btn = el.querySelector('.nav-toggle');
     btn?.setAttribute('aria-expanded', String(open));
-    btn?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    btn?.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
   }
 
   document.addEventListener('click', (e) => {

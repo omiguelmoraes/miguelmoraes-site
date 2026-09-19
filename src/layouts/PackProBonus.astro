@@ -3,6 +3,8 @@
 // vivem fora do índice, fora do sitemap e navegam entre si pelo hub, nunca
 // de volta pra landing page (quem está aqui já comprou).
 import { Font } from 'astro:assets';
+import '@phosphor-icons/web/regular';
+import '@phosphor-icons/web/bold';
 
 interface Props {
   title: string;
@@ -37,7 +39,6 @@ const outros = bonus.filter((b) => b.id !== atual);
   <link rel="icon" type="image/png" href="/favicon.png" />
   <Font cssVariable="--font-inter-tight" preload />
   <Font cssVariable="--font-geist-mono" />
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 </head>
 <body>
 

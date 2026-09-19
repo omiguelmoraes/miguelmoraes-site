@@ -111,7 +111,7 @@ const jsonLd = {
             <a href={`/blog/${p.id}`} class="related-item">
               <span class="related-item-title">{p.data.title}</span>
               <span class="related-item-date">
-                {p.data.date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
+                {p.data.date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric', timeZone: 'UTC' })}
               </span>
             </a>
           ))}
