@@ -38,6 +38,12 @@
   - Calculadora pública (`/calculadora`): adicionadas tags `og:image`, Twitter Cards completos e scripts de analytics (Vercel Analytics, Speed Insights e Umami).
   - Blog: adicionado `timeZone: 'UTC'` na data de artigos relacionados para evitar divergência de mês em fusos locais.
   - PackPro LP: ajuste de travessão em `og:description`, tags completas do Twitter Card e dimensões explícitas na foto do autor.
+- Refino de Copy & Narrativa:
+  - Sobre (`/about`): reescrita do parágrafo de abertura eliminando referências mecânicas a métricas/ferramentas e focando na união de design, código e marketing para ancorar decisões visuais nos objetivos do negócio. Subtítulo de Iniciativas & Produtos enxugado para tom pessoal e direto.
+  - Home (`/`): textos de Sobre e Blog refinados, substituindo termos genéricos ("construção de coisas") por posicionamento direto de design e código.
+  - Carreira (`/career`): introdução simplificada para tom casual ("registros de palestras e podcasts").
+  - Links (`/links`): primeiro item ajustado para "Início · Página principal e bio completa", eliminando redundância com Projetos e Blog.
+  - Stack (`/stack`): pontuação ajustada no subtítulo sem travessão.
 
 ### 2026-09-10
 - Cases (`src/pages/projects/[slug].astro`): redesenho editorial do template, com hierarquia mais forte no título, narrativa de abertura do projeto, metadados com menos ruído visual, números tratados como faixa de dados e conteúdo em colunas no desktop. As imagens de origem do Atlas foram preservadas.
