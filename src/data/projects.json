@@ -1,4 +1,158 @@
 {
+  "atlas-juridico": {
+    "title": "Atlas Jurídico",
+    "description": "Landing page para o lançamento do Atlas Jurídico, edição de colecionador do Círculo Jurídico.",
+    "year": "2026",
+    "category": "Web Design",
+    "location": "Brasil",
+    "industry": "Publishing",
+    "url": "https://ocirculojuridico.com.br/atlas-juridico",
+    "cover": "/projects/atlas-juridico/atlas-juridico-01-hero.webp",
+    "thumbnail": "/projects/atlas-juridico/atlas-juridico-01-hero.webp",
+    "coverVideo": "/projects/atlas-juridico/s01site.mp4",
+    "tags": [
+      "Web Design"
+    ],
+    "headline": "Uma página de lançamento para uma edição de colecionador que vendeu cerca de 50 unidades nas três primeiras horas.",
+    "role": "Web Design",
+    "stack": [
+      "Framer",
+      "Figma",
+      "Microsoft Clarity"
+    ],
+    "results": [
+      {
+        "value": "~50",
+        "label": "vendas nas três primeiras horas, antes da página ser pública"
+      },
+      {
+        "value": "2.9K",
+        "label": "visitantes únicos no dia do lançamento"
+      },
+      {
+        "value": "4m16s",
+        "label": "tempo médio na página"
+      },
+      {
+        "value": "84%",
+        "label": "do tráfego veio do celular"
+      }
+    ],
+    "sections": [
+      {
+        "label": "Contexto",
+        "heading": "Uma edição de colecionador para o público do Círculo Jurídico",
+        "body": [
+          {
+            "type": "p",
+            "html": "O Círculo Jurídico é um clube de livros de Direito. O Atlas Jurídico foi uma edição de colecionador com 153 documentos que marcaram a história do Direito, reunidos em um volume de capa dura."
+          },
+          {
+            "type": "p",
+            "html": "O lançamento precisava apresentar a peça como objeto de coleção e, ao mesmo tempo, orientar dois caminhos de compra: uma condição para assinantes e outra para o público geral."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-02.webp",
+            "caption": "A página no ar, com o selo, o azul e as serifas que o clube já usava."
+          }
+        ]
+      },
+      {
+        "label": "O problema real",
+        "heading": "Uma oferta para dois públicos, sem perder clareza",
+        "body": [
+          {
+            "type": "p",
+            "html": "A página precisava explicar o valor da edição e conduzir a compra sem misturar as condições de quem já era assinante com as de quem chegava pela primeira vez."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Destacar o caráter colecionável do Atlas antes de falar de preço",
+              "Separar os dois caminhos de compra sem criar duas páginas diferentes",
+              "Manter condição, parcelamento e CTA legíveis no celular, de onde veio 84% do tráfego"
+            ]
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-03.webp",
+            "caption": "Dois públicos e dois checkouts na mesma página."
+          }
+        ]
+      },
+      {
+        "label": "Como foi",
+        "heading": "A linguagem do clube, organizada para a decisão de compra",
+        "body": [
+          {
+            "type": "p",
+            "html": "Em vez de criar uma linguagem visual nova, parti dos elementos que o Círculo Jurídico já usava. O azul, o dourado, o selo e os títulos em serifa já davam à edição a presença de objeto de coleção que o lançamento pedia."
+          },
+          {
+            "type": "p",
+            "html": "A estrutura foi desenhada para tornar a oferta fácil de percorrer e comparar:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "O produto e o que vinha na edição aparecem antes das condições comerciais",
+              "Os dois caminhos de compra ficam lado a lado, com hierarquia própria",
+              "Benefícios, parcelamento e CTA permanecem visíveis em uma leitura curta no celular"
+            ]
+          },
+          {
+            "type": "p",
+            "html": "O resultado é uma página que apresenta um produto denso sem transformar a decisão de compra em uma leitura cansativa."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-04.webp",
+            "caption": "Os documentos históricos traduzidos, com cards próprios e contexto para cada peça."
+          }
+        ]
+      },
+      {
+        "label": "Resultado",
+        "heading": "Interesse concentrado nas primeiras horas",
+        "body": [
+          {
+            "type": "p",
+            "html": "Nas três primeiras horas, a página registrou cerca de 50 vendas. No dia do lançamento, recebeu 2,9 mil visitantes únicos, com tempo médio de 4min16s e 84% do tráfego vindo do celular."
+          },
+          {
+            "type": "p",
+            "html": "Os dados reforçaram uma decisão central do projeto: no Atlas, a experiência de celular não era uma adaptação da página, era a página principal."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-05.webp",
+            "caption": "Apresentação da obra e o Plano Acervo com a assinatura trienal."
+          }
+        ]
+      },
+      {
+        "label": "O que ficou",
+        "heading": "Clareza antes da conversão",
+        "body": [
+          {
+            "type": "p",
+            "html": "Em um lançamento com oferta, história e público diferentes no mesmo lugar, cada seção precisa ter uma função clara. No Atlas, o visual serviu para dar valor à edição e a estrutura serviu para tornar a escolha simples."
+          }
+        ],
+        "images": [
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-06.webp",
+            "caption": "A versão mobile da página, por onde veio 84% do tráfego."
+          }
+        ]
+      }
+    ]
+  },
   "flouds-branding": {
     "title": "Flouds Performance Digital",
     "description": "Identidade visual para a Flouds Performance Digital, agência de mídia paga e automação de Porto Alegre.",
