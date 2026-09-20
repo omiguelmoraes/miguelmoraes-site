@@ -26,6 +26,9 @@
 
 ## Changelog
 
+### 2026-09-20
+- Rodapé: remoção da assinatura "Miguel Moraes © 2026" e do componente `Footer.astro` de todo o site, deixando o encerramento das páginas limpo e uniforme com o respiro padrão do layout.
+
 ### 2026-09-19
 - Cases de projetos (`src/pages/projects/[slug].astro`):
   - Métricas ("Em números"): movidas do topo para o final da narrativa dentro do corpo do case, com rótulo na coluna esquerda e números sutis na coluna direita (estilo minimalista sem caixas cinzas pesadas ou elevação).
