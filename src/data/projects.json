@@ -44,7 +44,7 @@
         "body": [
           {
             "type": "p",
-            "html": "O Círculo Jurídico é um clube de livros de Direito. O Atlas Jurídico foi uma edição de colecionador com 153 documentos que marcaram a história do Direito, reunidos em um volume de capa dura."
+            "html": "O <a href=\"https://ocirculojuridico.com.br/\" target=\"_blank\" rel=\"noopener\">Círculo Jurídico</a> é um clube de livros de Direito. O Atlas Jurídico foi uma edição de colecionador com 153 documentos que marcaram a história do Direito, reunidos em um volume de capa dura."
           },
           {
             "type": "p",
@@ -53,8 +53,8 @@
         ],
         "images": [
           {
-            "src": "/projects/atlas-juridico/atlas-juridico-02.webp",
-            "caption": "A página no ar, com o selo, o azul e as serifas que o clube já usava."
+            "src": "/projects/atlas-juridico/atlas-juridico-02-racional.webp",
+            "caption": "O racional da primeira dobra: produto, exclusividade, escassez e CTA de alto contraste antes do preço."
           }
         ]
       },
@@ -77,8 +77,8 @@
         ],
         "images": [
           {
-            "src": "/projects/atlas-juridico/atlas-juridico-03.webp",
-            "caption": "Dois públicos e dois checkouts na mesma página."
+            "src": "/projects/atlas-juridico/atlas-juridico-07-planos.webp",
+            "caption": "Dois públicos e duas propostas na mesma tela: compra avulsa para novos visitantes e condição exclusiva no Plano Acervo."
           }
         ]
       },
@@ -109,8 +109,12 @@
         ],
         "images": [
           {
-            "src": "/projects/atlas-juridico/atlas-juridico-04.webp",
-            "caption": "Os documentos históricos traduzidos, com cards próprios e contexto para cada peça."
+            "src": "/projects/atlas-juridico/atlas-juridico-03-caixa.webp",
+            "caption": "A edição e seus componentes detalhados antes de apresentar os valores comerciais."
+          },
+          {
+            "src": "/projects/atlas-juridico/atlas-juridico-05-obra.webp",
+            "caption": "Documentos históricos apresentados com cards próprios e contexto individual."
           }
         ]
       },
@@ -129,8 +133,8 @@
         ],
         "images": [
           {
-            "src": "/projects/atlas-juridico/atlas-juridico-05.webp",
-            "caption": "Apresentação da obra e o Plano Acervo com a assinatura trienal."
+            "src": "/projects/atlas-juridico/atlas-juridico-04-prova-visual.webp",
+            "caption": "Fotografia de produto em estante e mesa de trabalho para ancorar o valor do livro como peça física."
           }
         ]
       },
@@ -145,8 +149,8 @@
         ],
         "images": [
           {
-            "src": "/projects/atlas-juridico/atlas-juridico-06.webp",
-            "caption": "A versão mobile da página, por onde veio 84% do tráfego."
+            "src": "/projects/atlas-juridico/atlas-juridico-06-simbolo.webp",
+            "caption": "A apresentação da obra como marco profissional e objeto colecionável."
           }
         ]
       }
@@ -189,7 +193,7 @@
         "body": [
           {
             "type": "p",
-            "html": "A Flouds é uma agência de mídia paga e automação focada em escalar resultados através de tráfego, estratégia de conversão e fluxos inteligentes. O objetivo foi construir uma identidade visual forte e moderna que refletisse a abordagem tecnológica da agência, transmitisse autoridade e posicionasse a Flouds como uma parceira estratégica de crescimento."
+            "html": "A <a href=\"https://flouds.com.br\" target=\"_blank\" rel=\"noopener\">Flouds</a> é uma agência de mídia paga e automação focada em escalar resultados através de tráfego, estratégia de conversão e fluxos inteligentes. O objetivo foi construir uma identidade visual forte e moderna que refletisse a abordagem tecnológica da agência, transmitisse autoridade e posicionasse a Flouds como uma parceira estratégica de crescimento."
           }
         ],
         "images": [
@@ -240,7 +244,7 @@
         "body": [
           {
             "type": "p",
-            "html": "O site anterior não refletia a proposta de valor da fintech nem atendia às expectativas dos usuários que precisavam entender e confiar no produto. Mais do que um redesign visual, o objetivo era comunicar segurança em um setor com alta desconfiança, através de uma estrutura leve e focada em conversão."
+            "html": "O site anterior do <a href=\"https://yoursbank.com.br/\" target=\"_blank\" rel=\"noopener\">Yours Bank</a> não refletia a proposta de valor da fintech nem atendia às expectativas dos usuários que precisavam entender e confiar no produto. Mais do que um redesign visual, o objetivo era comunicar segurança em um setor com alta desconfiança, através de uma estrutura leve e focada em conversão."
           }
         ],
         "images": [
@@ -289,7 +293,7 @@
         "body": [
           {
             "type": "p",
-            "html": "Após criar a identidade visual da Flouds, o passo seguinte foi transformar o posicionamento em uma presença digital que fosse além de uma simples vitrine. O site precisava comunicar autoridade, explicar a proposta de valor com clareza e funcionar como um canal estratégico de aquisição, convertendo visitantes em leads qualificados."
+            "html": "Após criar a identidade visual da <a href=\"https://flouds.com.br\" target=\"_blank\" rel=\"noopener\">Flouds</a>, o passo seguinte foi transformar o posicionamento em uma presença digital que fosse além de uma simples vitrine. O site precisava comunicar autoridade, explicar a proposta de valor com clareza e funcionar como um canal estratégico de aquisição, convertendo visitantes em leads qualificados."
           }
         ],
         "images": [
@@ -338,7 +342,7 @@
         "body": [
           {
             "type": "p",
-            "html": "A MSK é referência no seu setor, mas seu posicionamento digital não acompanhava essa força. O objetivo foi criar um site que não apenas modernizasse a imagem da empresa, mas funcionasse como ferramenta de vendas, facilitando a navegação pelo catálogo de produtos e otimizando a captação de leads qualificados."
+            "html": "A <a href=\"https://msk.ind.br/\" target=\"_blank\" rel=\"noopener\">MSK</a> é referência no seu setor, mas seu posicionamento digital não acompanhava essa força. O objetivo foi criar um site que não apenas modernizasse a imagem da empresa, mas funcionasse como ferramenta de vendas, facilitando a navegação pelo catálogo de produtos e otimizando a captação de leads qualificados."
           }
         ],
         "images": [
@@ -387,7 +391,7 @@
         "body": [
           {
             "type": "p",
-            "html": "O site antigo estava sobrecarregado. Animações excessivas e uma arquitetura de informação densa criavam uma experiência confusa e frustrante. A lentidão no carregamento era uma barreira direta para os usuários em busca de informações essenciais de saúde."
+            "html": "O site antigo da <a href=\"https://santsaude.com.br/\" target=\"_blank\" rel=\"noopener\">Sant Saúde</a> estava sobrecarregado. Animações excessivas e uma arquitetura de informação densa criavam uma experiência confusa e frustrante. A lentidão no carregamento era uma barreira direta para os usuários em busca de informações essenciais de saúde."
           }
         ],
         "images": [

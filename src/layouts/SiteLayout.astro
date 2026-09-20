@@ -10,9 +10,10 @@ interface Props {
   image?: string;
   lang?: 'en' | 'pt-BR';
   type?: 'website' | 'article';
+  hideFooter?: boolean;
 }
 
-const { title, description, image, lang, type } = Astro.props;
+const { title, description, image, lang, type, hideFooter = false } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={image} lang={lang} type={type}>
@@ -22,7 +23,7 @@ const { title, description, image, lang, type } = Astro.props;
     <Sidebar />
     <main class="main">
       <slot />
-      <Footer />
+      {!hideFooter && <Footer />}
     </main>
   </div>
 </BaseLayout>

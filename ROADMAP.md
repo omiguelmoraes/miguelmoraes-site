@@ -27,6 +27,11 @@
 ## Changelog
 
 ### 2026-09-19
+- Cases de projetos (`src/pages/projects/[slug].astro`):
+  - Métricas ("Em números"): movidas do topo para o final da narrativa dentro do corpo do case, com rótulo na coluna esquerda e números sutis na coluna direita (estilo minimalista sem caixas cinzas pesadas ou elevação).
+  - Links de marcas no texto: removido botão genérico "Ver projeto ↗" (evitando quebra por LPs de lançamento temporárias) e adicionados links permanentes nos nomes das marcas no corpo dos cases (Círculo Jurídico, Flouds, MSK, Sant Saúde, Yours Bank).
+  - Alinhamento de listas: recuo ajustado para manter marcadores alinhados à coluna de leitura sem vazar na margem do celular.
+  - Rodapé e espaçamento: adicionada prop `hideFooter` em `SiteLayout` para ocultar o rodapé global em cases, removido link redundante "Ver todos os projetos →" e ajustado o espaçamento final para encerrar a página logo após os cards de outros projetos.
 - Case Atlas Jurídico: publicado oficialmente no portfólio (`/projects/atlas-juridico`) com showreel 16:9 em loop no topo (`coverVideo`), mockups em alta resolução gerados das interfaces e bloco de métricas destacadas (~50 vendas em 3h, 84% tráfego mobile).
 - Performance: Phosphor Icons migrado de CDN externo (`unpkg.com`) para pacote empacotado localmente (`@phosphor-icons/web`) em `packpro.astro`, `calculadora.astro`, `packpro/calculadora.astro`, `packpro/bonus/index.astro` e `PackProBonus.astro`, eliminando dependências e latências externas de rede.
 - Safari Status Bar: `BaseLayout.astro` atualizado com `<meta name="theme-color">` adaptativo para modo claro (`#ffffff`) e escuro (`#111111`) via media query, eliminando a barra escura sobre fundo branco no iPhone e Mac.
