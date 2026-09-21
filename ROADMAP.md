@@ -28,6 +28,7 @@
 
 ### 2026-09-21
 - Header mobile: o menu aberto agora ocupa exatamente o viewport em qualquer posição da página, sem herdar o deslocamento vertical da sidebar sticky nem cortar identidade ou rodapé.
+- PackPro: corrigida a proporção da foto do criador para eliminar o esticamento vertical no desktop e no celular.
 
 ### 2026-09-20
 - Case Atlas Jurídico: corrigida a proporção reservada dos mockups verticais e a disposição das métricas em uma coluna no celular; imagens dos cases agora abrem no lightbox por teclado, com foco restaurado ao fechar; removido o `<main>` duplicado do template. Vídeo em loop e ausência de link para a página temporária preservados.
