@@ -27,6 +27,7 @@
 ## Changelog
 
 ### 2026-09-20
+- Case Atlas Jurídico: corrigida a proporção reservada dos mockups verticais e a disposição das métricas em uma coluna no celular; imagens dos cases agora abrem no lightbox por teclado, com foco restaurado ao fechar; removido o `<main>` duplicado do template. Vídeo em loop e ausência de link para a página temporária preservados.
 - Rodapé: remoção da assinatura "Miguel Moraes © 2026" e do componente `Footer.astro` de todo o site, deixando o encerramento das páginas limpo e uniforme com o respiro padrão do layout.
 
 ### 2026-09-19

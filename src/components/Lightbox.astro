@@ -1,4 +1,4 @@
-<div id="lightbox" class="lightbox" aria-hidden="true">
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada" aria-hidden="true">
   <button class="lightbox-close" aria-label="Fechar">✕</button>
   <button class="lightbox-prev" aria-label="Anterior">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -13,6 +13,8 @@
 </div>
 
 <script>
+  let returnFocus: HTMLElement | null = null;
+
   // Delegação no document: registrado uma vez e imune a quando o script roda em
   // relação ao swap do ClientRouter. Ligar listener por imagem dependia de os
   // elementos já existirem no momento do setup.
@@ -23,15 +25,16 @@
   });
 
   const triggers = () =>
-    Array.from(document.querySelectorAll('.lightbox-trigger')) as HTMLImageElement[];
+    Array.from(document.querySelectorAll('.lightbox-trigger')) as HTMLElement[];
 
-  function show(trigger: HTMLImageElement) {
+  function show(trigger: HTMLElement) {
     const { lightbox, img, caption } = getEls();
-    if (!img) return;
-    img.src = trigger.dataset.full || trigger.currentSrc || trigger.src;
-    img.alt = trigger.alt ?? '';
+    const source = trigger instanceof HTMLImageElement ? trigger : trigger.querySelector<HTMLImageElement>('img');
+    if (!img || !source) return;
+    img.src = source.dataset.full || source.currentSrc || source.src;
+    img.alt = source.alt ?? '';
     if (caption) {
-      const text = trigger.dataset.caption ?? '';
+      const text = trigger.dataset.caption || source.dataset.caption || '';
       caption.textContent = text;
       caption.hidden = !text;
     }
@@ -40,13 +43,15 @@
     if (lightbox) lightbox.dataset.index = String(triggers().indexOf(trigger));
   }
 
-  function open(trigger: HTMLImageElement) {
+  function open(trigger: HTMLElement) {
     const { lightbox } = getEls();
     if (!lightbox) return;
+    returnFocus = trigger;
     show(trigger);
     lightbox.setAttribute('aria-hidden', 'false');
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
+    lightbox.querySelector<HTMLButtonElement>('.lightbox-close')?.focus();
   }
 
   function close() {
@@ -55,6 +60,8 @@
     lightbox.setAttribute('aria-hidden', 'true');
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
+    if (returnFocus?.isConnected) returnFocus.focus();
+    returnFocus = null;
   }
 
   function navigate(dir: 1 | -1) {
@@ -69,7 +76,7 @@
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
 
-    const trigger = target.closest('.lightbox-trigger') as HTMLImageElement | null;
+    const trigger = target.closest('.lightbox-trigger') as HTMLElement | null;
     if (trigger) {
       open(trigger);
       return;
@@ -92,6 +99,13 @@
     if (e.key === 'Escape') close();
     if (e.key === 'ArrowRight') navigate(1);
     if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'Tab') {
+      const buttons = Array.from(lightbox.querySelectorAll<HTMLButtonElement>('button'));
+      const first = buttons[0];
+      const last = buttons[buttons.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
 
   // O overlay não sobrevive à troca de página; garante o estado limpo
@@ -103,6 +117,7 @@
     display: none;
     position: fixed;
     inset: 0;
+    overscroll-behavior: contain;
     background: rgba(0, 0, 0, 0.9);
     z-index: 9999;
     align-items: center;

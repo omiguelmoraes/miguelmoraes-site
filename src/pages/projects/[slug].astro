@@ -59,7 +59,7 @@ const otherProjects = [prevProject, nextProject];
       )}
     </header>
 
-    <div class={"cover" + (project.coverVideo ? " cover-video" : "")} style={project.coverVideo ? "--cover-poster: url(" + project.cover + ")" : "cursor: zoom-in"}>
+    <div class={"cover" + (project.coverVideo ? " cover-video" : "")} style={project.coverVideo ? "--cover-poster: url(" + project.cover + ")" : undefined}>
       {project.coverVideo ? (
         <video
           src={project.coverVideo}
@@ -73,11 +73,13 @@ const otherProjects = [prevProject, nextProject];
           style={"view-transition-name: project-image-" + slug}
         />
       ) : (
-        <img src={project.cover} alt={project.title} class="lightbox-trigger" width="1200" height="675" loading="eager" fetchpriority="high" style={"view-transition-name: project-image-" + slug} />
+        <button type="button" class="cover-image lightbox-trigger" aria-label={"Ampliar imagem: " + project.title}>
+          <img src={project.cover} alt={project.title} width="1200" height="675" loading="eager" fetchpriority="high" style={"view-transition-name: project-image-" + slug} />
+        </button>
       )}
     </div>
 
-    <main class="body">
+    <div class="body">
 
       {project.sections.map((section) => (
         <section class="section">
@@ -94,9 +96,9 @@ const otherProjects = [prevProject, nextProject];
               const isDetail = src.includes("atlas-juridico-04-documentos");
               return (
                 <figure class:list={["image-item", { "image-detail": isDetail }]}>
-                  <div class="image-frame">
-                    <img src={src} alt={caption || project.title + ": " + (section.heading || section.label) + ", imagem " + (i + 1)} data-caption={caption} class="lightbox-trigger" loading="lazy" width="800" height="600" />
-                  </div>
+                  <button type="button" class="image-frame lightbox-trigger" aria-label={"Ampliar imagem: " + (caption || project.title + ", imagem " + (i + 1))} data-caption={caption}>
+                    <img src={src} alt={caption || project.title + ": " + (section.heading || section.label) + ", imagem " + (i + 1)} loading="lazy" width={slug === 'atlas-juridico' ? 2160 : 800} height={slug === 'atlas-juridico' ? 2700 : 600} />
+                  </button>
                   {caption && <figcaption class="image-caption">{caption}</figcaption>}
                 </figure>
               );
@@ -119,7 +121,7 @@ const otherProjects = [prevProject, nextProject];
         </section>
       )}
 
-    </main>
+    </div>
 
     <footer class="project-footer">
       <span class="section-label">Outros projetos</span>
@@ -229,6 +231,19 @@ const otherProjects = [prevProject, nextProject];
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  .cover-image {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+  .cover-image:focus-visible {
+    outline-offset: -4px;
   }
 
   .cover video {
@@ -454,6 +469,9 @@ const otherProjects = [prevProject, nextProject];
   }
 
   .image-frame {
+    display: block;
+    width: 100%;
+    padding: 0;
     border-radius: 6px;
     overflow: hidden;
     border: 1px solid var(--color-border);
@@ -560,7 +578,7 @@ const otherProjects = [prevProject, nextProject];
       font-size: 23px;
     }
 
-    .results {
+    .results.n2, .results.n3, .results.n4, .results.n5, .results.n6 {
       grid-template-columns: 1fr;
       gap: 12px;
     }
