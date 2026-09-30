@@ -10,5 +10,15 @@
       "destination": "/stack",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/showcase/opservices",
+      "destination": "https://brand-hub-swart.vercel.app/"
+    },
+    {
+      "source": "/showcase/opservices/:path*",
+      "destination": "https://brand-hub-swart.vercel.app/:path*"
+    }
   ]
 }
