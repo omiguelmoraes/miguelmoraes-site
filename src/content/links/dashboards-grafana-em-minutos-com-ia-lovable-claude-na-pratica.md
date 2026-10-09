@@ -6,7 +6,7 @@ tags:
   - ai
   - financas
   - video
-description: "Grafana com IA: descubra como criar dashboards profissionais em minutos usando ferramentas de IA como Lovable e Claude. Aprenda a desmistificar o processo.Nesse episódio, João Vítor Baleiro, Analist"
+description: "João Vítor Baleeiro, analista de monitoramento da OpServices, mostra o fluxo que o time usa pra criar dashboards no Grafana com IA: conversar com o cliente, rascunhar no caderno, escrever um prompt bem específico, prototipar no Lovable e desmontar o código no…"
 thumb: /acervo/thumbs/D4nXqSmCJyA.jpg
 added: 2026-04-20
 origin: clippings

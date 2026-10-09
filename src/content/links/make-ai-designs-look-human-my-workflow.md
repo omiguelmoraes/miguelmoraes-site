@@ -7,7 +7,7 @@ tags:
   - design
   - produtividade
   - video
-description: "Learn how to make AI designs look human using a proven workflow with prompting, design systems, and tools like Figma, Claude AI, and Claude Code. This tutorial covers AI UI design, UX workflows, pro"
+description: "O UI Collective mostra um fluxo pra IA gerar telas que respeitam o design system: documentar cada token com uma linha de quando usar, transformar tokens e componentes em skills do Claude, alimentar com referências parecidas entre si (do Mobbin) e gerar…"
 thumb: /acervo/thumbs/lwOIVNRHndM.jpg
 added: 2026-04-13
 origin: clippings

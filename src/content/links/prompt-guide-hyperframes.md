@@ -6,7 +6,7 @@ tags:
   - ai
   - design
   - marketing
-description: "How to prompt Claude Code, Cursor, Codex, and other AI agents to author Hyperframes compositions — with copy-pasteable examples and vocabulary tables."
+description: "Guia oficial de como pedir vídeo pro Claude Code (ou Cursor, Codex) usando o HyperFrames, da HeyGen, em que a composição é HTML com timeline GSAP."
 thumb: /acervo/thumbs/e39d22fbab10.jpg
 added: 2026-04-17
 origin: clippings

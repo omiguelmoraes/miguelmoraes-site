@@ -7,7 +7,7 @@ tags:
   - design
   - marketing
   - video
-description: "If you're interested in learning more about marketing and building a personal brand join - https://digitalcreator.club/?utm_source=OliurOnline_AI_prints_moneyIf you're interested in learning about A"
+description: "Oliur fez um pack de wallpapers de tinta acrílica no Midjourney em uma tarde e faturou mais de US$ 40 mil (Shopify + Gumroad), com margem de quase 99%. O argumento é que gente compra o que quer e o que economiza tempo, não importa como foi feito."
 thumb: /acervo/thumbs/udhkofVugAo.jpg
 added: 2026-06-23
 origin: clippings

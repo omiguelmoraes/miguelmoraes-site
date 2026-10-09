@@ -6,7 +6,7 @@ tags:
   - ai
   - design
   - video
-description: "AI isn't just making teams more productive. It's changing how companies should be built.In this episode of Startup School, YC Partner Diana Hu explains what ..."
+description: "Diana Hu, sócia da YC, diz que IA não é ganho de produtividade, é capacidade nova, e que a empresa deve rodar sobre uma camada de inteligência em loop fechado: tudo registrado, consultável e alimentando agentes que melhoram o processo."
 thumb: /acervo/thumbs/EN7frwQIbKc.jpg
 added: 2026-04-28
 origin: clippings
