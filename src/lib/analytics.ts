@@ -178,10 +178,12 @@ async function build(): Promise<Dashboard> {
   const token = await umamiToken();
   type Stats = { pageviews: number; visitors: number; visits: number };
 
-  const [stats, series, referrers, paths, events, prevEvents, devices, search] = await Promise.all([
+  const [stats, series, referrers, channels, paths, events, prevEvents, devices, search] = await Promise.all([
     umami<Stats & { comparison: Stats }>(token, 'stats', cur),
     umami<{ sessions: Metric[] }>(token, 'pageviews', { ...cur, unit: 'day', timezone: TZ }),
     umami<Metric[]>(token, 'metrics', { ...cur, type: 'referrer', limit: 50 }),
+    // A lista de referrers não traz o acesso direto; sai do total menos os canais
+    umami<Metric[]>(token, 'metrics', { ...cur, type: 'channel' }),
     umami<Metric[]>(token, 'metrics', { ...cur, type: 'path', limit: 40 }),
     umami<Metric[]>(token, 'metrics', { ...cur, type: 'event', limit: 20 }),
     umami<Metric[]>(token, 'metrics', { ...prev, type: 'event', limit: 20 }),
@@ -201,6 +203,11 @@ async function build(): Promise<Dashboard> {
     const label = sourceLabel(r.x ?? '');
     sourceMap.set(label, (sourceMap.get(label) ?? 0) + Number(r.y));
   }
+  // O canal "direct" do Umami só conta visita sem query string, então o direto
+  // é aproximado: pessoas menos as que vieram de algum canal com origem
+  const fromChannels = channels.filter((c) => c.x !== 'direct').reduce((a, c) => a + Number(c.y), 0);
+  const direct = Math.max(0, Number(stats.visitors) - fromChannels);
+  if (direct) sourceMap.set(sourceLabel(''), (sourceMap.get(sourceLabel('')) ?? 0) + direct);
 
   // Umami pula dias sem visita; preenche os 28 pra manter a escala do gráfico
   const byDay = new Map(series.sessions.map((s) => [String(s.x).slice(0, 10), Number(s.y)]));
