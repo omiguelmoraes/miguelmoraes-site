@@ -31,3 +31,6 @@ skills-lock.json
 # source image assets (only WebP in public/ goes to repo)
 fotos site/
 .vercel
+
+# chave da conta de serviço do Google (painel)
+.secrets/

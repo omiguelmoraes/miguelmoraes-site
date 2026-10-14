@@ -1,15 +1,22 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 import rehypeExternalLinks from 'rehype-external-links';
 
 export default defineConfig({
   site: 'https://miguelmoraes.pro',
   trailingSlash: 'never',
+  // O site segue estático; o adapter só existe pro /painel, que roda sob
+  // demanda (prerender = false) pra ler Umami e Search Console com senha
+  adapter: vercel(),
   // tudo abaixo de /packpro/ é material entregue por link depois da compra e
   // tudo abaixo de /proposta/ é proposta individual de cliente: ficam fora do
-  // sitemap (e com noindex na própria página). A LP /packpro fica
-  integrations: [sitemap({ filter: (page) => !/\/(packpro|proposta)\/.+/.test(page) })],
+  // sitemap (e com noindex na própria página). A LP /packpro fica. O /painel
+  // também fica de fora
+  integrations: [
+    sitemap({ filter: (page) => !/\/(packpro|proposta)\/.+/.test(page) && !page.includes('/painel') }),
+  ],
   // Astro baixa e serve as fontes junto do site: mata os dois handshakes com
   // o Google e o round-trip bloqueante do CSS deles antes do texto pintar.
   // subsets latin só — o conteúdo é português e inglês

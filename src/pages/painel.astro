@@ -1,0 +1,708 @@
+---
+/**
+ * /painel — como o site está indo: Umami (tráfego e pedidos de orçamento) +
+ * Search Console (busca). Renderiza sob demanda, atrás de senha (PAINEL_PASSWORD),
+ * com noindex e fora do sitemap. Não usa o BaseLayout pra não contar a si mesmo
+ * no Umami.
+ */
+import '../styles/global.css';
+import { Font } from 'astro:assets';
+import { getDashboard, type Dashboard } from '../lib/analytics';
+
+export const prerender = false;
+
+const COOKIE = 'mm_painel';
+
+async function tokenFor(password: string): Promise<string> {
+  const data = new TextEncoder().encode(`miguelmoraes:${password}`);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return [...new Uint8Array(hash)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+const password = process.env.PAINEL_PASSWORD ?? import.meta.env.PAINEL_PASSWORD ?? '';
+const expected = password ? await tokenFor(password) : null;
+
+let wrongPassword = false;
+if (Astro.request.method === 'POST' && expected) {
+  const form = await Astro.request.formData();
+  const typed = String(form.get('senha') ?? '').trim();
+  if ((await tokenFor(typed)) === expected) {
+    Astro.cookies.set(COOKIE, expected, {
+      path: '/painel',
+      httpOnly: true,
+      secure: import.meta.env.PROD,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 180,
+    });
+    return Astro.redirect('/painel', 303);
+  }
+  wrongPassword = true;
+}
+
+const authed = !!expected && Astro.cookies.get(COOKIE)?.value === expected;
+
+let data: Dashboard | null = null;
+let loadError = false;
+if (authed) {
+  try {
+    data = await getDashboard();
+  } catch (err) {
+    console.error('[painel]', err);
+    loadError = true;
+  }
+}
+
+Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+Astro.response.headers.set('Cache-Control', 'private, no-store');
+
+const n = (v: number) => Math.round(v).toLocaleString('pt-BR');
+const pct = (v: number) => `${Math.round(v * 100)}%`;
+const pos = (v: number) => v.toFixed(1).replace('.', ',');
+
+function delta(value: number, previous: number) {
+  if (!previous) return value ? { text: 'novo', dir: 'up' } : { text: '—', dir: 'flat' };
+  const r = Math.round(((value - previous) / previous) * 100);
+  if (r === 0) return { text: 'igual', dir: 'flat' };
+  return { text: `${r > 0 ? '+' : ''}${r}%`, dir: r > 0 ? 'up' : 'down' };
+}
+
+const max = (vals: number[]) => Math.max(1, ...vals);
+const maxDaily = data ? max(data.daily.map((d) => d.visitors)) : 1;
+const maxSource = data ? max(data.sources.map((s) => s.visitors)) : 1;
+const maxPage = data ? max(data.pages.map((p) => p.visitors)) : 1;
+const dayLabel = (iso: string) =>
+  new Date(`${iso}T12:00:00`).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>Painel · miguelmoraes.pro</title>
+    <Font cssVariable="--font-rethink-sans" preload />
+  </head>
+  <body class="pn">
+    {
+      !authed ? (
+        <main class="pn-login">
+          <form method="post" class="pn-login__box">
+            <p class="pn-eyebrow">miguelmoraes.pro</p>
+            <h1 class="pn-title">Painel</h1>
+            <label class="pn-login__label" for="senha">Senha</label>
+            <input id="senha" name="senha" type="password" autocomplete="current-password" required autofocus />
+            {wrongPassword && <p class="pn-login__error">Senha incorreta.</p>}
+            {!expected && <p class="pn-login__error">Painel ainda não configurado.</p>}
+            <button type="submit" class="pn-login__btn">Entrar</button>
+          </form>
+        </main>
+      ) : (
+        <main class="pn-wrap">
+          <header class="pn-head">
+            <div>
+              <p class="pn-eyebrow">miguelmoraes.pro</p>
+              <h1 class="pn-title">Como está o site</h1>
+            </div>
+            {data && (
+              <p class="pn-meta">
+                {data.range.label}
+                <br />
+                Atualizado em {data.updatedAt}
+              </p>
+            )}
+          </header>
+
+          {loadError && <p class="pn-empty">Não deu pra carregar os números agora. Tenta de novo em alguns minutos.</p>}
+
+          {data && (
+            <>
+              <section class="pn-kpis" aria-label="Resumo">
+                {data.kpis.map((k) => {
+                  const d = delta(k.value, k.previous);
+                  return (
+                    <div class="pn-kpi">
+                      <p class="pn-kpi__label">{k.label}</p>
+                      <p class="pn-kpi__value">{n(k.value)}</p>
+                      <p class="pn-kpi__delta" data-dir={d.dir}>
+                        {d.text} <span>vs. {n(k.previous)} antes</span>
+                      </p>
+                      <p class="pn-kpi__hint">{k.hint}</p>
+                    </div>
+                  );
+                })}
+              </section>
+
+              <section class="pn-card">
+                <h2 class="pn-h2">Pessoas por dia</h2>
+                <div class="pn-daily" role="img" aria-label="Pessoas que visitaram o site por dia nos últimos 28 dias">
+                  {data.daily.map((d) => (
+                    <div class="pn-daily__col" tabindex="0">
+                      <span class="pn-daily__bar" style={`height:${Math.max(2, (d.visitors / maxDaily) * 100)}%`} />
+                      <span class="pn-tip">
+                        {dayLabel(d.date)} · {n(d.visitors)} {d.visitors === 1 ? 'pessoa' : 'pessoas'}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div class="pn-daily__axis">
+                  <span>{data.daily[0] && dayLabel(data.daily[0].date)}</span>
+                  <span>hoje</span>
+                </div>
+              </section>
+
+              <div class="pn-grid">
+                <section class="pn-card">
+                  <h2 class="pn-h2">De onde vêm</h2>
+                  <ul class="pn-bars">
+                    {data.sources.map((s) => (
+                      <li>
+                        <div class="pn-bars__row">
+                          <span>{s.label}</span>
+                          <strong>{n(s.visitors)}</strong>
+                        </div>
+                        <span class="pn-bars__track">
+                          <span class="pn-bars__fill" style={`width:${(s.visitors / maxSource) * 100}%`} />
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {data.devices.length > 0 && (
+                    <p class="pn-note">{data.devices.map((d) => `${d.label} ${pct(d.share)}`).join(' · ')}</p>
+                  )}
+                </section>
+
+                <section class="pn-card">
+                  <h2 class="pn-h2">Páginas mais vistas</h2>
+                  <ul class="pn-bars">
+                    {data.pages.map((p) => (
+                      <li>
+                        <div class="pn-bars__row">
+                          <span>{p.path}</span>
+                          <strong>{n(p.visitors)}</strong>
+                        </div>
+                        <span class="pn-bars__track">
+                          <span class="pn-bars__fill" style={`width:${(p.visitors / maxPage) * 100}%`} />
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {data.events.length > 0 && (
+                    <p class="pn-note">
+                      Eventos: {data.events.map((e) => `${e.name} ${n(e.count)}`).join(' · ')}
+                    </p>
+                  )}
+                </section>
+              </div>
+
+              <section class="pn-card">
+                {data.search ? (
+                  <>
+                    <div class="pn-card__head">
+                      <h2 class="pn-h2">Como me acham no Google</h2>
+                      <p class="pn-meta">{data.search.range} · o Google libera com uns 3 dias de atraso</p>
+                    </div>
+                    <div class="pn-search-kpis">
+                      <div>
+                        <p class="pn-kpi__value">{n(data.search.clicks)}</p>
+                        <p class="pn-kpi__hint">cliques vindos da busca</p>
+                      </div>
+                      <div>
+                        <p class="pn-kpi__value">{n(data.search.impressions)}</p>
+                        <p class="pn-kpi__hint">vezes que o site apareceu</p>
+                      </div>
+                      <div>
+                        <p class="pn-kpi__value">{data.search.position ? pos(data.search.position) : '—'}</p>
+                        <p class="pn-kpi__hint">posição média (1 = primeiro)</p>
+                      </div>
+                    </div>
+                    {data.search.queries.length > 0 ? (
+                      <div class="pn-table-wrap">
+                        <table class="pn-table">
+                          <thead>
+                            <tr>
+                              <th>Busca</th>
+                              <th>Cliques</th>
+                              <th>Apareceu</th>
+                              <th>Posição</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {data.search.queries.map((q) => (
+                              <tr>
+                                <td>{q.query}</td>
+                                <td>{n(q.clicks)}</td>
+                                <td>{n(q.impressions)}</td>
+                                <td>{pos(q.position)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <p class="pn-empty">Ainda sem buscas registradas nesse período.</p>
+                    )}
+                    {data.search.pages.length > 0 && (
+                      <div class="pn-table-wrap pn-table-wrap--gap">
+                        <table class="pn-table">
+                          <thead>
+                            <tr>
+                              <th>Página no Google</th>
+                              <th>Cliques</th>
+                              <th>Apareceu</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {data.search.pages.map((p) => (
+                              <tr>
+                                <td>{p.path}</td>
+                                <td>{n(p.clicks)}</td>
+                                <td>{n(p.impressions)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <h2 class="pn-h2">Como me acham no Google</h2>
+                    <p class="pn-empty">Search Console indisponível agora.</p>
+                  </>
+                )}
+              </section>
+
+              <p class="pn-foot">Dados do Umami e do Google Search Console. Cache de 3 horas.</p>
+            </>
+          )}
+        </main>
+      )
+    }
+  </body>
+</html>
+
+<style>
+  .pn {
+    --pn-card: var(--color-bg);
+    --pn-bg: var(--color-wash);
+    --pn-line: var(--color-border);
+    --pn-track: var(--color-border);
+    --pn-accent: var(--color-title);
+    --pn-up: #1a7f37;
+    --pn-down: #c4432b;
+    background: var(--pn-bg);
+    color: var(--color-title);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .pn {
+      --pn-up: #4ac26b;
+      --pn-down: #f07a62;
+    }
+  }
+
+  .pn-wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 48px 16px 64px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .pn-eyebrow {
+    margin-bottom: 8px;
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .pn-title {
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .pn-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .pn-meta {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  .pn-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .pn-kpi,
+  .pn-card {
+    min-width: 0;
+    background: var(--pn-card);
+    border: 1px solid var(--pn-line);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .pn-kpi__label {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+  }
+
+  .pn-kpi__value {
+    margin: 8px 0 4px;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pn-kpi__delta {
+    font-size: var(--font-size-small);
+  }
+
+  .pn-kpi__delta[data-dir='up'] {
+    color: var(--pn-up);
+  }
+
+  .pn-kpi__delta[data-dir='down'] {
+    color: var(--pn-down);
+  }
+
+  .pn-kpi__delta[data-dir='flat'],
+  .pn-kpi__delta span,
+  .pn-kpi__hint {
+    color: var(--color-muted);
+  }
+
+  .pn-kpi__hint {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .pn-h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: var(--font-size-title);
+  }
+
+  .pn-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .pn-card__head .pn-h2 {
+    margin: 0;
+  }
+
+  .pn-daily {
+    height: 160px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    border-bottom: 1px solid var(--pn-line);
+  }
+
+  .pn-daily__col {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    outline: none;
+  }
+
+  .pn-daily__bar {
+    width: 100%;
+    background: var(--pn-accent);
+    border-radius: 3px 3px 0 0;
+    opacity: 0.85;
+  }
+
+  .pn-daily__col:hover .pn-daily__bar,
+  .pn-daily__col:focus-visible .pn-daily__bar {
+    opacity: 1;
+  }
+
+  .pn-tip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: var(--color-title);
+    color: var(--color-bg);
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.12s;
+    z-index: 2;
+  }
+
+  .pn-daily__col:first-child .pn-tip {
+    left: 0;
+    transform: none;
+  }
+
+  .pn-daily__col:last-child .pn-tip {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+
+  .pn-daily__col:hover .pn-tip,
+  .pn-daily__col:focus-visible .pn-tip {
+    opacity: 1;
+  }
+
+  .pn-daily__axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+
+  .pn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .pn-bars {
+    list-style: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .pn-bars__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: var(--font-size-body);
+    margin-bottom: 6px;
+  }
+
+  .pn-bars__row span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .pn-bars__row strong {
+    flex-shrink: 0;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pn-bars__track {
+    display: block;
+    height: 6px;
+    background: var(--pn-track);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .pn-bars__fill {
+    display: block;
+    height: 100%;
+    background: var(--pn-accent);
+    border-radius: 4px;
+  }
+
+  .pn-note {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--pn-line);
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+  }
+
+  .pn-search-kpis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .pn-search-kpis .pn-kpi__value {
+    margin-top: 0;
+  }
+
+  .pn-search-kpis .pn-kpi__hint {
+    margin-top: 4px;
+  }
+
+  .pn-table-wrap {
+    overflow-x: auto;
+  }
+
+  .pn-table-wrap--gap {
+    margin-top: 24px;
+  }
+
+  .pn-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-body);
+  }
+
+  .pn-table th,
+  .pn-table td {
+    text-align: right;
+    padding: 10px 0 10px 16px;
+    border-bottom: 1px solid var(--pn-line);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .pn-table th:first-child,
+  .pn-table td:first-child {
+    text-align: left;
+    padding-left: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .pn-table th {
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+
+  .pn-empty,
+  .pn-foot {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+  }
+
+  .pn-foot {
+    margin-top: 8px;
+  }
+
+  .pn-login {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+  }
+
+  .pn-login__box {
+    width: 100%;
+    max-width: 360px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .pn-login__box .pn-title {
+    margin-bottom: 24px;
+  }
+
+  .pn-login__label {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+  }
+
+  .pn-login__box input {
+    font: inherit;
+    font-size: 16px;
+    padding: 14px 16px;
+    border: 1px solid var(--pn-line);
+    border-radius: 8px;
+    background: var(--pn-card);
+    color: var(--color-title);
+  }
+
+  .pn-login__box input:focus {
+    outline: 2px solid var(--pn-accent);
+    outline-offset: 1px;
+  }
+
+  .pn-login__error {
+    font-size: var(--font-size-small);
+    color: var(--pn-down);
+  }
+
+  .pn-login__btn {
+    margin-top: 8px;
+    font: inherit;
+    font-weight: 500;
+    padding: 14px 16px;
+    background: var(--color-title);
+    color: var(--color-bg);
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 860px) {
+    .pn-kpis {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pn-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pn-wrap {
+      padding-top: 32px;
+    }
+
+    .pn-kpis {
+      gap: 12px;
+    }
+
+    .pn-kpi,
+    .pn-card {
+      padding: 16px;
+    }
+
+    .pn-kpi__delta span {
+      display: block;
+    }
+
+    .pn-daily {
+      height: 120px;
+      gap: 1px;
+    }
+
+    .pn-table th:not(:first-child),
+    .pn-table td:not(:first-child) {
+      padding-left: 10px;
+    }
+
+    .pn-kpi__value {
+      font-size: 32px;
+    }
+
+    .pn-search-kpis {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+</style>
